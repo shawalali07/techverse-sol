@@ -1,0 +1,32 @@
+.commentBtn {
+  position: relative;
+  top: 9.5vh;
+  right: 26vw;
+  border: none;
+  background-color: hsl(205, 46%, 92%);
+}
+
+.inputComment {
+  position: relative;
+  top: 9.5vh;
+  right: 12vw;
+  width: 30vw;
+  outline: none;
+}
+
+.commentPost {
+  color: white;
+  position: relative;
+  top: 9.5vh;
+  right: 11vw;
+  border: none;
+  background-color: teal;
+  padding: 5px;
+  width: 80px;
+  border-radius: 10px;
+}
+
+.commentPost:disabled {
+  cursor: not-allowed;
+  background-color: rgb(131, 161, 161);
+}

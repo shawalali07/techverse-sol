@@ -1,0 +1,23 @@
+.all-questions {
+  margin-right: 34vw;
+  position: relative;
+}
+
+.all-questions-number {
+  position: relative;
+  margin-right: 36.2vw;
+  /* top: 2vh; */
+}
+
+.btn-filter-questions {
+  position: relative;
+  margin-left: 35vw;
+  bottom: 4vh;
+  right: 11vw;
+}
+
+.ask-question {
+  position: relative;
+  bottom: 4.5vh;
+  left: 20vw;
+}

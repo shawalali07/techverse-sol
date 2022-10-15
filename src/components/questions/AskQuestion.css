@@ -1,0 +1,31 @@
+.text-editor {
+  margin-top: 10rem;
+  width: '70rem';
+  height: '30rem';
+}
+
+.title {
+  text-align: 'left';
+  margin-left: '0.5rem';
+}
+
+.title-input {
+  width: '68rem';
+  margin-left: '0.5rem';
+}
+
+.texteditorSubmit {
+  margin-right: '500px';
+  width: '9vw';
+  background-color: 'teal';
+  color: 'white';
+}
+
+.texteditorSubmit:disabled {
+  cursor: not-allowed;
+  background-color: gray;
+}
+
+.textEditDiv {
+  margin-right: 75.5rem;
+}

@@ -1,0 +1,226 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Profile.js */
+
+.sidebar {
+  width: 10%;
+  height: 94.3vh;
+  background-color: red;
+  display: flex;
+}
+
+.sidebar-items {
+  font-size: large;
+  list-style-type: none;
+}
+
+.navbar {
+  background-color: #060b26;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.menu-bars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  background: none;
+}
+
+.nav-menu {
+  background-color: #060b26;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 18px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
+.nav-text a:hover {
+  background-color: #1a83ff;
+}
+
+.nav-menu-items {
+  width: 100%;
+}
+
+.navbar-toggle {
+  background-color: #060b26;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+span {
+  margin-left: 16px;
+}
+
+/* QuestionDetails.js */
+
+.details {
+  margin-left: 15vw;
+  width: 60%;
+  /* background-color: #060b26; */
+}
+
+.mainDetails {
+  margin-top: 0px;
+  /* background-color: antiquewhite; */
+}
+
+.my-vr-left {
+  display: inline-block;
+  border-left: 0.1px solid;
+  height: 100%;
+  position: absolute;
+  margin-left: -555px;
+  top: 190px;
+}
+
+.my-vr-right {
+  display: inline-block;
+  border-left: 0.1px solid;
+  height: 100%;
+  position: absolute;
+  margin-left: 553px;
+  top: 190px;
+}
+
+.contributor {
+  display: flex;
+  margin-top: -14px;
+  margin-left: 1px;
+}
+
+.asked {
+  margin-left: 1px;
+}
+
+.dp {
+  margin-left: 0.9vw;
+  margin-top: 10px;
+  display: flex;
+  height: 32px;
+  width: 32px;
+}
+
+.total-answers {
+  display: flex;
+  margin-top: 14vh;
+}
+
+.your-answer {
+  display: flex;
+  margin-top: 14vh;
+}
+
+/* ProfileCard.js */
+.asked-by {
+  text-transform: capitalize;
+}
+
+.topImg {
+  margin-left: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+/* Answers.jsx */
+
+.all-answers {
+  margin-top: 10px;
+  display: flex;
+  background-color: hsl(0, 0%, 96.5%);
+  /* border-radius: 3%; */
+  /* border: 3px solid red; */
+  flex-direction: column;
+}
+
+.answerDescription {
+  word-wrap: break-word;
+  text-align: left;
+  padding-left: 15px;
+  padding-top: 5px;
+}
+
+/* QuestionDetails.js */
+
+.question-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.textEditorAns {
+  margin-bottom: 20px;
+}
+
+.questionDetails {
+  word-wrap: break-word;
+  text-align: left;
+  float: right;
+}
+
+.detailsTitle {
+  text-align: left;
+
+  word-wrap: break-word;
+}
+
+/* Profile.js */
+
+.profileAuthor {
+  background-color: #bcdbe5;
+}
+
+/* SearchQuestion.js */
+
+.searchInput {
+  width: 20vw;
+}

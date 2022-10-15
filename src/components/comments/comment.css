@@ -1,0 +1,17 @@
+.commentText {
+  padding-left: 10px;
+  text-align: left;
+  margin-top: 15px;
+  flex: 1;
+}
+
+.commentWrapper {
+  /* display: flex; */
+}
+
+.author {
+  font-size: 12px;
+  cursor: pointer;
+  font-style: italic;
+  font-weight: 600;
+}
