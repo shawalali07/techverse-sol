@@ -53,16 +53,40 @@ const Signup = () => {
 
   return (
     <>
-      <section className='vh-100' style={{ backgroundColor: '#eee' }}>
-        <div className='container h-100'>
+      <section className='vh-100' style={{ backgroundColor: '#a9a9a9' }}>
+        <div className='container-fluid h-100'>
           <div className='row d-flex justify-content-center align-items-center h-100'>
-            <div className='col-lg-12 col-xl-11'>
-              <div className='card text-black' style={{ borderRadius: '25px' }}>
-                <div className='card-body p-md-5'>
-                  <div className='row justify-content-center'>
-                    <div className='col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1'>
-                      <p className='text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4'>
-                        Sign up
+            
+            <div className='col-md-5 col-lg-5 col-xl-5'>
+ 
+                      <p className='display-4 h1 fw-bold mb-5'>
+            JOIN THE TECHVERSE COMMUNITY
+                      </p>
+                    
+                        <p className='fw-bold'>
+                        Get unstuck _ ask a quesion
+                        </p>
+                        <p className='fw-bold'>
+                        Get unstuck _ ask a quesion
+                        </p>
+                        <p className='fw-bold'>
+                        Get unstuck _ ask a quesion
+                        </p>
+                        <p className='fw-bold'>
+                        Get unstuck _ ask a quesion
+                        </p>
+                      
+            </div>
+            <div className='col-md-7 col-lg-7 col-xl-6'>
+
+
+              <div className='card text-black border border-dark border-4' style={{ borderRadius: '20px', height:'800px'}}>
+                <div className='card-body p-md-10' style={{ backgroundColor: '#CCC9C0', borderRadius: '20px'  }}>
+                  <div className='row d-flex justify-content-center align-items-center h-100'>
+                    <div className='col-md-8 col-lg-8 col-xl-8 order-2 order-lg-1' >
+               
+                      <p className='display-6 text-center h1 fw-bold mb-5 mx-1 mx-md-4' >
+                      SIGN UP 
                       </p>
 
                       <form onSubmit={register} className='mx-1 mx-md-4'>
@@ -124,7 +148,7 @@ const Signup = () => {
                             {error.isAgreedToTerms}
                           </p>
                         )}
-                        <div className='d-flex justify-content-center mx-4 mb-3 mb-lg-4'>
+                        <div className='d-flex justify-content-center'>
                           <button
                             type='submit'
                             style={{ width: '10vw' }}
@@ -142,17 +166,11 @@ const Signup = () => {
                         </div>
                       </form>
                     </div>
-                    <div className='col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2'>
-                      <img
-                        src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp'
-                        className='img-fluid'
-                        alt='Sample image'
-                      />
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div className='col-xl-1'></div>
           </div>
         </div>
       </section>
