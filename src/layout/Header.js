@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useFullName, useToken } from '../hooks/register/useToken';
@@ -13,12 +13,10 @@ import { useSelector } from 'react-redux';
 import logo from '../assets/images/logo.png';
 
 const Header = () => {
+  const { pathname } = useLocation();
   const user = useSelector((state) => state?.authSlice);
 
   const token = useToken();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-dark topBar'>
@@ -55,9 +53,11 @@ const Header = () => {
               </li>
               <li className='nav-item'></li>
             </ul>
-            <form className='d-flex searchInput' role='search'>
-              <SearchQuestions />
-            </form>
+            {pathname === '/' && (
+              <form className='d-flex searchInput' role='search'>
+                <SearchQuestions />
+              </form>
+            )}
             {token &&
               (user?.profilePic ? (
                 <Link to={browserRoutes.SETTINGS}>
