@@ -56,37 +56,46 @@ const Signup = () => {
       <section className='vh-100' style={{ backgroundColor: '#a9a9a9' }}>
         <div className='container-fluid h-100'>
           <div className='row d-flex justify-content-center align-items-center h-100'>
-            
             <div className='col-md-5 col-lg-5 col-xl-5'>
- 
-                      <p className='display-4 h1 fw-bold mb-5'>
-            JOIN THE TECHVERSE COMMUNITY
-                      </p>
-                    
-                        <p className='fw-bold'>
-                        Get unstuck _ ask a quesion
-                        </p>
-                        <p className='fw-bold'>
-                        Get unstuck _ ask a quesion
-                        </p>
-                        <p className='fw-bold'>
-                        Get unstuck _ ask a quesion
-                        </p>
-                        <p className='fw-bold'>
-                        Get unstuck _ ask a quesion
-                        </p>
-                      
+              <p className='display-4 h1 fw-bold mb-5'>
+                JOIN THE TECHVERSE COMMUNITY
+              </p>
+              <div className='signupIconContainer'>
+                <i class='signupIcon fa-solid fa-circle-question'></i>
+                <p className='fw-bold'>Need solution _ ask a quesion</p>
+              </div>
+              <div className='signupIconContainer'>
+                <i class='signupIcon fa-solid fa-tags'></i>
+                <p className='fw-bold'>Build profile _ join community</p>
+              </div>
+              <div className='signupIconContainer'>
+                <i class='signupIcon fa-solid fa-people-arrows'></i>
+                <p className='sloganExp fw-bold'>
+                  {' '}
+                  Find Best Expert _ explore now
+                </p>
+              </div>
+              <div className='signupIconContainer'>
+                <i class='signupIcon fa-solid fa-award'></i>
+                <p className='slogan fw-bold'>
+                  {' '}
+                  Get remote work _ join techverse
+                </p>
+              </div>
             </div>
             <div className='col-md-7 col-lg-7 col-xl-6'>
-
-
-              <div className='card text-black border border-dark border-4' style={{ borderRadius: '20px', height:'800px'}}>
-                <div className='card-body p-md-10' style={{ backgroundColor: '#CCC9C0', borderRadius: '20px'  }}>
+              <div
+                className='card text-black border border-dark border-4'
+                style={{ borderRadius: '20px', height: '800px' }}
+              >
+                <div
+                  className='card-body p-md-10'
+                  style={{ backgroundColor: '#CCC9C0', borderRadius: '20px' }}
+                >
                   <div className='row d-flex justify-content-center align-items-center h-100'>
-                    <div className='col-md-8 col-lg-8 col-xl-8 order-2 order-lg-1' >
-               
-                      <p className='display-6 text-center h1 fw-bold mb-5 mx-1 mx-md-4' >
-                      SIGN UP 
+                    <div className='col-md-8 col-lg-8 col-xl-8 order-2 order-lg-1'>
+                      <p className='display-6 text-center h1 fw-bold mb-5 mx-1 mx-md-4'>
+                        SIGN UP
                       </p>
 
                       <form onSubmit={register} className='mx-1 mx-md-4'>
