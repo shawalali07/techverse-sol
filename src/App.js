@@ -14,11 +14,12 @@ import MyQuestions from './profile/MyQuestions';
 import MyAnswers from './profile/MyAnswers';
 import QuestionDetails from './components/questions/QuestionDetails';
 import Write from './components/write/Write';
-import Tutorial from './components/write/Tutorial';
 import Settings from './components/settings/Settings';
 import ProtectedRoutes from './components/authProtectedRoutes/ProtectedRoutes';
 import UserList from './userList/UserList';
 import User from './user/User';
+import Knowledge from './components/knowledge/Knowledge';
+import KnowledgeDetails from './components/knowledge/KnowledgeDetails';
 
 function App() {
   return (
@@ -57,7 +58,8 @@ function App() {
           <Route path={browserRoutes.WRITE} element={<Write />} />
           <Route path={browserRoutes.SETTINGS} element={<Settings />} />
           <Route path={browserRoutes.USERSLIST} element={<UserList />} />
-          <Route path={browserRoutes.TUTORIAL} element={<Tutorial />} />
+          <Route path={browserRoutes.KNOWLEDGE} element={<Knowledge />} />
+          <Route path={`/knowledge/:id`} element={<KnowledgeDetails />} />
           <Route path='*' element={<Error404 />} />
         </Routes>
       </div>

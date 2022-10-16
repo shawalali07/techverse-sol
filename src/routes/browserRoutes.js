@@ -13,4 +13,5 @@ export const browserRoutes = {
   USERSLIST: '/users',
   USER: '/user',
   TUTORIAL: '/tutorial',
+  KNOWLEDGE: '/knowledge',
 };

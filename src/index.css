@@ -107,6 +107,10 @@ span {
   /* background-color: #060b26; */
 }
 
+.loginToAnswer {
+  margin-top: 10px;
+}
+
 .mainDetails {
   margin-top: 0px;
 
@@ -250,4 +254,10 @@ span {
 
 .sloganExp {
   margin-left: 15px;
+}
+
+.demo-editor {
+  cursor: text;
+  min-height: 25vh;
+  max-height: 25vh;
 }

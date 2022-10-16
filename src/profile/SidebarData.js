@@ -14,4 +14,9 @@ export const SidebarData = [
     path: '/myanswers',
     cName: 'nav-text',
   },
+  {
+    title: 'Write',
+    path: '/write',
+    cName: 'nav-text',
+  },
 ];

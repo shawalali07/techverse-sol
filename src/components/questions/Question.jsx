@@ -31,9 +31,10 @@ const Question = (props) => {
         >
           <span className='title display-block'>{question?.title}</span>
         </Link>{' '}
-        <p className='questionDescription display-block'>
-          {question?.description}
-        </p>
+        <div
+          dangerouslySetInnerHTML={{ __html: question?.description }}
+          className='questionDescription display-block'
+        ></div>
         <div className='tags'>
           {question?.tags?.map((tag, key) => (
             <span className='tag' key={key}>

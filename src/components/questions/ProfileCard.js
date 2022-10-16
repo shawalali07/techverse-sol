@@ -6,7 +6,6 @@ const ProfileCard = (props) => {
   const user = useSelector((state) => state?.authSlice);
 
   const { createdAt, name, notShow, image } = props;
-
   return (
     <div>
       <div

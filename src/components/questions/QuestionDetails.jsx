@@ -9,6 +9,7 @@ import {
   getAnswersById,
   submitAnswer,
 } from '../../redux-toolkit/actions/answers/answers';
+import { ReactDOM } from 'react';
 import Answers from '../answers/Answers';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -54,6 +55,8 @@ const QuestionDetails = () => {
     if (invoke) dispatch(getAnswersById(id));
   }, [invoke]);
 
+  console.log(question?.description);
+
   return (
     <>
       <div className='mainDetails'>
@@ -67,9 +70,17 @@ const QuestionDetails = () => {
           <span>{updatedAt}</span>
           <hr />
           <div className='question-text'>
-            <p className='questionDetails'>{question?.description}</p>
+            <div
+              dangerouslySetInnerHTML={{ __html: question?.description }}
+              id='text'
+              className='questionDetails'
+            ></div>
             <div>
-              <ProfileCard name={name} createdAt={createdAt} />
+              <ProfileCard
+                image={question?.userImage}
+                name={name}
+                createdAt={createdAt}
+              />
             </div>
           </div>
           <div className='total-answers'>
@@ -119,7 +130,7 @@ const QuestionDetails = () => {
               </Button>
             </>
           ) : (
-            <h6>
+            <h6 className='loginToAnswer'>
               You must <Link to='/signin'>Login</Link> to answer
             </h6>
           )}
