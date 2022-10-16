@@ -51,6 +51,14 @@ const TextEditorHeader = (props) => {
             class='form-control'
             style={{ width: '68rem', marginLeft: '0.5rem' }}
           />
+          {title.length > 40 && (
+            <span
+              className='mt-3'
+              style={{ color: 'red', marginRight: '49vw' }}
+            >
+              Max 40 characters allowed
+            </span>
+          )}
         </div>
         <div class='form-group'>
           <label
@@ -80,7 +88,7 @@ const TextEditorHeader = (props) => {
           startIcon={loading ? BtnLoading({ height: '2vh', width: '1vw' }) : ''}
           onClick={!tutorial ? onHandleQuestion : () => console.log('tutorial')}
           className='mt-4 texteditorSubmit'
-          disabled={!title | !description | tags}
+          disabled={!title | !description | tags | (title.length > 40)}
         >
           Submit
         </Button>
