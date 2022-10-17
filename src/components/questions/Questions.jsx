@@ -39,18 +39,20 @@ const Questions = (props) => {
           <div style={{ marginRight: '17vw', marginTop: '8vh' }}>
             <BeatLoader size={40} />
           </div>
-        ) : !loading && questions?.length ? (
+        ) : !loading && questions?.length > 0 ? (
           currentQuestion?.map((question) => <Question question={question} />)
         ) : (
           <NotFound msg='No Question Found' />
         )}
-        <div className='mt-3'>
-          <Pagination
-            postsPerPage={questionsPerPage}
-            totalPosts={questions?.length}
-            paginate={paginate}
-          />
-        </div>
+        {!loading && questions?.length > 0 && (
+          <div className='mt-3'>
+            <Pagination
+              postsPerPage={questionsPerPage}
+              totalPosts={questions?.length}
+              paginate={paginate}
+            />
+          </div>
+        )}
       </div>
     </>
   );
