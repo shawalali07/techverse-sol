@@ -1,23 +1,26 @@
+import { useLocation } from 'react-router-dom';
 import './knowledgeDetails.css';
 
 const KnowledgeDetails = () => {
+  const {
+    state: { data },
+  } = useLocation();
+  console.log(data);
+
   return (
     <div className='mt-2 knowledgeDetails'>
       <div className='knowledgeCardDetails'>
-        <h1 className='knowledetitle'>for loop</h1>
+        <h1 className='knowledetitle'>{data?.title}</h1>
         <h6 className='knowledgeExample'>
           <b>Example</b>
         </h6>
-        <p className='knowledgeCode'>
-          <code>
-            {`if(data.length === 0 ){
-            console.log(data)
-          } `}{' '}
-          </code>
-        </p>
+        <div
+          dangerouslySetInnerHTML={{ __html: data?.description }}
+          className='knowledgeCode'
+        ></div>
 
-        <span>by Shali 2,130</span>
-        <span className='tag'>Javascript</span>
+        <span>by {data?.userName?.split(' ')[0]} 2,130</span>
+        <span className='tag'>{data?.tags[0]}</span>
       </div>
     </div>
   );

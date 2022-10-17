@@ -16,10 +16,12 @@ export const postKnowledge = async (formData, setLoading) => {
   }
 };
 
-export const getKnowledge = (setLoading) => async (dispatch) => {
+export const getKnowledge = (setLoading, tag) => async (dispatch) => {
   setLoading(true);
   try {
-    const { data } = await api.get(authRoutes.KNOWLEDGE);
+    const { data } = await api.get(
+      `${authRoutes.KNOWLEDGE}?queryTag=${tag ? tag : ''}`
+    );
     setLoading(false);
 
     dispatch(setKnowledge(data));

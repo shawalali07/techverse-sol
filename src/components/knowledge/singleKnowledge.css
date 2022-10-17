@@ -25,3 +25,9 @@
   margin-right: 330px;
   display: flex;
 }
+
+.postKnowledge {
+  position: absolute;
+  top: 0;
+  margin-left: 10px;
+}

@@ -1,11 +1,14 @@
 import { Autocomplete, Button, Stack, TextField } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
 import { getKnowledge } from '../../redux-toolkit/actions/knowledge/knowledge';
+import { useToken } from '../../hooks/register/useToken';
 import './singleKnowledge.css';
 const SingleKnowledge = () => {
+  const token = useToken();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [more, setMore] = useState(7);
   const dispatch = useDispatch();
@@ -25,8 +28,8 @@ const SingleKnowledge = () => {
   ];
 
   useEffect(() => {
-    dispatch(getKnowledge(setLoading));
-  }, []);
+    dispatch(getKnowledge(setLoading, tag));
+  }, [tag]);
 
   const handleMore = () => {
     setMore(more + 7);
@@ -39,11 +42,18 @@ const SingleKnowledge = () => {
     knowledge = [...knowledge]?.reverse();
   }
 
-  return !loading && knowledge?.length > 1 ? (
+  console.log('knowledge', knowledge);
+  console.log('knowledge loading', loading);
+
+  return loading ? (
+    <BeatLoader size={50} />
+  ) : !knowledge ? (
+    <div>No</div>
+  ) : (
     <div className='singleKnowledge'>
       {knowledge?.slice(0, more).map((k) => (
         <div key={k._id} className='knowledgeCard mt-2'>
-          <Link className='link' to={`/knowledge/1`}>
+          <Link state={{ data: k }} className='link' to={`/knowledge/1`}>
             <h3 className='knowledgeTitle'>{k.title}</h3>
           </Link>
           <span className='tag'>{k.tags[0]}</span>
@@ -60,6 +70,15 @@ const SingleKnowledge = () => {
             Hide
           </Button>
         )}
+      </div>
+      <div className='postKnowledge'>
+        <Button
+          onClick={() => navigate('/write')}
+          color='success'
+          variant='contained'
+        >
+          Post Knowledge
+        </Button>
       </div>
       <div className='selectLang'>
         <Stack
@@ -80,11 +99,6 @@ const SingleKnowledge = () => {
         </Stack>
       </div>
     </div>
-  ) : !loading &&
-    (knowledge?.length < 1) | (knowledge?.length === undefined) ? (
-    <div>No result</div>
-  ) : (
-    <BeatLoader size={50} />
   );
 };
 

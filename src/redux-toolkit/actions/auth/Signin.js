@@ -6,6 +6,7 @@ import success from '../../../utils/success';
 import fail from '../../../utils/fail';
 import { destroyToken } from '../../slices/authSlice';
 import { getQuestions, getSpecificUserQuestions } from '../questions/question';
+import { getKnowledge } from '../knowledge/knowledge';
 
 const signin = (formValue, navigate, setLoading) => async (dispatch) => {
   setLoading(true);
@@ -22,9 +23,11 @@ const signin = (formValue, navigate, setLoading) => async (dispatch) => {
     setLoading(false);
     success('Logged in successfully');
     dispatch(getQuestions());
+    dispatch(getKnowledge(setLoading));
     dispatch(getSpecificUserQuestions());
     navigate(browserRoutes.ASK_QUESTIONS);
   } catch (error) {
+    console.log(error);
     setLoading(false);
     fail(error.response?.data?.message);
   }
