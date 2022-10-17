@@ -72,13 +72,15 @@ const SingleKnowledge = () => {
         )}
       </div>
       <div className='postKnowledge'>
-        <Button
-          onClick={() => navigate('/write')}
-          color='success'
-          variant='contained'
-        >
-          Post Knowledge
-        </Button>
+        {token && (
+          <Button
+            onClick={() => navigate('/write')}
+            color='success'
+            variant='contained'
+          >
+            Post Knowledge
+          </Button>
+        )}
       </div>
       <div className='selectLang'>
         <Stack
