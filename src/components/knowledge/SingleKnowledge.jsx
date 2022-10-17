@@ -7,6 +7,7 @@ import { getKnowledge } from '../../redux-toolkit/actions/knowledge/knowledge';
 import { useToken } from '../../hooks/register/useToken';
 import './singleKnowledge.css';
 const SingleKnowledge = () => {
+  const [query, setQuery] = useState('');
   const token = useToken();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -27,6 +28,8 @@ const SingleKnowledge = () => {
     'PHP',
   ];
 
+  const keys = ['title'];
+
   useEffect(() => {
     dispatch(getKnowledge(setLoading, tag));
   }, [tag]);
@@ -42,35 +45,28 @@ const SingleKnowledge = () => {
     knowledge = [...knowledge]?.reverse();
   }
 
-  console.log('knowledge', knowledge);
-  console.log('knowledge loading', loading);
-
   return loading ? (
     <BeatLoader size={50} />
   ) : !knowledge ? (
     <div>No</div>
   ) : (
     <div className='singleKnowledge'>
-      {knowledge?.slice(0, more).map((k) => (
-        <div key={k._id} className='knowledgeCard mt-2'>
-          <Link state={{ data: k }} className='link' to={`/knowledge/1`}>
-            <h3 className='knowledgeTitle'>{k.title}</h3>
-          </Link>
-          <span className='tag'>{k.tags[0]}</span>
-          <span>by {k.userName.split(' ')[0]} 2,130</span>
-        </div>
-      ))}
-      <div className='moreButton'>
-        {more < knowledge?.length ? (
-          <Button onClick={handleMore} variant='contained'>
-            More
-          </Button>
-        ) : (
-          <Button onClick={handleHide} variant='contained'>
-            Hide
-          </Button>
-        )}
-      </div>
+      {knowledge
+        ?.filter((item) =>
+          keys.some((key) =>
+            item[key].toLowerCase().includes(query.toLowerCase())
+          )
+        )
+        .map((k) => (
+          <div key={k._id} className='knowledgeCard mt-2'>
+            <Link state={{ data: k }} className='link' to={`/knowledge/1`}>
+              <h3 className='knowledgeTitle'>{k.title}</h3>
+            </Link>
+            <span className='tag'>{k.tags[0]}</span>
+            <span>by {k.userName.split(' ')[0]} 2,130</span>
+          </div>
+        ))}
+
       <div className='postKnowledge'>
         {token && (
           <Button
@@ -99,6 +95,16 @@ const SingleKnowledge = () => {
             onChange={(event, newValue) => setTag(newValue)}
           />
         </Stack>
+      </div>
+      <div className='searchKnowledge'>
+        <TextField
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className='searchKnowledgefield'
+          id='standard-basic'
+          label='Search Topic'
+          variant='outlined'
+        />
       </div>
     </div>
   );
