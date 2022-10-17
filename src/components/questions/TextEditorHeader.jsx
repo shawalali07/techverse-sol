@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { askQuestion } from '../../redux-toolkit/actions/questions/question';
 import { BtnLoading } from '../loader/BtnLoading';
 import { Button } from '@mui/material';
+import { postKnowledge } from '../../redux-toolkit/actions/knowledge/knowledge';
 const TextEditorHeader = (props) => {
   const { tutorial } = props;
   const [loading, setLoading] = useState(false);
@@ -24,6 +25,10 @@ const TextEditorHeader = (props) => {
 
   const onHandleQuestion = () => {
     dispatch(askQuestion(formValues, setLoading));
+  };
+
+  const onHandleKnowledge = () => {
+    dispatch(postKnowledge(formValues, setLoading));
   };
 
   return (
@@ -78,6 +83,7 @@ const TextEditorHeader = (props) => {
       </div>
 
       <SearchTagsCopy
+        tutorial={tutorial}
         onFormChange={onFormChange}
         setFormValues={setFormValues}
         formValues={formValues}
@@ -86,9 +92,15 @@ const TextEditorHeader = (props) => {
         <Button
           variant='contained'
           startIcon={loading ? BtnLoading({ height: '2vh', width: '1vw' }) : ''}
-          onClick={!tutorial ? onHandleQuestion : () => console.log('tutorial')}
+          onClick={!tutorial ? onHandleQuestion : onHandleKnowledge}
           className='mt-4 texteditorSubmit'
-          disabled={!title | !description | tags | (title.length > 40)}
+          disabled={
+            !title |
+            (description === '<p></p>') |
+            !description |
+            (tags.length < 1) |
+            (title.length > 40)
+          }
         >
           Submit
         </Button>

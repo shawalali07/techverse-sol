@@ -55,8 +55,6 @@ const QuestionDetails = () => {
     if (invoke) dispatch(getAnswersById(id));
   }, [invoke]);
 
-  console.log(question?.description);
-
   return (
     <>
       <div className='mainDetails'>

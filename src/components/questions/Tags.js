@@ -2,7 +2,7 @@ import { Autocomplete, Stack, TextField } from '@mui/material';
 import './Tags.css';
 
 const SearchTagsCopy = (props) => {
-  const { setFormValues, formValues } = props;
+  const { setFormValues, formValues, tutorial } = props;
   const { tags } = formValues;
   const allTags = [
     'Javascript',
@@ -23,7 +23,7 @@ const SearchTagsCopy = (props) => {
         width='50vw'
       >
         <Autocomplete
-          multiple
+          multiple={tutorial ? false : true}
           options={allTags}
           renderInput={(params) => <TextField {...params} label='Tags' />}
           value={tags}
