@@ -3,7 +3,7 @@
   width: 60vw;
 }
 
-.knowledgeCard {
+.knowledgeCardDetails {
   background-color: hsl(0, 0%, 96.5%);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }

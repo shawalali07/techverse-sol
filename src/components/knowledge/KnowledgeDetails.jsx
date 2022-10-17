@@ -3,7 +3,7 @@ import './knowledgeDetails.css';
 const KnowledgeDetails = () => {
   return (
     <div className='mt-2 knowledgeDetails'>
-      <div className='knowledgeCard'>
+      <div className='knowledgeCardDetails'>
         <h1 className='knowledetitle'>for loop</h1>
         <h6 className='knowledgeExample'>
           <b>Example</b>
@@ -15,6 +15,9 @@ const KnowledgeDetails = () => {
           } `}{' '}
           </code>
         </p>
+
+        <span>by Shali 2,130</span>
+        <span className='tag'>Javascript</span>
       </div>
     </div>
   );

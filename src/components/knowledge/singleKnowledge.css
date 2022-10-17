@@ -1,12 +1,27 @@
 .singleKnowledge {
-  margin: 0px 400px 0px 400px;
-  width: 40vw;
+  position: relative;
 }
 
 .knowledgeCard {
+  margin: 0px 400px 40px 400px;
+  width: 40vw;
+  height: 7vh;
   background-color: hsl(0, 0%, 96.5%);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
 
 .knowledgeTitle {
+}
+
+.selectLang {
+  margin-right: 15px;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+.moreButton {
+  justify-content: center;
+  margin-right: 330px;
+  display: flex;
 }

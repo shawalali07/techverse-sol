@@ -19,7 +19,6 @@ const TextEditor = (props) => {
   };
   const onChange = ({ blocks: [text] }) => {
     const texts = convertToHTML(editorState.getCurrentContent());
-    console.log(texts);
     setFormValues({ ...formValues, description: texts });
   };
 

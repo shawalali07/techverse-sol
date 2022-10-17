@@ -5,6 +5,7 @@ import question from './slices/questionSlice';
 import answer from './slices/answerSlice';
 import loading from './slices/loadingSlice';
 import { persistReducer, persistStore } from 'redux-persist';
+import knowledge from './slices/knowledgeSlice';
 
 const persistConfig = {
   key: 'root',
@@ -14,7 +15,7 @@ const persistConfig = {
 const authSlice = persistReducer(persistConfig, AuthSliceReducer);
 
 export const store = configureStore({
-  reducer: { authSlice, question, loading, answer },
+  reducer: { authSlice, question, loading, answer, knowledge },
   middleware: [
     ...getDefaultMiddleware({
       serializableCheck: false,

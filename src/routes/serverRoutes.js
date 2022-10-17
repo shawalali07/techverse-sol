@@ -9,4 +9,5 @@ export const authRoutes = {
   UPDATE_PROFILE: '/users/profile',
   ADD_COMMENT: '/answers/',
   COMMENTS: '/comments/get',
+  KNOWLEDGE: '/knowledge',
 };
