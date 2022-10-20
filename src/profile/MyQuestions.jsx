@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import withSidebar from '../hoc/withSidebar';
 import { getSpecificUserQuestions } from '../redux-toolkit/actions/questions/question';
 import Questions from '../components/questions/Questions';
-import useLoading from '../hooks/common/useLoading';
 const MyQuestions = () => {
   const loading = useSelector((state) => state?.question?.loading);
 
@@ -19,10 +17,10 @@ const MyQuestions = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ paddingTop: '90px' }}>
       <Questions questions={questions} loading={loading} />
     </div>
   );
 };
 
-export default withSidebar(MyQuestions);
+export default MyQuestions;

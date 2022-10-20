@@ -45,66 +45,64 @@ const SingleKnowledge = () => {
     knowledge = [...knowledge]?.reverse();
   }
 
-  return loading ? (
-    <BeatLoader size={50} />
-  ) : !knowledge ? (
-    <div>No</div>
-  ) : (
-    <div className='singleKnowledge'>
-      {knowledge
-        ?.filter((item) =>
-          keys.some((key) =>
-            item[key].toLowerCase().includes(query.toLowerCase())
+  return (
+    <div className='pt-4'>
+      <div className='singleKnowledge'>
+        {knowledge
+          ?.filter((item) =>
+            keys.some((key) =>
+              item[key].toLowerCase().includes(query.toLowerCase())
+            )
           )
-        )
-        .map((k) => (
-          <div key={k._id} className='knowledgeCard mt-2'>
-            <Link state={{ data: k }} className='link' to={`/knowledge/1`}>
-              <h3 className='knowledgeTitle'>{k.title}</h3>
-            </Link>
-            <span className='tag'>{k.tags[0]}</span>
-            <span>by {k.userName.split(' ')[0]} 2,130</span>
-          </div>
-        ))}
+          .map((k) => (
+            <div key={k._id} className='knowledgeCard'>
+              <Link state={{ data: k }} className='link' to={`/knowledge/1`}>
+                <h3 className='knowledgeTitle'>{k.title}</h3>
+              </Link>
+              <span className='tag'>{k.tags[0]}</span>
+              <span>by {k.userName.split(' ')[0]} 2,130</span>
+            </div>
+          ))}
 
-      <div className='postKnowledge'>
-        {token && (
-          <Button
-            onClick={() => navigate('/write')}
-            color='success'
-            variant='contained'
+        <div className='postKnowledge'>
+          {token && (
+            <Button
+              onClick={() => navigate('/write')}
+              color='success'
+              variant='contained'
+            >
+              Post Knowledge
+            </Button>
+          )}
+        </div>
+        <div className='selectLang'>
+          <Stack
+            style={{ marginLeft: '0vw', float: 'right' }}
+            className='tags'
+            spacing={2}
+            width='20vw'
           >
-            Post Knowledge
-          </Button>
-        )}
-      </div>
-      <div className='selectLang'>
-        <Stack
-          style={{ marginLeft: '0vw', float: 'right' }}
-          className='tags'
-          spacing={2}
-          width='20vw'
-        >
-          <Autocomplete
-            multiple
-            options={allTags}
-            renderInput={(params) => (
-              <TextField {...params} label='Select Language' />
-            )}
-            value={tag}
-            onChange={(event, newValue) => setTag(newValue)}
+            <Autocomplete
+              multiple
+              options={allTags}
+              renderInput={(params) => (
+                <TextField {...params} label='Select Language' />
+              )}
+              value={tag}
+              onChange={(event, newValue) => setTag(newValue)}
+            />
+          </Stack>
+        </div>
+        <div className='searchKnowledge'>
+          <TextField
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className='searchKnowledgefield'
+            id='standard-basic'
+            label='Search Topic'
+            variant='outlined'
           />
-        </Stack>
-      </div>
-      <div className='searchKnowledge'>
-        <TextField
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className='searchKnowledgefield'
-          id='standard-basic'
-          label='Search Topic'
-          variant='outlined'
-        />
+        </div>
       </div>
     </div>
   );

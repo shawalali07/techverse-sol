@@ -3,7 +3,7 @@ import TextEditorHeader from '../questions/TextEditorHeader';
 
 const Tutorial = () => {
   return (
-    <div className='tutorial'>
+    <div style={{ paddingTop: '90px' }} className='tutorial'>
       <TextEditorHeader tutorial={true} />
     </div>
   );

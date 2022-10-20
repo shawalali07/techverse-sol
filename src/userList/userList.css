@@ -1,6 +1,8 @@
 .userList {
+  width: 55vw;
   height: 91vh;
-  flex: 4;
+  flex: 3;
+  padding-top: 90px;
 }
 
 .userListUser {
@@ -29,4 +31,12 @@
 .userListDelete {
   color: red;
   cursor: pointer;
+}
+
+.searchDevelopers {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 100px;
+  margin-right: 20px;
 }

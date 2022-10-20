@@ -37,10 +37,6 @@ const Settings = () => {
     data.append('password', formData.password);
     dispatch(updateProfile(data, setLoading));
   };
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(signout(navigate));
-  };
 
   return (
     <div className='settings'>
@@ -104,11 +100,6 @@ const Settings = () => {
           >
             Update
           </button>
-          <div className='logoutDiv'>
-            <button onClick={logout} className='logoutBtn'>
-              Logout
-            </button>
-          </div>
         </form>
       </div>
       <Sidebar />

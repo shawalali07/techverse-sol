@@ -4,16 +4,14 @@ import { userRows } from '../dummyData';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { browserRoutes } from '../routes/browserRoutes';
+import { Stack, TextField } from '@mui/material';
 
 export default function UserList() {
-  const [data, setData] = useState(userRows);
-
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
+  let [data, setData] = useState(userRows);
+  const [query, setQuery] = useState('');
 
   const columns = [
-    { field: 'id', headerName: 'Rank', width: 145 },
+    { field: 'id', headerName: 'Rank', width: 145, height: 100 },
     {
       field: 'user',
       headerName: 'User',
@@ -45,15 +43,34 @@ export default function UserList() {
     },
   ];
 
+  const keys = ['username', 'email'];
+
+  data = data?.filter((item) =>
+    keys.some((key) => item[key].toLowerCase().includes(query.toLowerCase()))
+  );
+
   return (
-    <div className='container'>
-      <div className='userList'>
-        <DataGrid
-          rows={data}
-          disableSelectionOnClick
-          columns={columns}
-          pageSize={20}
-        />
+    <div style={{ position: 'relative' }}>
+      <div className='container'>
+        <div className='userList'>
+          <DataGrid
+            density='comfortable'
+            autoHeight
+            autoPageSize
+            rows={data}
+            disableSelectionOnClick
+            columns={columns}
+            pageSize={10}
+          />
+        </div>
+      </div>
+      <div className='searchDevelopers'>
+        <Stack spacing={2} width='20vw'>
+          <TextField
+            onChange={(e) => setQuery(e.target.value)}
+            label='Search Developer'
+          />
+        </Stack>
       </div>
     </div>
   );
