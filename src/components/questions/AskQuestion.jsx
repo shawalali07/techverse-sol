@@ -3,7 +3,7 @@ import TextEditorHeader from './TextEditorHeader';
 
 const AskQuestion = () => {
   return (
-    <div>
+    <div style={{ paddingTop: '90px' }}>
       <TextEditorHeader />
     </div>
   );

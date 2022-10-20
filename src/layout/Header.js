@@ -1,26 +1,35 @@
-import React, { Fragment } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useFullName, useToken } from '../hooks/register/useToken';
+import { useToken } from '../hooks/register/useToken';
 import './Header.css';
 import SearchQuestions from '../components/questions/SearchQuestions';
-import { signout } from '../redux-toolkit/actions/auth/Signin';
-import { store } from '../redux-toolkit';
 import { browserRoutes } from '../routes/browserRoutes';
 import Profile from '../profile/Profile';
 import { useSelector } from 'react-redux';
 import logo from '../assets/images/logo.png';
+import ProfileDropdown from './ProfileDropdown';
 
 const Header = () => {
+  const [dropdown, setDropdown] = useState(false);
   const { pathname } = useLocation();
   const user = useSelector((state) => state?.authSlice);
-
   const token = useToken();
+  const refOutside = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true);
+  }, []);
+
+  const handleClickOutside = ({ target }) => {
+    if (!refOutside.current.contains(target)) {
+      setDropdown(false);
+    } else {
+    }
+  };
+
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-dark topBar'>
-        {token && <Profile />}
         <div className='container-fluid'>
           <button
             className='navbar-toggler'
@@ -60,9 +69,12 @@ const Header = () => {
             )}
             {token &&
               (user?.profilePic ? (
-                <Link to={browserRoutes.SETTINGS}>
-                  <img className='topImg' src={user?.profilePic} />
-                </Link>
+                <ProfileDropdown
+                  setDropdown={setDropdown}
+                  dropdown={dropdown}
+                  profilePic={user?.profilePic}
+                  refOutside={refOutside}
+                />
               ) : (
                 <Link to={browserRoutes.SETTINGS}>
                   <div className='topImg topNA'>

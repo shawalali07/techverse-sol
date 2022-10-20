@@ -1,7 +1,13 @@
 .topBar {
-  background-color: black;
-  color: white;
+  background-color: hsl(0, 0%, 96.5%);
+
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  color: black;
   font-size: 20px;
+  position: fixed !important;
+  width: 100%;
+  height: 80px;
+  z-index: 10;
 }
 .logo {
   width: 40px;
@@ -23,6 +29,46 @@
   border-radius: 50%;
   cursor: pointer;
   object-fit: cover;
+}
+
+.profileDropdown {
+  position: relative;
+}
+
+.pDropdown {
+  display: none;
+}
+
+.pDropdown1 {
+  position: absolute;
+  color: black;
+  background-color: hsl(0, 0%, 96.5%);
+  width: 10vw;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  right: 0;
+  top: 60px;
+}
+
+.pDropdown1 ul {
+  padding: 0 !important;
+}
+
+.pDropdown1 ul li {
+  color: black;
+  list-style: none;
+  text-align: left;
+  padding: 12px 30px;
+}
+
+.pDropdown1 ul li:hover {
+  cursor: pointer;
+  background-color: darkgrey;
+  color: black;
+}
+
+.dropdownLink {
+  margin: 0;
+  padding: 0;
 }
 
 .topTitle {

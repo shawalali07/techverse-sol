@@ -7,7 +7,6 @@ import Questions from './Questions';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuestions } from '../../redux-toolkit/actions/questions/question';
 import { ClipLoader } from 'react-spinners';
-import withSidebar from '../../hoc/withSidebar';
 
 const AllQuestions = () => {
   const loading = useSelector((state) => state?.question?.loading);
@@ -35,7 +34,7 @@ const AllQuestions = () => {
 
   return (
     <>
-      <div className='container '>
+      <div className='container' style={{ paddingTop: '90px' }}>
         <div className='card ' style={{ width: '55rem', height: '7.5rem' }}>
           <h2 className='all-questions mt-1'>All Questions</h2>
           <span>
@@ -75,4 +74,4 @@ const AllQuestions = () => {
   );
 };
 
-export default withSidebar(AllQuestions);
+export default AllQuestions;
