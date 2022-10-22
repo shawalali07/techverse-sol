@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSelector, dispatch, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   setSearchQuery,
   setSearchQuestions,
@@ -32,7 +32,7 @@ const SearchQuestions = () => {
     <>
       <input
         onChange={handleSearch}
-        className='form-control me-2 '
+        className='form-control me-2 searchBarQuestion'
         type='search'
         placeholder='Search'
         aria-label='Search'

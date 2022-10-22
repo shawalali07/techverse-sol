@@ -29,9 +29,27 @@ const Header = () => {
     }
   };
 
+  const [theme, setTheme] = useState('light-theme');
+
+  useEffect(() => {
+    document.body.class = theme;
+  }, [theme]);
+
+  const toggleMode = () => {
+    if (theme === 'light-theme') {
+      setTheme('dark-theme');
+    } else {
+      setTheme('light-theme');
+    }
+  };
+
   return (
     <>
-      <nav className='navbar navbar-expand-lg navbar-dark topBar'>
+      <nav
+        className={`navbar navbar-expand-lg navbar-dark ${
+          theme === 'light-theme' ? 'topBar' : 'topBarDark'
+        }`}
+      >
         <div className='container-fluid'>
           <button
             className='navbar-toggler'
@@ -69,6 +87,7 @@ const Header = () => {
                 <SearchQuestions />
               </form>
             )}
+
             {token ? (
               user?.profilePic ? (
                 <ProfileDropdown
@@ -101,6 +120,18 @@ const Header = () => {
                 Login
               </Button>
             )}
+            <div className={`form-check form-switch text-light`}>
+              <input
+                onClick={toggleMode}
+                className='form-check-input'
+                type='checkbox'
+                id='flexSwitchCheckDefault'
+              />
+              <label
+                className='form-check-label'
+                htmlFor='flexSwitchCheckDefault'
+              ></label>
+            </div>
           </div>
         </div>
       </nav>

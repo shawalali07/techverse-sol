@@ -52,10 +52,10 @@ const AllQuestions = () => {
     setPageNumber(selected);
   };
 
-  // searchedQuestions.length = 0;
+  console.log('searchedQuestions', questions);
 
   return (
-    <div>
+    <div style={{ backgroundColor: 'white', height: '100vh' }}>
       <div className='container' style={{ paddingTop: '90px' }}>
         <div
           className='card allQCard'
