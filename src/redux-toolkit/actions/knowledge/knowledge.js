@@ -2,7 +2,11 @@ import { api } from '../../../configurations/AxiosIntercenptor';
 import { authRoutes } from '../../../routes/serverRoutes';
 import fail from '../../../utils/fail';
 import success from '../../../utils/success';
-import { setKnowledge } from '../../slices/knowledgeSlice';
+import {
+  failKnowledgeData,
+  setKnowledge,
+  startKnowledge,
+} from '../../slices/knowledgeSlice';
 
 export const postKnowledge = async (formData, setLoading) => {
   setLoading(true);
@@ -16,16 +20,16 @@ export const postKnowledge = async (formData, setLoading) => {
   }
 };
 
-export const getKnowledge = (setLoading, tag) => async (dispatch) => {
-  setLoading(true);
+export const getKnowledge = (tag) => async (dispatch) => {
+  dispatch(startKnowledge());
+
   try {
     const { data } = await api.get(
       `${authRoutes.KNOWLEDGE}?queryTag=${tag ? tag : ''}`
     );
-    setLoading(false);
 
     dispatch(setKnowledge(data));
   } catch (error) {
-    setLoading(false);
+    dispatch(failKnowledgeData());
   }
 };

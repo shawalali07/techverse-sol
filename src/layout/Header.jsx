@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useToken } from '../hooks/register/useToken';
 import './Header.css';
 import SearchQuestions from '../components/questions/SearchQuestions';
@@ -8,8 +8,10 @@ import Profile from '../profile/Profile';
 import { useSelector } from 'react-redux';
 import logo from '../assets/images/logo.png';
 import ProfileDropdown from './ProfileDropdown';
+import { Button } from '@mui/material';
 
 const Header = () => {
+  const navigate = useNavigate();
   const [dropdown, setDropdown] = useState(false);
   const { pathname } = useLocation();
   const user = useSelector((state) => state?.authSlice);
@@ -67,8 +69,8 @@ const Header = () => {
                 <SearchQuestions />
               </form>
             )}
-            {token &&
-              (user?.profilePic ? (
+            {token ? (
+              user?.profilePic ? (
                 <ProfileDropdown
                   setDropdown={setDropdown}
                   dropdown={dropdown}
@@ -81,7 +83,24 @@ const Header = () => {
                     {user?.fullName.slice(0, 2)}
                   </div>
                 </Link>
-              ))}
+              )
+            ) : pathname === '/signin' ? (
+              <Button
+                onClick={() => navigate('/signup')}
+                color='success'
+                variant='contained'
+              >
+                Create Account
+              </Button>
+            ) : pathname === '/signup' ? (
+              <Button onClick={() => navigate('/signin')} variant='contained'>
+                Login
+              </Button>
+            ) : (
+              <Button onClick={() => navigate('/signin')} variant='contained'>
+                Login
+              </Button>
+            )}
           </div>
         </div>
       </nav>

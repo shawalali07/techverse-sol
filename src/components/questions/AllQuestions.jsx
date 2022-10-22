@@ -48,8 +48,7 @@ const AllQuestions = () => {
             </button>
           </span>
           <span className='all-questions-number'>
-            {questions?.length ? questions?.length : <ClipLoader size={15} />}{' '}
-            questions
+            {loading ? <ClipLoader size={15} /> : questions?.length} questions
           </span>
 
           <div className='btn-filter-questions'>
