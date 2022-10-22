@@ -5,7 +5,6 @@ import AskQuestion from './components/questions/AskQuestion';
 import Signup from './registration/Signup';
 import { Routes, Route } from 'react-router-dom';
 import Signin from './registration/Signin';
-import Error404 from './components/error/Error404';
 import { browserRoutes } from './routes/browserRoutes';
 import AuthRoutes from './components/authProtectedRoutes/AuthRoutes';
 import { Toaster } from 'react-hot-toast';
@@ -20,6 +19,7 @@ import UserList from './userList/UserList';
 import User from './user/User';
 import Knowledge from './components/knowledge/Knowledge';
 import KnowledgeDetails from './components/knowledge/KnowledgeDetails';
+import NotFound from './components/error/NotFound';
 
 function App() {
   return (
@@ -60,7 +60,7 @@ function App() {
           <Route path={browserRoutes.USERSLIST} element={<UserList />} />
           <Route path={browserRoutes.KNOWLEDGE} element={<Knowledge />} />
           <Route path={`/knowledge/:id`} element={<KnowledgeDetails />} />
-          <Route path='*' element={<Error404 />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
     </>

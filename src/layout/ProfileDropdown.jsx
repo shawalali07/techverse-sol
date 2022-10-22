@@ -39,7 +39,14 @@ const ProfileDropdown = ({ refOutside, profilePic, setDropdown, dropdown }) => {
           >
             <li>My Questions</li>
           </Link>
-          <li onClick={logout}>Logout</li>
+          <li
+            onClick={() => {
+              setDropdown(!dropdown);
+              logout();
+            }}
+          >
+            Logout
+          </li>
         </ul>
       </div>
     </div>

@@ -31,7 +31,7 @@ const Questions = (props) => {
   useEffect(() => {
     dispatch(getAnswers());
   }, []);
-
+  console.log(loading);
   return (
     <>
       <div className='container'>

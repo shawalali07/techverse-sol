@@ -1,11 +1,14 @@
-import React from 'react';
-
-const NotFound = (props) => {
-  const { msg } = props;
+import './notFound.css';
+const NotFound = ({ msg }) => {
   return (
-    <div class='d-flex align-items-center justify-content-center vh-100 bg-white'>
-      <h1 class='display-1 fw-bold text-danger'>{msg}</h1>
-    </div>
+    <>
+      <div class='number'>404</div>
+      <div class='text'>
+        <span>Ooops...</span>
+        <br />
+        {msg}
+      </div>
+    </>
   );
 };
 
