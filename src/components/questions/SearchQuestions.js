@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSelector, dispatch, useDispatch } from 'react-redux';
-import { setSearchQuestions } from '../../redux-toolkit/slices/questionSlice';
+import {
+  setSearchQuery,
+  setSearchQuestions,
+} from '../../redux-toolkit/slices/questionSlice';
 const SearchQuestions = () => {
   const [search, setSearch] = useState('');
   const keys = ['title', 'description'];
@@ -13,6 +16,7 @@ const SearchQuestions = () => {
   };
 
   useEffect(() => {
+    dispatch(setSearchQuery(search));
     dispatch(
       setSearchQuestions(
         questions?.filter((item) =>

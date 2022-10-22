@@ -9,6 +9,7 @@ export const question = createSlice({
     searchQuestions: [],
     specificUserQuestions: [],
     fetchData: null,
+    questionQuery: '',
   },
   reducers: {
     setFetchData: (state, action) => {
@@ -31,6 +32,9 @@ export const question = createSlice({
     },
     setSearchQuestions: (state, action) => {
       state.searchQuestions = action.payload;
+    },
+    setSearchQuery: (state, action) => {
+      state.questionQuery = action.payload;
     },
     startSpecificQuestions: (state, action) => {
       state.specificUserQuestions = [];
@@ -59,6 +63,7 @@ export const {
   setSearchQuestions,
   setSpecificUserQuestions,
   setFetchData,
+  setSearchQuery,
 } = question.actions;
 
 export default question.reducer;
