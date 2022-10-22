@@ -53,3 +53,11 @@ nav a.active {
   text-decoration: none;
   font-weight: bold;
 }
+
+.light-theme {
+  --bg-clr: #fff;
+}
+
+.dark-theme {
+  --bg-clr: #111b20;
+}

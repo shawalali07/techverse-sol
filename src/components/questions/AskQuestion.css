@@ -1,7 +1,12 @@
+.textEditorHeader {
+}
 .text-editor {
   margin-top: 10rem;
   width: '70rem';
   height: '30rem';
+  background-color: hsl(0, 0%, 96.5%);
+
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
 
 .title {
@@ -23,9 +28,15 @@
 
 .texteditorSubmit:disabled {
   cursor: not-allowed;
-  background-color: gray;
+  background-color: white;
 }
 
 .textEditDiv {
   margin-right: 75.5rem;
+}
+
+.questionTagEditor {
+  background-color: hsl(0, 0%, 96.5%);
+  width: max-content;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
