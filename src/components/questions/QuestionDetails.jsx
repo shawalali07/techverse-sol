@@ -57,7 +57,7 @@ const QuestionDetails = () => {
 
   return (
     <>
-      <div className='mainDetails'>
+      <div className='mainDetails pt-4'>
         <div className='details'>
           <div className='mt-4'>
             <h3 className='detailsTitle'>{question?.title}</h3>

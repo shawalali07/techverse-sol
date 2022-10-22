@@ -24,12 +24,6 @@ const askQuestion = async (formData, setLoading) => {
   }
 };
 
-const uploadFile = (formData) => async (dispatch) => {
-  try {
-    const { data } = await api.post(`${BASE_URL}/upload`, formData);
-  } catch (error) {}
-};
-
 const getQuestions = () => async (dispatch) => {
   dispatch(startQuestionsData());
 

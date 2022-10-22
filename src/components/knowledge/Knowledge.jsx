@@ -112,17 +112,19 @@ const Knowledge = () => {
             />
           </div>
           {searchKnowledge?.length ? (
-            <ReactPaginate
-              previousLabel={'Previous'}
-              nextLabel={'Next'}
-              pageCount={pageCount}
-              onPageChange={changePage}
-              containerClassName={'paginationBttns'}
-              previousLinkClassName={'previousBttn'}
-              nextLinkClassName={'nextBttn'}
-              disabledClassName={'paginationDisabled'}
-              activeClassName={'paginationActive'}
-            />
+            <div>
+              <ReactPaginate
+                previousLabel={'Prev <<'}
+                nextLabel={'Next >>'}
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={'paginationBttns'}
+                previousLinkClassName={'previousBttn'}
+                nextLinkClassName={'nextBttn'}
+                disabledClassName={'paginationDisabled'}
+                activeClassName={'paginationActive'}
+              />
+            </div>
           ) : (
             <NotFoundResult />
           )}

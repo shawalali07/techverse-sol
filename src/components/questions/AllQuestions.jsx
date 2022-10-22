@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useNavigate } from 'react-router-dom';
@@ -6,9 +6,17 @@ import './AllQuestions.css';
 import Questions from './Questions';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuestions } from '../../redux-toolkit/actions/questions/question';
-import { ClipLoader } from 'react-spinners';
+import { BeatLoader, ClipLoader } from 'react-spinners';
+import ReactPaginate from 'react-paginate';
+import NotFound from '../error/NotFound';
 
 const AllQuestions = () => {
+  const [pageNumber, setPageNumber] = useState(0);
+
+  const usersPerPage = 4;
+  const pagesVisited = pageNumber * usersPerPage;
+  const query = useSelector((state) => state?.question?.questionQuery);
+  const keys = ['title', 'description'];
   const loading = useSelector((state) => state?.question?.loading);
 
   const navigate = useNavigate();
@@ -32,10 +40,33 @@ const AllQuestions = () => {
     dispatch(getQuestions());
   }, []);
 
+  searchedQuestions = questions
+    ?.slice(pagesVisited, pagesVisited + usersPerPage)
+    .filter((item) =>
+      keys.some((key) => item[key].toLowerCase().includes(query.toLowerCase()))
+    );
+
+  const pageCount = Math.ceil(questions?.length / usersPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
+  // searchedQuestions.length = 0;
+
   return (
-    <>
+    <div>
       <div className='container' style={{ paddingTop: '90px' }}>
-        <div className='card ' style={{ width: '55rem', height: '7.5rem' }}>
+        <div
+          className='card allQCard'
+          style={{
+            width: '55rem',
+            height: '7.5rem',
+            marginLeft: '5px',
+            backgroundColor: 'antiquewhite',
+            color: 'black',
+          }}
+        >
           <h2 className='all-questions mt-1'>All Questions</h2>
           <span>
             <button
@@ -64,12 +95,31 @@ const AllQuestions = () => {
           </div>
         </div>
       </div>
-
-      <Questions
-        questions={searchedQuestions.length ? searchedQuestions : questions}
-        loading={loading}
-      />
-    </>
+      {loading ? (
+        <div style={{ marginRight: '17vw', marginTop: '8vh' }}>
+          <BeatLoader size={40} />
+        </div>
+      ) : !loading && searchedQuestions?.length > 0 ? (
+        <div>
+          <Questions questions={searchedQuestions} loading={loading} />
+          <div style={{ marginTop: '40px', marginRight: '50px' }}>
+            <ReactPaginate
+              previousLabel={'Prev <<'}
+              nextLabel={'Next >>'}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={'paginationBttns'}
+              previousLinkClassName={'previousBttn'}
+              nextLinkClassName={'nextBttn'}
+              disabledClassName={'paginationDisabled'}
+              activeClassName={'paginationActive'}
+            />
+          </div>
+        </div>
+      ) : (
+        <NotFound msg='No Question Found' />
+      )}
+    </div>
   );
 };
 

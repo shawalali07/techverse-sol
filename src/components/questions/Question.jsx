@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { browserRoutes } from '../../routes/browserRoutes';
 import { Link } from 'react-router-dom';
-import useFetch from '../../hooks/useFetch';
 const Question = (props) => {
   const { question } = props;
 
@@ -13,7 +12,7 @@ const Question = (props) => {
   return (
     <div
       key={question?._id}
-      className='card'
+      className='card qCard'
       style={{ width: '55rem', height: '9.5rem' }}
     >
       <div className='mainDiv mt-3' style={{ width: '10rem', height: '10rem' }}>

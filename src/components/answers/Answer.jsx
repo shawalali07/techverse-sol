@@ -28,7 +28,11 @@ const Answer = (props) => {
     <>
       <div className='all-answers'>
         <div className='wrapper'>
-          <p className='answerDescription'>{answer?.description}</p>
+          <p className='answerDescription'>
+            <div
+              dangerouslySetInnerHTML={{ __html: answer?.description }}
+            ></div>
+          </p>
           {isComment ? (
             <div className='comment'>
               <input
