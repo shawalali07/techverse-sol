@@ -52,23 +52,18 @@ const AllQuestions = () => {
     setPageNumber(selected);
   };
 
-  console.log('searchedQuestions', questions);
-
   return (
-    <div style={{ backgroundColor: 'white', height: '100vh' }}>
+    <div
+      className='allQuestions'
+      style={{ backgroundColor: 'white', height: '100vh' }}
+    >
       <div className='container' style={{ paddingTop: '90px' }}>
         <div
           className='card allQCard'
-          style={{
-            width: '55rem',
-            height: '7.5rem',
-            marginLeft: '5px',
-            backgroundColor: 'antiquewhite',
-            color: 'black',
-          }}
+          style={{ backgroundColor: 'antiquewhite' }}
         >
-          <h2 className='all-questions mt-1'>All Questions</h2>
-          <span>
+          <h2 className='all-questions-heading mt-1'>All Questions</h2>
+          <span className='btnAsk'>
             <button
               style={{ marginRight: '1.8vw' }}
               onClick={() => navigate('/askquestion')}
@@ -100,7 +95,7 @@ const AllQuestions = () => {
           <BeatLoader size={40} />
         </div>
       ) : !loading && searchedQuestions?.length > 0 ? (
-        <div>
+        <div className='questionsComponent'>
           <Questions questions={searchedQuestions} loading={loading} />
           <div style={{ marginTop: '40px', marginRight: '50px' }}>
             <ReactPaginate

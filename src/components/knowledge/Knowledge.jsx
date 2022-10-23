@@ -83,6 +83,16 @@ const Knowledge = () => {
               </Button>
             )}
           </div>
+          <div className='searchKnowledge'>
+            <TextField
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className='searchKnowledgefield'
+              id='standard-basic'
+              label='Search Topic'
+              variant='outlined'
+            />
+          </div>
           <div className='selectLang'>
             <Stack
               style={{ marginLeft: '0vw', float: 'right' }}
@@ -101,16 +111,7 @@ const Knowledge = () => {
               />
             </Stack>
           </div>
-          <div className='searchKnowledge'>
-            <TextField
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className='searchKnowledgefield'
-              id='standard-basic'
-              label='Search Topic'
-              variant='outlined'
-            />
-          </div>
+
           {searchKnowledge?.length ? (
             <div>
               <ReactPaginate

@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import { BeatLoader } from 'react-spinners';
-import Pagination from '../Pagination';
+import { useEffect } from 'react';
+
 import './Questions.css';
 import NotFound from '../error/NotFound';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +15,7 @@ const Questions = (props) => {
     dispatch(getAnswers());
   }, []);
   return (
-    <div>
+    <div className='questions'>
       <div className='container'>
         {questions?.map((question) => (
           <Question question={question} />

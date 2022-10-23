@@ -1,15 +1,21 @@
-.all-questions {
+.allQuestions {
+}
+
+.all-questions-heading {
+  /* width: 20vw; */
   margin-right: 34vw;
   position: relative;
 }
 
 .all-questions-number {
+  /* width: 20vw; */
   position: relative;
   margin-right: 36.2vw;
   /* top: 2vh; */
 }
 
 .btn-filter-questions {
+  display: none;
   position: relative;
   margin-left: 35vw;
   bottom: 4vh;
@@ -17,12 +23,20 @@
 }
 
 .ask-question {
+  /* display: none; */
   position: relative;
   bottom: 4.5vh;
   left: 20vw;
 }
+.btnAsk {
+  /* display: none; */
+}
 
 .allQCard {
+  margin-left: 5px;
+  color: black;
+  width: 55rem;
+  height: 7.5rem;
   background-color: hsl(0, 0%, 96.5%);
   box-shadow: 0 1px 8px rgba(7, 1, 1, 0.25);
 }
