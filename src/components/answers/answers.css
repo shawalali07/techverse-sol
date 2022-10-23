@@ -1,11 +1,3 @@
-.commentBtn {
-  position: relative;
-  top: 9.5vh;
-  right: 26vw;
-  border: none;
-  background-color: hsl(205, 46%, 92%);
-}
-
 .inputComment {
   position: relative;
   top: 9.5vh;

@@ -3,7 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signout } from '../redux-toolkit/actions/auth/Signin';
 import { browserRoutes } from '../routes/browserRoutes';
 
-const ProfileDropdown = ({ refOutside, profilePic, setDropdown, dropdown }) => {
+const ProfileDropdown = ({
+  refOutside,
+  profilePic,
+  setDropdown,
+  dropdown,
+  name,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logout = (e) => {
@@ -11,11 +17,17 @@ const ProfileDropdown = ({ refOutside, profilePic, setDropdown, dropdown }) => {
   };
   return (
     <div ref={refOutside} className='profileDropdown'>
-      <img
-        className='topImg'
-        src={profilePic}
-        onClick={() => setDropdown(!dropdown)}
-      />
+      {profilePic ? (
+        <img
+          className='topImg'
+          src={profilePic}
+          onClick={() => setDropdown(!dropdown)}
+        />
+      ) : (
+        <div onClick={() => setDropdown(!dropdown)} className='topImg topNA'>
+          {name?.slice(0, 2)}
+        </div>
+      )}
       <div className={`${dropdown ? 'pDropdown1' : 'pDropdown'}`}>
         <ul>
           <Link
@@ -38,6 +50,13 @@ const ProfileDropdown = ({ refOutside, profilePic, setDropdown, dropdown }) => {
             to={browserRoutes.MYQUESTIONS}
           >
             <li>My Questions</li>
+          </Link>
+          <Link
+            onClick={() => setDropdown(!dropdown)}
+            className='dropdownLink'
+            to={browserRoutes.MYANSWERS}
+          >
+            <li>My Answers</li>
           </Link>
           <li
             onClick={() => {

@@ -6,10 +6,24 @@ export const answer = createSlice({
     answersData: [],
     allAnswersData: [],
     comments: [],
+    loading: false,
+    error: false,
   },
   reducers: {
+    startAnswersData: (state, action) => {
+      state.answersData = [];
+      state.loading = true;
+      state.error = false;
+    },
     setAnswersData: (state, action) => {
       state.answersData = action.payload;
+      state.loading = false;
+      state.error = false;
+    },
+    failAnswersData: (state, action) => {
+      state.answersData = [];
+      state.loading = false;
+      state.error = true;
     },
     setAllAnswersData: (state, action) => {
       state.allAnswersData = action.payload;
@@ -20,7 +34,12 @@ export const answer = createSlice({
   },
 });
 
-export const { setAnswersData, setAllAnswersData, setCommentsData } =
-  answer.actions;
+export const {
+  setAnswersData,
+  setAllAnswersData,
+  setCommentsData,
+  startAnswersData,
+  failAnswersData,
+} = answer.actions;
 
 export default answer.reducer;

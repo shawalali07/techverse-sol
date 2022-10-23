@@ -70,6 +70,13 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
+              {token && (
+                <li className='nav-item topListItem'>
+                  <NavLink className='link' to='/askquestion'>
+                    Ask Question
+                  </NavLink>
+                </li>
+              )}
               <li className='nav-item topListItem'>
                 <NavLink className='link' to={browserRoutes.KNOWLEDGE}>
                   Knowledge
@@ -77,7 +84,7 @@ const Header = () => {
               </li>
               <li className='nav-item topListItem'>
                 <NavLink className='link' to={browserRoutes.USERSLIST}>
-                  Top Developers
+                  Top Devs
                 </NavLink>
               </li>
               <li className='nav-item'></li>
@@ -91,17 +98,25 @@ const Header = () => {
             {token ? (
               user?.profilePic ? (
                 <ProfileDropdown
+                  name={user?.fullName}
                   setDropdown={setDropdown}
                   dropdown={dropdown}
                   profilePic={user?.profilePic}
                   refOutside={refOutside}
                 />
               ) : (
-                <Link to={browserRoutes.SETTINGS}>
-                  <div className='topImg topNA'>
-                    {user?.fullName.slice(0, 2)}
-                  </div>
-                </Link>
+                // <Link to={browserRoutes.SETTINGS}>
+                //   <div className='topImg topNA'>
+                //     {user?.fullName.slice(0, 2)}
+                //   </div>
+                // </Link>
+                <ProfileDropdown
+                  name={user?.fullName}
+                  setDropdown={setDropdown}
+                  dropdown={dropdown}
+                  profilePic={user?.profilePic}
+                  refOutside={refOutside}
+                />
               )
             ) : pathname === '/signin' ? (
               <Button
@@ -120,18 +135,20 @@ const Header = () => {
                 Login
               </Button>
             )}
-            <div className={`form-check form-switch text-light`}>
-              <input
-                onClick={toggleMode}
-                className='form-check-input'
-                type='checkbox'
-                id='flexSwitchCheckDefault'
-              />
-              <label
-                className='form-check-label'
-                htmlFor='flexSwitchCheckDefault'
-              ></label>
-            </div>
+            {token && (
+              <div className={`form-check form-switch text-light`}>
+                <input
+                  onClick={toggleMode}
+                  className='form-check-input'
+                  type='checkbox'
+                  id='flexSwitchCheckDefault'
+                />
+                <label
+                  className='form-check-label'
+                  htmlFor='flexSwitchCheckDefault'
+                ></label>
+              </div>
+            )}
           </div>
         </div>
       </nav>

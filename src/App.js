@@ -37,7 +37,14 @@ function App() {
               </ProtectedRoutes>
             }
           />
-          <Route path={browserRoutes.SIGNUP} element={<Signup />} />
+          <Route
+            path={browserRoutes.SIGNUP}
+            element={
+              <AuthRoutes redirectLink={browserRoutes.HOME}>
+                <Signup />
+              </AuthRoutes>
+            }
+          />
           <Route path={browserRoutes.USERSLIST} element={<UserList />} />
           <Route path='/user/:userId' element={<User />} />
           <Route
@@ -49,13 +56,34 @@ function App() {
             }
           />
           <Route path={browserRoutes.PROFILE} element={<Profile />} />
-          <Route path={browserRoutes.MYQUESTIONS} element={<MyQuestions />} />
-          <Route path={browserRoutes.MYANSWERS} element={<MyAnswers />} />
+          <Route
+            path={browserRoutes.MYQUESTIONS}
+            element={
+              <ProtectedRoutes redirectLink={browserRoutes.SIGNIN}>
+                <MyQuestions />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path={browserRoutes.MYANSWERS}
+            element={
+              <ProtectedRoutes redirectLink={browserRoutes.SIGNIN}>
+                <MyAnswers />
+              </ProtectedRoutes>
+            }
+          />
           <Route
             path={`${browserRoutes.QUESTION_DETAILS}/:id`}
             element={<QuestionDetails />}
           />
-          <Route path={browserRoutes.WRITE} element={<Write />} />
+          <Route
+            path={browserRoutes.WRITE}
+            element={
+              <ProtectedRoutes redirectLink={browserRoutes.SIGNIN}>
+                <Write />
+              </ProtectedRoutes>
+            }
+          />
           <Route path={browserRoutes.SETTINGS} element={<Settings />} />
           <Route path={browserRoutes.USERSLIST} element={<UserList />} />
           <Route path={browserRoutes.KNOWLEDGE} element={<Knowledge />} />

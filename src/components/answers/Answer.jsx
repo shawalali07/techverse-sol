@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addComment } from '../../redux-toolkit/actions/answers/answers';
 import Comments from '../comments/Comments';
 import Comment from '../comments/Comment';
+import './answer.css';
 
 const Answer = (props) => {
   const [loading, setLoading] = useState(false);
-  const { answer, name, image } = props;
+  const { answer, name, image, getAnswersById, id } = props;
   const [formData, setFormData] = useState({
     description: '',
   });
@@ -21,7 +22,9 @@ const Answer = (props) => {
   };
 
   const handleComment = () => {
-    dispatch(addComment(formData, answer?._id, setLoading));
+    dispatch(
+      addComment(formData, answer?._id, setLoading, getAnswersById, { idd: id })
+    );
   };
 
   return (
@@ -51,9 +54,15 @@ const Answer = (props) => {
               </button>
             </div>
           ) : (
-            <button onClick={() => handleCommentInput()} className='commentBtn'>
-              Add a comment
-            </button>
+            <div className='commentVoteButtons'>
+              <button
+                onClick={() => handleCommentInput()}
+                className='commentBtn'
+              >
+                Add a comment
+              </button>
+              <button className='voteButton'>Vote</button>
+            </div>
           )}
         </div>
         <div className='answer-profile'>

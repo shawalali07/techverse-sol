@@ -92,6 +92,7 @@ const TextEditorHeader = (props) => {
         </div>
         <div className='textEditDiv'>
           <Button
+            loading={true}
             variant='contained'
             onClick={!tutorial ? onHandleQuestion : onHandleKnowledge}
             className='mt-4 texteditorSubmit'
