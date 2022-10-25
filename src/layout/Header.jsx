@@ -9,8 +9,23 @@ import { useSelector } from 'react-redux';
 import logo from '../assets/images/logo.png';
 import ProfileDropdown from './ProfileDropdown';
 import { Button } from '@mui/material';
-
+import Darkmode from 'darkmode-js';
 const Header = () => {
+  const options = {
+    bottom: '64px', // default: '32px'
+    right: 'unset', // default: '32px'
+    left: '32px', // default: 'unset'
+    time: '0.5s', // default: '0.3s'
+    mixColor: '#fff', // default: '#fff'
+    backgroundColor: '#fff', // default: '#fff'
+    buttonColorDark: '#100f2c', // default: '#100f2c'
+    buttonColorLight: '#fff', // default: '#fff'
+    saveInCookies: false, // default: true,
+    label: '🌓', // default: ''
+    autoMatchOsTheme: true, // default: true
+  };
+
+  const darkmode = new Darkmode(options);
   const navigate = useNavigate();
   const [dropdown, setDropdown] = useState(false);
   const { pathname } = useLocation();
@@ -138,7 +153,7 @@ const Header = () => {
             {token && (
               <div className={`form-check form-switch text-light`}>
                 <input
-                  onClick={toggleMode}
+                  onClick={() => darkmode.toggle()}
                   className='form-check-input'
                   type='checkbox'
                   id='flexSwitchCheckDefault'

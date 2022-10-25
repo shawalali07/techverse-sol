@@ -5,7 +5,11 @@ const SingleKnowledge = ({ k }) => {
   return (
     <div>
       <div className='singleKnowledge'>
-        <div key={k._id} className='knowledgeCard'>
+        <div
+          style={{ backgroundColor: 'antiquewhite' }}
+          key={k._id}
+          className='knowledgeCard'
+        >
           <Link state={{ data: k }} className='link' to={`/knowledge/1`}>
             <h3 className='knowledgeTitle'>{k.title}</h3>
           </Link>

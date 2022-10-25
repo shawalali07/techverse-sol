@@ -83,7 +83,10 @@ const Signup = () => {
                 </p>
               </div>
             </div>
-            <div className='col-md-7 col-lg-7 col-xl-6'>
+            <div
+              style={{ marginTop: '80px' }}
+              className='col-md-7 col-lg-7 col-xl-6'
+            >
               <div
                 className='card text-black border border-dark border-4'
                 style={{ borderRadius: '20px', height: '800px' }}

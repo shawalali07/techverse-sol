@@ -1,16 +1,28 @@
 .topBar {
-  background-color: hsl(0, 0%, 96.5%);
-  color: black;
+  background-color: black;
+
+  /* background-color: hsl(0, 0%, 96.5%); */
+  color: white;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
   font-size: 20px;
   position: fixed !important;
   width: 100%;
-  height: 80px;
+  height: 60px;
+  z-index: 10;
+}
+
+.darkmode--activated .topBar {
+  background-color: gray;
+  color: white;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  font-size: 20px;
+  position: fixed !important;
+  width: 100%;
+  height: 100px;
   z-index: 10;
 }
 
 .topBarDark {
-  background-color: rgb(238, 181, 89);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
   font-size: 20px;
   position: fixed !important;
@@ -21,12 +33,13 @@
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 120px;
+  /* height: 150px; */
+  /* border-radius: 50%; */
+  font-size: 10px;
   margin-right: 20px;
   cursor: pointer;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .logout {
