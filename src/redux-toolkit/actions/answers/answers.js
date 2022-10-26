@@ -7,6 +7,7 @@ import {
   setAllAnswersData,
   setAnswersData,
   setCommentsData,
+  setMyAnswers,
   startAnswersData,
 } from '../../slices/answerSlice';
 
@@ -60,5 +61,12 @@ export const getComments = (id) => async (dispatch) => {
   try {
     const { data } = await api.post(authRoutes.COMMENTS, id);
     dispatch(setCommentsData(data));
+  } catch (error) {}
+};
+
+export const getMyAnswers = () => async (dispatch) => {
+  try {
+    const { data } = await api.get(authRoutes.MY_ANSWERS);
+    dispatch(setMyAnswers(data));
   } catch (error) {}
 };

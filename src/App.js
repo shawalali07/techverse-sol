@@ -8,7 +8,6 @@ import Signin from './registration/Signin';
 import { browserRoutes } from './routes/browserRoutes';
 import AuthRoutes from './components/authProtectedRoutes/AuthRoutes';
 import { Toaster } from 'react-hot-toast';
-import Profile from './profile/Profile';
 import MyQuestions from './profile/MyQuestions';
 import MyAnswers from './profile/MyAnswers';
 import QuestionDetails from './components/questions/QuestionDetails';
@@ -55,7 +54,6 @@ function App() {
               </AuthRoutes>
             }
           />
-          <Route path={browserRoutes.PROFILE} element={<Profile />} />
           <Route
             path={browserRoutes.MYQUESTIONS}
             element={
