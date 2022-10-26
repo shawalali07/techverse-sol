@@ -5,6 +5,7 @@ export const answer = createSlice({
   initialState: {
     answersData: [],
     allAnswersData: [],
+    myAnswers: [],
     comments: [],
     loading: false,
     error: false,
@@ -31,6 +32,9 @@ export const answer = createSlice({
     setCommentsData: (state, action) => {
       state.comments = action.payload;
     },
+    setMyAnswers: (state, action) => {
+      state.myAnswers = action.payload;
+    },
   },
 });
 
@@ -40,6 +44,7 @@ export const {
   setCommentsData,
   startAnswersData,
   failAnswersData,
+  setMyAnswers,
 } = answer.actions;
 
 export default answer.reducer;

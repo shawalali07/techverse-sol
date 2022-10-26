@@ -4,7 +4,6 @@ import { useToken } from '../hooks/register/useToken';
 import './Header.css';
 import SearchQuestions from '../components/questions/SearchQuestions';
 import { browserRoutes } from '../routes/browserRoutes';
-import Profile from '../profile/Profile';
 import { useSelector } from 'react-redux';
 import logo from '../assets/images/logo.png';
 import ProfileDropdown from './ProfileDropdown';
