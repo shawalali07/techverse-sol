@@ -32,8 +32,20 @@ export const answer = createSlice({
     setCommentsData: (state, action) => {
       state.comments = action.payload;
     },
+    startMyAnswers: (state, action) => {
+      state.myAnswers = [];
+      state.loading = true;
+      state.error = false;
+    },
     setMyAnswers: (state, action) => {
       state.myAnswers = action.payload;
+      state.loading = false;
+      state.error = false;
+    },
+    failMyAnswers: (state, action) => {
+      state.myAnswers = [];
+      state.loading = false;
+      state.error = true;
     },
   },
 });
@@ -45,6 +57,8 @@ export const {
   startAnswersData,
   failAnswersData,
   setMyAnswers,
+  startMyAnswers,
+  failMyAnswers,
 } = answer.actions;
 
 export default answer.reducer;

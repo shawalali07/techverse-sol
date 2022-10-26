@@ -14,11 +14,11 @@ import QuestionDetails from './components/questions/QuestionDetails';
 import Write from './components/write/Write';
 import Settings from './components/settings/Settings';
 import ProtectedRoutes from './components/authProtectedRoutes/ProtectedRoutes';
-import UserList from './userList/UserList';
-import User from './user/User';
 import Knowledge from './components/knowledge/Knowledge';
 import KnowledgeDetails from './components/knowledge/KnowledgeDetails';
 import NotFound from './components/error/NotFound';
+import TopDevelopers from './developers/TopDevelopers';
+import Developer from './developer/Developer';
 
 function App() {
   return (
@@ -44,8 +44,8 @@ function App() {
               </AuthRoutes>
             }
           />
-          <Route path={browserRoutes.USERSLIST} element={<UserList />} />
-          <Route path='/user/:userId' element={<User />} />
+          <Route path={browserRoutes.DEVELOPERS} element={<TopDevelopers />} />
+          <Route path='/developers/:userId' element={<Developer />} />
           <Route
             path={browserRoutes.SIGNIN}
             element={
@@ -83,7 +83,7 @@ function App() {
             }
           />
           <Route path={browserRoutes.SETTINGS} element={<Settings />} />
-          <Route path={browserRoutes.USERSLIST} element={<UserList />} />
+          <Route path={browserRoutes.DEVELOPERS} element={<TopDevelopers />} />
           <Route path={browserRoutes.KNOWLEDGE} element={<Knowledge />} />
           <Route path={`/knowledge/:id`} element={<KnowledgeDetails />} />
           <Route path='*' element={<NotFound />} />

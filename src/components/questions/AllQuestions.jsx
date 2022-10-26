@@ -57,10 +57,13 @@ const AllQuestions = () => {
       className='allQuestions'
       style={{ backgroundColor: 'white', height: '100vh' }}
     >
-      <div className='container' style={{ paddingTop: '90px' }}>
+      <div
+        className='container d-flex justify-content-center'
+        style={{ paddingTop: '90px' }}
+      >
         <div
           className='card allQCard'
-          style={{ backgroundColor: 'antiquewhite' }}
+          style={{ backgroundColor: 'antiquewhite', marginRight: '5px' }}
         >
           <h2 className='all-questions-heading mt-1'>All Questions</h2>
           <span className='btnAsk'>
@@ -97,7 +100,7 @@ const AllQuestions = () => {
       ) : !loading && searchedQuestions?.length > 0 ? (
         <div className='questionsComponent'>
           <Questions questions={searchedQuestions} loading={loading} />
-          <div style={{ marginTop: '40px', marginRight: '50px' }}>
+          <div style={{ marginTop: '40px' }}>
             <ReactPaginate
               previousLabel={'Prev <<'}
               nextLabel={'Next >>'}

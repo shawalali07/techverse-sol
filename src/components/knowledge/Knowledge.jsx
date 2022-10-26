@@ -54,7 +54,14 @@ const Knowledge = () => {
     );
 
   return (
-    <div style={{ paddingTop: '90px', position: 'relative' }}>
+    <div
+      style={{
+        height: '100vh',
+        paddingTop: '90px',
+        position: 'relative',
+        backgroundColor: 'lightgray',
+      }}
+    >
       {loading ? (
         <div style={{ marginRight: '17vw', marginTop: '8vh' }}>
           <BeatLoader size={40} />
@@ -119,7 +126,7 @@ const Knowledge = () => {
                 nextLabel={'Next >>'}
                 pageCount={pageCount}
                 onPageChange={changePage}
-                containerClassName={'paginationBttns'}
+                containerClassName={'paginationBttns knowledgePaginate'}
                 previousLinkClassName={'previousBttn'}
                 nextLinkClassName={'nextBttn'}
                 disabledClassName={'paginationDisabled'}

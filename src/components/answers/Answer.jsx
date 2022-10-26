@@ -2,12 +2,16 @@ import React from 'react';
 import ProfileCard from '../questions/ProfileCard';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addComment } from '../../redux-toolkit/actions/answers/answers';
+import {
+  addComment,
+  addVote,
+} from '../../redux-toolkit/actions/answers/answers';
 import Comments from '../comments/Comments';
 import Comment from '../comments/Comment';
 import './answer.css';
 
 const Answer = (props) => {
+  const [voteLoading, setVoteLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const { answer, name, image, getAnswersById, id } = props;
   const [formData, setFormData] = useState({
@@ -25,6 +29,10 @@ const Answer = (props) => {
     dispatch(
       addComment(formData, answer?._id, setLoading, getAnswersById, { idd: id })
     );
+  };
+
+  const handleVote = (answer) => {
+    dispatch(addVote({ answerId: answer?._id }, setVoteLoading));
   };
 
   return (
@@ -61,7 +69,13 @@ const Answer = (props) => {
               >
                 Add a comment
               </button>
-              <button className='voteButton'>Vote</button>
+              <button
+                disabled={voteLoading}
+                onClick={() => handleVote(answer)}
+                className='voteButton'
+              >
+                Vote
+              </button>
             </div>
           )}
         </div>

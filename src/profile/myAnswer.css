@@ -1,5 +1,15 @@
 .myAnswer {
+  width: 900px;
 }
 
-.accordionCard {
+.myAnswerDescription {
+  text-align: left;
+}
+
+.accordion-button::after {
+  background-color: white;
+}
+
+.accordion-button:focus {
+  box-shadow: none !important;
 }

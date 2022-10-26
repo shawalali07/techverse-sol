@@ -11,4 +11,6 @@ export const authRoutes = {
   ADD_COMMENT: '/answers/',
   COMMENTS: '/comments/get',
   KNOWLEDGE: '/knowledge',
+  ADD_VOTE: '/answers/vote',
+  TOP_DEVS: '/users',
 };
