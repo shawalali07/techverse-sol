@@ -4,11 +4,13 @@ import success from '../../../utils/success';
 import fail from '../../../utils/fail';
 import {
   failAnswersData,
+  failMyAnswers,
   setAllAnswersData,
   setAnswersData,
   setCommentsData,
   setMyAnswers,
   startAnswersData,
+  startMyAnswers,
 } from '../../slices/answerSlice';
 
 export const submitAnswer = (formData, setLoading) => async (dispatch) => {
@@ -19,6 +21,7 @@ export const submitAnswer = (formData, setLoading) => async (dispatch) => {
 
     setLoading(false);
   } catch (error) {
+    fail(error?.response?.data?.message);
     setLoading(false);
   }
 };
@@ -65,8 +68,25 @@ export const getComments = (id) => async (dispatch) => {
 };
 
 export const getMyAnswers = () => async (dispatch) => {
+  dispatch(startMyAnswers());
   try {
     const { data } = await api.get(authRoutes.MY_ANSWERS);
     dispatch(setMyAnswers(data));
-  } catch (error) {}
+  } catch (error) {
+    dispatch(failMyAnswers());
+  }
+};
+
+export const addVote = (id, setVoteLoading) => async (dispatch) => {
+  setVoteLoading(true);
+  try {
+    const { data } = await api.put(authRoutes.ADD_VOTE, id);
+    success(data?.message);
+    setVoteLoading(false);
+
+    dispatch(setMyAnswers(data));
+  } catch (error) {
+    fail(error?.response?.data?.message);
+    setVoteLoading(false);
+  }
 };

@@ -97,7 +97,7 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className='nav-item topListItem'>
-                <NavLink className='link' to={browserRoutes.USERSLIST}>
+                <NavLink className='link' to={browserRoutes.DEVELOPERS}>
                   Top Devs
                 </NavLink>
               </li>

@@ -1,15 +1,16 @@
-import './userList.css';
+import './topDevelopers.css';
 import { DataGrid } from '@material-ui/data-grid';
 import { userRows } from '../dummyData';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { browserRoutes } from '../routes/browserRoutes';
 import { Stack, TextField } from '@mui/material';
-
-export default function UserList() {
+import { getTopDevs } from '../redux-toolkit/actions/developers/developers';
+import { useDispatch } from 'react-redux';
+export default function TopDevelopers() {
   let [data, setData] = useState(userRows);
   const [query, setQuery] = useState('');
-
+  const dispatch = useDispatch();
   const columns = [
     { field: 'id', headerName: 'Rank', width: 145, height: 100 },
     {
@@ -22,7 +23,7 @@ export default function UserList() {
             <img className='userListImg' src={params.row.avatar} alt='' />
             <Link
               className='link'
-              to={browserRoutes.USER + '/' + params.row.id}
+              to={browserRoutes.DEVELOPERS + '/' + params.row.id}
             >
               {params.row.username}
             </Link>
@@ -48,6 +49,10 @@ export default function UserList() {
   data = data?.filter((item) =>
     keys.some((key) => item[key].toLowerCase().includes(query.toLowerCase()))
   );
+
+  // useEffect(() => {
+  //   dispatch(getTopDevs());
+  // }, []);
 
   return (
     <div style={{ position: 'relative' }}>

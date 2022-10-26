@@ -10,8 +10,7 @@ export const browserRoutes = {
   QUESTION_DETAILS: '/question',
   WRITE: '/write',
   SETTINGS: '/settings',
-  USERSLIST: '/users',
-  USER: '/user',
+  DEVELOPERS: '/developers',
   TUTORIAL: '/tutorial',
   KNOWLEDGE: '/knowledge',
 };

@@ -22,6 +22,22 @@
   border-radius: 10px;
 }
 
+.voteButton:disabled {
+  right: 0;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: white;
+  top: 6.2vh;
+  right: 13vw;
+  border: none;
+  background-color: gray;
+  padding: 5px;
+  /* width: 80px; */
+  border-radius: 10px;
+}
+
 .commentBtn {
   top: 7vh;
   margin-right: 52.5vw;

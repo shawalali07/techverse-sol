@@ -7,9 +7,9 @@ import {
   Publish,
 } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import './user.css';
+import './developer.css';
 
-export default function User() {
+export default function Developer() {
   return (
     <div className='user'>
       <div className='userTitleContainer'>

@@ -54,6 +54,6 @@
 
 .qCard {
   background-color: hsl(0, 0%, 96.5%);
-  margin: 5px;
+  margin: 5px 0px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }

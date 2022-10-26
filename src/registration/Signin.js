@@ -78,75 +78,89 @@ export default function Signin() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component='main' maxWidth='xs' style={{ paddingTop: '90px' }}>
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
+    <div style={{ backgroundColor: 'gray', height: '100vh' }}>
+      <ThemeProvider theme={theme}>
+        <Container
+          component='main'
+          maxWidth='xs'
+          style={{ paddingTop: '90px' }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
-          <Typography component='h1' variant='h5'>
-            Sign in
-          </Typography>
+          <CssBaseline />
           <Box
-            component='form'
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
+            sx={{
+              marginTop: 8,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
           >
-            <div className='mb-3'>
-              <Input
-                type='email'
-                name='email'
-                autoComplete='new-email'
-                placeholder='Email'
-                onChange={formOnChange}
-                error={error?.email}
-              />
-            </div>
-            <div div className='mb-3'>
-              <Input
-                type='password'
-                name='password'
-                autoComplete='new-password'
-                placeholder='Password'
-                onChange={formOnChange}
-                error={error.password}
-              />
-            </div>
-
-            <Button
-              disabled={loading}
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
+            <Typography component='h1' variant='h5'>
+              Sign in
+            </Typography>
+            <Box
+              component='form'
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
             >
-              Sign In
-            </Button>
-            <Grid>
-              <Grid item xs>
-                <Link href='#' variant='body2'>
-                  Forgot password?
-                </Link>
+              <div className='mb-3'>
+                <Input
+                  type='email'
+                  name='email'
+                  autoComplete='new-email'
+                  placeholder='Email'
+                  onChange={formOnChange}
+                  error={error?.email}
+                />
+              </div>
+              <div div className='mb-3'>
+                <Input
+                  type='password'
+                  name='password'
+                  autoComplete='new-password'
+                  placeholder='Password'
+                  onChange={formOnChange}
+                  error={error.password}
+                />
+              </div>
+
+              <Button
+                disabled={loading}
+                type='submit'
+                fullWidth
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+              <Grid>
+                <Grid item xs>
+                  <Link
+                    className='link'
+                    style={{ color: '#042743' }}
+                    variant='body2'
+                  >
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <div>
+                    <RLink
+                      style={{ color: '#042743' }}
+                      to='/signup'
+                      variant='body2'
+                    >
+                      {'Sign Up'}
+                    </RLink>
+                  </div>
+                </Grid>
               </Grid>
-              <Grid item>
-                <div>
-                  <RLink to='/signup' variant='body2'>
-                    {'Sign Up'}
-                  </RLink>
-                </div>
-              </Grid>
-            </Grid>
+            </Box>
           </Box>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </ThemeProvider>
+          <Copyright sx={{ mt: 8, mb: 4 }} />
+        </Container>
+      </ThemeProvider>
+    </div>
   );
 }
