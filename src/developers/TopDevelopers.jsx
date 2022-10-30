@@ -1,58 +1,65 @@
 import './topDevelopers.css';
 import { DataGrid } from '@material-ui/data-grid';
-import { userRows } from '../dummyData';
+// import { userRows } from '../dummyData';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { browserRoutes } from '../routes/browserRoutes';
 import { Stack, TextField } from '@mui/material';
 import { getTopDevs } from '../redux-toolkit/actions/developers/developers';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 export default function TopDevelopers() {
-  let [data, setData] = useState(userRows);
+  // let [data, setData] = useState(userRows);
+  let topDev = useSelector((state) => state.developer.topDevelopers);
+  let loading = useSelector((state) => state.developer.loading);
+  topDev = topDev?.map(({ email: id, ...rest }) => ({ id, ...rest }));
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
   const columns = [
-    { field: 'id', headerName: 'Rank', width: 145, height: 100 },
+    { field: 'rate', headerName: 'Rank', width: 125, height: 100 },
     {
-      field: 'user',
-      headerName: 'User',
-      width: 250,
+      field: 'name',
+      headerName: 'Name',
+      width: 220,
       renderCell: (params) => {
         return (
           <div className='userListUser'>
-            <img className='userListImg' src={params.row.avatar} alt='' />
+            {params.row.image ? (
+              <img className='userListImg' src={params.row.image} alt='' />
+            ) : (
+              <div className='topDevImg'>{params.row.name?.slice(0, 2)}</div>
+            )}
             <Link
               className='link'
-              to={browserRoutes.DEVELOPERS + '/' + params.row.id}
+              to={browserRoutes.DEVELOPERS + '/' + params.row._id}
+              state={{ data: params.row }}
             >
-              {params.row.username}
+              {params.row.name}
             </Link>
           </div>
         );
       },
     },
-    { field: 'email', headerName: 'Email', width: 250 },
-    {
-      field: 'status',
-      headerName: 'Status',
-      width: 200,
-    },
+    { field: 'id', headerName: 'Email', width: 175, height: 100 },
+    { field: 'followers', headerName: 'Followers', width: 170, height: 100 },
+
     {
       field: 'points',
       headerName: 'Points',
-      width: 160,
+      width: 220,
     },
   ];
 
-  const keys = ['username', 'email'];
+  const keys = ['name', 'email'];
 
-  data = data?.filter((item) =>
+  topDev = topDev?.filter((item) =>
     keys.some((key) => item[key].toLowerCase().includes(query.toLowerCase()))
   );
 
-  // useEffect(() => {
-  //   dispatch(getTopDevs());
-  // }, []);
+  useEffect(() => {
+    dispatch(getTopDevs());
+  }, []);
+
+  console.log(topDev);
 
   return (
     <div style={{ position: 'relative' }}>
@@ -62,10 +69,11 @@ export default function TopDevelopers() {
             density='comfortable'
             autoHeight
             autoPageSize
-            rows={data}
+            rows={topDev}
             disableSelectionOnClick
             columns={columns}
             pageSize={10}
+            loading={loading}
           />
         </div>
       </div>

@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Sidebar from '../sidebar/Sidebar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './settings.css';
 import { updateProfile } from '../../redux-toolkit/actions/profile/profile';
-import { signout } from '../../redux-toolkit/actions/auth/Signin';
 import { useNavigate } from 'react-router-dom';
-
+import { countryList } from '../../constants/countries';
+import { hourlyRate } from '../../constants/hourlyRate';
+import { Autocomplete, Stack, TextField } from '@mui/material';
 const Settings = () => {
-  const navigate = useNavigate();
+  const [country, setCountry] = useState('');
+  const [rate, setRate] = useState(null);
   const [isUpdated, setIsUpdated] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -17,8 +18,10 @@ const Settings = () => {
     name: '',
     email: '',
     password: '',
+    aboutMe: '',
+    country: '',
+    rate: null,
   });
-
   const handleUpdateChange = ({ target: { name, value } }) => {
     if (value === '') {
       setIsUpdated(false);
@@ -35,8 +38,21 @@ const Settings = () => {
     data.append('name', formData.name);
     data.append('email', formData.email);
     data.append('password', formData.password);
+    data.append('country', formData.country);
+    data.append('aboutMe', formData.aboutMe);
+    data.append('rate', formData.rate);
     dispatch(updateProfile(data, setLoading));
   };
+
+  useEffect(() => {
+    setFormData({ ...formData, country: country });
+  }, [country]);
+
+  useEffect(() => {
+    setFormData({ ...formData, rate: rate });
+  }, [rate]);
+
+  console.log('formmmmmmmmmmm', formData);
 
   return (
     <div className='settings'>
@@ -91,6 +107,43 @@ const Settings = () => {
             name='password'
             type='password'
             onChange={handleUpdateChange}
+          />
+          <div className='writeContainer'>
+            <textarea
+              onChange={handleUpdateChange}
+              name='aboutMe'
+              placeholder='Tell about you...'
+              className='aboutText'
+              type='text'
+            ></textarea>
+          </div>
+          <Autocomplete
+            className='mt-4'
+            sx={{ width: 300 }}
+            disablePortal
+            options={countryList}
+            renderInput={(params) => (
+              <TextField {...params} label='Select Country' />
+            )}
+            value={country}
+            onChange={(event, newValue) => {
+              setIsUpdated(true);
+              setCountry(newValue);
+            }}
+          />
+          <Autocomplete
+            className='mt-3'
+            sx={{ width: 300 }}
+            disablePortal
+            options={hourlyRate}
+            renderInput={(params) => (
+              <TextField {...params} label='Select Hourly Rate' />
+            )}
+            value={rate}
+            onChange={(event, newValue) => {
+              setIsUpdated(true);
+              setRate(newValue);
+            }}
           />
           <button
             onClick={handleUpdate}

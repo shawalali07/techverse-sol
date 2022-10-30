@@ -1,5 +1,7 @@
 .user {
-  flex: 4;
+  height: 100vh;
+  background-color: antiquewhite;
+  flex: 3;
   padding: 20px;
 }
 
@@ -22,18 +24,35 @@
 
 .userContainer {
   display: flex;
-  margin-top: 20px;
+  margin-top: 70px;
+}
+
+.followBtn {
+  margin-left: 100px;
 }
 
 .userShow {
+  background-color: white;
+
   flex: 1;
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
 
 .userUpdate {
-  flex: 2;
+  background-color: white;
+
+  flex: 1;
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  margin-left: 20px;
+}
+
+.userPoints {
+  background-color: white;
+  flex: 1;
   padding: 20px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
@@ -59,6 +78,7 @@
 }
 
 .userShowUsername {
+  text-transform: capitalize;
   font-weight: 600;
 }
 
@@ -77,6 +97,7 @@
 }
 
 .userShowInfo {
+  gap: 10px;
   display: flex;
   align-items: center;
   margin: 20px 0px;
@@ -138,17 +159,30 @@
   object-fit: cover;
   margin-right: 20px;
 }
-
-.userUpdateIcon {
-  cursor: pointer;
+.achievements {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
-.userUpdateButton {
-  border-radius: 5px;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-  background-color: darkblue;
-  color: white;
-  font-weight: 600;
+.achievementInfo {
+  padding: 10px;
+  background-color: hsl(0, 0%, 96.5%);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.rankBadge {
+  margin-bottom: 5px;
+  margin-left: 45px;
+}
+
+.pointBadge {
+  margin-bottom: 5px;
+  margin-left: 43px;
+}
+
+.ansBadge {
+  margin-bottom: 5px;
+  margin-left: 25px;
 }

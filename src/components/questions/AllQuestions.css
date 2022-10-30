@@ -1,10 +1,24 @@
 .allQuestions {
+  background-color: #f5f5f5;
+  display: flex;
 }
 
-.all-questions-heading {
-  /* width: 20vw; */
-  margin-right: 34vw;
-  position: relative;
+.allQuestLeft {
+  margin-top: 40px;
+  flex: 1;
+  background-color: antiquewhite;
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.allQuestInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalQuestBadge {
+  margin-right: 20px;
 }
 
 .all-questions-number {
@@ -14,8 +28,17 @@
   /* top: 2vh; */
 }
 
+.allQuestionsContainer {
+  /* background-color: #f5f5f5; */
+  display: flex;
+  flex-direction: column;
+}
+
+.questionsComponent {
+}
+
 .btn-filter-questions {
-  display: none;
+  /* display: none; */
   position: relative;
   margin-left: 35vw;
   bottom: 4vh;
@@ -28,9 +51,6 @@
   bottom: 4.5vh;
   left: 20vw;
 }
-.btnAsk {
-  /* display: none; */
-}
 
 .allQCard {
   margin-left: 5px;
@@ -39,4 +59,13 @@
   height: 7.5rem;
   background-color: hsl(0, 0%, 96.5%);
   box-shadow: 0 1px 8px rgba(7, 1, 1, 0.25);
+}
+
+.mainQueryBtn {
+  border-radius: 10px !important;
+  margin-right: 5px !important;
+}
+
+.mainQueryBtn:last-child {
+  margin-right: 0px !important;
 }

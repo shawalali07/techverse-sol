@@ -13,8 +13,22 @@
   text-align: left;
 }
 
-.knowledgeCode {
+.knowledetitle {
   margin-left: 10px;
-
   text-align: left;
+}
+
+.knowledgeCode {
+  margin-bottom: 10px;
+  margin-left: 10px;
+  line-height: 10px;
+  text-align: left;
+}
+
+.knowAuthDetails {
+  margin-left: 10px;
+}
+
+.knowTag {
+  margin-left: 10px;
 }

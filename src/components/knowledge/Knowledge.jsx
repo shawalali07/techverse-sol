@@ -20,7 +20,7 @@ const Knowledge = () => {
   let loading = useSelector((state) => state?.knowledge?.loading);
   const [pageNumber, setPageNumber] = useState(0);
 
-  const usersPerPage = 7;
+  const usersPerPage = 6;
   const pagesVisited = pageNumber * usersPerPage;
   const [tag, setTag] = useState([]);
   const allTags = [
@@ -59,11 +59,10 @@ const Knowledge = () => {
         height: '100vh',
         paddingTop: '90px',
         position: 'relative',
-        backgroundColor: 'lightgray',
       }}
     >
       {loading ? (
-        <div style={{ marginRight: '17vw', marginTop: '8vh' }}>
+        <div className='d-flex justify-content-center mt-5'>
           <BeatLoader size={40} />
         </div>
       ) : !loading && knowledge?.length > 0 ? (
@@ -108,7 +107,6 @@ const Knowledge = () => {
               width='20vw'
             >
               <Autocomplete
-                multiple
                 options={allTags}
                 renderInput={(params) => (
                   <TextField {...params} label='Select Language' />

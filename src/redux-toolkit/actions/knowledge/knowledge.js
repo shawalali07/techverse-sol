@@ -21,6 +21,7 @@ export const postKnowledge = async (formData, setLoading) => {
 };
 
 export const getKnowledge = (tag) => async (dispatch) => {
+  console.log(tag);
   dispatch(startKnowledge());
 
   try {

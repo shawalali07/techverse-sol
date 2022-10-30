@@ -10,7 +10,7 @@ const KnowledgeDetails = () => {
     <div style={{ paddingTop: '90px' }} className='mt-2 knowledgeDetails'>
       <div className='knowledgeCardDetails'>
         <h1 className='knowledetitle'>{data?.title}</h1>
-        <h6 className='knowledgeExample'>
+        <h6 className='knowledgeExample mb-3'>
           <b>Example</b>
         </h6>
         <div
@@ -18,8 +18,10 @@ const KnowledgeDetails = () => {
           className='knowledgeCode'
         ></div>
 
-        <span>by {data?.userName?.split(' ')[0]} 2,130</span>
-        <span className='tag'>{data?.tags[0]}</span>
+        <span className='knowAuthDetails'>
+          by {data?.userName?.split(' ')[0]} 2,130
+        </span>
+        <span className='tag knowTag'>{data?.tags[0]}</span>
       </div>
     </div>
   );

@@ -99,10 +99,6 @@ code {
   align-items: center;
 }
 
-span {
-  margin-left: 16px;
-}
-
 /* QuestionDetails.js */
 
 .details {
@@ -232,6 +228,7 @@ span {
 /* SearchQuestion.js */
 
 .searchInput {
+  margin-right: 30px;
   border: none;
   width: 20vw;
 }

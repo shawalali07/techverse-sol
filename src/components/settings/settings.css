@@ -3,9 +3,29 @@
   width: 50vw;
 }
 
+.aboutFormGroup {
+  width: 100%;
+}
+
 .settingsWrapper {
   flex: 9;
   padding: 20px;
+}
+
+.aboutText {
+  border: none;
+
+  font-size: 20px;
+  width: 50vw;
+  height: 20vh;
+}
+
+.aboutText:focus {
+  outline: none;
+}
+
+.writeContainer {
+  /* height: 10vh; */
 }
 
 .settingsTitle {
@@ -69,6 +89,10 @@
   margin: 10px 0;
   height: 30px;
   border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.writeContainer > textarea {
   border-bottom: 1px solid lightgray;
 }
 
