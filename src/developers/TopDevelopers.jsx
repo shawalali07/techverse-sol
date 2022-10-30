@@ -59,8 +59,6 @@ export default function TopDevelopers() {
     dispatch(getTopDevs());
   }, []);
 
-  console.log(topDev);
-
   return (
     <div style={{ position: 'relative' }}>
       <div className='container'>

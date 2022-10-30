@@ -52,8 +52,6 @@ const Settings = () => {
     setFormData({ ...formData, rate: rate });
   }, [rate]);
 
-  console.log('formmmmmmmmmmm', formData);
-
   return (
     <div className='settings'>
       <div className='settingsWrapper'>
