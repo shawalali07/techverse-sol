@@ -1,165 +1,77 @@
-import { Button } from '@mui/material';
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import moment from 'moment';
-import ProfileCard from './ProfileCard';
-import TextEditor from '../textEditor/TextEditor';
-import { useDispatch } from 'react-redux';
-import {
-  getAnswersById,
-  submitAnswer,
-} from '../../redux-toolkit/actions/answers/answers';
-import { ReactDOM } from 'react';
-import Answers from '../answers/Answers';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useToken } from '../../hooks/register/useToken';
-import { Link } from 'react-router-dom';
-import { BeatLoader, ClipLoader } from 'react-spinners';
+import './questionDetails.css';
+import img from '../../assets/images/shali.jpg';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import { Badge, Button } from '@mui/material';
 const QuestionDetails = () => {
-  const token = useToken();
-  const [invoke, setInvoke] = useState(false);
-  const { id } = useParams();
-  const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
-  const [formValues, setFormValues] = useState({
-    questionId: '',
-    description: '',
-  });
-
-  const location = useLocation();
-  const {
-    state: { question },
-  } = location;
-
-  const answers = useSelector((state) => state?.answer?.answersData);
-  let ansLoading = useSelector((state) => state?.answer?.loading);
-  const name = question?.userName?.split(' ')?.slice(0, 1)?.join('');
-
-  const createdAt = moment(question?.createdAt).startOf('hour').fromNow();
-  const updatedAt = moment(question?.updatedAt).startOf('hour').fromNow();
-
-  const handleSubmitAnswer = () => {
-    setInvoke(true);
-    dispatch(submitAnswer(formValues, setLoading));
-  };
-
-  useEffect(() => {
-    setFormValues({ ...formValues, questionId: question?._id });
-  }, []);
-
-  const getNumOfAnswers = (id) => {
-    return answers?.filter((a) => a.questionId === id).length;
-  };
-
-  useEffect(() => {
-    dispatch(getAnswersById(id));
-    if (invoke) dispatch(getAnswersById(id));
-  }, [invoke]);
-
-  if (loading && ansLoading) {
-    ansLoading = false;
-  }
   return (
-    <div className='mainDetails'>
-      {ansLoading ? (
-        <div style={{ marginRight: '17vw', marginTop: '8vh' }}>
-          <BeatLoader size={40} />
+    <div className='questionDet'>
+      <div className='detTop'>
+        <h1 className='detTitle'>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
+          fugiat!
+        </h1>
+        <div className='detInfo'>
+          <span>asked 1 hour ago,</span>
+          <span>
+            by <b>Shawal</b>
+          </span>
         </div>
-      ) : (
-        !ansLoading &&
-        question && (
-          <div className='details'>
-            <div className='mt-4'>
-              <h3 className='detailsTitle'>{question?.title}</h3>
-            </div>
-            <span className='text-secondary '>Asked </span>
-            <span>{createdAt}</span>
-            <span className='text-secondary'>Modified</span>
-            <span>{updatedAt}</span>
-            <hr />
-            <div className='question-text'>
-              <div
-                dangerouslySetInnerHTML={{ __html: question?.description }}
-                id='text'
-                className='questionDetails'
-              ></div>
-              <div>
-                <ProfileCard
-                  image={question?.userImage}
-                  name={name}
-                  createdAt={createdAt}
-                />
+      </div>
+      <div className='detCenter'>
+        <p className='detDesc'>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
+          eligendi quaerat assumenda sed alias labore debitis perferendis aut
+          ullam recusandae? Illum veritatis voluptates a sed alias ex odio
+          molestiae dolorum, impedit rem ab aut fugiat officia nisi nobis nam
+          nemo, id consectetur eaque necessitatibus. Repellendus voluptatem hic
+          atque asperiores, consequatur dolorum aliquam quo quibusdam ratione,
+          possimus obcaecati expedita harum molestias ex est ea eos? Labore
+          minima aperiam magnam ab cumque deleniti quaerat quis nulla itaque!
+          Ratione sint velit perspiciatis consequuntur? Excepturi corrupti rem
+          corporis quia repellendus et optio ratione velit soluta, odit,
+          temporibus consectetur totam esse itaque eaque voluptatum fuga
+          asperiores perspiciatis fugit at tempora ut! Eligendi laboriosam
+          minima totam nisi delectus illum minus cum fugiat assumenda similique
+          neque perferendis quia cumque quae vitae quaerat nostrum veniam
+          consequuntur ex doloremque
+        </p>
+        <div className='detAnsContainer'>
+          <div className='detCard'>
+            <div className='detTopCard'>
+              <div className='detAnsLeft'>
+                <img className='detImg' src={img} />
+                <span className='detAnsAuthor'>Shali Khan</span>
+                <span className='detAnsAnswered'>answered</span>
+                <span className='detAnsTime'>1 hour ago</span>
+              </div>
+              <div className='detAnsRight'>
+                <ThumbUpOffAltIcon />
+                <Badge
+                  className='rankBadge'
+                  color='primary'
+                  badgeContent={7}
+                  showZero
+                ></Badge>
               </div>
             </div>
-            <div className='total-answers'>
-              <h4>{getNumOfAnswers(id)} Answers</h4>
+            <div className='detCenterCard'>
+              <p className='detAnsDesc'>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Distinctio, possimus? Natus hic obcaecati velit rem laboriosam
+                distinctio adipisci quod corporis odit vel neque vitae, sapiente
+                ad ipsam sint ab illo deserunt expedita fugit error quasi nihil
+                praesentium unde nesciunt. Qui.
+              </p>
             </div>
-            <div>
-              {loading ? (
-                <ClipLoader size={50} />
-              ) : (
-                answers.length > 0 && (
-                  <Answers getAnswersById={getAnswersById} id={id} />
-                )
-              )}
+            <div className='detBottomCard'>
+              <Button size='small' variant='contained'>
+                Add Comment
+              </Button>
             </div>
-
-            {token ? (
-              <>
-                <div className='your-answer'>
-                  <h4>Your Answer</h4>
-                </div>
-                <div
-                  className='card'
-                  style={{ width: '70rem', height: '20rem' }}
-                >
-                  <div class='form-group'></div>
-                  <div class='form-group'>
-                    <label
-                      style={{
-                        textAlign: 'left',
-                        marginLeft: '0.5rem',
-                        fontWeight: 'bold',
-                      }}
-                      className='d-block s-label mt-3'
-                    >
-                      Description
-                    </label>
-                  </div>
-                  <div className='card-body'>
-                    <TextEditor
-                      setFormValues={setFormValues}
-                      formValues={formValues}
-                    />
-                  </div>
-                </div>
-                <Button
-                  disabled={
-                    loading |
-                    (formValues?.description === '<p></p>') |
-                    !formValues?.description
-                  }
-                  variant='contained'
-                  onClick={handleSubmitAnswer}
-                  style={{
-                    marginRight: '75.5rem',
-                    width: '9vw',
-                    marginBottom: '20px',
-                  }}
-                  className='mt-4'
-                >
-                  Submit
-                </Button>
-              </>
-            ) : (
-              <h6 className='loginToAnswer'>
-                You must <Link to='/signin'>Login</Link> to answer
-              </h6>
-            )}
           </div>
-        )
-      )}
+        </div>
+      </div>
+      <div className='detBottom'></div>
     </div>
   );
 };

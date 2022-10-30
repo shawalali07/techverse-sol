@@ -21,8 +21,6 @@ export default function Developer() {
     state: { data },
   } = useLocation();
 
-  console.log(data);
-
   return (
     <div className='user'>
       <div className='userContainer'>
