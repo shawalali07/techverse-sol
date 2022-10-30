@@ -1,6 +1,20 @@
 .singleKnowledge {
+  display: flex;
+  justify-content: center;
   position: relative;
   /* margin-top: 70px; */
+}
+
+.knowledgeTitle {
+  margin-left: 10px;
+}
+
+.knowContent {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  margin-top: 25px;
 }
 
 .knowledgeCard {
@@ -8,7 +22,7 @@
 
   margin: 0px 400px 40px 400px;
   width: 40vw;
-  height: 7vh;
+  height: 10vh;
   background-color: hsl(0, 0%, 96.5%);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
@@ -50,4 +64,16 @@
 
 .knowledgePagination {
   margin-left: 21.5vw;
+}
+
+.knowImg {
+  text-transform: uppercase;
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  object-fit: cover;
 }

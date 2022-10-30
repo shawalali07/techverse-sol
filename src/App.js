@@ -6,19 +6,20 @@ import Signup from './registration/Signup';
 import { Routes, Route } from 'react-router-dom';
 import Signin from './registration/Signin';
 import { browserRoutes } from './routes/browserRoutes';
-import AuthRoutes from './components/authProtectedRoutes/AuthRoutes';
+import AuthRoutes from './authProtectedRoutes/AuthRoutes';
 import { Toaster } from 'react-hot-toast';
 import MyQuestions from './profile/MyQuestions';
 import MyAnswers from './profile/MyAnswers';
 import QuestionDetails from './components/questions/QuestionDetails';
 import Write from './components/write/Write';
 import Settings from './components/settings/Settings';
-import ProtectedRoutes from './components/authProtectedRoutes/ProtectedRoutes';
+import ProtectedRoutes from './authProtectedRoutes/ProtectedRoutes';
 import Knowledge from './components/knowledge/Knowledge';
 import KnowledgeDetails from './components/knowledge/KnowledgeDetails';
 import NotFound from './components/error/NotFound';
 import TopDevelopers from './developers/TopDevelopers';
 import Developer from './developer/Developer';
+import Following from './components/following/Following';
 
 function App() {
   return (
@@ -83,8 +84,8 @@ function App() {
             }
           />
           <Route path={browserRoutes.SETTINGS} element={<Settings />} />
-          <Route path={browserRoutes.DEVELOPERS} element={<TopDevelopers />} />
           <Route path={browserRoutes.KNOWLEDGE} element={<Knowledge />} />
+          <Route path={browserRoutes.FOLLOWING} element={<Following />} />
           <Route path={`/knowledge/:id`} element={<KnowledgeDetails />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

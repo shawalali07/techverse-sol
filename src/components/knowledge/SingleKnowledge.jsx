@@ -1,20 +1,29 @@
 import { Link } from 'react-router-dom';
 import './singleKnowledge.css';
 
-const SingleKnowledge = ({ k }) => {
+const SingleKnowledge = ({ k, setTag }) => {
   return (
-    <div>
-      <div className='singleKnowledge'>
-        <div
-          style={{ backgroundColor: 'antiquewhite' }}
-          key={k._id}
-          className='knowledgeCard'
-        >
-          <Link state={{ data: k }} className='link' to={`/knowledge/1`}>
-            <h3 className='knowledgeTitle'>{k.title}</h3>
-          </Link>
-          <span className='tag'>{k.tags[0]}</span>
+    <div className='singleKnowledge'>
+      <div
+        style={{ backgroundColor: 'antiquewhite' }}
+        key={k._id}
+        className='knowledgeCard'
+      >
+        <Link state={{ data: k }} className='link' to={`/knowledge/1`}>
+          <h3 className='knowledgeTitle'>{k.title}</h3>
+        </Link>
+        <div className='knowContent'>
+          {k?.tags?.map((tag) => (
+            <span onClick={() => setTag([tag])} className='tag'>
+              {tag}
+            </span>
+          ))}
           <span>by {k.userName.split(' ')[0]} 2,130</span>
+          {k?.userImage ? (
+            <img className='knowImg' src={k?.userImage} />
+          ) : (
+            <div className='knowImg'>{k?.userName?.slice(0, 2)}</div>
+          )}
         </div>
       </div>
     </div>

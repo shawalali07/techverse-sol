@@ -6,6 +6,7 @@
 }
 
 .userListUser {
+  text-transform: capitalize;
   display: flex;
   align-items: center;
 }
@@ -39,4 +40,17 @@
   top: 0;
   margin-top: 100px;
   margin-right: 20px;
+}
+
+.topDevImg {
+  text-transform: uppercase;
+  background-color: antiquewhite;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
 }

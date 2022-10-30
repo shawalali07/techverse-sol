@@ -23,7 +23,7 @@ const SearchTagsCopy = (props) => {
         width='50vw'
       >
         <Autocomplete
-          multiple={tutorial ? false : true}
+          multiple
           options={allTags}
           renderInput={(params) => <TextField {...params} label='Tags' />}
           value={tags}

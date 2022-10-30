@@ -12,17 +12,17 @@ const Question = (props) => {
   return (
     <div
       key={question?._id}
-      className='card qCard'
-      style={{ width: '55rem', height: '9.5rem' }}
+      className='card qCard p-4 d-flex flex-row align-items-center gap-5'
+      style={{ width: '55rem', height: '11rem' }}
     >
-      <div className='mainDiv mt-3' style={{ width: '10rem', height: '10rem' }}>
-        <span className='display-block'>0 votes</span>
-        <span className='display-block'>
-          {getNumOfAnswers(question?._id)} answers
-        </span>
-        <span className='display-block'>0 views</span>
+      <div className='mainDiv'>
+        <div>0 votes</div>
+        <div style={{ whiteSpace: 'nowrap' }}>{`${getNumOfAnswers(
+          question?._id
+        )} ${' '} answers`}</div>
+        <div>0 views</div>
       </div>
-      <div className='mainDiv2'>
+      <div>
         <Link
           style={{ textDecoration: 'none' }}
           state={{ question: question, id: question?._id }}
@@ -34,7 +34,7 @@ const Question = (props) => {
           dangerouslySetInnerHTML={{ __html: question?.description }}
           className='questionDescription display-block'
         ></div>
-        <div className='tags'>
+        <div className='tags mt-5'>
           {question?.tags?.map((tag, key) => (
             <span className='tag' key={key}>
               {tag}

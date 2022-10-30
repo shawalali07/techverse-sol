@@ -37,13 +37,7 @@ const ProfileDropdown = ({
           >
             <li>Settings</li>
           </Link>
-          <Link
-            onClick={() => setDropdown(!dropdown)}
-            className='dropdownLink'
-            to={browserRoutes.WRITE}
-          >
-            <li>Write</li>
-          </Link>
+
           <Link
             onClick={() => setDropdown(!dropdown)}
             className='dropdownLink'
@@ -57,6 +51,13 @@ const ProfileDropdown = ({
             to={browserRoutes.MYANSWERS}
           >
             <li>My Answers</li>
+          </Link>
+          <Link
+            onClick={() => setDropdown(!dropdown)}
+            className='dropdownLink'
+            to={browserRoutes.WRITE}
+          >
+            <li>Write</li>
           </Link>
           <li
             onClick={() => {

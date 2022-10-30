@@ -13,4 +13,5 @@ export const browserRoutes = {
   DEVELOPERS: '/developers',
   TUTORIAL: '/tutorial',
   KNOWLEDGE: '/knowledge',
+  FOLLOWING: '/following',
 };

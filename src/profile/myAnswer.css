@@ -1,15 +1,43 @@
-.myAnswer {
-  width: 900px;
+.newMyAns {
+  width: 500px;
+  height: 400px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  /* background-color: hsl(0, 0%, 96.5%); */
 }
 
-.myAnswerDescription {
+.yourAnswer {
+  margin-left: 10px;
+}
+
+.myAnsImg {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.myAuthorInfo {
+  padding: 0px 10px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.myTitle {
+  padding: 5px 10px 0px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   text-align: left;
+  font-style: normal;
 }
 
-.accordion-button::after {
-  background-color: white;
-}
-
-.accordion-button:focus {
-  box-shadow: none !important;
+.myDesc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  text-align: left;
+  padding: 10px 0px 0px 10px;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useToken } from '../../hooks/register/useToken';
-import isEmpty from '../../utils/isEmpty';
+import { useToken } from '../hooks/register/useToken';
+import isEmpty from '../utils/isEmpty';
 
 const AuthRoutes = ({ children, redirectLink }) => {
   const token = useToken();

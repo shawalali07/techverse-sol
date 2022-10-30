@@ -7,9 +7,11 @@ import { browserRoutes } from '../routes/browserRoutes';
 import { useSelector } from 'react-redux';
 import logo from '../assets/images/logo.png';
 import ProfileDropdown from './ProfileDropdown';
-import { Button } from '@mui/material';
+import { Badge, Button } from '@mui/material';
+import { Mail } from '@mui/icons-material';
 import Darkmode from 'darkmode-js';
 const Header = () => {
+  const [count, setCount] = useState(0);
   const options = {
     bottom: '64px', // default: '32px'
     right: 'unset', // default: '32px'
@@ -43,28 +45,19 @@ const Header = () => {
     }
   };
 
-  const [theme, setTheme] = useState('light-theme');
-
-  useEffect(() => {
-    document.body.class = theme;
-  }, [theme]);
-
-  const toggleMode = () => {
-    if (theme === 'light-theme') {
-      setTheme('dark-theme');
-    } else {
-      setTheme('light-theme');
-    }
-  };
+  // useEffect(() => {
+  //   const interval = setTimeout(() => {
+  //     setCount(count + 1);
+  //   }, 2000);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [count]);
 
   return (
     <>
-      <nav
-        className={`navbar navbar-expand-lg navbar-dark ${
-          theme === 'light-theme' ? 'topBar' : 'topBarDark'
-        }`}
-      >
-        <div className='container-fluid'>
+      <nav className={`navbar navbar-expand-lg navbar-dark topBar`}>
+        <div className='container'>
           <button
             className='navbar-toggler'
             type='button'
@@ -78,7 +71,7 @@ const Header = () => {
           </button>
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <img className='logo' src={logo} />
-            <ul className='navbar-nav me-auto mb-2 mb-lg-0 '>
+            <ul className='navbar-nav me-auto mb-2 mb-lg-0 topUl'>
               <li className='nav-item topListItem'>
                 <NavLink className='link' to='/'>
                   Home
@@ -101,6 +94,13 @@ const Header = () => {
                   Top Devs
                 </NavLink>
               </li>
+              {token && (
+                <li className='nav-item topListItem'>
+                  <NavLink className='link' to={browserRoutes.FOLLOWING}>
+                    Following
+                  </NavLink>
+                </li>
+              )}
               <li className='nav-item'></li>
             </ul>
             {pathname === '/' && (
@@ -108,61 +108,77 @@ const Header = () => {
                 <SearchQuestions />
               </form>
             )}
-
-            {token ? (
-              user?.profilePic ? (
-                <ProfileDropdown
-                  name={user?.fullName}
-                  setDropdown={setDropdown}
-                  dropdown={dropdown}
-                  profilePic={user?.profilePic}
-                  refOutside={refOutside}
-                />
+            <div className='topRightSide'>
+              {token && (
+                <Badge
+                  className='msgIcon'
+                  color='secondary'
+                  badgeContent={count}
+                  showZero
+                >
+                  <Mail />
+                </Badge>
+              )}
+              {token ? (
+                user?.profilePic ? (
+                  <ProfileDropdown
+                    name={user?.fullName}
+                    setDropdown={setDropdown}
+                    dropdown={dropdown}
+                    profilePic={user?.profilePic}
+                    refOutside={refOutside}
+                  />
+                ) : (
+                  // <Link to={browserRoutes.SETTINGS}>
+                  //   <div className='topImg topNA'>
+                  //     {user?.fullName.slice(0, 2)}
+                  //   </div>
+                  // </Link>
+                  <ProfileDropdown
+                    name={user?.fullName}
+                    setDropdown={setDropdown}
+                    dropdown={dropdown}
+                    profilePic={user?.profilePic}
+                    refOutside={refOutside}
+                  />
+                )
+              ) : pathname === '/signin' ? (
+                <Button
+                  onClick={() => navigate('/signup')}
+                  color='success'
+                  variant='contained'
+                >
+                  Create Account
+                </Button>
+              ) : pathname === '/signup' ? (
+                <Button onClick={() => navigate('/signin')} variant='contained'>
+                  Login
+                </Button>
               ) : (
-                // <Link to={browserRoutes.SETTINGS}>
-                //   <div className='topImg topNA'>
-                //     {user?.fullName.slice(0, 2)}
-                //   </div>
-                // </Link>
-                <ProfileDropdown
-                  name={user?.fullName}
-                  setDropdown={setDropdown}
-                  dropdown={dropdown}
-                  profilePic={user?.profilePic}
-                  refOutside={refOutside}
-                />
-              )
-            ) : pathname === '/signin' ? (
-              <Button
-                onClick={() => navigate('/signup')}
-                color='success'
-                variant='contained'
-              >
-                Create Account
-              </Button>
-            ) : pathname === '/signup' ? (
-              <Button onClick={() => navigate('/signin')} variant='contained'>
-                Login
-              </Button>
-            ) : (
-              <Button onClick={() => navigate('/signin')} variant='contained'>
-                Login
-              </Button>
-            )}
-            {token && (
-              <div className={`form-check form-switch text-light`}>
-                <input
-                  onClick={() => darkmode.toggle()}
-                  className='form-check-input'
-                  type='checkbox'
-                  id='flexSwitchCheckDefault'
-                />
-                <label
-                  className='form-check-label'
-                  htmlFor='flexSwitchCheckDefault'
-                ></label>
-              </div>
-            )}
+                <div className='noAuthLoginBtn'>
+                  <Button
+                    onClick={() => navigate('/signin')}
+                    variant='contained'
+                  >
+                    Login
+                  </Button>
+                </div>
+              )}
+              {token && (
+                <div className={`form-check form-switch text-light`}>
+                  <input
+                    onClick={() => darkmode.toggle()}
+                    className='form-check-input'
+                    type='checkbox'
+                    id='flexSwitchCheckDefault'
+                  />
+                  <label
+                    className='form-check-label'
+                    htmlFor='flexSwitchCheckDefault'
+                  ></label>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </nav>

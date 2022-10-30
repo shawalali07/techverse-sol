@@ -31,6 +31,8 @@ const TextEditorHeader = (props) => {
     dispatch(postKnowledge(formValues, setLoading));
   };
 
+  console.log(formValues);
+
   return (
     <div className='textEditorHeader'>
       <div className='container'>

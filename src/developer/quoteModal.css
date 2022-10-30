@@ -1,0 +1,24 @@
+.quoteTextfield {
+  display: flex;
+  align-items: center;
+}
+
+.writeForm {
+  position: relative;
+}
+
+.writeInput {
+  font-size: 30px;
+  border: none;
+  padding: 30px;
+  width: 70vw;
+}
+
+.writeInput:focus {
+  outline: none;
+}
+
+.writeText {
+  font-size: 20px;
+  height: 70vh;
+}
