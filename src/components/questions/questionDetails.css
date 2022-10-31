@@ -42,6 +42,24 @@
   border-radius: 20px;
 }
 
+.detAnsComment {
+  font-weight: 600;
+}
+
+.detCommented {
+  padding: 2px;
+  border-radius: 5px;
+  color: #2c58a0;
+  background-color: #dfe7f6;
+}
+
+.detCommentContainer {
+  font-size: 14px;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
 .detTopCard {
   margin: 20px 20px 10px 20px;
   padding-top: 20px;
@@ -66,8 +84,14 @@
   float: right;
 }
 
+.detAnsDesc {
+  padding: 0px 0px 10px 0px;
+  border-bottom: 1px solid lightgray;
+}
+
 .detCenterCard {
   display: flex;
+  flex-direction: column;
   margin: 20px 20px 10px 20px;
 
   border-bottom: 1px solid lightgray;
@@ -86,6 +110,8 @@
 }
 
 .detAnsAnswered {
+  border-radius: 5px;
+  padding: 2px;
   color: #2c58a0;
   background-color: #dfe7f6;
 }
