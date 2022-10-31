@@ -2,7 +2,9 @@ import './questionDetails.css';
 import img from '../../assets/images/shali.jpg';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { Badge, Button } from '@mui/material';
+import { useState } from 'react';
 const QuestionDetails = () => {
+  const [show, setShow] = useState(false);
   return (
     <div className='questionDet'>
       <div className='detTop'>
@@ -63,10 +65,33 @@ const QuestionDetails = () => {
                 ad ipsam sint ab illo deserunt expedita fugit error quasi nihil
                 praesentium unde nesciunt. Qui.
               </p>
+              <div>
+                <div className='detCommentContainer'>
+                  <span className='detAnsComment'>Shawal</span>
+                  <span className='detCommented'>commented</span>
+                  <span className='detCommentTime'>4 days ago</span>
+                </div>
+                <p className='detAnsCommentText'>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Deserunt, ut!
+                </p>
+              </div>
+              <div>
+                <div className='detCommentContainer'>
+                  <span className='detAnsComment'>Shawal</span>
+                  <span className='detCommented'>commented</span>
+                  <span className='detCommentTime'>4 days ago</span>
+                </div>
+                <p className='detAnsCommentText'>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Deserunt, ut!
+                </p>
+              </div>
             </div>
             <div className='detBottomCard'>
               <div className='detBtnContainer'>
                 <Button
+                  onClick={() => setShow(!show)}
                   style={{ borderRadius: '10px' }}
                   className='detCommentBtn'
                   size='small'
@@ -74,16 +99,20 @@ const QuestionDetails = () => {
                 >
                   Add Comment
                 </Button>
-                <Button
-                  style={{ borderRadius: '10px' }}
-                  className='detPublishBtn'
-                  size='small'
-                  variant='contained'
-                >
-                  Publish
-                </Button>
+                {show ? (
+                  <Button
+                    style={{ borderRadius: '10px' }}
+                    className='detPublishBtn'
+                    size='small'
+                    variant='contained'
+                  >
+                    Publish
+                  </Button>
+                ) : null}
               </div>
-              <textarea rows='8' className='detWriteComment'></textarea>
+              {show ? (
+                <textarea rows='8' className='detWriteComment'></textarea>
+              ) : null}
             </div>
           </div>
         </div>
