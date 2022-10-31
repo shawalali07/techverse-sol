@@ -3,6 +3,7 @@ import img from '../../assets/images/shali.jpg';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { Badge, Button } from '@mui/material';
 import { useState } from 'react';
+import TextEditor from '../textEditor/TextEditor';
 const QuestionDetails = () => {
   const [show, setShow] = useState(false);
   return (
@@ -117,7 +118,34 @@ const QuestionDetails = () => {
           </div>
         </div>
       </div>
-      <div className='detBottom'></div>
+      <div className='detCenter'>
+        <div className='detAnsContainer'>
+          <div className='detCard'>
+            <div className='detTopCard'>
+              <div className='detAnsLeft'>
+                <h1 className='detWrite'>Write</h1>
+              </div>
+            </div>
+            <div className='detCenterCard'>
+              <div className='detAnsDesc'>
+                <TextEditor />
+              </div>
+            </div>
+            <div className='detBottomCard'>
+              <div className='detBtnContainer'>
+                <Button
+                  style={{ borderRadius: '15px' }}
+                  className='detWriteBtn'
+                  size='medium'
+                  variant='contained'
+                >
+                  Post
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -138,6 +138,10 @@
   outline: none;
 }
 
+.detWrite {
+  font-size: 20px;
+}
+
 @media screen and (min-width: 375px) and (max-width: 460px) {
   .detTopCard {
     white-space: nowrap;
