@@ -13,16 +13,16 @@ import {
   startMyAnswers,
 } from '../../slices/answerSlice';
 
-export const submitAnswer = (formData, setLoading) => async (dispatch) => {
-  setLoading(true);
+export const submitAnswer = (formData, subLoading) => async (dispatch) => {
+  subLoading(true);
   try {
     const { data } = await api.post(authRoutes.SUBMIT_ANSWER, formData);
     success('Your answer is submitted');
 
-    setLoading(false);
+    subLoading(false);
   } catch (error) {
     fail(error?.response?.data?.message);
-    setLoading(false);
+    subLoading(false);
   }
 };
 
@@ -44,18 +44,18 @@ export const getAnswers = () => async (dispatch) => {
 };
 
 export const addComment =
-  (formData, id, setLoading, getAnswersById, idd) => async (dispatch) => {
-    setLoading(true);
+  (formData, id, setComLoading, getAnswersById, idd) => async (dispatch) => {
+    setComLoading(true);
     try {
       const { data } = await api.post(
         authRoutes.ADD_COMMENT + id + '/comment',
         formData
       );
       success('Comment Post Successfully');
-      dispatch(getAnswersById(idd.idd));
-      setLoading(false);
+      // dispatch(getAnswersById(idd.idd));
+      setComLoading(false);
     } catch (error) {
-      setLoading(false);
+      setComLoading(false);
       fail(error?.response?.data?.message);
     }
   };
