@@ -25,6 +25,7 @@
 }
 
 .detCenter {
+  min-width: 55%;
   flex-direction: column;
   display: flex;
   margin: 30px 400px 0px 400px;
@@ -43,6 +44,7 @@
 }
 
 .detAnsComment {
+  text-transform: capitalize;
   font-weight: 600;
 }
 
@@ -93,8 +95,9 @@
   display: flex;
   flex-direction: column;
   margin: 20px 20px 10px 20px;
+}
 
-  border-bottom: 1px solid lightgray;
+.detCommentContainer {
 }
 
 .detBottomCard {
@@ -106,6 +109,7 @@
 }
 
 .detAnsAuthor {
+  text-transform: capitalize;
   font-weight: 600;
 }
 
@@ -130,6 +134,7 @@
 }
 
 .detWriteComment {
+  padding-left: 10px;
   width: 100%;
   border: 1px solid lightgray;
 }
