@@ -35,6 +35,7 @@ const QuestionDetails = () => {
           neque perferendis quia cumque quae vitae quaerat nostrum veniam
           consequuntur ex doloremque
         </p>
+
         <div className='detAnsContainer'>
           <div className='detCard'>
             <div className='detTopCard'>
@@ -64,9 +65,25 @@ const QuestionDetails = () => {
               </p>
             </div>
             <div className='detBottomCard'>
-              <Button size='small' variant='contained'>
-                Add Comment
-              </Button>
+              <div className='detBtnContainer'>
+                <Button
+                  style={{ borderRadius: '10px' }}
+                  className='detCommentBtn'
+                  size='small'
+                  variant='contained'
+                >
+                  Add Comment
+                </Button>
+                <Button
+                  style={{ borderRadius: '10px' }}
+                  className='detPublishBtn'
+                  size='small'
+                  variant='contained'
+                >
+                  Publish
+                </Button>
+              </div>
+              <textarea rows='8' className='detWriteComment'></textarea>
             </div>
           </div>
         </div>

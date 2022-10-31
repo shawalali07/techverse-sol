@@ -38,8 +38,8 @@
 }
 
 .detCard {
-  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.75);
+  border-radius: 20px;
 }
 
 .detTopCard {
@@ -76,6 +76,9 @@
 .detBottomCard {
   margin: 20px;
   padding-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
 }
 
 .detAnsAuthor {
@@ -85,4 +88,32 @@
 .detAnsAnswered {
   color: #2c58a0;
   background-color: #dfe7f6;
+}
+
+.detCommentBtn {
+  width: 150px;
+}
+
+.detPublishBtn {
+  width: 150px;
+}
+
+.detBtnContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.detWriteComment {
+  width: 100%;
+  border: 1px solid lightgray;
+}
+
+.detWriteComment:focus {
+  outline: none;
+}
+
+@media screen and (min-width: 375px) and (max-width: 460px) {
+  .detTopCard {
+    white-space: nowrap;
+  }
 }
