@@ -1,6 +1,8 @@
 .allQuestions {
-  background-color: #f5f5f5;
   display: flex;
+  background-color: white;
+  height: 100vh;
+  width: 100%;
 }
 
 .allQuestLeft {
@@ -29,9 +31,11 @@
 }
 
 .allQuestionsContainer {
-  /* background-color: #f5f5f5; */
   display: flex;
   flex-direction: column;
+  padding-top: 90px;
+  margin: auto;
+  max-width: 880px;
 }
 
 .questionsComponent {
@@ -68,4 +72,12 @@
 
 .mainQueryBtn:last-child {
   margin-right: 0px !important;
+}
+
+@media screen and (min-width: 320px) and (max-width: 576px) {
+  .allQuestionsContainer {
+    min-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

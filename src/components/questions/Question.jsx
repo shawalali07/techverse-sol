@@ -13,7 +13,7 @@ const Question = (props) => {
     <div
       key={question?._id}
       className='card qCard p-4 d-flex flex-row align-items-center gap-5'
-      style={{ width: '55rem', height: '11rem' }}
+      // style={{ width: '55rem', height: '11rem' }}
     >
       <div className='mainDiv'>
         <div>0 votes</div>
