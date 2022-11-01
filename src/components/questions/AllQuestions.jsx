@@ -54,81 +54,8 @@ const AllQuestions = () => {
   };
 
   return (
-    <div
-      className='allQuestions'
-      style={{ backgroundColor: 'white', height: '100vh' }}
-    >
-      {loading ? (
-        <></>
-      ) : (
-        <div className='allQuestLeft'>
-          <div className='achievements'>
-            <span className='achievementInfo allQuestInfo'>
-              Total Questions{' '}
-              <span className='totalQuestBadge'>
-                <Badge
-                  className='rankBadge'
-                  color='warning'
-                  badgeContent={questions?.length || 0}
-                  showZero
-                ></Badge>
-              </span>
-            </span>
-            <span className='achievementInfo allQuestInfo'>
-              Total Answers
-              <span className='totalQuestBadge'>
-                <Badge
-                  className='pointBadge'
-                  color='success'
-                  badgeContent='7,039'
-                  showZero
-                ></Badge>
-              </span>
-            </span>
-            <span className='achievementInfo allQuestInfo'>
-              Total Devs{' '}
-              <span className='totalQuestBadge'>
-                <Badge
-                  className='ansBadge'
-                  color='primary'
-                  badgeContent='19,224'
-                  showZero
-                ></Badge>
-              </span>
-            </span>
-            <span className='achievementInfo allQuestInfo'>
-              Total Tutorials{' '}
-              <span className='totalQuestBadge'>
-                <Badge
-                  className='ansBadge'
-                  color='secondary'
-                  badgeContent='19,224'
-                  showZero
-                ></Badge>
-              </span>
-            </span>
-          </div>
-        </div>
-      )}
-      <div
-        className='container allQuestionsContainer d-flex'
-        style={{ padding: '90px 220px 0px' }}
-      >
-        <div className='d-flex flex-column w-100' style={{ border: '0' }}>
-          {/* <div className=' d-flex justify-content-end'>
-            <ButtonGroup
-            style={{ boxShadow: 'none' }}
-            color='success'
-            variant='contained'
-            aria-label='outlined primary button group'
-            >
-            <Button className='mainQueryBtn'>Javascript</Button>
-            <Button className='mainQueryBtn'>Python</Button>
-            <Button className='mainQueryBtn'>Solidity</Button>
-            <Button className='mainQueryBtn'>Kotlin</Button>
-            </ButtonGroup>
-          </div> */}
-        </div>
+    <div className='allQuestions'>
+      <div className='allQuestionsContainer'>
         {loading ? (
           <div className='d-flex justify-content-center align-items-center mt-5'>
             <BeatLoader size={40} />

@@ -4,6 +4,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: auto;
+  max-width: 880px;
 }
 
 .detTop {
@@ -25,10 +27,10 @@
 }
 
 .detCenter {
-  min-width: 55%;
+  width: 100%;
   flex-direction: column;
   display: flex;
-  margin: 30px 400px 0px 400px;
+  margin: 30px 0px 0px 0px;
 }
 
 .detImg {
@@ -78,7 +80,6 @@
 }
 
 .detAnsRight {
-  margin-right: 20px;
   justify-content: flex-end;
   align-items: center;
   flex: 1;
@@ -150,5 +151,19 @@
 @media screen and (min-width: 375px) and (max-width: 460px) {
   .detTopCard {
     white-space: nowrap;
+  }
+  .questionDet {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}
+
+@media screen and (min-width: 460px) and (max-width: 932px) {
+  .detTopCard {
+    white-space: nowrap;
+  }
+  .questionDet {
+    padding-right: 36px;
+    padding-left: 36px;
   }
 }

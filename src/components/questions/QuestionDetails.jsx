@@ -66,10 +66,10 @@ const QuestionDetails = () => {
                     {moment(answer?.updatedAt).startOf('hour').fromNow()}
                   </span>
                 </div>
-                <div className='detAnsRight'>
+                <div className='align-items-center gap-4 d-none d-md-flex'>
                   <ThumbUpOffAltIcon />
                   <Badge
-                    className='rankBadge'
+                    // style={{ width: '20px', height: '20px' }}
                     color='primary'
                     badgeContent={answer?.voteCount}
                     showZero

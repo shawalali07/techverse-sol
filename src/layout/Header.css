@@ -13,6 +13,10 @@
   align-items: center;
 }
 
+.topListItem a {
+  white-space: nowrap;
+}
+
 .msgIcon {
   cursor: pointer;
 }
