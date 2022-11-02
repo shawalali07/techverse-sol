@@ -10,7 +10,7 @@ import {
   addVote,
 } from '../../redux-toolkit/actions/answers/answers';
 import { useDispatch } from 'react-redux';
-const AnswerCard = ({ answer, answerId }) => {
+const AnswerCard = ({ answer, answerId, userId, id }) => {
   const [comLoading, setComLoading] = useState(false);
   const [voteLoading, setVoteLoading] = useState(false);
   const [commentDesc, setCommentDesc] = useState({});

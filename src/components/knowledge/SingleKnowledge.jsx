@@ -5,7 +5,7 @@ const SingleKnowledge = ({ k, setTag }) => {
   return (
     <div className='singleKnowledge'>
       <div
-        style={{ backgroundColor: 'antiquewhite' }}
+        style={{ backgroundColor: 'white' }}
         key={k._id}
         className='knowledgeCard'
       >

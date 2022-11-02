@@ -15,11 +15,10 @@ export default function TopDevelopers() {
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
   const columns = [
-    { field: 'rate', headerName: 'Rank', width: 125, height: 100 },
     {
       field: 'name',
       headerName: 'Name',
-      width: 220,
+      width: 230,
       renderCell: (params) => {
         return (
           <div className='userListUser'>
@@ -39,13 +38,29 @@ export default function TopDevelopers() {
         );
       },
     },
-    { field: 'id', headerName: 'Email', width: 175, height: 100 },
-    { field: 'followers', headerName: 'Followers', width: 170, height: 100 },
+    { field: 'id', headerName: 'Email', width: 230 },
+    {
+      field: 'country',
+      headerName: 'Country',
+      width: 220,
+    },
+    {
+      field: 'followers',
+      headerName: 'Followers',
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <div className='followersCell'>
+            <div>{params.row.followers}</div>
+          </div>
+        );
+      },
+    },
 
     {
       field: 'points',
       headerName: 'Points',
-      width: 220,
+      width: 180,
     },
   ];
 
@@ -64,11 +79,12 @@ export default function TopDevelopers() {
       <div className='container'>
         <div className='userList'>
           <DataGrid
+            align
             density='comfortable'
-            autoHeight
-            autoPageSize
+            // autoHeight
+            // autoPageSize
             rows={topDev}
-            disableSelectionOnClick
+            // disableSelectionOnClick
             columns={columns}
             pageSize={10}
             loading={loading}

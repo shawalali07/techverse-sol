@@ -61,12 +61,14 @@ const MessageModal = ({ show, setShow }) => {
           </Button>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant='primary' onClick={handleClose}>
-            Submit
-          </Button>
+          <div className='replyBtnContainer'>
+            <Button variant='contained' onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant='contained' color='secondary' onClick={handleClose}>
+              Submit
+            </Button>
+          </div>
         </Modal.Footer>
       </Modal>
     </>
