@@ -44,7 +44,8 @@ export const getAnswers = () => async (dispatch) => {
 };
 
 export const addComment =
-  (formData, id, setComLoading, getAnswersById, idd) => async (dispatch) => {
+  (formData, id, setComLoading, getAnswersById, answerId) =>
+  async (dispatch) => {
     setComLoading(true);
     try {
       const { data } = await api.post(
@@ -52,7 +53,7 @@ export const addComment =
         formData
       );
       success('Comment Post Successfully');
-      // dispatch(getAnswersById(idd.idd));
+      dispatch(getAnswersById(answerId));
       setComLoading(false);
     } catch (error) {
       setComLoading(false);

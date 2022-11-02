@@ -9,17 +9,35 @@ import {
 import { Badge, Button } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import './developer.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import QuoteModal from './QuoteModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTopDevs } from '../redux-toolkit/actions/developers/developers';
 
 export default function Developer() {
+  let topDev = useSelector((state) => state.developer.topDevelopers);
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const {
+  let {
     state: { data },
   } = useLocation();
+  topDev = topDev?.filter((dev) => dev?._id === data?.data)[0];
+  useEffect(() => {
+    dispatch(getTopDevs());
+  }, []);
+  if (topDev) {
+    data.image = topDev.image;
+    data.name = topDev.name;
+    data.id = topDev.email;
+    data.country = topDev.country;
+    data.rate = topDev.rate;
+    data.aboutMe = topDev.aboutMe;
+    data.answers = topDev.answers;
+    data.points = topDev.points;
+  }
 
   return (
     <div className='user'>

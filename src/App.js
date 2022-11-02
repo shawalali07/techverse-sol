@@ -20,7 +20,7 @@ import NotFound from './components/error/NotFound';
 import TopDevelopers from './developers/TopDevelopers';
 import Developer from './developer/Developer';
 import Following from './components/following/Following';
-
+import Message from './components/messages/MessageModal';
 function App() {
   return (
     <>
@@ -87,6 +87,7 @@ function App() {
           <Route path={browserRoutes.KNOWLEDGE} element={<Knowledge />} />
           <Route path={browserRoutes.FOLLOWING} element={<Following />} />
           <Route path={`/knowledge/:id`} element={<KnowledgeDetails />} />
+
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>

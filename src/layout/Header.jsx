@@ -10,7 +10,11 @@ import ProfileDropdown from './ProfileDropdown';
 import { Badge, Button } from '@mui/material';
 import { Mail } from '@mui/icons-material';
 import Darkmode from 'darkmode-js';
+import MessageDropdown from './MessageDropdown';
+import ReplyModal from '../components/messages/ReplyModal';
 const Header = () => {
+  const replyModal = useSelector((state) => state.modal.replyModal);
+  console.log(replyModal);
   const [count, setCount] = useState(0);
   const options = {
     bottom: '64px', // default: '32px'
@@ -29,21 +33,10 @@ const Header = () => {
   const darkmode = new Darkmode(options);
   const navigate = useNavigate();
   const [dropdown, setDropdown] = useState(false);
+  const [msgDropdown, setMsgDropdown] = useState(false);
   const { pathname } = useLocation();
   const user = useSelector((state) => state?.authSlice);
   const token = useToken();
-  const refOutside = useRef(null);
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true);
-  }, []);
-
-  const handleClickOutside = ({ target }) => {
-    if (!refOutside.current.contains(target)) {
-      setDropdown(false);
-    } else {
-    }
-  };
 
   // useEffect(() => {
   //   const interval = setTimeout(() => {
@@ -94,13 +87,7 @@ const Header = () => {
                   Top Devs
                 </NavLink>
               </li>
-              {token && (
-                <li className='nav-item topListItem'>
-                  <NavLink className='link' to={browserRoutes.FOLLOWING}>
-                    Following
-                  </NavLink>
-                </li>
-              )}
+
               <li className='nav-item'></li>
             </ul>
             {pathname === '/' && (
@@ -110,14 +97,10 @@ const Header = () => {
             )}
             <div className='topRightSide'>
               {token && (
-                <Badge
-                  className='msgIcon'
-                  color='secondary'
-                  badgeContent={count}
-                  showZero
-                >
-                  <Mail />
-                </Badge>
+                <MessageDropdown
+                  setMsgDropdown={setMsgDropdown}
+                  msgDropdown={msgDropdown}
+                />
               )}
               {token ? (
                 user?.profilePic ? (
@@ -126,7 +109,6 @@ const Header = () => {
                     setDropdown={setDropdown}
                     dropdown={dropdown}
                     profilePic={user?.profilePic}
-                    refOutside={refOutside}
                   />
                 ) : (
                   // <Link to={browserRoutes.SETTINGS}>
@@ -139,7 +121,6 @@ const Header = () => {
                     setDropdown={setDropdown}
                     dropdown={dropdown}
                     profilePic={user?.profilePic}
-                    refOutside={refOutside}
                   />
                 )
               ) : pathname === '/signin' ? (
@@ -181,6 +162,7 @@ const Header = () => {
             </div>
           </div>
         </div>
+        <ReplyModal replyModal={replyModal} />
       </nav>
     </>
   );
