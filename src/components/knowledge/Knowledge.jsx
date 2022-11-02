@@ -22,7 +22,7 @@ const Knowledge = () => {
 
   const usersPerPage = 6;
   const pagesVisited = pageNumber * usersPerPage;
-  const [tag, setTag] = useState([]);
+  const [tag, setTag] = useState('');
   const allTags = [
     'Javascript',
     'Python',
@@ -112,7 +112,9 @@ const Knowledge = () => {
                   <TextField {...params} label='Select Language' />
                 )}
                 value={tag}
-                onChange={(event, newValue) => setTag(newValue)}
+                onChange={(event, newValue) => {
+                  setTag(newValue);
+                }}
               />
             </Stack>
           </div>
@@ -135,8 +137,51 @@ const Knowledge = () => {
             <NotFoundResult />
           )}
         </div>
+      ) : tag !== '' ? (
+        <>
+          <NotFoundResult />
+          <div className='postKnowledge'>
+            {token && (
+              <Button
+                onClick={() => navigate('/write')}
+                color='success'
+                variant='contained'
+              >
+                Post Knowledge
+              </Button>
+            )}
+          </div>
+          <div className='searchKnowledge'>
+            <TextField
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className='searchKnowledgefield'
+              id='standard-basic'
+              label='Search Topic'
+              variant='outlined'
+            />
+          </div>
+          <div className='selectLang'>
+            <Stack
+              style={{ marginLeft: '0vw', float: 'right' }}
+              className='tags'
+              spacing={2}
+              width='20vw'
+            >
+              <Autocomplete
+                options={allTags}
+                renderInput={(params) => (
+                  <TextField {...params} label='Select Language' />
+                )}
+                value={tag}
+                onChange={(event, newValue) => setTag(newValue)}
+              />
+            </Stack>
+          </div>
+        </>
       ) : (
-        <NotFound msg='No Knowledge Post Found' />
+        <></>
+        // <NotFoundResult />
       )}
     </div>
   );

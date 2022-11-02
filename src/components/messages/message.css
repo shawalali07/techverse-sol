@@ -1,0 +1,25 @@
+.message {
+  padding-top: 90px;
+}
+
+.inboxText {
+  min-height: 60vh;
+}
+
+.senderImg {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+}
+
+.modalTop {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.senderTitle {
+  font-weight: 600;
+  font-size: 20px;
+}

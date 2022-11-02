@@ -1,0 +1,70 @@
+.messageDropdown {
+  position: relative;
+}
+
+.mDropdown1 {
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  color: black;
+  background-color: white;
+  width: 25vw;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  right: 0;
+  top: 50px;
+}
+
+.mDropdown {
+  display: none;
+}
+
+.msgSender {
+  margin-left: 5px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.msgImg {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.msgCard {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 5px;
+  /* background-color: lightgray; */
+  display: flex;
+  border-bottom: 1px solid lightgray;
+}
+
+.msgCard:last-child {
+  border-bottom: none;
+}
+
+.msgLeft {
+}
+
+.msgRight {
+  flex: 4;
+}
+
+.msgInfo {
+  padding-left: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.msgTime {
+  font-size: 14px;
+}
+
+.msgText {
+  font-size: 16px;
+}

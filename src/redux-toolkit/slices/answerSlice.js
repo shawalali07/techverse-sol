@@ -26,6 +26,7 @@ export const answer = createSlice({
       state.loading = false;
       state.error = true;
     },
+
     setAllAnswersData: (state, action) => {
       state.allAnswersData = action.payload;
     },

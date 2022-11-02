@@ -9,7 +9,7 @@ const SingleKnowledge = ({ k, setTag }) => {
         key={k._id}
         className='knowledgeCard'
       >
-        <Link state={{ data: k }} className='link' to={`/knowledge/1`}>
+        <Link state={{ data: k }} className='link' to={`/knowledge/${k?._id}`}>
           <h3 className='knowledgeTitle'>{k.title}</h3>
         </Link>
         <div className='knowContent'>

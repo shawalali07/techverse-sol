@@ -34,6 +34,11 @@
 }
 
 .detImg {
+  background-color: darkgray;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
   object-fit: cover;
   height: 32px;
   width: 32px;
