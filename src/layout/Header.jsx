@@ -7,45 +7,19 @@ import { browserRoutes } from '../routes/browserRoutes';
 import { useSelector } from 'react-redux';
 import logo from '../assets/images/logo.png';
 import ProfileDropdown from './ProfileDropdown';
-import { Badge, Button } from '@mui/material';
-import { Mail } from '@mui/icons-material';
-import Darkmode from 'darkmode-js';
+import { Button } from '@mui/material';
 import MessageDropdown from './MessageDropdown';
 import ReplyModal from '../components/messages/ReplyModal';
 const Header = () => {
   const replyModal = useSelector((state) => state.modal.replyModal);
   console.log(replyModal);
-  const [count, setCount] = useState(0);
-  const options = {
-    bottom: '64px', // default: '32px'
-    right: 'unset', // default: '32px'
-    left: '32px', // default: 'unset'
-    time: '0.5s', // default: '0.3s'
-    mixColor: '#fff', // default: '#fff'
-    backgroundColor: '#fff', // default: '#fff'
-    buttonColorDark: '#100f2c', // default: '#100f2c'
-    buttonColorLight: '#fff', // default: '#fff'
-    saveInCookies: false, // default: true,
-    label: '🌓', // default: ''
-    autoMatchOsTheme: true, // default: true
-  };
 
-  const darkmode = new Darkmode(options);
   const navigate = useNavigate();
   const [dropdown, setDropdown] = useState(false);
   const [msgDropdown, setMsgDropdown] = useState(false);
   const { pathname } = useLocation();
   const user = useSelector((state) => state?.authSlice);
   const token = useToken();
-
-  // useEffect(() => {
-  //   const interval = setTimeout(() => {
-  //     setCount(count + 1);
-  //   }, 2000);
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [count]);
 
   return (
     <>
@@ -91,7 +65,11 @@ const Header = () => {
                     Top Devs
                   </NavLink>
                 </li>
-
+                <li className='nav-item topListItem'>
+                  <NavLink className='link' to={browserRoutes.SNIPPETS}>
+                    Snippets
+                  </NavLink>
+                </li>
                 <li className='nav-item'></li>
               </ul>
             </div>
@@ -147,20 +125,6 @@ const Header = () => {
                     >
                       Login
                     </Button>
-                  </div>
-                )}
-                {token && (
-                  <div className={`form-check form-switch text-light`}>
-                    <input
-                      onClick={() => darkmode.toggle()}
-                      className='form-check-input'
-                      type='checkbox'
-                      id='flexSwitchCheckDefault'
-                    />
-                    <label
-                      className='form-check-label'
-                      htmlFor='flexSwitchCheckDefault'
-                    ></label>
                   </div>
                 )}
               </div>

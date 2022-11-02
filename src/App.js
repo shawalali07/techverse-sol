@@ -21,12 +21,16 @@ import TopDevelopers from './developers/TopDevelopers';
 import Developer from './developer/Developer';
 import Following from './components/following/Following';
 import Message from './components/messages/MessageModal';
+import Navbar from './layout/Navbar';
+import Snippets from './components/snippets/Snippets';
+import SnippetDetails from './components/snippets/SnippetDetails';
 function App() {
   return (
     <>
       <Toaster position='bottom-center' />
       <div className='App'>
         <Header />
+        {/* <Navbar /> */}
         <Routes>
           <Route exact path={browserRoutes.HOME} element={<AllQuestions />} />
           <Route
@@ -86,6 +90,11 @@ function App() {
           <Route path={browserRoutes.SETTINGS} element={<Settings />} />
           <Route path={browserRoutes.KNOWLEDGE} element={<Knowledge />} />
           <Route path={browserRoutes.FOLLOWING} element={<Following />} />
+          <Route path={browserRoutes.SNIPPETS} element={<Snippets />} />
+          <Route
+            path={browserRoutes.SNIPPETS + '/:id/:id'}
+            element={<SnippetDetails />}
+          />
           <Route path={`/knowledge/:id`} element={<KnowledgeDetails />} />
 
           <Route path='*' element={<NotFound />} />

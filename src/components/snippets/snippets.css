@@ -1,0 +1,65 @@
+.snippets {
+  padding-top: 90px;
+}
+
+.snipContainer {
+  margin: 30px;
+}
+
+.snipHeader {
+  line-height: 15px;
+  padding: 10px;
+  border-bottom: 2px solid rgb(122, 119, 119);
+}
+
+.snipHeader > h1 {
+  font-weight: 600;
+}
+
+.snipHeader > p {
+  font-size: 20px;
+}
+
+.snipHeadings {
+  margin-top: 90px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.headings {
+  font-size: 16px;
+  color: gray;
+  font-weight: 600;
+  display: flex;
+  gap: 180px;
+}
+
+.snipContent {
+  justify-content: space-between;
+  display: flex;
+  padding: 20px 9px;
+}
+
+.snipContent:hover {
+  opacity: 0.7;
+  background-color: #ddeefa;
+  border-radius: 20px;
+}
+
+.contentHeadings {
+  font-size: 18px;
+}
+
+.contentDiv {
+  display: flex;
+  gap: 75px;
+}
+
+.contentDivRight {
+  display: flex;
+  gap: 180px;
+}
+
+.specColor {
+  color: blue;
+}
