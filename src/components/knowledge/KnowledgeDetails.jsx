@@ -7,7 +7,7 @@ const KnowledgeDetails = () => {
   } = useLocation();
 
   return (
-    <div style={{ paddingTop: '90px' }} className='mt-2 knowledgeDetails'>
+    <div style={{ paddingTop: '90px' }} className='knowledgeDetails'>
       <div className='knowledgeCardDetails'>
         <h1 className='knowledetitle'>{data?.title}</h1>
         <h6 className='knowledgeExample mb-3'>

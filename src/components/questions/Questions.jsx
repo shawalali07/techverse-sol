@@ -17,8 +17,8 @@ const Questions = (props) => {
   }, []);
 
   return (
-    <div className='questions'>
-      <div className='container d-flex flex-column justify-content-center align-items-center mt-4 px-0'>
+    <div>
+      <div className='qContainer questions d-flex flex-column justify-content-center align-items-center mt-4 px-0'>
         {loading ? (
           <div style={{ marginRight: '17vw', marginTop: '8vh' }}>
             <BeatLoader size={40} />

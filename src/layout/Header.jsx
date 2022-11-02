@@ -50,7 +50,7 @@ const Header = () => {
   return (
     <>
       <nav className={`navbar navbar-expand-lg navbar-dark topBar`}>
-        <div className='container'>
+        <div className='w-100 px-5'>
           <button
             className='navbar-toggler'
             type='button'
@@ -62,103 +62,108 @@ const Header = () => {
           >
             <span className='navbar-toggler-icon'></span>
           </button>
-          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <img className='logo' src={logo} />
-            <ul className='navbar-nav me-auto mb-2 mb-lg-0 topUl'>
-              <li className='nav-item topListItem'>
-                <NavLink className='link' to='/'>
-                  Home
-                </NavLink>
-              </li>
-              {token && (
+          <div
+            className='collapse navbar-collapse d-flex justify-content-between w-100'
+            id='navbarSupportedContent'
+          >
+            <div className='d-flex align-items-center'>
+              <img className='logo' src={logo} />
+              <ul className='navbar-nav me-auto mb-2 mb-lg-0 topUl'>
                 <li className='nav-item topListItem'>
-                  <NavLink className='link' to='/askquestion'>
-                    Ask Question
+                  <NavLink className='link' to='/'>
+                    Home
                   </NavLink>
                 </li>
-              )}
-              <li className='nav-item topListItem'>
-                <NavLink className='link' to={browserRoutes.KNOWLEDGE}>
-                  Knowledge
-                </NavLink>
-              </li>
-              <li className='nav-item topListItem'>
-                <NavLink className='link' to={browserRoutes.DEVELOPERS}>
-                  Top Devs
-                </NavLink>
-              </li>
+                {token && (
+                  <li className='nav-item topListItem'>
+                    <NavLink className='link' to='/askquestion'>
+                      Ask Question
+                    </NavLink>
+                  </li>
+                )}
+                <li className='nav-item topListItem'>
+                  <NavLink className='link' to={browserRoutes.KNOWLEDGE}>
+                    Knowledge
+                  </NavLink>
+                </li>
+                <li className='nav-item topListItem'>
+                  <NavLink className='link' to={browserRoutes.DEVELOPERS}>
+                    Top Devs
+                  </NavLink>
+                </li>
 
-              <li className='nav-item'></li>
-            </ul>
-            {pathname === '/' && (
-              <form className='d-flex searchInput' role='search'>
-                <SearchQuestions />
-              </form>
-            )}
-            <div className='topRightSide'>
-              {token && (
-                <MessageDropdown
-                  setMsgDropdown={setMsgDropdown}
-                  msgDropdown={msgDropdown}
-                />
+                <li className='nav-item'></li>
+              </ul>
+            </div>
+            <div className='d-flex align-items-center'>
+              {pathname === '/' && (
+                <form className='d-flex searchInput' role='search'>
+                  <SearchQuestions />
+                </form>
               )}
-              {token ? (
-                user?.profilePic ? (
-                  <ProfileDropdown
-                    name={user?.fullName}
-                    setDropdown={setDropdown}
-                    dropdown={dropdown}
-                    profilePic={user?.profilePic}
+              <div className='topRightSide'>
+                {token && (
+                  <MessageDropdown
+                    setMsgDropdown={setMsgDropdown}
+                    msgDropdown={msgDropdown}
                   />
-                ) : (
-                  // <Link to={browserRoutes.SETTINGS}>
-                  //   <div className='topImg topNA'>
-                  //     {user?.fullName.slice(0, 2)}
-                  //   </div>
-                  // </Link>
-                  <ProfileDropdown
-                    name={user?.fullName}
-                    setDropdown={setDropdown}
-                    dropdown={dropdown}
-                    profilePic={user?.profilePic}
-                  />
-                )
-              ) : pathname === '/signin' ? (
-                <Button
-                  onClick={() => navigate('/signup')}
-                  color='success'
-                  variant='contained'
-                >
-                  Create Account
-                </Button>
-              ) : pathname === '/signup' ? (
-                <Button onClick={() => navigate('/signin')} variant='contained'>
-                  Login
-                </Button>
-              ) : (
-                <div className='noAuthLoginBtn'>
+                )}
+                {token ? (
+                  user?.profilePic ? (
+                    <ProfileDropdown
+                      name={user?.fullName}
+                      setDropdown={setDropdown}
+                      dropdown={dropdown}
+                      profilePic={user?.profilePic}
+                    />
+                  ) : (
+                    <ProfileDropdown
+                      name={user?.fullName}
+                      setDropdown={setDropdown}
+                      dropdown={dropdown}
+                      profilePic={user?.profilePic}
+                    />
+                  )
+                ) : pathname === '/signin' ? (
+                  <Button
+                    onClick={() => navigate('/signup')}
+                    color='success'
+                    variant='contained'
+                  >
+                    Create Account
+                  </Button>
+                ) : pathname === '/signup' ? (
                   <Button
                     onClick={() => navigate('/signin')}
                     variant='contained'
                   >
                     Login
                   </Button>
-                </div>
-              )}
-              {token && (
-                <div className={`form-check form-switch text-light`}>
-                  <input
-                    onClick={() => darkmode.toggle()}
-                    className='form-check-input'
-                    type='checkbox'
-                    id='flexSwitchCheckDefault'
-                  />
-                  <label
-                    className='form-check-label'
-                    htmlFor='flexSwitchCheckDefault'
-                  ></label>
-                </div>
-              )}
+                ) : (
+                  <div className='noAuthLoginBtn'>
+                    <Button
+                      onClick={() => navigate('/signin')}
+                      variant='contained'
+                    >
+                      Login
+                    </Button>
+                  </div>
+                )}
+                {token && (
+                  <div className={`form-check form-switch text-light`}>
+                    <input
+                      onClick={() => darkmode.toggle()}
+                      className='form-check-input'
+                      type='checkbox'
+                      id='flexSwitchCheckDefault'
+                    />
+                    <label
+                      className='form-check-label'
+                      htmlFor='flexSwitchCheckDefault'
+                    ></label>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

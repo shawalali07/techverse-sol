@@ -18,6 +18,7 @@ const signin = (formValue, navigate, setLoading) => async (dispatch) => {
         email: data?.email,
         fullName: data?.name,
         profilePic: data?.image,
+        id: data?._id,
       })
     );
     setLoading(false);

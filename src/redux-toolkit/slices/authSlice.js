@@ -7,6 +7,7 @@ export const authSlice = createSlice({
     fullName: '',
     email: '',
     profilePic: '',
+    id: '',
   },
   reducers: {
     setToken: (state, action) => {
@@ -14,6 +15,7 @@ export const authSlice = createSlice({
       state.email = action.payload.email;
       state.fullName = action.payload.fullName;
       state.profilePic = action.payload.profilePic;
+      state.id = action.payload.id;
     },
     destroyToken: (state) => {
       state.token = '';

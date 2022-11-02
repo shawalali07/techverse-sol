@@ -17,6 +17,8 @@ import { BeatLoader } from 'react-spinners';
 import NotFound from '../error/NotFound';
 import AnswerCard from './AnswerCard';
 const QuestionDetails = () => {
+  const id = useSelector((state) => state.authSlice.id);
+  console.log(id);
   const [subLoading, setSubLoading] = useState(false);
   const [comLoading, setComLoading] = useState(false);
 
@@ -75,6 +77,8 @@ const QuestionDetails = () => {
 
             {answers?.map((answer) => (
               <AnswerCard
+                userId={userId}
+                id={id}
                 setComLoading={setComLoading}
                 comLoading={comLoading}
                 answer={answer}

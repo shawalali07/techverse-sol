@@ -37,16 +37,22 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown }) => {
         }}
         className={msgDropdown ? `mDropdown1` : 'mDropdown'}
       >
-        <div className='msgCard'>
-          <div className='msgLeft'>
-            <img className='msgImg' src={shali} />
-          </div>
-          <div className='msgRight'>
-            <h1 className='msgSender'>Shawal Ali</h1>
-            <div className='msgInfo'>
-              <p className='msgText'>I want to know about you?</p>
-              <span className='msgTime'>2 hours ago</span>
+        <div className='msgCard flex flex-column'>
+          <div className=' d-flex align-items-center gap-3'>
+            <div className='msgLeft'>
+              <img className='msgImg' src={shali} />
             </div>
+            <div className='msgRight'>
+              <h1 className='msgSender'>Shawal Ali</h1>
+            </div>
+          </div>
+          <div className='msgInfo'>
+            <p className='msgText'>
+              I want to know about you? Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Incidunt tenetur quaerat quam aspernatur iure
+              esse saepe qui nemo eius amet.
+            </p>
+            <span className='msgTime'>2 hours ago</span>
           </div>
         </div>
       </div>

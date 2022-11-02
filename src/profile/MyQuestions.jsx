@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpecificUserQuestions } from '../redux-toolkit/actions/questions/question';
 import Questions from '../components/questions/Questions';
+import Table from '../Table';
 const MyQuestions = () => {
   const loading = useSelector((state) => state?.question?.loading);
 

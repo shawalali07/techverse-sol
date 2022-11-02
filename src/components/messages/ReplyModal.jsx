@@ -27,13 +27,17 @@ const ReplyModal = ({ replyModal }) => {
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <Button
-          onClick={() => dispatch(setReplyModal(false))}
-          variant='secondary'
-        >
-          Close
-        </Button>
-        <Button variant='primary'>Submit</Button>
+        <div className='replyBtnContainer'>
+          <Button
+            onClick={() => dispatch(setReplyModal(false))}
+            variant='contained'
+          >
+            Close
+          </Button>
+          <Button color='secondary' variant='contained'>
+            Submit
+          </Button>
+        </div>
       </Modal.Footer>
     </Modal>
   );

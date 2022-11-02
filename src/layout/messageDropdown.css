@@ -4,7 +4,7 @@
 
 .mDropdown1 {
   cursor: pointer;
-  padding: 10px;
+  padding: 16px;
   position: absolute;
   color: black;
   background-color: white;
@@ -19,12 +19,12 @@
 }
 
 .msgSender {
-  margin-left: 5px;
   justify-content: flex-start;
   align-items: center;
   display: flex;
   font-size: 18px;
   font-weight: 600;
+  margin-bottom: 0;
 }
 
 .msgImg {
@@ -38,9 +38,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-bottom: 5px;
-  /* background-color: lightgray; */
-  display: flex;
   border-bottom: 1px solid lightgray;
 }
 
@@ -56,15 +53,21 @@
 }
 
 .msgInfo {
-  padding-left: 5px;
+  padding-left: 56px;
   display: flex;
   justify-content: space-between;
 }
 
 .msgTime {
   font-size: 14px;
+  margin-left: 5px;
 }
 
 .msgText {
   font-size: 16px;
+  margin-bottom: 0;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
