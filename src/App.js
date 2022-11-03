@@ -17,7 +17,7 @@ import ProtectedRoutes from './authProtectedRoutes/ProtectedRoutes';
 import Knowledge from './components/knowledge/Knowledge';
 import KnowledgeDetails from './components/knowledge/KnowledgeDetails';
 import NotFound from './components/error/NotFound';
-import TopDevelopers from './developers/TopDevelopers';
+import TopDevelopers from './topDevelopers/TopDevelopers';
 import Developer from './developer/Developer';
 import Following from './components/following/Following';
 import Message from './components/messages/MessageModal';

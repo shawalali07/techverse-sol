@@ -11,14 +11,16 @@ import {
   submitAnswer,
   addComment,
   addVote,
+  canVote,
 } from '../../redux-toolkit/actions/answers/answers';
 import { browserRoutes } from '../../routes/browserRoutes';
 import { BeatLoader } from 'react-spinners';
 import NotFound from '../error/NotFound';
 import AnswerCard from './AnswerCard';
+import { useToken } from '../../hooks/register/useToken';
 const QuestionDetails = () => {
+  const token = useToken();
   const id = useSelector((state) => state.authSlice.id);
-  console.log(id);
   const [subLoading, setSubLoading] = useState(false);
   const [comLoading, setComLoading] = useState(false);
 
@@ -75,52 +77,73 @@ const QuestionDetails = () => {
               className='detDesc'
             ></p>
 
-            {answers?.map((answer) => (
-              <AnswerCard
-                userId={userId}
-                id={id}
-                setComLoading={setComLoading}
-                comLoading={comLoading}
-                answer={answer}
-                answerId={_id}
-              />
-            ))}
+            {answers?.length ? (
+              answers?.map((answer) => (
+                <AnswerCard
+                  userId={userId}
+                  id={id}
+                  setComLoading={setComLoading}
+                  comLoading={comLoading}
+                  answer={answer}
+                  answerId={_id}
+                />
+              ))
+            ) : (
+              <span className='noAnswer'>No answer posted yet</span>
+            )}
           </div>
-          <div className='detCenter'>
-            <div className='detAnsContainer'>
-              <div className='detCard'>
-                <div className='detTopCard'>
-                  <div className='detAnsLeft'>
-                    <h1 className='detWrite'>Write</h1>
+          {token ? (
+            <div className='detCenter'>
+              <div className='detAnsContainer'>
+                <div className='detCard'>
+                  <div className='detTopCard'>
+                    <div className='detAnsLeft'>
+                      <h1 className='detWrite'>Write</h1>
+                    </div>
                   </div>
-                </div>
-                <div className='detCenterCard'>
-                  <div className='detAnsDesc'>
-                    <TextEditor
-                      setFormValues={setFormValues}
-                      formValues={formValues}
-                    />
+                  <div className='detCenterCard'>
+                    <div className='detAnsDesc'>
+                      <TextEditor
+                        setFormValues={setFormValues}
+                        formValues={formValues}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className='detBottomCard'>
-                  <div className='detBtnContainer'>
-                    <Button
-                      disabled={subLoading}
-                      onClick={() =>
-                        dispatch(submitAnswer(formValues, setSubLoading))
-                      }
-                      style={{ borderRadius: '15px' }}
-                      className='detWriteBtn'
-                      size='medium'
-                      variant='contained'
-                    >
-                      Post
-                    </Button>
+                  <div className='detBottomCard'>
+                    <div className='detBtnContainer'>
+                      <Button
+                        disabled={subLoading}
+                        onClick={() =>
+                          dispatch(
+                            submitAnswer(
+                              formValues,
+                              setSubLoading,
+                              getAnswersById,
+                              _id
+                            )
+                          )
+                        }
+                        style={{ borderRadius: '15px' }}
+                        className='detWriteBtn'
+                        size='medium'
+                        variant='contained'
+                      >
+                        Post
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <span className='mustLogin'>
+              You must{' '}
+              <Link className='link mustLoginLink' to={browserRoutes.SIGNIN}>
+                login
+              </Link>{' '}
+              to answer
+            </span>
+          )}
         </>
       )}
     </div>

@@ -172,3 +172,23 @@
     padding-left: 36px;
   }
 }
+
+.mustLogin {
+  font-size: 18px;
+}
+
+.mustLoginLink {
+  font-style: italic;
+  font-weight: 600;
+  color: #2c58a0;
+}
+
+.noAnswer {
+  font-weight: 600;
+  padding: 10px;
+  font-size: 18px;
+  width: max-content;
+  background-color: lightgray;
+  box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.75);
+  border-radius: 20px;
+}
