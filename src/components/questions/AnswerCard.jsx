@@ -9,13 +9,24 @@ import {
   addComment,
   addVote,
 } from '../../redux-toolkit/actions/answers/answers';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useToken } from '../../hooks/register/useToken';
+import toast from 'react-hot-toast';
 const AnswerCard = ({ answer, answerId, userId, id }) => {
+  const canVote = useSelector((state) => state.answer.canVote);
+  const token = useToken();
   const [comLoading, setComLoading] = useState(false);
   const [voteLoading, setVoteLoading] = useState(false);
   const [commentDesc, setCommentDesc] = useState({});
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
+  const handleComment = () => {
+    if (!token) return toast.error('You must login to add comment');
+    setShow(!show);
+  };
+
+  console.log(canVote);
+
   return (
     <div className='detAnsContainer'>
       <div className='detCard'>
@@ -39,15 +50,24 @@ const AnswerCard = ({ answer, answerId, userId, id }) => {
             </span>
           </div>
           <div className='align-items-center gap-4 d-none d-md-flex'>
-            <ThumbUpOffAltIcon
-              onClick={() =>
-                dispatch(addVote({ answerId: answer?._id }, setVoteLoading))
-              }
-              style={{
-                cursor: 'pointer',
-                color: voteLoading && 'darkGray',
-              }}
-            />
+            {canVote ? (
+              <ThumbUpOffAltIcon
+                onClick={() =>
+                  dispatch(
+                    addVote(
+                      { answerId: answer?._id },
+                      setVoteLoading,
+                      getAnswersById,
+                      answerId
+                    )
+                  )
+                }
+                style={{
+                  cursor: 'pointer',
+                  color: voteLoading && 'darkGray',
+                }}
+              />
+            ) : null}
             <Badge
               color='primary'
               badgeContent={answer?.voteCount}
@@ -85,7 +105,7 @@ const AnswerCard = ({ answer, answerId, userId, id }) => {
         <div className='detBottomCard'>
           <div className='detBtnContainer'>
             <Button
-              onClick={() => setShow(!show)}
+              onClick={handleComment}
               style={{ borderRadius: '10px' }}
               className='detCommentBtn'
               size='small'

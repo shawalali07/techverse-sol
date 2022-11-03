@@ -10,7 +10,7 @@ import { BeatLoader, ClipLoader } from 'react-spinners';
 import ReactPaginate from 'react-paginate';
 import NotFound from '../error/NotFound';
 import { Badge } from '@mui/material';
-
+import { Skeleton } from '@mui/material';
 const AllQuestions = () => {
   const [pageNumber, setPageNumber] = useState(0);
 

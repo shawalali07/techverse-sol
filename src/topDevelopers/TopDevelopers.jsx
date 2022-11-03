@@ -19,6 +19,8 @@ export default function TopDevelopers() {
       field: 'name',
       headerName: 'Name',
       width: 230,
+
+      hideSortIcons: true,
       renderCell: (params) => {
         return (
           <div className='userListUser'>
@@ -38,16 +40,19 @@ export default function TopDevelopers() {
         );
       },
     },
-    { field: 'id', headerName: 'Email', width: 230 },
+    { field: 'id', headerName: 'Email', width: 230, hideSortIcons: true },
     {
       field: 'country',
       headerName: 'Country',
       width: 220,
+      hideSortIcons: true,
     },
     {
       field: 'followers',
       headerName: 'Followers',
       width: 150,
+      hideSortIcons: true,
+
       renderCell: (params) => {
         return (
           <div className='followersCell'>
@@ -61,6 +66,15 @@ export default function TopDevelopers() {
       field: 'points',
       headerName: 'Points',
       width: 180,
+      hideSortIcons: true,
+
+      renderCell: (params) => {
+        return (
+          <div className='pointsCell'>
+            <div>{params.row.points}</div>
+          </div>
+        );
+      },
     },
   ];
 
@@ -77,16 +91,14 @@ export default function TopDevelopers() {
   return (
     <div style={{ position: 'relative' }}>
       <div className='container'>
+        <h1 style={{ paddingTop: '90px' }}>Top Devs</h1>
         <div className='userList'>
           <DataGrid
-            align
+            autoHeight
             density='comfortable'
-            // autoHeight
-            // autoPageSize
             rows={topDev}
-            // disableSelectionOnClick
             columns={columns}
-            pageSize={10}
+            pageSize={8}
             loading={loading}
           />
         </div>

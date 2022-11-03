@@ -9,6 +9,7 @@ export const answer = createSlice({
     comments: [],
     loading: false,
     error: false,
+    canVote: null,
   },
   reducers: {
     startAnswersData: (state, action) => {
@@ -48,6 +49,9 @@ export const answer = createSlice({
       state.loading = false;
       state.error = true;
     },
+    setCanVote: (state, action) => {
+      state.canVote = action.payload;
+    },
   },
 });
 
@@ -60,6 +64,7 @@ export const {
   setMyAnswers,
   startMyAnswers,
   failMyAnswers,
+  setCanVote,
 } = answer.actions;
 
 export default answer.reducer;
