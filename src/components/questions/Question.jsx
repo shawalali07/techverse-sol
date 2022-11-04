@@ -1,14 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { browserRoutes } from '../../routes/browserRoutes';
 import { Link } from 'react-router-dom';
 const Question = (props) => {
-  const { question } = props;
+  const loading = useSelector((state) => state?.question?.loading);
 
+  const { question } = props;
   const allAnswers = useSelector((state) => state?.answer?.allAnswersData);
   const getNumOfAnswers = (id) => {
     return allAnswers?.filter((a) => a.questionId === id).length;
   };
 
+  console.log('bbbbbbbbbb', loading);
   return (
     <div
       key={question?._id}

@@ -7,7 +7,9 @@ import { askQuestion } from '../../redux-toolkit/actions/questions/question';
 import { BtnLoading } from '../loader/BtnLoading';
 import { Button } from '@mui/material';
 import { postKnowledge } from '../../redux-toolkit/actions/knowledge/knowledge';
+import { useNavigate } from 'react-router-dom';
 const TextEditorHeader = (props) => {
+  const navigate = useNavigate();
   const { tutorial } = props;
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -24,11 +26,11 @@ const TextEditorHeader = (props) => {
   };
 
   const onHandleQuestion = () => {
-    dispatch(askQuestion(formValues, setLoading));
+    dispatch(askQuestion(formValues, setLoading, navigate));
   };
 
   const onHandleKnowledge = () => {
-    dispatch(postKnowledge(formValues, setLoading));
+    dispatch(postKnowledge(formValues, setLoading, navigate));
   };
 
   return (
@@ -54,15 +56,12 @@ const TextEditorHeader = (props) => {
               value={title}
               onChange={onFormChange}
               type='text'
-              class='form-control'
+              class='form-control askTitle'
               style={{ width: '68rem', marginLeft: '0.5rem' }}
             />
-            {title.length > 40 && (
-              <span
-                className='mt-3'
-                style={{ color: 'red', marginRight: '49vw' }}
-              >
-                Max 40 characters allowed
+            {title.length > 80 && (
+              <span style={{ color: 'red', marginLeft: '10px' }}>
+                Max 80 characters allowed
               </span>
             )}
           </div>
@@ -102,7 +101,7 @@ const TextEditorHeader = (props) => {
               (description === '<p></p>') |
               !description |
               (tags.length < 1) |
-              (title.length > 40)
+              (title.length > 80)
             }
           >
             Submit

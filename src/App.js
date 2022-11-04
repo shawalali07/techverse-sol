@@ -30,13 +30,15 @@ function App() {
       <Toaster position='bottom-center' />
       <div className='App'>
         <Header />
-        {/* <Navbar /> */}
         <Routes>
           <Route exact path={browserRoutes.HOME} element={<AllQuestions />} />
           <Route
             path={browserRoutes.ASK_QUESTIONS}
             element={
-              <ProtectedRoutes redirectLink={browserRoutes.SIGNIN}>
+              <ProtectedRoutes
+                pathName='/askquestion'
+                redirectLink={browserRoutes.SIGNIN}
+              >
                 <AskQuestion />
               </ProtectedRoutes>
             }

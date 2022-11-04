@@ -1,12 +1,18 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useToken } from '../hooks/register/useToken';
 import isEmpty from '../utils/isEmpty';
 
 const AuthRoutes = ({ children, redirectLink }) => {
+  const location = useLocation();
   const token = useToken();
   if (!isEmpty(token)) {
-    return <Navigate to={redirectLink} replace />;
+    return (
+      <Navigate
+        to={location.state?.pathName ? location.state?.pathName : redirectLink}
+        replace
+      />
+    );
   }
   return children;
 };

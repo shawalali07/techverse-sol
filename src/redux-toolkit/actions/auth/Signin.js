@@ -26,7 +26,6 @@ const signin = (formValue, navigate, setLoading) => async (dispatch) => {
     dispatch(getQuestions());
     dispatch(getKnowledge(setLoading));
     dispatch(getSpecificUserQuestions());
-    navigate(browserRoutes.ASK_QUESTIONS);
   } catch (error) {
     setLoading(false);
     fail(error.response?.data?.message);

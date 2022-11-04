@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import { Link as RLink } from 'react-router-dom';
+import { Link as RLink, useLocation } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -41,7 +41,8 @@ const theme = createTheme();
 export default function Signin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
+  const location = useLocation();
+  console.log('location', location);
   const dispatch = useDispatch();
   const [formValues, setFormValues] = useState({
     email: '',
