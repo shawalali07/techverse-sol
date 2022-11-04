@@ -6,7 +6,7 @@ export const browserRoutes = {
   MYANSWERS: '/myanswers',
   SIGNIN: '/signin',
   SIGNUP: '/signup',
-  ASK_QUESTIONS: '/askquestion',
+  ASK_QUESTIONS: 'askquestion',
   QUESTION_DETAILS: '/question',
   WRITE: '/write',
   SETTINGS: '/settings',

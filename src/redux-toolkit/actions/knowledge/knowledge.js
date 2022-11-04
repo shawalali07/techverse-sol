@@ -1,4 +1,5 @@
 import { api } from '../../../configurations/AxiosIntercenptor';
+import { browserRoutes } from '../../../routes/browserRoutes';
 import { authRoutes } from '../../../routes/serverRoutes';
 import fail from '../../../utils/fail';
 import success from '../../../utils/success';
@@ -8,12 +9,13 @@ import {
   startKnowledge,
 } from '../../slices/knowledgeSlice';
 
-export const postKnowledge = async (formData, setLoading) => {
+export const postKnowledge = async (formData, setLoading, navigate) => {
   setLoading(true);
   try {
     const { data } = await api.post(authRoutes.KNOWLEDGE, formData);
     setLoading(false);
     success('Your post is submitted');
+    navigate(browserRoutes.HOME);
   } catch (error) {
     setLoading(false);
     fail(error?.response?.data?.message || 'Something went wrong....');

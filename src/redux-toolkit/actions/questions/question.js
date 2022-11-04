@@ -11,13 +11,15 @@ import {
 import success from '../../../utils/success';
 import { BASE_URL } from '../../../configurations/config';
 import fail from '../../../utils/fail';
+import { browserRoutes } from '../../../routes/browserRoutes';
 
-const askQuestion = async (formData, setLoading) => {
+const askQuestion = async (formData, setLoading, navigate) => {
   setLoading(true);
   try {
     const { data } = await api.post(authRoutes.ASK_QUESTION, formData);
     success('Your question is submitted');
     setLoading(false);
+    navigate(browserRoutes.HOME);
   } catch (error) {
     setLoading(false);
     fail(error?.response?.data?.message || 'Something went wrong....');

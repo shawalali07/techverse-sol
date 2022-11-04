@@ -77,20 +77,16 @@ const QuestionDetails = () => {
               className='detDesc'
             ></p>
 
-            {answers?.length ? (
-              answers?.map((answer) => (
-                <AnswerCard
-                  userId={userId}
-                  id={id}
-                  setComLoading={setComLoading}
-                  comLoading={comLoading}
-                  answer={answer}
-                  answerId={_id}
-                />
-              ))
-            ) : (
-              <span className='noAnswer'>No answer posted yet</span>
-            )}
+            {answers?.map((answer) => (
+              <AnswerCard
+                userId={userId}
+                id={id}
+                setComLoading={setComLoading}
+                comLoading={comLoading}
+                answer={answer}
+                answerId={_id}
+              />
+            ))}
           </div>
           {token ? (
             <div className='detCenter'>

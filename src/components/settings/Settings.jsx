@@ -4,10 +4,16 @@ import './settings.css';
 import { updateProfile } from '../../redux-toolkit/actions/profile/profile';
 import { useNavigate } from 'react-router-dom';
 import { countryList } from '../../constants/countries';
-import { hourlyRate } from '../../constants/hourlyRate';
+import {
+  hourlyRate,
+  designationList,
+  skillsList,
+} from '../../constants/hourlyRate';
 import { Autocomplete, Stack, TextField } from '@mui/material';
 const Settings = () => {
   const [country, setCountry] = useState('');
+  const [skills, setSkills] = useState('');
+  const [designation, setDesignation] = useState('');
   const [rate, setRate] = useState(null);
   const [isUpdated, setIsUpdated] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -20,6 +26,8 @@ const Settings = () => {
     password: '',
     aboutMe: '',
     country: '',
+    skills: '',
+    designation: '',
     rate: null,
   });
   const handleUpdateChange = ({ target: { name, value } }) => {
@@ -34,13 +42,15 @@ const Settings = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append('photo', file);
-    data.append('name', formData.name);
-    data.append('email', formData.email);
-    data.append('password', formData.password);
-    data.append('country', formData.country);
-    data.append('aboutMe', formData.aboutMe);
-    data.append('rate', formData.rate);
+    file && data.append('photo', file);
+    formData.name && data.append('name', formData.name);
+    formData.email && data.append('email', formData.email);
+    formData.password && data.append('password', formData.password);
+    formData.country && data.append('country', formData.country);
+    formData.aboutMe && data.append('aboutMe', formData.aboutMe);
+    formData.rate && data.append('rate', formData.rate);
+    formData.skills && data.append('rate', formData.skills);
+    formData.designation && data.append('rate', formData.designation);
     dispatch(updateProfile(data, setLoading));
   };
 
@@ -115,34 +125,68 @@ const Settings = () => {
               type='text'
             ></textarea>
           </div>
-          <Autocomplete
-            className='mt-4'
-            sx={{ width: 300 }}
-            disablePortal
-            options={countryList}
-            renderInput={(params) => (
-              <TextField {...params} label='Select Country' />
-            )}
-            value={country}
-            onChange={(event, newValue) => {
-              setIsUpdated(true);
-              setCountry(newValue);
-            }}
-          />
-          <Autocomplete
-            className='mt-3'
-            sx={{ width: 300 }}
-            disablePortal
-            options={hourlyRate}
-            renderInput={(params) => (
-              <TextField {...params} label='Select Hourly Rate' />
-            )}
-            value={rate}
-            onChange={(event, newValue) => {
-              setIsUpdated(true);
-              setRate(newValue);
-            }}
-          />
+          <div className='settingsMoreDetails'>
+            <div className='moreDetailsSection'>
+              <Autocomplete
+                className='mt-3 '
+                sx={{ width: 300 }}
+                disablePortal
+                options={countryList}
+                renderInput={(params) => (
+                  <TextField {...params} label='Select Country' />
+                )}
+                value={country}
+                onChange={(event, newValue) => {
+                  setIsUpdated(true);
+                  setCountry(newValue);
+                }}
+              />
+              <Autocomplete
+                className='mt-3 '
+                sx={{ width: 300 }}
+                disablePortal
+                options={hourlyRate}
+                renderInput={(params) => (
+                  <TextField {...params} label='Select Hourly Rate' />
+                )}
+                value={rate}
+                onChange={(event, newValue) => {
+                  setIsUpdated(true);
+                  setRate(newValue);
+                }}
+              />
+            </div>
+            <div className='moreDetailsSection'>
+              <Autocomplete
+                className='mt-3'
+                sx={{ width: 300 }}
+                disablePortal
+                options={designationList}
+                renderInput={(params) => (
+                  <TextField {...params} label='Select Designation' />
+                )}
+                value={designation}
+                onChange={(event, newValue) => {
+                  setIsUpdated(true);
+                  setDesignation(newValue);
+                }}
+              />
+              <Autocomplete
+                className='mt-3'
+                sx={{ width: 300 }}
+                disablePortal
+                options={skills}
+                renderInput={(params) => (
+                  <TextField {...params} label='Select Skills' />
+                )}
+                value={skills}
+                onChange={(event, newValue) => {
+                  setIsUpdated(true);
+                  setSkills(newValue);
+                }}
+              />
+            </div>
+          </div>
           <button
             onClick={handleUpdate}
             className='settingsSubmit'

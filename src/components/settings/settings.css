@@ -133,3 +133,13 @@
   width: 50px;
   margin-top: -65px;
 }
+
+.settingsMoreDetails {
+  display: flex;
+  gap: 30px;
+}
+
+.moreDetailsSection {
+  display: flex;
+  flex-direction: column;
+}
