@@ -15,7 +15,7 @@ export const postKnowledge = async (formData, setLoading, navigate) => {
     const { data } = await api.post(authRoutes.KNOWLEDGE, formData);
     setLoading(false);
     success('Your post is submitted');
-    navigate(browserRoutes.HOME);
+    navigate(browserRoutes.KNOWLEDGE);
   } catch (error) {
     setLoading(false);
     fail(error?.response?.data?.message || 'Something went wrong....');

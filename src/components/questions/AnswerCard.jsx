@@ -25,8 +25,6 @@ const AnswerCard = ({ answer, answerId, userId, id }) => {
     setShow(!show);
   };
 
-  console.log(canVote);
-
   return (
     <div className='detAnsContainer'>
       <div className='detCard'>

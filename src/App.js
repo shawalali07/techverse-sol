@@ -81,6 +81,7 @@ function App() {
             path={`${browserRoutes.QUESTION_DETAILS}/:id`}
             element={<QuestionDetails />}
           />
+
           <Route
             path={browserRoutes.WRITE}
             element={

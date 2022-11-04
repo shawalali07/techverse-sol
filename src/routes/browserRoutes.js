@@ -8,6 +8,7 @@ export const browserRoutes = {
   SIGNUP: '/signup',
   ASK_QUESTIONS: 'askquestion',
   QUESTION_DETAILS: '/question',
+  QUESTION_DETAILS2: '/question',
   WRITE: '/write',
   SETTINGS: '/settings',
   DEVELOPERS: '/developers',

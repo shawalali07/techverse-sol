@@ -11,9 +11,14 @@
 }
 
 .myAnsImg {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: antiquewhite;
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .myAuthorInfo {
@@ -39,5 +44,5 @@
   -webkit-line-clamp: 10;
   -webkit-box-orient: vertical;
   text-align: left;
-  padding: 10px 0px 0px 10px;
+  padding: 10px 10px 0px 10px;
 }

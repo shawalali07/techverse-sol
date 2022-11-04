@@ -10,7 +10,6 @@ const Question = (props) => {
     return allAnswers?.filter((a) => a.questionId === id).length;
   };
 
-  console.log('bbbbbbbbbb', loading);
   return (
     <div
       key={question?._id}

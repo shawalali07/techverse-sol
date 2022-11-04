@@ -12,7 +12,6 @@ import MessageDropdown from './MessageDropdown';
 import ReplyModal from '../components/messages/ReplyModal';
 const Header = () => {
   const replyModal = useSelector((state) => state.modal.replyModal);
-  console.log(replyModal);
 
   const navigate = useNavigate();
   const [dropdown, setDropdown] = useState(false);

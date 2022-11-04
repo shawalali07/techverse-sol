@@ -1,8 +1,11 @@
-import { useState } from 'react';
 import './myAnswer.css';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { browserRoutes } from '../routes/browserRoutes';
+import { useSelector } from 'react-redux';
 const MyAnswer = (props) => {
   const { myAnswers } = props;
-
+  console.log(myAnswers);
   return (
     <div className='newMyAns'>
       <div className='myCard'>

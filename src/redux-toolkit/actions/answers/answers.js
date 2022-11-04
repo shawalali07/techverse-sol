@@ -97,13 +97,3 @@ export const addVote =
       setVoteLoading(false);
     }
   };
-
-// export const canVote = (id) => async (dispatch) => {
-//   console.log(id);
-//   try {
-//     const { data } = await api.post(authRoutes.CANVOTE, { questionId: id });
-//     dispatch(setCanVote(data));
-//   } catch (error) {
-//     fail(error?.response?.data?.message);
-//   }
-// };

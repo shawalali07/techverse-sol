@@ -49,8 +49,8 @@ const Settings = () => {
     formData.country && data.append('country', formData.country);
     formData.aboutMe && data.append('aboutMe', formData.aboutMe);
     formData.rate && data.append('rate', formData.rate);
-    formData.skills && data.append('rate', formData.skills);
-    formData.designation && data.append('rate', formData.designation);
+    formData.skills && data.append('skills', formData.skills);
+    formData.designation && data.append('designation', formData.designation);
     dispatch(updateProfile(data, setLoading));
   };
 
@@ -61,6 +61,14 @@ const Settings = () => {
   useEffect(() => {
     setFormData({ ...formData, rate: rate });
   }, [rate]);
+
+  useEffect(() => {
+    setFormData({ ...formData, skills: skills });
+  }, [skills]);
+
+  useEffect(() => {
+    setFormData({ ...formData, designation: designation });
+  }, [designation]);
 
   return (
     <div className='settings'>
@@ -135,7 +143,7 @@ const Settings = () => {
                 renderInput={(params) => (
                   <TextField {...params} label='Select Country' />
                 )}
-                value={country}
+                value={user?.country ? user?.country : country}
                 onChange={(event, newValue) => {
                   setIsUpdated(true);
                   setCountry(newValue);
@@ -149,7 +157,7 @@ const Settings = () => {
                 renderInput={(params) => (
                   <TextField {...params} label='Select Hourly Rate' />
                 )}
-                value={rate}
+                value={user?.rate ? user?.rate : rate}
                 onChange={(event, newValue) => {
                   setIsUpdated(true);
                   setRate(newValue);
@@ -165,7 +173,7 @@ const Settings = () => {
                 renderInput={(params) => (
                   <TextField {...params} label='Select Designation' />
                 )}
-                value={designation}
+                value={user?.designation ? user?.designation : designation}
                 onChange={(event, newValue) => {
                   setIsUpdated(true);
                   setDesignation(newValue);
@@ -179,7 +187,7 @@ const Settings = () => {
                 renderInput={(params) => (
                   <TextField {...params} label='Select Skills' />
                 )}
-                value={skills}
+                value={user?.skills ? user?.skills : skills}
                 onChange={(event, newValue) => {
                   setIsUpdated(true);
                   setSkills(newValue);

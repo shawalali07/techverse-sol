@@ -16,6 +16,10 @@ export const authSlice = createSlice({
       state.fullName = action.payload.fullName;
       state.profilePic = action.payload.profilePic;
       state.id = action.payload.id;
+      state.rate = action.payload.rate;
+      state.country = action.payload.country;
+      state.designation = action.payload.designation;
+      state.skills = action.payload.skills;
     },
     destroyToken: (state) => {
       state.token = '';
@@ -27,6 +31,10 @@ export const authSlice = createSlice({
       state.email = action.payload.email;
       state.fullName = action.payload.name;
       state.profilePic = action.payload.image;
+      state.rate = action.payload.rate;
+      state.country = action.payload.country;
+      state.designation = action.payload.designation;
+      state.skills = action.payload.skills;
     },
   },
 });
