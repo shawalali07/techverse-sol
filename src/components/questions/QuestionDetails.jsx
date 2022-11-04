@@ -18,34 +18,25 @@ import { BeatLoader } from 'react-spinners';
 import NotFound from '../error/NotFound';
 import AnswerCard from './AnswerCard';
 import { useToken } from '../../hooks/register/useToken';
+import { getQuestionsById } from '../../redux-toolkit/actions/questions/question';
 const QuestionDetails = () => {
   const token = useToken();
-  const id = useSelector((state) => state.authSlice.id);
+  const idd = useSelector((state) => state.authSlice.id);
+  const question = useSelector((state) => state.question.questionId);
   const [subLoading, setSubLoading] = useState(false);
   const [comLoading, setComLoading] = useState(false);
 
   const {
-    state: {
-      question: {
-        title,
-        description,
-        userName,
-        userImage,
-        tags,
-        updatedAt,
-        _id,
-        userId,
-      },
-    },
+    state: { id },
   } = useLocation();
-  const [formValues, setFormValues] = useState({ questionId: _id });
+  const [formValues, setFormValues] = useState({ questionId: id });
 
   const dispatch = useDispatch();
   const answers = useSelector((state) => state?.answer?.answersData);
   const loading = useSelector((state) => state?.answer?.loading);
-  console.log(useLocation());
   useEffect(() => {
-    dispatch(getAnswersById(_id));
+    dispatch(getAnswersById(id));
+    dispatch(getQuestionsById(id));
   }, []);
 
   return (
@@ -57,34 +48,38 @@ const QuestionDetails = () => {
       ) : (
         <>
           <div className='detTop'>
-            <h1 className='detTitle'>{title}</h1>
+            <h1 className='detTitle'>{question?.title}</h1>
             <div className='detInfo'>
-              <span>asked {moment(updatedAt).startOf('hour').fromNow()},</span>
+              <span>asked {moment(question?.updatedAt).fromNow()},</span>
               <Link
                 className='link'
-                to={browserRoutes.DEVELOPERS + '/' + userId}
-                state={{ data: { data: userId } }}
+                to={browserRoutes.DEVELOPERS + '/' + question.userId}
+                state={{ data: { data: question?.userId } }}
               >
                 <span>
-                  by <b style={{ textTransform: 'capitalize' }}>{userName}</b>
+                  by{' '}
+                  <b style={{ textTransform: 'capitalize' }}>
+                    {question?.userName}
+                  </b>
                 </span>
               </Link>
             </div>
           </div>
           <div className='detCenter'>
             <p
-              dangerouslySetInnerHTML={{ __html: description }}
+              dangerouslySetInnerHTML={{ __html: question?.description }}
               className='detDesc'
             ></p>
 
             {answers?.map((answer) => (
               <AnswerCard
-                userId={userId}
+                canVote={question?.canVote}
+                userId={question?.userId}
                 id={id}
                 setComLoading={setComLoading}
                 comLoading={comLoading}
                 answer={answer}
-                answerId={_id}
+                answerId={id}
               />
             ))}
           </div>
@@ -115,7 +110,7 @@ const QuestionDetails = () => {
                               formValues,
                               setSubLoading,
                               getAnswersById,
-                              _id
+                              id
                             )
                           )
                         }

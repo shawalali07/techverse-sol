@@ -183,7 +183,7 @@ const Settings = () => {
                 className='mt-3'
                 sx={{ width: 300 }}
                 disablePortal
-                options={skills}
+                options={skillsList}
                 renderInput={(params) => (
                   <TextField {...params} label='Select Skills' />
                 )}

@@ -5,19 +5,20 @@ import {
   getKnowledgeByUser,
 } from '../../redux-toolkit/actions/knowledge/knowledge';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useToken } from '../../hooks/register/useToken';
 import { useDispatch, useSelector } from 'react-redux';
 import { Autocomplete, Button, Stack, TextField } from '@mui/material';
 import { BeatLoader } from 'react-spinners';
 import NotFound from '../error/NotFound';
 import NotFoundResult from '../error/NotFoundResult';
-const Knowledge = () => {
+const KnowledgeUser = () => {
+  const { id } = useParams();
   const [query, setQuery] = useState('');
   const token = useToken();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  let knowledge = useSelector((state) => state?.knowledge?.knowledgeData);
+  let knowledge = useSelector((state) => state?.knowledge?.knowledgeUser);
   let loading = useSelector((state) => state?.knowledge?.loading);
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -55,7 +56,7 @@ const Knowledge = () => {
     );
 
   useEffect(() => {
-    dispatch(getKnowledgeByUser());
+    dispatch(getKnowledgeByUser(id));
   }, []);
 
   return (
@@ -194,4 +195,4 @@ const Knowledge = () => {
   );
 };
 
-export default Knowledge;
+export default KnowledgeUser;

@@ -10,10 +10,26 @@ export const question = createSlice({
     specificUserQuestions: [],
     fetchData: null,
     questionQuery: '',
+    questionId: [],
   },
   reducers: {
     setFetchData: (state, action) => {
       state.fetchData = action.payload;
+    },
+    startQuestionsId: (state, action) => {
+      state.questionId = [];
+      state.loading = true;
+      state.error = false;
+    },
+    setQuestionsId: (state, action) => {
+      state.questionId = action.payload;
+      state.loading = false;
+      state.error = false;
+    },
+    failQuestionsId: (state, action) => {
+      state.questionId = [];
+      state.loading = false;
+      state.error = true;
     },
     startQuestionsData: (state, action) => {
       state.questionsData = [];
@@ -64,6 +80,9 @@ export const {
   setSpecificUserQuestions,
   setFetchData,
   setSearchQuery,
+  startQuestionsId,
+  setQuestionsId,
+  failQuestionsId,
 } = question.actions;
 
 export default question.reducer;

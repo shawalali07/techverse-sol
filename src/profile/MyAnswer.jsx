@@ -5,12 +5,16 @@ import { browserRoutes } from '../routes/browserRoutes';
 import { useSelector } from 'react-redux';
 const MyAnswer = (props) => {
   const { myAnswers } = props;
-  console.log(myAnswers);
   return (
     <div className='newMyAns'>
       <div className='myCard'>
         <div className='topMyContainer'>
-          <h5 className='myTitle'>{myAnswers?.questionTitle}</h5>
+          <Link
+            state={{ id: myAnswers?.questionId }}
+            to={browserRoutes.QUESTION_DETAILS + '/' + myAnswers?.questionId}
+          >
+            <h5 className='myTitle'>{myAnswers?.questionTitle}</h5>
+          </Link>
           <div className='myAuthorInfo'>
             <span className='myAuthor'>Shali 2 hours ago</span>
             {myAnswers?.userImage ? (

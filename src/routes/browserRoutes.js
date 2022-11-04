@@ -13,7 +13,7 @@ export const browserRoutes = {
   SETTINGS: '/settings',
   DEVELOPERS: '/developers',
   TUTORIAL: '/tutorial',
-  KNOWLEDGE: '/knowledge',
+  KNOWLEDGE: '/user/knowledge',
   FOLLOWING: '/following',
   MESSAGE: '/message',
   SNIPPETS: '/snippets',

@@ -2,10 +2,13 @@ import { api } from '../../../configurations/AxiosIntercenptor';
 import { authRoutes } from '../../../routes/serverRoutes';
 import {
   failQuestionsData,
+  failQuestionsId,
   failSpecificQuestionsData,
   setQuestionsData,
+  setQuestionsId,
   setSpecificUserQuestions,
   startQuestionsData,
+  startQuestionsId,
   startSpecificQuestions,
 } from '../../slices/questionSlice';
 import success from '../../../utils/success';
@@ -37,6 +40,17 @@ const getQuestions = () => async (dispatch) => {
   }
 };
 
+const getQuestionsById = (id) => async (dispatch) => {
+  dispatch(startQuestionsId());
+
+  try {
+    const { data } = await api.get(`${authRoutes.GET_QUESTIONS}/${id}`);
+    dispatch(setQuestionsId(data));
+  } catch (error) {
+    dispatch(failQuestionsId());
+  }
+};
+
 const getSpecificUserQuestions = () => async (dispatch) => {
   dispatch(startSpecificQuestions());
   try {
@@ -47,4 +61,9 @@ const getSpecificUserQuestions = () => async (dispatch) => {
   }
 };
 
-export { askQuestion, getQuestions, getSpecificUserQuestions };
+export {
+  askQuestion,
+  getQuestions,
+  getSpecificUserQuestions,
+  getQuestionsById,
+};
