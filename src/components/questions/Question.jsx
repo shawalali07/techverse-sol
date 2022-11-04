@@ -26,7 +26,7 @@ const Question = (props) => {
       <div>
         <Link
           style={{ textDecoration: 'none' }}
-          state={{ question: question, id: question?._id }}
+          state={{ id: question?._id }}
           to={browserRoutes.QUESTION_DETAILS + '/' + question?._id}
         >
           <span className='title display-block'>{question?.title}</span>

@@ -5,8 +5,14 @@ import fail from '../../../utils/fail';
 import success from '../../../utils/success';
 import {
   failKnowledgeData,
+  failKnowledgeDataId,
+  failKnowledgeUser,
   setKnowledge,
+  setKnowledgeId,
+  setKnowledgeUser,
   startKnowledge,
+  startKnowledgeId,
+  startKnowledgeUser,
 } from '../../slices/knowledgeSlice';
 
 export const postKnowledge = async (formData, setLoading, navigate) => {
@@ -29,9 +35,30 @@ export const getKnowledge = (tag) => async (dispatch) => {
     const { data } = await api.get(
       `${authRoutes.KNOWLEDGE}?queryTag=${tag ? tag : ''}`
     );
-
     dispatch(setKnowledge(data));
   } catch (error) {
     dispatch(failKnowledgeData());
+  }
+};
+
+export const getKnowledgeById = (id) => async (dispatch) => {
+  dispatch(startKnowledgeId());
+
+  try {
+    const { data } = await api.get(`${authRoutes.KNOWLEDGE}/${id}`);
+    dispatch(setKnowledgeId(data));
+  } catch (error) {
+    dispatch(failKnowledgeDataId());
+  }
+};
+
+export const getKnowledgeByUser = (id) => async (dispatch) => {
+  dispatch(startKnowledgeUser());
+
+  try {
+    const { data } = await api.get(`${authRoutes.KNOWLEDGE}/user/${id}`);
+    dispatch(setKnowledgeUser(data));
+  } catch (error) {
+    dispatch(failKnowledgeUser());
   }
 };

@@ -7,6 +7,7 @@ import { browserRoutes } from '../routes/browserRoutes';
 import { Stack, TextField } from '@mui/material';
 import { getTopDevs } from '../redux-toolkit/actions/developers/developers';
 import { useDispatch, useSelector } from 'react-redux';
+import { getKnowledgeByUser } from '../redux-toolkit/actions/knowledge/knowledge';
 export default function TopDevelopers() {
   // let [data, setData] = useState(userRows);
   let topDev = useSelector((state) => state.developer.topDevelopers);
@@ -48,7 +49,7 @@ export default function TopDevelopers() {
       hideSortIcons: true,
     },
     {
-      field: 'followers',
+      field: 'followerCount',
       headerName: 'Followers',
       width: 150,
       hideSortIcons: true,
@@ -56,7 +57,7 @@ export default function TopDevelopers() {
       renderCell: (params) => {
         return (
           <div className='followersCell'>
-            <div>{params.row.followers}</div>
+            <div>{params.row.followerCount}</div>
           </div>
         );
       },

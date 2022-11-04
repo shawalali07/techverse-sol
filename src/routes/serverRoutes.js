@@ -11,6 +11,7 @@ export const authRoutes = {
   ADD_COMMENT: '/answers/',
   COMMENTS: '/comments/get',
   KNOWLEDGE: '/knowledge',
+  GET_KNOWLEDGE: '/users/knowledge',
   ADD_VOTE: '/answers/vote',
   TOP_DEVS: '/users/top',
   CANVOTE: '/questions/canvote',

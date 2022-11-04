@@ -33,8 +33,8 @@ export const getAnswersById = (id) => async (dispatch) => {
   dispatch(startAnswersData());
   try {
     const { data } = await api.get(`${authRoutes.GET_ANSWERS}/${id}`);
-    const data2 = await api.post(authRoutes.CANVOTE, { questionId: id });
-    dispatch(setCanVote(data2.data));
+    // const data2 = await api.post(authRoutes.CANVOTE, { _id: id });
+    // dispatch(setCanVote(data2.data));
     dispatch(setAnswersData(data));
   } catch (error) {
     dispatch(failAnswersData());

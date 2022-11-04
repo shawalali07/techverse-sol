@@ -86,17 +86,19 @@ const AllQuestions = () => {
             <div className='questionsComponent'>
               <Questions questions={searchedQuestions} loading={loading} />
               <div style={{ marginTop: '40px' }}>
-                <ReactPaginate
-                  previousLabel={'Prev <<'}
-                  nextLabel={'Next >>'}
-                  pageCount={pageCount}
-                  onPageChange={changePage}
-                  containerClassName={'paginationBttns'}
-                  previousLinkClassName={'previousBttn'}
-                  nextLinkClassName={'nextBttn'}
-                  disabledClassName={'paginationDisabled'}
-                  activeClassName={'paginationActive'}
-                />
+                {questions?.length > 4 ? (
+                  <ReactPaginate
+                    previousLabel={'Prev <<'}
+                    nextLabel={'Next >>'}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={'paginationBttns'}
+                    previousLinkClassName={'previousBttn'}
+                    nextLinkClassName={'nextBttn'}
+                    disabledClassName={'paginationDisabled'}
+                    activeClassName={'paginationActive'}
+                  />
+                ) : null}
               </div>
             </div>
           </>

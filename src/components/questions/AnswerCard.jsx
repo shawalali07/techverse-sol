@@ -12,8 +12,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useToken } from '../../hooks/register/useToken';
 import toast from 'react-hot-toast';
-const AnswerCard = ({ answer, answerId, userId, id }) => {
-  const canVote = useSelector((state) => state.answer.canVote);
+const AnswerCard = ({ answer, answerId, canVote }) => {
   const token = useToken();
   const [comLoading, setComLoading] = useState(false);
   const [voteLoading, setVoteLoading] = useState(false);
@@ -44,7 +43,7 @@ const AnswerCard = ({ answer, answerId, userId, id }) => {
             </Link>
             <span className='detAnsAnswered'>answered</span>
             <span className='detAnsTime'>
-              {moment(answer?.updatedAt).startOf('hour').fromNow()}
+              {moment(answer?.createdAt).fromNow()}
             </span>
           </div>
           <div className='align-items-center gap-4 d-none d-md-flex'>
@@ -93,7 +92,7 @@ const AnswerCard = ({ answer, answerId, userId, id }) => {
                 <span className='detCommented'>commented</span>
                 <span className='detCommentTime'>
                   {' '}
-                  {moment(comment?.updatedAt).startOf('hour').fromNow()}
+                  {moment(comment?.createdAt).fromNow()}
                 </span>
               </div>
               <p className='detAnsCommentText'>{comment?.description}</p>

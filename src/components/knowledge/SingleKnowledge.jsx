@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { getKnowledgeById } from '../../redux-toolkit/actions/knowledge/knowledge';
 import './singleKnowledge.css';
 
 const SingleKnowledge = ({ k, setTag }) => {
@@ -9,7 +12,11 @@ const SingleKnowledge = ({ k, setTag }) => {
         key={k._id}
         className='knowledgeCard'
       >
-        <Link state={{ data: k }} className='link' to={`/knowledge/${k?._id}`}>
+        <Link
+          state={{ id: k?._id }}
+          className='link'
+          to={`/knowledge/${k?._id}`}
+        >
           <h3 className='knowledgeTitle'>{k.title}</h3>
         </Link>
         <div className='knowContent'>

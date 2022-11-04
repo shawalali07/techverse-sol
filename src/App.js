@@ -24,6 +24,7 @@ import Message from './components/messages/MessageModal';
 import Navbar from './layout/Navbar';
 import Snippets from './components/snippets/Snippets';
 import SnippetDetails from './components/snippets/SnippetDetails';
+import KnowledgeUser from './components/knowledge/KnowledgeUser';
 function App() {
   return (
     <>
@@ -92,6 +93,10 @@ function App() {
           />
           <Route path={browserRoutes.SETTINGS} element={<Settings />} />
           <Route path={browserRoutes.KNOWLEDGE} element={<Knowledge />} />
+          <Route
+            path={browserRoutes.KNOWLEDGE + '/:id'}
+            element={<KnowledgeUser />}
+          />
           <Route path={browserRoutes.FOLLOWING} element={<Following />} />
           <Route path={browserRoutes.SNIPPETS} element={<Snippets />} />
           <Route

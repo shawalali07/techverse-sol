@@ -14,7 +14,8 @@ import { useState, useEffect } from 'react';
 import QuoteModal from './QuoteModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTopDevs } from '../redux-toolkit/actions/developers/developers';
-
+import { getKnowledgeByUser } from '../redux-toolkit/actions/knowledge/knowledge';
+import { browserRoutes } from '../routes/browserRoutes';
 export default function Developer() {
   let topDev = useSelector((state) => state.developer.topDevelopers);
   const dispatch = useDispatch();
@@ -147,15 +148,23 @@ export default function Developer() {
                 showZero
               ></Badge>
             </span>
-            <span className='achievementInfo'>
-              Shared Knowledge{' '}
-              <Badge
-                className='ansBadge'
-                color='error'
-                badgeContent={data?.knowledge || 0}
-                showZero
-              ></Badge>
-            </span>
+            {
+              <span className='achievementInfo '>
+                <Link
+                  style={{ fontStyle: 'italic', color: 'blue' }}
+                  className='link'
+                  to={browserRoutes.KNOWLEDGE + '/' + data?._id}
+                >
+                  Shared Knowledge{' '}
+                  <Badge
+                    className='ansBadge'
+                    color='error'
+                    badgeContent={data?.knowledge || 0}
+                    showZero
+                  ></Badge>
+                </Link>
+              </span>
+            }
           </div>
         </div>
       </div>
