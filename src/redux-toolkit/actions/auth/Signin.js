@@ -19,6 +19,10 @@ const signin = (formValue, navigate, setLoading) => async (dispatch) => {
         fullName: data?.name,
         profilePic: data?.image,
         id: data?._id,
+        rate: data?.rate,
+        designation: data?.designation,
+        country: data?.country,
+        skills: data?.skills,
       })
     );
     setLoading(false);

@@ -42,7 +42,6 @@ export default function Signin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const location = useLocation();
-  console.log('location', location);
   const dispatch = useDispatch();
   const [formValues, setFormValues] = useState({
     email: '',
@@ -125,7 +124,6 @@ export default function Signin() {
                   error={error.password}
                 />
               </div>
-
               <Button
                 disabled={loading}
                 type='submit'

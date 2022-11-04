@@ -1,6 +1,7 @@
 import {
   AttachMoney,
   CalendarToday,
+  LocalLibraryOutlined,
   LocationSearching,
   MailOutline,
   PermIdentity,
@@ -37,6 +38,7 @@ export default function Developer() {
     data.aboutMe = topDev.aboutMe;
     data.answers = topDev.answers;
     data.points = topDev.points;
+    data.skills = topDev.skills;
   }
 
   return (
@@ -56,7 +58,7 @@ export default function Developer() {
             )}
             <div className='userShowTopTitle'>
               <span className='userShowUsername'>{data?.name}</span>
-              <span className='userShowUserTitle'>Software Engineer</span>
+              <span className='userShowUserTitle'>{data?.designation}</span>
             </div>
           </div>
           <div className='userShowBottom'>
@@ -77,6 +79,10 @@ export default function Developer() {
             <div className='userShowInfo'>
               <LocationSearching className='userShowIcon' />
               <span className='userShowInfoTitle'>{data?.country}</span>
+            </div>
+            <div className='userShowInfo'>
+              <LocalLibraryOutlined className='userShowIcon' />
+              <span className='userShowInfoTitle'>{data?.skills}</span>
             </div>
             <div className='userShowInfo'>
               <AttachMoney className='userShowIcon' />
@@ -138,6 +144,15 @@ export default function Developer() {
                 className='ansBadge'
                 color='error'
                 badgeContent={data?.answers || 0}
+                showZero
+              ></Badge>
+            </span>
+            <span className='achievementInfo'>
+              Shared Knowledge{' '}
+              <Badge
+                className='ansBadge'
+                color='error'
+                badgeContent={data?.knowledge || 0}
                 showZero
               ></Badge>
             </span>

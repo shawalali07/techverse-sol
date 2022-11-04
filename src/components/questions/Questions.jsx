@@ -17,19 +17,6 @@ const Questions = (props) => {
   }, []);
 
   return (
-    // <div>
-    //   <div className='qContainer questions d-flex flex-column justify-content-center align-items-center mt-4 px-0'>
-    //     {loading ? (
-    //       <div style={{ marginRight: '17vw', marginTop: '8vh' }}>
-    //         <BeatLoader size={40} />
-    //       </div>
-    //     ) : !loading && !questions?.length ? (
-    //       <NotFound msg="You haven't asked any question " />
-    //     ) : (
-    //       questions?.map((question) => <Question question={question} />)
-    //     )}
-    //   </div>
-    // </div>
     <div>
       <div className='qContainer questions d-flex flex-column justify-content-center align-items-center mt-4 px-0'>
         {questions?.map((question) => (
