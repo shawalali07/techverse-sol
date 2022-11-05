@@ -83,7 +83,8 @@ code {
 }
 
 .nav-text a:hover {
-  background-color: #1a83ff;
+  background-color: #69bfed;
+  color: #69bfed;
 }
 
 .nav-menu-items {
@@ -288,7 +289,7 @@ code {
 
 .paginationBttns a:hover {
   color: white;
-  background-color: #2b2eff;
+  background-color: #69bfed;
 }
 
 .paginationActive a {
@@ -314,5 +315,4 @@ code {
   justify-content: center;
 }
 
-.followersCell {
-}
+.followersCell {}
