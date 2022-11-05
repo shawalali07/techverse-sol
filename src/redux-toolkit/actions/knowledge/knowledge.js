@@ -33,9 +33,9 @@ export const getKnowledge = (tag) => async (dispatch) => {
 
   try {
     const { data } = await api.get(
-      `${authRoutes.KNOWLEDGE}?queryTag=${tag ? tag : ''}`
+      `${authRoutes.KNOWLEDGE}/query?queryTag=${tag ? tag : ''}`
     );
-    dispatch(setKnowledge(data));
+    dispatch(setKnowledge(data?.knowledge));
   } catch (error) {
     dispatch(failKnowledgeData());
   }
