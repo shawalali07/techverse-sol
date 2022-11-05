@@ -132,6 +132,11 @@ nav a.active {
   font-weight: bold;
 }
 
+nav a:hover {
+  color: rgb(0, 166, 255);
+  font-weight: bold;
+}
+
 .topNA {
   text-transform: uppercase;
   display: flex;

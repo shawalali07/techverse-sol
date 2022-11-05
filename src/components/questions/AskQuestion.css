@@ -1,5 +1,5 @@
-.textEditorHeader {
-}
+.textEditorHeader {}
+
 .text-editor {
   margin-top: 10rem;
   width: '70rem';
@@ -12,6 +12,9 @@
 .title {
   text-align: 'left';
   margin-left: '0.5rem';
+  text-decoration: underline;
+  /* color: #0f80bd; */
+  color: black;
 }
 
 .askTitle:focus {
