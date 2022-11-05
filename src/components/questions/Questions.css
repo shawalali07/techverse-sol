@@ -1,18 +1,21 @@
 .display-block {
   display: block;
 }
+
 .qContainer {
-  max-width: 880px;
+  max-width: 1500px;
   margin: 0 auto;
+
 }
 
 .questions {
-  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  /* box-shadow: 10px 10px 20px -10px rgba(4, 4, 4, 0.75); */
+  box-shadow: 10px 10px 50px -7px rgba(0, 0, 0, 0.75);
 }
 
 .questionDescription {
-  font-size: 18px;
-  height: 51px;
+  font-size: 15px;
+  height: 18px;
   /* width: 700px; */
   /* white-space: nowrap; */
   overflow: hidden;
@@ -30,10 +33,6 @@
   width: 81.8%;
   left: 10rem;
   height: 19rem;
-}
-
-.importantDiv {
-  /* background-color: yellow; */
 }
 
 .title {
@@ -56,18 +55,29 @@
   margin-right: 4px;
   padding: 2px 4px;
   border-radius: 4px;
-  background-color: #add8e6;
+  background-color: white;
   font-size: 14px;
 }
 
 .qCard {
-  background-color: hsl(0, 0%, 96.5%);
-
+  /* background-color: hsl(0, 0%, 96.5%); */
+  background-color: #CCC9C0 !important;
   border-radius: 0 !important;
   border-bottom: 0 !important;
   width: 100%;
+  /* height: 150px; */
 }
 
 .qCard:last-child {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.questionStatus {
+  padding: 5px;
+  /* background-color: red; */
+  border-radius: 10px;
+  border: 2px;
+  color: white;
+  margin-bottom: 4px;
+  font-size: 15px;
 }
