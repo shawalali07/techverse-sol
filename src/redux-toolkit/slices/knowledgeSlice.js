@@ -6,6 +6,7 @@ export const knowledge = createSlice({
     knowledgeData: [],
     knowledgeId: [],
     knowledgeUser: [],
+    myKnowledge: [],
     loading: false,
     error: false,
   },
@@ -24,6 +25,21 @@ export const knowledge = createSlice({
       state.knowledgeId = [];
       state.loading = true;
       state.error = false;
+    },
+    startMyKnowledge: (state, action) => {
+      state.myKnowledge = [];
+      state.loading = true;
+      state.error = false;
+    },
+    setmyKnowledge: (state, action) => {
+      state.myKnowledge = action.payload;
+      state.loading = false;
+      state.error = false;
+    },
+    failMyKnowledge: (state, action) => {
+      state.myKnowledge = [];
+      state.loading = false;
+      state.error = true;
     },
     setKnowledge: (state, action) => {
       state.knowledgeData = action.payload;
@@ -68,6 +84,9 @@ export const {
   setKnowledgeUser,
   startKnowledgeUser,
   failKnowledgeUser,
+  startMyKnowledge,
+  setmyKnowledge,
+  failMyKnowledge,
 } = knowledge.actions;
 
 export default knowledge.reducer;

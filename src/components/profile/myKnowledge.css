@@ -1,0 +1,66 @@
+.myKnowledge {
+  padding-top: 90px;
+}
+
+.myKnowContainer {
+  margin: 30px;
+  width: 80%;
+}
+
+.myKnowHeader {
+  line-height: 15px;
+  padding: 10px;
+  border-bottom: 2px solid rgb(122, 119, 119);
+}
+
+.myKnowHeader > h1 {
+  font-weight: 600;
+}
+
+.myKnowHeader > p {
+  font-size: 20px;
+}
+
+.myKnowHeadings {
+  margin-top: 90px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.myKnowheadings {
+  font-size: 16px;
+  color: gray;
+  font-weight: 600;
+  display: flex;
+  gap: 180px;
+}
+
+.myKnowContent {
+  justify-content: space-between;
+  display: flex;
+  padding: 20px 9px;
+}
+
+.myKnowContent:hover {
+  opacity: 0.7;
+  background-color: #ddeefa;
+  border-radius: 20px;
+}
+
+.myKnowcontentHeadings {
+  font-size: 18px;
+}
+
+.myKnowcontentDiv {
+  display: flex;
+  gap: 75px;
+}
+
+.myKnowcontentDivRight {
+  display: flex;
+  gap: 180px;
+}
+
+.myKnowspecColor {
+  color: blue;
+}

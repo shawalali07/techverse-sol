@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSpecificUserQuestions } from '../redux-toolkit/actions/questions/question';
-import Questions from '../components/questions/Questions';
-import Table from '../Table';
-import NotFound from '../components/error/NotFound';
+import { getSpecificUserQuestions } from '../../redux-toolkit/actions/questions/question';
+import Questions from '../../components/questions/Questions';
+import NotFound from '../../components/error/NotFound';
 import { BeatLoader } from 'react-spinners';
 const MyQuestions = () => {
   const loading = useSelector((state) => state?.question?.loading);

@@ -15,6 +15,7 @@ const signin = (formValue, navigate, setLoading) => async (dispatch) => {
     dispatch(
       setToken({
         token: data?.token,
+        isAdmin: data?.isAdmin,
         email: data?.email,
         fullName: data?.name,
         profilePic: data?.image,

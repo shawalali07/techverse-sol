@@ -5,6 +5,7 @@ export const authRoutes = {
   GET_QUESTIONS: `/questions`,
   MY_QUESTIONS: `/questions/myquestions`,
   MY_ANSWERS: `/answers/myanswers`,
+  MY_KNOWLEDGE: `/knowledge/myknowledge`,
   SUBMIT_ANSWER: `/answers`,
   GET_ANSWERS: `/answers`,
   UPDATE_PROFILE: '/users/profile',

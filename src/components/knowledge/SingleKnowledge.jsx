@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getKnowledgeById } from '../../redux-toolkit/actions/knowledge/knowledge';
+import { browserRoutes } from '../../routes/browserRoutes';
 import './singleKnowledge.css';
 
 const SingleKnowledge = ({ k, setTag }) => {
@@ -27,9 +27,16 @@ const SingleKnowledge = ({ k, setTag }) => {
           ))}
           <span>by {k.userName.split(' ')[0]} 2,130</span>
           {k?.userImage ? (
-            <img className='knowImg' src={k?.userImage} />
+            <Link to={browserRoutes.KNOWLEDGE + '/' + k?.userId}>
+              <img className='knowImg' src={k?.userImage} />
+            </Link>
           ) : (
-            <div className='knowImg'>{k?.userName?.slice(0, 2)}</div>
+            <Link
+              className='link'
+              to={browserRoutes.KNOWLEDGE + '/' + k?.userId}
+            >
+              <div className='knowImg'>{k?.userName?.slice(0, 2)}</div>
+            </Link>
           )}
         </div>
       </div>

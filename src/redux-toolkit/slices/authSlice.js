@@ -8,6 +8,7 @@ export const authSlice = createSlice({
     email: '',
     profilePic: '',
     id: '',
+    isAdmin: false,
   },
   reducers: {
     setToken: (state, action) => {
@@ -20,6 +21,7 @@ export const authSlice = createSlice({
       state.country = action.payload.country;
       state.designation = action.payload.designation;
       state.skills = action.payload.skills;
+      state.isAdmin = action.payload.isAdmin;
     },
     destroyToken: (state) => {
       state.token = '';
