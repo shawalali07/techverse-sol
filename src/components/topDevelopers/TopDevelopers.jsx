@@ -3,11 +3,11 @@ import { DataGrid } from '@material-ui/data-grid';
 // import { userRows } from '../dummyData';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { browserRoutes } from '../routes/browserRoutes';
+import { browserRoutes } from '../../routes/browserRoutes';
 import { Stack, TextField } from '@mui/material';
-import { getTopDevs } from '../redux-toolkit/actions/developers/developers';
+import { getTopDevs } from '../../redux-toolkit/actions/developers/developers';
 import { useDispatch, useSelector } from 'react-redux';
-import { getKnowledgeByUser } from '../redux-toolkit/actions/knowledge/knowledge';
+import { getKnowledgeByUser } from '../../redux-toolkit/actions/knowledge/knowledge';
 export default function TopDevelopers() {
   // let [data, setData] = useState(userRows);
   let topDev = useSelector((state) => state.developer.topDevelopers);
@@ -100,7 +100,7 @@ export default function TopDevelopers() {
             rows={topDev}
             columns={columns}
             pageSize={8}
-            loading={loading}
+            // loading={loading}
           />
         </div>
       </div>

@@ -62,6 +62,13 @@ const ProfileDropdown = ({ profilePic, setDropdown, dropdown, name }) => {
           <Link
             onClick={() => setDropdown(!dropdown)}
             className='dropdownLink'
+            to={browserRoutes.MYKNOWLEDGE}
+          >
+            <li>My Knowledge</li>
+          </Link>
+          <Link
+            onClick={() => setDropdown(!dropdown)}
+            className='dropdownLink'
             to={browserRoutes.FOLLOWING}
           >
             <li>My Following</li>

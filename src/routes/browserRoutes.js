@@ -17,4 +17,5 @@ export const browserRoutes = {
   FOLLOWING: '/following',
   MESSAGE: '/message',
   SNIPPETS: '/snippets',
+  MYKNOWLEDGE: 'myknowledge',
 };

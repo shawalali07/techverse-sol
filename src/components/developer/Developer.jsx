@@ -13,9 +13,9 @@ import './developer.css';
 import { useState, useEffect } from 'react';
 import QuoteModal from './QuoteModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTopDevs } from '../redux-toolkit/actions/developers/developers';
-import { getKnowledgeByUser } from '../redux-toolkit/actions/knowledge/knowledge';
-import { browserRoutes } from '../routes/browserRoutes';
+import { getTopDevs } from '../../redux-toolkit/actions/developers/developers';
+import { getKnowledgeByUser } from '../../redux-toolkit/actions/knowledge/knowledge';
+import { browserRoutes } from '../../routes/browserRoutes';
 export default function Developer() {
   let topDev = useSelector((state) => state.developer.topDevelopers);
   const dispatch = useDispatch();

@@ -66,6 +66,13 @@
   margin-left: 10px;
 }
 
+.backKnowledge {
+  position: absolute;
+  top: 0;
+  margin-left: 20px;
+  margin-top: 170px;
+}
+
 .knowledgePagination {
   margin-left: 21.5vw;
 }

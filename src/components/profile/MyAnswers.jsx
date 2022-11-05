@@ -2,9 +2,9 @@ import './myAnswers.css';
 import { useEffect, useState } from 'react';
 import MyAnswer from './MyAnswer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMyAnswers } from '../redux-toolkit/actions/answers/answers';
+import { getMyAnswers } from '../../redux-toolkit/actions/answers/answers';
 import { BeatLoader } from 'react-spinners';
-import NotFound from '../components/error/NotFound';
+import NotFound from '../../components/error/NotFound';
 
 const MyAnswers = () => {
   const dispatch = useDispatch();

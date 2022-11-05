@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { validateEmptyFields } from '../utils/Validations';
-import Input from '../shared/form/Input';
+import { validateEmptyFields } from '../../utils/Validations';
+import Input from '../../shared/form/Input';
 import { useDispatch } from 'react-redux';
-import { signup } from '../redux-toolkit/actions/auth/Signup';
-import isEmpty from '../utils/isEmpty';
+import { signup } from '../../redux-toolkit/actions/auth/Signup';
+import isEmpty from '../../utils/isEmpty';
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);

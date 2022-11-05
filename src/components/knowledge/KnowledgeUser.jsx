@@ -36,9 +36,9 @@ const KnowledgeUser = () => {
   ];
 
   const keys = ['title'];
-  useEffect(() => {
-    dispatch(getKnowledge(tag));
-  }, [tag]);
+  // useEffect(() => {
+  //   dispatch(getKnowledge(tag));
+  // }, [tag]);
 
   if (knowledge) {
     knowledge = [...knowledge]?.reverse();
@@ -56,8 +56,8 @@ const KnowledgeUser = () => {
     );
 
   useEffect(() => {
-    dispatch(getKnowledgeByUser(id));
-  }, []);
+    dispatch(getKnowledgeByUser(id, tag));
+  }, [tag]);
 
   return (
     <div

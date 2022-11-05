@@ -90,6 +90,7 @@ const Knowledge = () => {
               </Button>
             )}
           </div>
+
           <div className='searchKnowledge'>
             <TextField
               value={query}
@@ -154,6 +155,7 @@ const Knowledge = () => {
               </Button>
             )}
           </div>
+
           <div className='searchKnowledge'>
             <TextField
               value={query}

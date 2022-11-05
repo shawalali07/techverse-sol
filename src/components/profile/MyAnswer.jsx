@@ -1,7 +1,7 @@
 import './myAnswer.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { browserRoutes } from '../routes/browserRoutes';
+import { browserRoutes } from '../../routes/browserRoutes';
 import { useSelector } from 'react-redux';
 const MyAnswer = (props) => {
   const { myAnswers } = props;
