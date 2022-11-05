@@ -54,10 +54,6 @@ const Knowledge = () => {
       keys.some((key) => item[key].toLowerCase().includes(query.toLowerCase()))
     );
 
-  useEffect(() => {
-    dispatch(getKnowledgeByUser());
-  }, []);
-
   return (
     <div
       style={{
