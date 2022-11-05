@@ -1,55 +1,55 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { validateEmptyFields } from '../../utils/Validations';
-import Input from '../../shared/form/Input';
-import { useDispatch } from 'react-redux';
-import { signup } from '../../redux-toolkit/actions/auth/Signup';
-import isEmpty from '../../utils/isEmpty';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { validateEmptyFields } from '../../utils/Validations'
+import Input from '../../shared/form/Input'
+import { useDispatch } from 'react-redux'
+import { signup } from '../../redux-toolkit/actions/auth/Signup'
+import isEmpty from '../../utils/isEmpty'
 
 const Signup = () => {
-  const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [error, setError] = useState(false);
-  const [isAgreedToTerms, setIsAgreedToTerms] = useState(false);
+  const [loading, setLoading] = useState(false)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [error, setError] = useState(false)
+  const [isAgreedToTerms, setIsAgreedToTerms] = useState(false)
 
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
     password: '',
-  });
+  })
 
-  const { name, email, password } = formValues;
+  const { name, email, password } = formValues
 
   const errorMessages = {
     name: 'Name',
     email: 'Email',
     password: 'Password',
-  };
+  }
 
   const formOnChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-  };
+    const { name, value } = e.target
+    setFormValues({ ...formValues, [name]: value })
+  }
 
   const handleAgreeTerms = (e) => {
-    setIsAgreedToTerms(e.target.checked);
-  };
+    setIsAgreedToTerms(e.target.checked)
+  }
 
   const register = async (e) => {
-    e.preventDefault();
-    let errors = {};
-    errors = validateEmptyFields(formValues, errorMessages);
-    setError(errors);
+    e.preventDefault()
+    let errors = {}
+    errors = validateEmptyFields(formValues, errorMessages)
+    setError(errors)
     if (!isAgreedToTerms) {
-      errors['isAgreedToTerms'] = 'Please agree to terms and conditions';
+      errors['isAgreedToTerms'] = 'Please agree to terms and conditions'
     } else if (isAgreedToTerms && errors['isAgreedToTerms']) {
-      delete errors['isAgreedToTerms'];
+      delete errors['isAgreedToTerms']
     }
     if (isEmpty(errors)) {
-      dispatch(signup(formValues, navigate, setLoading));
+      dispatch(signup(formValues, navigate, setLoading))
     }
-  };
+  }
 
   return (
     <>
@@ -57,7 +57,7 @@ const Signup = () => {
         <div className='container-fluid h-100'>
           <div className='row d-flex justify-content-center align-items-center h-100'>
             <div className='col-md-5 col-lg-5 col-xl-5'>
-              <p className='display-4 h1 fw-bold mb-5'>
+              <p className='display-4 h1 fw-bold mb-5 text-center'>
                 JOIN THE TECHVERSE COMMUNITY
               </p>
               <div className='signupIconContainer'>
@@ -103,7 +103,7 @@ const Signup = () => {
 
                       <form onSubmit={register} className='mx-1 mx-md-4'>
                         <div className='d-flex flex-row align-items-center mb-4'>
-                          <i className='fas fa-lock fa-lg me-3 fa-fw'></i>
+                          <i className='fas fa-user fa-lg me-3 fa-fw'></i>
                           <div className='form-outline flex-fill mb-0'>
                             <Input
                               placeholder='Name'
@@ -187,7 +187,7 @@ const Signup = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Signup;
+export default Signup
