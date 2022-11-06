@@ -130,26 +130,28 @@ const AnswerCard = ({ answer, answerId, id }) => {
           ) : null}
 
           {show ? (
-            <Button
-              disabled={comLoading}
-              onClick={() => {
-                dispatch(
-                  addComment(
-                    commentDesc,
-                    answer?._id,
-                    setComLoading,
-                    getAnswersById,
-                    answerId
-                  )
-                );
-              }}
-              style={{ borderRadius: '10px' }}
-              className='detPublishBtn'
-              size='small'
-              variant='contained'
-            >
-              Publish
-            </Button>
+            <div className='publishBtnContainer'>
+              <Button
+                disabled={comLoading}
+                onClick={() => {
+                  dispatch(
+                    addComment(
+                      commentDesc,
+                      answer?._id,
+                      setComLoading,
+                      getAnswersById,
+                      answerId
+                    )
+                  );
+                }}
+                style={{ borderRadius: '10px' }}
+                className='detPublishBtn'
+                size='small'
+                variant='contained'
+              >
+                Publish
+              </Button>
+            </div>
           ) : null}
         </div>
       </div>

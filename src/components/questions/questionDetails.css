@@ -64,7 +64,7 @@
 }
 
 .detCommentDesign {
-  background-color: #DCDCDC;
+  background-color: #dcdcdc;
   box-shadow: 5px 5px 10px -7px rgba(0, 0, 0, 0.75);
   padding: 10px;
 }
@@ -74,7 +74,6 @@
   align-items: center;
   gap: 10px;
   display: flex;
-
 }
 
 .detTopCard {
@@ -109,14 +108,14 @@
   margin: 20px 20px 10px 20px;
 }
 
-.detCommentContainer {}
+.detCommentContainer {
+}
 
 .detBottomCard {
   margin: 20px;
   padding-bottom: 20px;
   display: flex;
   gap: 10px;
-  justify-content: flex-end;
   flex-direction: column;
 }
 
@@ -134,14 +133,13 @@
 
 /* .detCommentBtn {
   width: 150px;
-}
+} */
 
 Button.detPublishBtn {
   width: 150px;
-  text-align: right !important;
-  align-items: right !important;
-
-} */
+  /* text-align: right !important;
+  align-items: right !important; */
+}
 .detCommentBtn {
   margin: 0 auto;
   float: right !important;
@@ -155,7 +153,7 @@ Button.detPublishBtn {
 .detWriteComment {
   padding-left: 10px;
   width: 100%;
-  background-color: #D8D8D8 !important;
+  background-color: #d8d8d8 !important;
   box-shadow: 10px 10px 50px -7px rgba(0, 0, 0, 0.75);
 }
 
@@ -206,4 +204,9 @@ Button.detPublishBtn {
   background-color: lightgray;
   box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
+}
+
+.publishBtnContainer {
+  justify-content: flex-end;
+  display: flex;
 }
