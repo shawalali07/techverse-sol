@@ -1,7 +1,7 @@
 .myAnswers {
   /* background-color: lightgray; */
   height: 100vh;
-  padding-top: 90px;
+  padding-top: 25px;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;

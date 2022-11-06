@@ -1,26 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { getKnowledgeById } from '../../redux-toolkit/actions/knowledge/knowledge';
-import './knowledgeDetails.css';
-import { BeatLoader } from 'react-spinners';
-import NotFoundResult from '../error/NotFoundResult';
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { getKnowledgeById } from '../../redux-toolkit/actions/knowledge/knowledge'
+import './knowledgeDetails.css'
+import { BeatLoader } from 'react-spinners'
+import NotFoundResult from '../error/NotFoundResult'
 
 const KnowledgeDetails = () => {
-  let knowledge = useSelector((state) => state?.knowledge?.knowledgeId);
-  let loading = useSelector((state) => state?.knowledge?.loading);
+  let knowledge = useSelector((state) => state?.knowledge?.knowledgeId)
+  let loading = useSelector((state) => state?.knowledge?.loading)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const {
     state: { id },
-  } = useLocation();
+  } = useLocation()
 
   useEffect(() => {
-    dispatch(getKnowledgeById(id));
-  }, []);
+    dispatch(getKnowledgeById(id))
+  }, [])
 
   return (
-    <div style={{ paddingTop: '90px' }} className='knowledgeDetails'>
+    <div style={{ paddingTop: '150px' }} className='knowledgeDetails'>
       {loading ? (
         <div className='d-flex justify-content-center'>
           <BeatLoader size={40} />
@@ -45,7 +45,7 @@ const KnowledgeDetails = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default KnowledgeDetails;
+export default KnowledgeDetails
