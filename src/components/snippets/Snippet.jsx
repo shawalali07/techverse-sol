@@ -10,7 +10,8 @@ const Snippet = () => {
             <span className='contentHeadings specColor'>useMousePosition</span>
           </Link>
           <span className='contentHeadings'>
-            Store the user's cursor position in React state
+            Store the user's cursor position in React state asad sssdsa add sdsd
+            dsdas ads
           </span>
         </div>
         <div className='contentDivRight'>
