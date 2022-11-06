@@ -3,21 +3,17 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { browserRoutes } from '../../routes/browserRoutes';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   getAnswersById,
   addComment,
   addVote,
-  canVote,
 } from '../../redux-toolkit/actions/answers/answers';
 import { useDispatch, useSelector } from 'react-redux';
 import { useToken } from '../../hooks/register/useToken';
 import toast from 'react-hot-toast';
-import { Spinner } from 'react-bootstrap';
-import { ClipLoader } from 'react-spinners';
-const AnswerCard = ({ answer, answerId, id }) => {
+const AnswerCard = ({ answer, answerId, canVote }) => {
   const token = useToken();
-  const canVoteAdd = useSelector((state) => state.answer.canVote);
   const [comLoading, setComLoading] = useState(false);
   const [voteLoading, setVoteLoading] = useState(false);
   const [commentDesc, setCommentDesc] = useState({});
@@ -84,7 +80,7 @@ const AnswerCard = ({ answer, answerId, id }) => {
             className='detAnsDesc'
           ></p>
           {answer?.comments?.map((comment) => (
-            <div>
+            <div className='detCommentDesign'>
               <div className='detCommentContainer'>
                 <Link
                   className='link'
@@ -109,35 +105,13 @@ const AnswerCard = ({ answer, answerId, id }) => {
           <div className='detBtnContainer'>
             <Button
               onClick={handleComment}
-              style={{ borderRadius: '10px' }}
-              className='detCommentBtn'
+              style={{ borderRadius: '10px', textAlign: 'center' }}
+              className='pull-right float-right detCommentBtn'
               size='small'
               variant='contained'
             >
               Add Comment
             </Button>
-            {show ? (
-              <Button
-                disabled={comLoading}
-                onClick={() => {
-                  dispatch(
-                    addComment(
-                      commentDesc,
-                      answer?._id,
-                      setComLoading,
-                      getAnswersById,
-                      answerId
-                    )
-                  );
-                }}
-                style={{ borderRadius: '10px' }}
-                className='detPublishBtn'
-                size='small'
-                variant='contained'
-              >
-                Publish
-              </Button>
-            ) : null}
           </div>
           {show ? (
             <textarea
@@ -149,6 +123,29 @@ const AnswerCard = ({ answer, answerId, id }) => {
               rows='8'
               className='detWriteComment'
             ></textarea>
+          ) : null}
+
+          {show ? (
+            <Button
+              disabled={comLoading}
+              onClick={() => {
+                dispatch(
+                  addComment(
+                    commentDesc,
+                    answer?._id,
+                    setComLoading,
+                    getAnswersById,
+                    answerId
+                  )
+                );
+              }}
+              style={{ borderRadius: '10px' }}
+              className='detPublishBtn'
+              size='small'
+              variant='contained'
+            >
+              Publish
+            </Button>
           ) : null}
         </div>
       </div>

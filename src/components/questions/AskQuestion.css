@@ -1,24 +1,27 @@
-.textEditorHeader {}
-
 .text-editor {
-  margin-top: 10rem;
-  width: '70rem';
-  height: '30rem';
-  background-color: hsl(0, 0%, 96.5%);
-
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  /* background-color: #CCC9C0 !important; */
+  background-color: #D8D8D8 !important;
+  margin: 80px auto;
+  max-width: 1500px;
+  width: 100%;
+  height: 720px;
+  box-shadow: 10px 10px 50px -7px rgba(0, 0, 0, 0.75);
 }
 
 .title {
   text-align: 'left';
-  margin-left: '0.5rem';
   text-decoration: underline;
-  /* color: #0f80bd; */
   color: black;
 }
 
-.askTitle:focus {
-  outline: none;
+.forTitlePadding {
+  padding: 1rem 1rem !important;
+}
+
+.askTitle {
+  padding: 0.8rem 0.8rem !important;
+  background-color: #D8D8D8 !important;
+  border: 2px solid rgb(144, 144, 144) !important;
 }
 
 .title-input {
@@ -39,11 +42,15 @@
 }
 
 .textEditDiv {
-  margin-right: 75.5rem;
+  max-width: 1500px;
+  width: 100%;
+  text-align: right;
 }
 
 .questionTagEditor {
-  background-color: hsl(0, 0%, 96.5%);
+  padding: 1rem 1rem !important;
+  margin: 0px auto;
+  width: 1500px !important;
+  width: 100%;
   width: max-content;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }

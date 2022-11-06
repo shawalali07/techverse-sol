@@ -53,6 +53,7 @@ const QuestionDetails = () => {
             <h1 className='detTitle'>{question?.title}</h1>
             <div className='detInfo'>
               <span>asked {moment(question?.updatedAt).fromNow()},</span>
+
               <Link
                 className='link'
                 to={browserRoutes.DEVELOPERS + '/' + question.userId}
@@ -91,7 +92,9 @@ const QuestionDetails = () => {
                 <div className='detCard'>
                   <div className='detTopCard'>
                     <div className='detAnsLeft'>
-                      <h1 className='detWrite'>Write</h1>
+                      <h1 className='detWrite'>
+                        <strong>Your Answer</strong>
+                      </h1>
                     </div>
                   </div>
                   <div className='detCenterCard'>
