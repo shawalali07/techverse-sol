@@ -8,12 +8,16 @@ import {
   getAnswersById,
   addComment,
   addVote,
+  canVote,
 } from '../../redux-toolkit/actions/answers/answers';
 import { useDispatch, useSelector } from 'react-redux';
 import { useToken } from '../../hooks/register/useToken';
 import toast from 'react-hot-toast';
-const AnswerCard = ({ answer, answerId, canVote }) => {
+import { Spinner } from 'react-bootstrap';
+import { ClipLoader } from 'react-spinners';
+const AnswerCard = ({ answer, answerId, id }) => {
   const token = useToken();
+  const canVoteAdd = useSelector((state) => state.answer.canVote);
   const [comLoading, setComLoading] = useState(false);
   const [voteLoading, setVoteLoading] = useState(false);
   const [commentDesc, setCommentDesc] = useState({});
