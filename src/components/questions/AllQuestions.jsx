@@ -65,7 +65,7 @@ const AllQuestions = () => {
         ) : !loading && searchedQuestions?.length > 0 ? (
           <>
             <div className='d-flex flex-row align-items-center justify-content-between'>
-              <strong> <h1 className='display-6 all-questions-heading'>All Questions</h1></strong>
+              <h1 className='display-6 all-questions-heading fw-bold'>All Questions</h1>
               <button
                 onClick={() => navigate('/askquestion')}
                 type='button' style={{ backgroundColor: '#0f80bd', color: 'black' }}

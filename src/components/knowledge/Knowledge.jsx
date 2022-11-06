@@ -1,29 +1,29 @@
-import SingleKnowledge from './SingleKnowledge';
-import ReactPaginate from 'react-paginate';
+import SingleKnowledge from './SingleKnowledge'
+import ReactPaginate from 'react-paginate'
 import {
   getKnowledge,
   getKnowledgeByUser,
-} from '../../redux-toolkit/actions/knowledge/knowledge';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useToken } from '../../hooks/register/useToken';
-import { useDispatch, useSelector } from 'react-redux';
-import { Autocomplete, Button, Stack, TextField } from '@mui/material';
-import { BeatLoader } from 'react-spinners';
-import NotFound from '../error/NotFound';
-import NotFoundResult from '../error/NotFoundResult';
+} from '../../redux-toolkit/actions/knowledge/knowledge'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useToken } from '../../hooks/register/useToken'
+import { useDispatch, useSelector } from 'react-redux'
+import { Autocomplete, Button, Stack, TextField } from '@mui/material'
+import { BeatLoader } from 'react-spinners'
+import NotFound from '../error/NotFound'
+import NotFoundResult from '../error/NotFoundResult'
 const Knowledge = () => {
-  const [query, setQuery] = useState('');
-  const token = useToken();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  let knowledge = useSelector((state) => state?.knowledge?.knowledgeData);
-  let loading = useSelector((state) => state?.knowledge?.loading);
-  const [pageNumber, setPageNumber] = useState(0);
+  const [query, setQuery] = useState('')
+  const token = useToken()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  let knowledge = useSelector((state) => state?.knowledge?.knowledgeData)
+  let loading = useSelector((state) => state?.knowledge?.loading)
+  const [pageNumber, setPageNumber] = useState(0)
 
-  const usersPerPage = 6;
-  const pagesVisited = pageNumber * usersPerPage;
-  const [tag, setTag] = useState('');
+  const usersPerPage = 6
+  const pagesVisited = pageNumber * usersPerPage
+  const [tag, setTag] = useState('')
   const allTags = [
     'Javascript',
     'Python',
@@ -32,33 +32,33 @@ const Knowledge = () => {
     'C++',
     'Solidity',
     'PHP',
-  ];
+  ]
 
-  const keys = ['title'];
+  const keys = ['title']
   useEffect(() => {
-    dispatch(getKnowledge(tag));
-  }, [tag]);
+    dispatch(getKnowledge(tag))
+  }, [tag])
 
   if (knowledge) {
-    knowledge = [...knowledge]?.reverse();
+    knowledge = [...knowledge]?.reverse()
   }
-  const pageCount = Math.ceil(knowledge?.length / usersPerPage);
+  const pageCount = Math.ceil(knowledge?.length / usersPerPage)
 
   const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  };
+    setPageNumber(selected)
+  }
 
   const searchKnowledge = knowledge
     ?.slice(pagesVisited, pagesVisited + usersPerPage)
     ?.filter((item) =>
       keys.some((key) => item[key].toLowerCase().includes(query.toLowerCase()))
-    );
+    )
 
   return (
     <div
       style={{
         height: '100vh',
-        paddingTop: '90px',
+        paddingTop: '250px',
         position: 'relative',
       }}
     >
@@ -115,7 +115,7 @@ const Knowledge = () => {
                 )}
                 value={tag}
                 onChange={(event, newValue) => {
-                  setTag(newValue);
+                  setTag(newValue)
                 }}
               />
             </Stack>
@@ -188,7 +188,7 @@ const Knowledge = () => {
         <NotFoundResult />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Knowledge;
+export default Knowledge
