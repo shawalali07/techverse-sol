@@ -265,8 +265,46 @@ code {
 
 .demo-editor {
   cursor: text;
-  min-height: 25vh;
-  max-height: 25vh;
+  min-height: 37vh;
+  max-height: 37vh;
+  border: 2px solid rgb(144, 144, 144);
+}
+
+.rdw-editor-main:hover {
+  border: 2px solid black;
+  /* border-color: #86b7fe; */
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.form-control:focus {
+  border: 2px solid black !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.form-control:hover {
+  border: 2px solid black !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+/* for tags box in editor */
+.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+  border: 2px solid rgb(144, 144, 144) !important;
+  border-radius: 2px;
+}
+
+.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root:hover {
+  border: 2px solid black !important;
+  border-radius: 2px;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.rdw-editor-toolbar {
+  /* cursor: text;
+  min-height: 37vh;
+  max-height: 37vh;
+  border: 2px solid rgb(144, 144, 144); */
+  background-color: #D3D3D3 !important;
 }
 
 .paginationBttns {
@@ -290,7 +328,7 @@ code {
 
 .paginationBttns a:hover {
   color: black;
-  background-color: black;
+  background-color: white;
 }
 
 .paginationActive a {

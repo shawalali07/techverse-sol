@@ -1,43 +1,43 @@
-import './questionDetails.css';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import { Badge, Button } from '@mui/material';
-import { useState, useEffect } from 'react';
-import TextEditor from '../textEditor/TextEditor';
-import { Link, useLocation } from 'react-router-dom';
-import moment from 'moment';
-import { useDispatch, useSelector } from 'react-redux';
+import './questionDetails.css'
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
+import { Badge, Button } from '@mui/material'
+import { useState, useEffect } from 'react'
+import TextEditor from '../textEditor/TextEditor'
+import { Link, useLocation } from 'react-router-dom'
+import moment from 'moment'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   getAnswersById,
   submitAnswer,
   addComment,
   addVote,
   canVote,
-} from '../../redux-toolkit/actions/answers/answers';
-import { browserRoutes } from '../../routes/browserRoutes';
-import { BeatLoader } from 'react-spinners';
-import NotFound from '../error/NotFound';
-import AnswerCard from './AnswerCard';
-import { useToken } from '../../hooks/register/useToken';
-import { getQuestionsById } from '../../redux-toolkit/actions/questions/question';
+} from '../../redux-toolkit/actions/answers/answers'
+import { browserRoutes } from '../../routes/browserRoutes'
+import { BeatLoader } from 'react-spinners'
+import NotFound from '../error/NotFound'
+import AnswerCard from './AnswerCard'
+import { useToken } from '../../hooks/register/useToken'
+import { getQuestionsById } from '../../redux-toolkit/actions/questions/question'
 const QuestionDetails = () => {
-  const token = useToken();
-  const idd = useSelector((state) => state.authSlice.id);
-  const question = useSelector((state) => state.question.questionId);
-  const [subLoading, setSubLoading] = useState(false);
-  const [comLoading, setComLoading] = useState(false);
+  const token = useToken()
+  const idd = useSelector((state) => state.authSlice.id)
+  const question = useSelector((state) => state.question.questionId)
+  const [subLoading, setSubLoading] = useState(false)
+  const [comLoading, setComLoading] = useState(false)
 
   const {
     state: { id },
-  } = useLocation();
-  const [formValues, setFormValues] = useState({ questionId: id });
+  } = useLocation()
+  const [formValues, setFormValues] = useState({ questionId: id })
 
-  const dispatch = useDispatch();
-  const answers = useSelector((state) => state?.answer?.answersData);
-  const loading = useSelector((state) => state?.answer?.loading);
+  const dispatch = useDispatch()
+  const answers = useSelector((state) => state?.answer?.answersData)
+  const loading = useSelector((state) => state?.answer?.loading)
   useEffect(() => {
-    dispatch(getAnswersById(id));
-    dispatch(getQuestionsById(id));
-  }, []);
+    dispatch(getAnswersById(id))
+    dispatch(getQuestionsById(id))
+  }, [])
 
   return (
     <div className='questionDet'>
@@ -51,6 +51,7 @@ const QuestionDetails = () => {
             <h1 className='detTitle'>{question?.title}</h1>
             <div className='detInfo'>
               <span>asked {moment(question?.updatedAt).fromNow()},</span>
+
               <Link
                 className='link'
                 to={browserRoutes.DEVELOPERS + '/' + question.userId}
@@ -89,7 +90,7 @@ const QuestionDetails = () => {
                 <div className='detCard'>
                   <div className='detTopCard'>
                     <div className='detAnsLeft'>
-                      <h1 className='detWrite'>Write</h1>
+                      <h1 className='detWrite'><strong>Your Answer</strong></h1>
                     </div>
                   </div>
                   <div className='detCenterCard'>
@@ -138,7 +139,7 @@ const QuestionDetails = () => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default QuestionDetails;
+export default QuestionDetails

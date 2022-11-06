@@ -1,28 +1,28 @@
-import { Badge, Button } from '@mui/material';
-import moment from 'moment';
-import { Link } from 'react-router-dom';
-import { browserRoutes } from '../../routes/browserRoutes';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import { useState } from 'react';
+import { Badge, Button } from '@mui/material'
+import moment from 'moment'
+import { Link } from 'react-router-dom'
+import { browserRoutes } from '../../routes/browserRoutes'
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
+import { useState } from 'react'
 import {
   getAnswersById,
   addComment,
   addVote,
-} from '../../redux-toolkit/actions/answers/answers';
-import { useDispatch, useSelector } from 'react-redux';
-import { useToken } from '../../hooks/register/useToken';
-import toast from 'react-hot-toast';
+} from '../../redux-toolkit/actions/answers/answers'
+import { useDispatch, useSelector } from 'react-redux'
+import { useToken } from '../../hooks/register/useToken'
+import toast from 'react-hot-toast'
 const AnswerCard = ({ answer, answerId, canVote }) => {
-  const token = useToken();
-  const [comLoading, setComLoading] = useState(false);
-  const [voteLoading, setVoteLoading] = useState(false);
-  const [commentDesc, setCommentDesc] = useState({});
-  const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
+  const token = useToken()
+  const [comLoading, setComLoading] = useState(false)
+  const [voteLoading, setVoteLoading] = useState(false)
+  const [commentDesc, setCommentDesc] = useState({})
+  const [show, setShow] = useState(false)
+  const dispatch = useDispatch()
   const handleComment = () => {
-    if (!token) return toast.error('You must login to add comment');
-    setShow(!show);
-  };
+    if (!token) return toast.error('You must login to add comment')
+    setShow(!show)
+  }
 
   return (
     <div className='detAnsContainer'>
@@ -78,7 +78,7 @@ const AnswerCard = ({ answer, answerId, canVote }) => {
             className='detAnsDesc'
           ></p>
           {answer?.comments?.map((comment) => (
-            <div>
+            <div className="detCommentDesign">
               <div className='detCommentContainer'>
                 <Link
                   className='link'
@@ -103,35 +103,14 @@ const AnswerCard = ({ answer, answerId, canVote }) => {
           <div className='detBtnContainer'>
             <Button
               onClick={handleComment}
-              style={{ borderRadius: '10px' }}
-              className='detCommentBtn'
+              style={{ borderRadius: '10px', textAlign: 'center' }}
+              className='pull-right float-right detCommentBtn'
               size='small'
               variant='contained'
             >
               Add Comment
             </Button>
-            {show ? (
-              <Button
-                disabled={comLoading}
-                onClick={() => {
-                  dispatch(
-                    addComment(
-                      commentDesc,
-                      answer?._id,
-                      setComLoading,
-                      getAnswersById,
-                      answerId
-                    )
-                  );
-                }}
-                style={{ borderRadius: '10px' }}
-                className='detPublishBtn'
-                size='small'
-                variant='contained'
-              >
-                Publish
-              </Button>
-            ) : null}
+
           </div>
           {show ? (
             <textarea
@@ -144,10 +123,34 @@ const AnswerCard = ({ answer, answerId, canVote }) => {
               className='detWriteComment'
             ></textarea>
           ) : null}
+
+          {show ? (
+            <Button
+              disabled={comLoading}
+              onClick={() => {
+                dispatch(
+                  addComment(
+                    commentDesc,
+                    answer?._id,
+                    setComLoading,
+                    getAnswersById,
+                    answerId
+                  )
+                )
+              }}
+              style={{ borderRadius: '10px' }}
+              className='detPublishBtn'
+              size='small'
+              variant='contained'
+            >
+              Publish
+            </Button>
+          ) : null}
+
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AnswerCard;
+export default AnswerCard
