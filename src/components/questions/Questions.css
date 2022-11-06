@@ -5,7 +5,6 @@
 .qContainer {
   max-width: 1500px;
   margin: 0 auto;
-
 }
 
 .questions {
@@ -61,7 +60,7 @@
 
 .qCard {
   /* background-color: hsl(0, 0%, 96.5%); */
-  background-color: #CCC9C0 !important;
+  background-color: #ccc9c0 !important;
   border-radius: 0 !important;
   border-bottom: 0 !important;
   width: 100%;

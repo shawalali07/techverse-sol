@@ -15,5 +15,5 @@ export const authRoutes = {
   GET_KNOWLEDGE: '/users/knowledge',
   ADD_VOTE: '/answers/vote',
   TOP_DEVS: '/users/top',
-  CANVOTE: '/questions/canvote',
+  CANVOTE: '/questions/status/canvote',
 };

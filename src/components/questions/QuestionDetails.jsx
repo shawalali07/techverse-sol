@@ -34,14 +34,16 @@ const QuestionDetails = () => {
   const dispatch = useDispatch();
   const answers = useSelector((state) => state?.answer?.answersData);
   const loading = useSelector((state) => state?.answer?.loading);
+  const loading2 = useSelector((state) => state?.question?.loading);
   useEffect(() => {
     dispatch(getAnswersById(id));
     dispatch(getQuestionsById(id));
+    dispatch(canVote(id));
   }, []);
 
   return (
     <div className='questionDet'>
-      {loading ? (
+      {loading || loading2 ? (
         <div className='justify-content-center align-items-center mt-5'>
           <BeatLoader size={40} />
         </div>

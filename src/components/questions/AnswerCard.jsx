@@ -3,17 +3,21 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { browserRoutes } from '../../routes/browserRoutes';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   getAnswersById,
   addComment,
   addVote,
+  canVote,
 } from '../../redux-toolkit/actions/answers/answers';
 import { useDispatch, useSelector } from 'react-redux';
 import { useToken } from '../../hooks/register/useToken';
 import toast from 'react-hot-toast';
-const AnswerCard = ({ answer, answerId, canVote }) => {
+import { Spinner } from 'react-bootstrap';
+import { ClipLoader } from 'react-spinners';
+const AnswerCard = ({ answer, answerId, id }) => {
   const token = useToken();
+  const canVoteAdd = useSelector((state) => state.answer.canVote);
   const [comLoading, setComLoading] = useState(false);
   const [voteLoading, setVoteLoading] = useState(false);
   const [commentDesc, setCommentDesc] = useState({});
@@ -47,7 +51,7 @@ const AnswerCard = ({ answer, answerId, canVote }) => {
             </span>
           </div>
           <div className='align-items-center gap-4 d-none d-md-flex'>
-            {canVote ? (
+            {canVoteAdd ? (
               <ThumbUpOffAltIcon
                 onClick={() =>
                   dispatch(
@@ -64,7 +68,9 @@ const AnswerCard = ({ answer, answerId, canVote }) => {
                   color: voteLoading && 'darkGray',
                 }}
               />
-            ) : null}
+            ) : canVoteAdd === false ? null : (
+              <ClipLoader size={15} />
+            )}
             <Badge
               color='primary'
               badgeContent={answer?.voteCount}
