@@ -1,3 +1,60 @@
 .snippetDetails {
-  padding-top: 90px;
+  padding-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.snipDetContainer {
+  width: 50vw;
+  height: 100vh;
+}
+
+.snipDetTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.snipTag {
+  font-weight: bold;
+  width: max-content;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  padding: 8px;
+  display: flex;
+  background-color: aliceblue;
+  margin-right: 80px;
+}
+
+.snipDetTop > h1 {
+  font-weight: bold;
+}
+
+.snipDetTop > span {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #4433ff;
+}
+
+.snipDetCenter {
+  margin-top: 50px;
+}
+
+.snipDetCode > p {
+  padding: 20px;
+  border-radius: 20px;
+
+  background-color: aliceblue;
+}
+
+.snipDetBottom {
+  margin-top: 50px;
+}
+
+.snipDetBottom > h1 {
+  font-size: 24px;
+  font-weight: bold;
 }
