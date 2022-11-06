@@ -100,7 +100,7 @@ export default function TopDevelopers() {
             rows={topDev}
             columns={columns}
             pageSize={8}
-            // loading={loading}
+            loading={loading}
           />
         </div>
       </div>

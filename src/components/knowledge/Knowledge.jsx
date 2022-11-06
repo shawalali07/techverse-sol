@@ -185,8 +185,7 @@ const Knowledge = () => {
           </div>
         </>
       ) : (
-        <></>
-        // <NotFoundResult />
+        <NotFoundResult />
       )}
     </div>
   );

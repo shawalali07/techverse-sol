@@ -49,6 +49,7 @@ export const answer = createSlice({
       state.loading = false;
       state.error = true;
     },
+
     setCanVote: (state, action) => {
       state.canVote = action.payload;
     },

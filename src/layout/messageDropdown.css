@@ -66,7 +66,7 @@
 .msgText {
   font-size: 16px;
   margin-bottom: 0;
-  flex: 1;
+  /* flex: 1; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
