@@ -1,11 +1,11 @@
 .questionDet {
-  padding-top: 90px;
+  padding-top: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: auto;
-  max-width: 880px;
+  max-width: 1500px;
 }
 
 .detTop {
@@ -19,6 +19,7 @@
 
 .detTitle {
   font-size: 30px;
+  text-decoration: underline;
 }
 
 .detInfo {
@@ -62,19 +63,25 @@
   background-color: #dfe7f6;
 }
 
+.detCommentDesign {
+  background-color: #DCDCDC;
+  box-shadow: 5px 5px 10px -7px rgba(0, 0, 0, 0.75);
+  padding: 10px;
+}
+
 .detCommentContainer {
   font-size: 14px;
   align-items: center;
   gap: 10px;
   display: flex;
+
 }
 
 .detTopCard {
-  margin: 20px 20px 10px 20px;
-  padding-top: 20px;
+  margin: 10px 20px 10px 20px;
   display: flex;
-  border-bottom: 1px solid lightgray;
-  padding: 10px;
+  border-bottom: 1px solid black;
+  padding: 5px;
 }
 
 .detAnsLeft {
@@ -94,7 +101,6 @@
 
 .detAnsDesc {
   padding: 0px 0px 10px 0px;
-  border-bottom: 1px solid lightgray;
 }
 
 .detCenterCard {
@@ -103,14 +109,14 @@
   margin: 20px 20px 10px 20px;
 }
 
-.detCommentContainer {
-}
+.detCommentContainer {}
 
 .detBottomCard {
   margin: 20px;
   padding-bottom: 20px;
   display: flex;
   gap: 10px;
+  justify-content: flex-end;
   flex-direction: column;
 }
 
@@ -126,12 +132,19 @@
   background-color: #dfe7f6;
 }
 
-.detCommentBtn {
+/* .detCommentBtn {
   width: 150px;
 }
 
-.detPublishBtn {
+Button.detPublishBtn {
   width: 150px;
+  text-align: right !important;
+  align-items: right !important;
+
+} */
+.detCommentBtn {
+  margin: 0 auto;
+  float: right !important;
 }
 
 .detBtnContainer {
@@ -142,7 +155,8 @@
 .detWriteComment {
   padding-left: 10px;
   width: 100%;
-  border: 1px solid lightgray;
+  background-color: #D8D8D8 !important;
+  box-shadow: 10px 10px 50px -7px rgba(0, 0, 0, 0.75);
 }
 
 .detWriteComment:focus {
@@ -157,6 +171,7 @@
   .detTopCard {
     white-space: nowrap;
   }
+
   .questionDet {
     padding-right: 16px;
     padding-left: 16px;
@@ -167,6 +182,7 @@
   .detTopCard {
     white-space: nowrap;
   }
+
   .questionDet {
     padding-right: 36px;
     padding-left: 36px;

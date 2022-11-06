@@ -1,20 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
-import './Questions.css';
-import NotFound from '../error/NotFound';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAnswers } from '../../redux-toolkit/actions/answers/answers';
-import Question from './Question';
-import { BeatLoader } from 'react-spinners';
+import './Questions.css'
+import NotFound from '../error/NotFound'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAnswers } from '../../redux-toolkit/actions/answers/answers'
+import Question from './Question'
+import { BeatLoader } from 'react-spinners'
 
 const Questions = (props) => {
-  const { questions, loading } = props;
+  const { questions, loading } = props
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getAnswers());
-  }, []);
+    dispatch(getAnswers())
+  }, [])
 
   return (
     <div>
@@ -24,7 +24,7 @@ const Questions = (props) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Questions;
+export default Questions

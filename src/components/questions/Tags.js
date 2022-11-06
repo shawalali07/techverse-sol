@@ -1,9 +1,9 @@
-import { Autocomplete, Stack, TextField } from '@mui/material';
-import './Tags.css';
+import { Autocomplete, Stack, TextField } from '@mui/material'
+import './Tags.css'
 
 const SearchTagsCopy = (props) => {
-  const { setFormValues, formValues, tutorial } = props;
-  const { tags } = formValues;
+  const { setFormValues, formValues, tutorial } = props
+  const { tags } = formValues
   const allTags = [
     'Javascript',
     'Python',
@@ -12,7 +12,7 @@ const SearchTagsCopy = (props) => {
     'C++',
     'Solidity',
     'PHP',
-  ];
+  ]
 
   return (
     <>
@@ -20,7 +20,7 @@ const SearchTagsCopy = (props) => {
         style={{ marginLeft: '0vw' }}
         className='tags'
         spacing={2}
-        width='50vw'
+      // width='50vw'
       >
         <Autocomplete
           multiple
@@ -33,7 +33,7 @@ const SearchTagsCopy = (props) => {
         />
       </Stack>
     </>
-  );
-};
+  )
+}
 
-export default SearchTagsCopy;
+export default SearchTagsCopy
