@@ -6,9 +6,9 @@ import './singleKnowledge.css';
 
 const SingleKnowledge = ({ k, setTag }) => {
   return (
-    <div className='singleKnowledge'>
+    <>
       <div
-        style={{ backgroundColor: 'white' }}
+        style={{ backgroundColor: 'antiqueWhite' }}
         key={k._id}
         className='knowledgeCard'
       >
@@ -40,7 +40,7 @@ const SingleKnowledge = ({ k, setTag }) => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

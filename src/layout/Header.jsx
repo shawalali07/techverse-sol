@@ -14,6 +14,7 @@ const Header = () => {
   const replyModal = useSelector((state) => state.modal.replyModal);
 
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [msgDropdown, setMsgDropdown] = useState(false);
   const { pathname } = useLocation();
@@ -32,11 +33,13 @@ const Header = () => {
             aria-controls='navbarSupportedContent'
             aria-expanded='false'
             aria-label='Toggle navigation'
+            onClick={() => setShow(!show)}
           >
             <span className='navbar-toggler-icon'></span>
           </button>
+          {show && <div>Here will be something</div>}
           <div
-            className='collapse navbar-collapse d-flex justify-content-between w-100'
+            className='collapse navbar-collapse d-none d-lg-flex justify-content-between w-100'
             id='navbarSupportedContent'
           >
             <div className='d-flex align-items-center'>
