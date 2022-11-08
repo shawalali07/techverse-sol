@@ -90,10 +90,21 @@ export default function TopDevelopers() {
   }, []);
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div className='container'>
-        <h1 style={{ paddingTop: '90px' }}>Top Devs</h1>
-        <div className='userList'>
+    <div>
+      <div
+        className='d-flex justify-content-end px-3'
+        style={{ paddingTop: '120px' }}
+      >
+        <Stack spacing={2} width='394px'>
+          <TextField
+            onChange={(e) => setQuery(e.target.value)}
+            label='Search Developer'
+          />
+        </Stack>
+      </div>
+      <div className='container pt-3'>
+        <h1 className='userListHeding'>Top Devs</h1>
+        <div className='userList table-responsive'>
           <DataGrid
             autoHeight
             density='comfortable'
@@ -103,14 +114,6 @@ export default function TopDevelopers() {
             loading={loading}
           />
         </div>
-      </div>
-      <div className='searchDevelopers'>
-        <Stack spacing={2} width='20vw'>
-          <TextField
-            onChange={(e) => setQuery(e.target.value)}
-            label='Search Developer'
-          />
-        </Stack>
       </div>
     </div>
   );

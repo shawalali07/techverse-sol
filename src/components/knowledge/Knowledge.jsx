@@ -143,45 +143,6 @@ const Knowledge = () => {
         ) : tag !== '' ? (
           <>
             <NotFoundResult />
-            <div className='postKnowledge'>
-              {token && (
-                <Button
-                  onClick={() => navigate('/write')}
-                  color='success'
-                  variant='contained'
-                >
-                  Post Knowledge
-                </Button>
-              )}
-            </div>
-
-            <div className='searchKnowledge'>
-              <TextField
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className='searchKnowledgefield'
-                id='standard-basic'
-                label='Search Topic'
-                variant='outlined'
-              />
-            </div>
-            <div className='selectLang'>
-              <Stack
-                style={{ marginLeft: '0vw', float: 'right' }}
-                className='tags'
-                spacing={2}
-                width='20vw'
-              >
-                <Autocomplete
-                  options={allTags}
-                  renderInput={(params) => (
-                    <TextField {...params} label='Select Language' />
-                  )}
-                  value={tag}
-                  onChange={(event, newValue) => setTag(newValue)}
-                />
-              </Stack>
-            </div>
           </>
         ) : (
           <NotFoundResult />
