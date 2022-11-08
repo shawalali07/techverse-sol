@@ -1,62 +1,66 @@
-import { useEffect, useState } from 'react'
-import Button from '@mui/material/Button'
-import ButtonGroup from '@mui/material/ButtonGroup'
-import { useNavigate } from 'react-router-dom'
-import './AllQuestions.css'
-import Questions from './Questions'
-import { useDispatch, useSelector } from 'react-redux'
-import { getQuestions } from '../../redux-toolkit/actions/questions/question'
-import { BeatLoader, ClipLoader } from 'react-spinners'
-import ReactPaginate from 'react-paginate'
-import NotFound from '../error/NotFound'
-import { Badge } from '@mui/material'
+import { useEffect, useState } from 'react';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import { useNavigate } from 'react-router-dom';
+import './AllQuestions.css';
+import Questions from './Questions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getQuestions } from '../../redux-toolkit/actions/questions/question';
+import { BeatLoader, ClipLoader } from 'react-spinners';
+import ReactPaginate from 'react-paginate';
+import NotFound from '../error/NotFound';
+import { Badge } from '@mui/material';
+import { getTopDevs } from '../../redux-toolkit/actions/developers/developers';
 
 const AllQuestions = () => {
-  const [pageNumber, setPageNumber] = useState(0)
+  const [pageNumber, setPageNumber] = useState(0);
 
-  const usersPerPage = 4
-  const pagesVisited = pageNumber * usersPerPage
-  const query = useSelector((state) => state?.question?.questionQuery)
-  const keys = ['title', 'description']
-  const loading = useSelector((state) => state?.question?.loading)
+  const usersPerPage = 4;
+  const pagesVisited = pageNumber * usersPerPage;
+  const query = useSelector((state) => state?.question?.questionQuery);
+  const keys = ['title', 'description'];
+  const loading = useSelector((state) => state?.question?.loading);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  let questions = useSelector((state) => state.question?.questionsData)
+  let questions = useSelector((state) => state.question?.questionsData);
 
   let searchedQuestions = useSelector(
     (state) => state.question?.searchQuestions
-  )
+  );
 
   searchedQuestions = [...searchedQuestions]?.sort(
     (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
-  )
+  );
 
   questions = [...questions]?.sort(
     (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
-  )
-  const dispatch = useDispatch()
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getQuestions())
-  }, [])
+    dispatch(getQuestions());
+  }, []);
 
   searchedQuestions = questions
     ?.slice(pagesVisited, pagesVisited + usersPerPage)
     .filter((item) =>
       keys.some((key) => item[key].toLowerCase().includes(query.toLowerCase()))
-    )
+    );
 
-  const pageCount = Math.ceil(questions?.length / usersPerPage)
+  const pageCount = Math.ceil(questions?.length / usersPerPage);
 
   const changePage = ({ selected }) => {
-    setPageNumber(selected)
-  }
+    setPageNumber(selected);
+  };
 
   return (
-    <div style={{
-      backgroundColor: '#909090',
-    }} className='allQuestions'>
+    <div
+      style={{
+        backgroundColor: '#909090',
+      }}
+      className='allQuestions'
+    >
       <div className='allQuestionsContainer'>
         {loading ? (
           <div className='d-flex justify-content-center align-items-center mt-5'>
@@ -65,10 +69,13 @@ const AllQuestions = () => {
         ) : !loading && searchedQuestions?.length > 0 ? (
           <>
             <div className='d-flex flex-row align-items-center justify-content-between'>
-              <h1 className='display-6 all-questions-heading fw-bold'>All Questions</h1>
+              <h1 className='display-6 all-questions-heading fw-bold'>
+                All Questions
+              </h1>
               <button
                 onClick={() => navigate('/askquestion')}
-                type='button' style={{ backgroundColor: '#0f80bd', color: 'black' }}
+                type='button'
+                style={{ backgroundColor: '#0f80bd', color: 'black' }}
                 className='btn'
               >
                 Ask Question
@@ -87,7 +94,10 @@ const AllQuestions = () => {
             </span>
             <div className='questionsComponent'>
               <Questions questions={searchedQuestions} loading={loading} />
-              <div className='questionContainerbg' style={{ marginTop: '40px' }}>
+              <div
+                className='questionContainerbg'
+                style={{ marginTop: '40px' }}
+              >
                 {questions?.length > 4 ? (
                   <ReactPaginate
                     previousLabel={'Prev <<'}
@@ -108,8 +118,8 @@ const AllQuestions = () => {
           <NotFound msg='No Question Found' />
         )}
       </div>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default AllQuestions
+export default AllQuestions;

@@ -4,15 +4,19 @@ import { useToken } from '../hooks/register/useToken';
 import './Header.css';
 import SearchQuestions from '../components/questions/SearchQuestions';
 import { browserRoutes } from '../routes/browserRoutes';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '../assets/images/logo.png';
 import ProfileDropdown from './ProfileDropdown';
 import { Button } from '@mui/material';
 import MessageDropdown from './MessageDropdown';
 import ReplyModal from '../components/messages/ReplyModal';
+import { getTopDevs } from '../redux-toolkit/actions/developers/developers';
 const Header = () => {
+  const id = useSelector((state) => state.authSlice.id);
+  const dispatch = useDispatch();
   const replyModal = useSelector((state) => state.modal.replyModal);
-
+  let topDev = useSelector((state) => state.developer.topDevelopers);
+  topDev = topDev.filter((msg) => msg?._id === id);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -20,6 +24,10 @@ const Header = () => {
   const { pathname } = useLocation();
   const user = useSelector((state) => state?.authSlice);
   const token = useToken();
+
+  useEffect(() => {
+    dispatch(getTopDevs());
+  }, []);
 
   return (
     <>
@@ -84,6 +92,7 @@ const Header = () => {
               <div className='topRightSide'>
                 {token && (
                   <MessageDropdown
+                    topDev={topDev[0]}
                     setMsgDropdown={setMsgDropdown}
                     msgDropdown={msgDropdown}
                   />
