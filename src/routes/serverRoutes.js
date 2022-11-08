@@ -16,4 +16,6 @@ export const authRoutes = {
   ADD_VOTE: '/answers/vote',
   TOP_DEVS: '/users/top',
   CANVOTE: '/questions/status/canvote',
+  FOLLOW: '/users/follow',
+  QUOTE: '/users/message',
 };

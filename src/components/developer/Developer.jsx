@@ -14,14 +14,15 @@ import { useState, useEffect } from 'react';
 import QuoteModal from './QuoteModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTopDevs } from '../../redux-toolkit/actions/developers/developers';
-import { getKnowledgeByUser } from '../../redux-toolkit/actions/knowledge/knowledge';
 import { browserRoutes } from '../../routes/browserRoutes';
+import { postFollow } from '../../redux-toolkit/actions/follow/follow';
+import { postQuote } from '../../redux-toolkit/actions/quote/quote';
 export default function Developer() {
+  const [quoteDesc, setQuoteDesc] = useState('');
   let topDev = useSelector((state) => state.developer.topDevelopers);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   let {
     state: { data },
@@ -41,6 +42,19 @@ export default function Developer() {
     data.points = topDev.points;
     data.skills = topDev.skills;
   }
+
+  const handleFollow = () => {
+    dispatch(postFollow(data?._id));
+  };
+
+  const handleQuote = () => {
+    setShow(true);
+    dispatch(postQuote(quoteDesc, data?._id));
+  };
+
+  const handleQuoteChange = ({ target: { value } }) => {
+    setQuoteDesc(value);
+  };
 
   return (
     <div className='user'>
@@ -91,7 +105,7 @@ export default function Developer() {
             </div>
             <div className='userShowInfo'>
               <Button
-                onClick={handleShow}
+                onClick={() => setShow(true)}
                 variant='contained'
                 className='userShowInfoTitle'
               >
@@ -99,7 +113,7 @@ export default function Developer() {
               </Button>
               <Button
                 style={{ backgroundColor: 'lightcoral', color: 'white' }}
-                onClick={handleShow}
+                onClick={handleFollow}
                 variant='outlined'
                 className='userShowInfoTitle followBtn'
               >
@@ -108,9 +122,11 @@ export default function Developer() {
             </div>
 
             <QuoteModal
+              handleQuote={handleQuote}
+              handleQuoteChange={handleQuoteChange}
               show={show}
               handleClose={handleClose}
-              handleShow={handleShow}
+              handleShow={() => setShow(true)}
             />
           </div>
         </div>
