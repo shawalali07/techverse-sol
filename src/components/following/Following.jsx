@@ -73,9 +73,9 @@ const Following = () => {
   ];
 
   return (
-    <div style={{ position: 'relative', paddingTop: '90px' }}>
+    <div style={{ paddingTop: '150px' }}>
       <div className='container'>
-        <h1 style={{}}>My Followed Devs</h1>
+        <h1 className='userListHeding'>My Followed Devs</h1>
 
         <div className='userList'>
           <DataGrid

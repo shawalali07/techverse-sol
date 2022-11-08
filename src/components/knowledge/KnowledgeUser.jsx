@@ -60,41 +60,9 @@ const KnowledgeUser = () => {
   }, [tag]);
 
   return (
-    <div
-      style={{
-        height: '100vh',
-        paddingTop: '90px',
-        position: 'relative',
-      }}
-    >
-      {loading ? (
-        <div className='d-flex justify-content-center mt-5'>
-          <BeatLoader size={40} />
-        </div>
-      ) : !loading && knowledge?.length > 0 ? (
-        <div>
-          <div>
-            {searchKnowledge.map((k) => (
-              <SingleKnowledge
-                k={k}
-                setTag={setTag}
-                setQuery={setQuery}
-                query={query}
-                allTags={allTags}
-              />
-            ))}
-          </div>
-          <div className='postKnowledge'>
-            {token && (
-              <Button
-                onClick={() => navigate('/write')}
-                color='success'
-                variant='contained'
-              >
-                Post Knowledge
-              </Button>
-            )}
-          </div>
+    <div>
+      <div className='knowledge-header d-flex flex-column flex-md-row gap-4 gap-md-0 justify-content-between align-items-center'>
+        <div className='d-none d-md-flex flex-column flex-md-row align-items-center gap-3'>
           <div className='searchKnowledge'>
             <TextField
               value={query}
@@ -105,13 +73,8 @@ const KnowledgeUser = () => {
               variant='outlined'
             />
           </div>
-          <div className='selectLang'>
-            <Stack
-              style={{ marginLeft: '0vw', float: 'right' }}
-              className='tags'
-              spacing={2}
-              width='20vw'
-            >
+          <div className='selectLang w-100'>
+            <Stack spacing={2} width='20vw'>
               <Autocomplete
                 options={allTags}
                 renderInput={(params) => (
@@ -124,73 +87,71 @@ const KnowledgeUser = () => {
               />
             </Stack>
           </div>
-
-          {searchKnowledge?.length ? (
-            <div>
-              {knowledge?.length > 6 ? (
-                <ReactPaginate
-                  previousLabel={'Prev <<'}
-                  nextLabel={'Next >>'}
-                  pageCount={pageCount}
-                  onPageChange={changePage}
-                  containerClassName={'paginationBttns knowledgePaginate'}
-                  previousLinkClassName={'previousBttn'}
-                  nextLinkClassName={'nextBttn'}
-                  disabledClassName={'paginationDisabled'}
-                  activeClassName={'paginationActive'}
-                />
-              ) : null}
-            </div>
-          ) : (
-            <NotFoundResult />
+        </div>
+        <div className='postKnowledge'>
+          {token && (
+            <Button
+              onClick={() => navigate('/write')}
+              color='success'
+              variant='contained'
+            >
+              Post Knowledge
+            </Button>
           )}
         </div>
-      ) : tag !== '' ? (
-        <>
-          <NotFoundResult />
-          <div className='postKnowledge'>
-            {token && (
-              <Button
-                onClick={() => navigate('/write')}
-                color='success'
-                variant='contained'
-              >
-                Post Knowledge
-              </Button>
+      </div>
+      <div
+        style={{
+          height: '100vh',
+          paddingTop: '90px',
+          position: 'relative',
+        }}
+      >
+        {loading ? (
+          <div className='d-flex justify-content-center mt-5'>
+            <BeatLoader size={40} />
+          </div>
+        ) : !loading && knowledge?.length > 0 ? (
+          <div>
+            <div className='knowledge-container'>
+              {searchKnowledge.map((k) => (
+                <SingleKnowledge
+                  k={k}
+                  setTag={setTag}
+                  setQuery={setQuery}
+                  query={query}
+                  allTags={allTags}
+                />
+              ))}
+            </div>
+            {searchKnowledge?.length ? (
+              <div>
+                {knowledge?.length > 6 ? (
+                  <ReactPaginate
+                    previousLabel={'Prev <<'}
+                    nextLabel={'Next >>'}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={'paginationBttns knowledgePaginate'}
+                    previousLinkClassName={'previousBttn'}
+                    nextLinkClassName={'nextBttn'}
+                    disabledClassName={'paginationDisabled'}
+                    activeClassName={'paginationActive'}
+                  />
+                ) : null}
+              </div>
+            ) : (
+              <NotFoundResult />
             )}
           </div>
-          <div className='searchKnowledge'>
-            <TextField
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className='searchKnowledgefield'
-              id='standard-basic'
-              label='Search Topic'
-              variant='outlined'
-            />
-          </div>
-          <div className='selectLang'>
-            <Stack
-              style={{ marginLeft: '0vw', float: 'right' }}
-              className='tags'
-              spacing={2}
-              width='20vw'
-            >
-              <Autocomplete
-                options={allTags}
-                renderInput={(params) => (
-                  <TextField {...params} label='Select Language' />
-                )}
-                value={tag}
-                onChange={(event, newValue) => setTag(newValue)}
-              />
-            </Stack>
-          </div>
-        </>
-      ) : (
-        <></>
-        // <NotFoundResult />
-      )}
+        ) : tag !== '' ? (
+          <>
+            <NotFoundResult />
+          </>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 };
