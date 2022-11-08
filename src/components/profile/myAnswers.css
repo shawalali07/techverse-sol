@@ -1,10 +1,15 @@
 .myAnswers {
-  /* background-color: lightgray; */
-  height: 100vh;
-  padding-top: 25px;
+  width: 1020px;
+  margin: 0 auto;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  height: 0px;
-  justify-content: center;
+  justify-content: start;
+}
+
+@media screen and (min-width: 320px) and (max-width: 576px) {
+  .myAnswers {
+    width: 100%;
+    padding: 16px;
+  }
 }

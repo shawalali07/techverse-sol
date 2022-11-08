@@ -7,6 +7,7 @@ import fail from '../../../utils/fail';
 import { destroyToken } from '../../slices/authSlice';
 import { getQuestions, getSpecificUserQuestions } from '../questions/question';
 import { getKnowledge } from '../knowledge/knowledge';
+import { getTopDevs } from '../developers/developers';
 
 const signin = (formValue, navigate, setLoading) => async (dispatch) => {
   setLoading(true);
@@ -31,6 +32,7 @@ const signin = (formValue, navigate, setLoading) => async (dispatch) => {
     dispatch(getQuestions());
     dispatch(getKnowledge(setLoading));
     dispatch(getSpecificUserQuestions());
+    dispatch(getTopDevs());
   } catch (error) {
     setLoading(false);
     fail(error.response?.data?.message);

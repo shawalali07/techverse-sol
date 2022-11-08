@@ -4,12 +4,14 @@ import './messageDropdown.css';
 import shali from '../assets/images/shali.jpg';
 import { useRef, useEffect, useState } from 'react';
 import MessageModal from '../components/messages/MessageModal';
-const MessageDropdown = ({ setMsgDropdown, msgDropdown }) => {
-  const refOutside = useRef(null);
+import moment from 'moment';
+import MessageCard from './MessageCard';
+const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
   const [show, setShow] = useState(false);
+  const refOutside = useRef(null);
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true);
+    document.addEventListener('click', handleClickOutside);
   }, []);
 
   const handleClickOutside = ({ target }) => {
@@ -18,6 +20,8 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown }) => {
     } else {
     }
   };
+
+  console.log(msgDropdown, 'sds');
 
   return (
     <div ref={refOutside} className='messageDropdown'>
@@ -37,26 +41,10 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown }) => {
         }}
         className={msgDropdown ? `mDropdown1` : 'mDropdown'}
       >
-        <div className='msgCard flex flex-column'>
-          <div className=' d-flex align-items-center gap-3'>
-            <div className='msgLeft'>
-              <img className='msgImg' src={shali} />
-            </div>
-            <div className='msgRight'>
-              <h1 className='msgSender'>Shawal Ali</h1>
-            </div>
-          </div>
-          <div className='msgInfo'>
-            <p className='msgText'>
-              I want to know about you? Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Incidunt tenetur quaerat quam aspernatur iure
-              esse saepe qui nemo eius amet.
-            </p>
-            <span className='msgTime'>2 hours ago</span>
-          </div>
-        </div>
+        {topDev?.messages?.map((msg) => (
+          <MessageCard setMsgDropdown={setMsgDropdown} msg={msg} />
+        ))}
       </div>
-      <MessageModal show={show} setShow={setShow} />
     </div>
   );
 };
