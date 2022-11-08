@@ -3,7 +3,12 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './quoteModal.css';
-export default function QuoteModal({ show, handleClose }) {
+export default function QuoteModal({
+  show,
+  handleClose,
+  handleQuoteChange,
+  handleQuote,
+}) {
   return (
     <>
       <Modal size='lg' centered scrollable show={show} onHide={handleClose}>
@@ -14,7 +19,7 @@ export default function QuoteModal({ show, handleClose }) {
           <form className='writeForm'>
             <div className='quoteTextfield'>
               <textarea
-                name=''
+                onChange={handleQuoteChange}
                 placeholder='Send offer...'
                 className='writeInput writeText'
                 type='text'
@@ -26,7 +31,7 @@ export default function QuoteModal({ show, handleClose }) {
           <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
-          <Button variant='primary' onClick={handleClose}>
+          <Button variant='primary' onClick={handleQuote}>
             Submit
           </Button>
         </Modal.Footer>
