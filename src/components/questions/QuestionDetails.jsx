@@ -42,106 +42,108 @@ const QuestionDetails = () => {
   }, []);
 
   return (
-    <div className='questionDet'>
-      {loading || loading2 ? (
-        <div className='justify-content-center align-items-center mt-5'>
-          <BeatLoader size={40} />
-        </div>
-      ) : (
-        <>
-          <div className='detTop'>
-            <h1 className='detTitle'>{question?.title}</h1>
-            <div className='detInfo'>
-              <span>asked {moment(question?.updatedAt).fromNow()},</span>
+    <div style={{ backgroundColor: '#fff', height: '2000px' }}>
+      <div className='questionDet'>
+        {loading || loading2 ? (
+          <div className='justify-content-center align-items-center mt-5'>
+            <BeatLoader size={40} />
+          </div>
+        ) : (
+          <>
+            <div className='detTop'>
+              <h1 className='detTitle'>{question?.title}</h1>
+              <div className='detInfo'>
+                <span>asked {moment(question?.updatedAt).fromNow()},</span>
 
-              <Link
-                className='link'
-                to={browserRoutes.DEVELOPERS + '/' + question.userId}
-                state={{ data: { data: question?.userId } }}
-              >
-                <span>
-                  by{' '}
-                  <b style={{ textTransform: 'capitalize' }}>
-                    {question?.userName}
-                  </b>
-                </span>
-              </Link>
+                <Link
+                  className='link'
+                  to={browserRoutes.DEVELOPERS + '/' + question.userId}
+                  state={{ data: { data: question?.userId } }}
+                >
+                  <span>
+                    by{' '}
+                    <b style={{ textTransform: 'capitalize' }}>
+                      {question?.userName}
+                    </b>
+                  </span>
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className='detCenter'>
-            <p
-              dangerouslySetInnerHTML={{ __html: question?.description }}
-              className='detDesc'
-            ></p>
-
-            {answers?.map((answer) => (
-              <AnswerCard
-                canVote={question?.canVote}
-                userId={question?.userId}
-                id={id}
-                setComLoading={setComLoading}
-                comLoading={comLoading}
-                answer={answer}
-                answerId={id}
-              />
-            ))}
-          </div>
-          {token ? (
             <div className='detCenter'>
-              <div className='detAnsContainer'>
-                <div className='detCard'>
-                  <div className='detTopCard'>
-                    <div className='detAnsLeft'>
-                      <h1 className='detWrite'>
-                        <strong>Your Answer</strong>
-                      </h1>
+              <p
+                dangerouslySetInnerHTML={{ __html: question?.description }}
+                className='detDesc'
+              ></p>
+
+              {answers?.map((answer) => (
+                <AnswerCard
+                  canVote={question?.canVote}
+                  userId={question?.userId}
+                  id={id}
+                  setComLoading={setComLoading}
+                  comLoading={comLoading}
+                  answer={answer}
+                  answerId={id}
+                />
+              ))}
+            </div>
+            {token ? (
+              <div className='detCenter'>
+                <div className='detAnsContainer'>
+                  <div className='detCard'>
+                    <div className='detTopCard'>
+                      <div className='detAnsLeft'>
+                        <h1 className='detWrite'>
+                          <strong>Your Answer</strong>
+                        </h1>
+                      </div>
                     </div>
-                  </div>
-                  <div className='detCenterCard'>
-                    <div className='detAnsDesc'>
-                      <TextEditor
-                        setFormValues={setFormValues}
-                        formValues={formValues}
-                      />
+                    <div className='detCenterCard'>
+                      <div className='detAnsDesc'>
+                        <TextEditor
+                          setFormValues={setFormValues}
+                          formValues={formValues}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className='detBottomCard'>
-                    <div className='detBtnContainer'>
-                      <Button
-                        disabled={subLoading}
-                        onClick={() =>
-                          dispatch(
-                            submitAnswer(
-                              formValues,
-                              setSubLoading,
-                              getAnswersById,
-                              id
+                    <div className='detBottomCard'>
+                      <div className='detBtnContainer'>
+                        <Button
+                          disabled={subLoading}
+                          onClick={() =>
+                            dispatch(
+                              submitAnswer(
+                                formValues,
+                                setSubLoading,
+                                getAnswersById,
+                                id
+                              )
                             )
-                          )
-                        }
-                        style={{ borderRadius: '15px' }}
-                        className='detWriteBtn'
-                        size='medium'
-                        variant='contained'
-                      >
-                        Post
-                      </Button>
+                          }
+                          style={{ borderRadius: '15px' }}
+                          className='detWriteBtn'
+                          size='medium'
+                          variant='contained'
+                        >
+                          Post
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ) : (
-            <span className='mustLogin'>
-              You must{' '}
-              <Link className='link mustLoginLink' to={browserRoutes.SIGNIN}>
-                login
-              </Link>{' '}
-              to answer
-            </span>
-          )}
-        </>
-      )}
+            ) : (
+              <span className='mustLogin'>
+                You must{' '}
+                <Link className='link mustLoginLink' to={browserRoutes.SIGNIN}>
+                  login
+                </Link>{' '}
+                to answer
+              </span>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

@@ -4,11 +4,14 @@ import { Button } from '@mui/material';
 import shali from '../../assets/images/shali.jpg';
 import { useDispatch } from 'react-redux';
 import { setReplyModal } from '../../redux-toolkit/slices/modalSlice';
+import { browserRoutes } from '../../routes/browserRoutes';
+import { Link } from 'react-router-dom';
 const MessageModal = ({ show, setShow, msg }) => {
   const dispatch = useDispatch();
   const handleClose = () => {
     setShow(false);
   };
+
   return (
     <>
       <Modal size='lg' centered scrollable show={show} onHide={handleClose}>
@@ -25,7 +28,13 @@ const MessageModal = ({ show, setShow, msg }) => {
                   {msg?.user?.name?.slice(0, 2)}
                 </div>
               )}
-              <h1 className='senderTitle'>{msg?.user?.name}</h1>
+              <Link
+                className='link'
+                to={browserRoutes.DEVELOPERS + '/' + msg?.user?._id}
+                state={{ data: msg?.user }}
+              >
+                <h1 className='senderTitle'>{msg?.user?.name}</h1>
+              </Link>
             </div>
           </Modal.Title>
         </Modal.Header>
@@ -33,17 +42,6 @@ const MessageModal = ({ show, setShow, msg }) => {
           <p className='inboxText' placeholder='Send offer...' type='text'>
             {msg?.description}
           </p>
-          <Button
-            onClick={() => {
-              handleClose();
-              dispatch(setReplyModal(true));
-            }}
-            style={{ borderRadius: '10px' }}
-            size='small'
-            variant='contained'
-          >
-            Reply
-          </Button>
         </Modal.Body>
         <Modal.Footer>
           <div className='replyBtnContainer'>
