@@ -84,7 +84,10 @@ const AnswerCard = ({ answer, answerId, id }) => {
             className='detAnsDesc'
           ></p>
           {answer?.comments?.map((comment) => (
-            <div className='detCommentDesign'>
+            <div
+              style={{ backgroundColor: '#fff' }}
+              className='detCommentDesign'
+            >
               <div className='detCommentContainer'>
                 <Link
                   className='link'

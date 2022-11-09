@@ -304,7 +304,7 @@ code {
   min-height: 37vh;
   max-height: 37vh;
   border: 2px solid rgb(144, 144, 144); */
-  background-color: #D3D3D3 !important;
+  background-color: #fdfbfb !important;
 }
 
 .paginationBttns {
@@ -353,4 +353,5 @@ code {
   justify-content: center;
 }
 
-.followersCell {}
+.followersCell {
+}
