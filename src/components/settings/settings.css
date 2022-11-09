@@ -1,6 +1,7 @@
 .settings {
+  height: 100vh;
+  background-color: white;
   display: flex;
-  width: 50vw;
 }
 
 .aboutFormGroup {
@@ -9,6 +10,7 @@
 
 .settingsWrapper {
   flex: 9;
+
   padding: 20px;
 }
 

@@ -1,41 +1,43 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 // import { baseURL } from '../config/congif';
 import { Link } from 'react-router-dom';
 import './sidebar.css';
 
 const Sidebar = () => {
-  const [cats, setCats] = useState([]);
-  useEffect(() => {
-    const getCats = async () => {
-      // const { data } = await axios.get(`${baseURL}/categories`);
-      // setCats(data);
-    };
-    getCats();
-  }, []);
+  const { designation, country, skills, rate } = useSelector(
+    (state) => state?.authSlice
+  );
+  const { user } = useSelector((state) => state?.authSlice);
 
+  useEffect(() => {}, []);
+  console.log(user);
   return (
     <div className='sidebar'>
       <div className='sidebarItem'>
-        <span className='sidebarTitle'>ABOUT ME</span>
-        <img
-          src='https://i.pinimg.com/236x/1e/3f/58/1e3f587572a7a7b20bbf1828595a1786--holiday-party-themses-holiday-gift-guide.jpg'
-          alt=''
-        />
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-          corrupti officiis nesciunt possimus earum incidunt natus animi.
-        </p>
-      </div>
-
-      <div className='sidebarItem'>
-        <span className='sidebarTitle'>FOLLOW ME</span>
-        <div className='sidebarSocial'>
-          <i className='sidebarIcon fa-brands fa-square-facebook'></i>
-          <i className='sidebarIcon fa-brands fa-square-twitter'></i>
-          <i className='sidebarIcon fa-brands fa-square-pinterest'></i>
-          <i className='sidebarIcon fa-brands fa-square-instagram'></i>
-        </div>
+        <span className='sidebarTitle'>
+          {designation ? designation : 'No Desgination Provided'}
+        </span>
+        <img className='sidebarImg' src={user?.image} alt='' />
+        {country ? (
+          <div className='sidebarItemContent'>
+            <span>Country</span>
+            <span>{country}</span>
+          </div>
+        ) : null}
+        {skills?.length ? (
+          <div className='sidebarItemContent'>
+            <span>Skills</span>
+            <span>{skills}</span>
+          </div>
+        ) : null}
+        {rate ? (
+          <div className='sidebarItemContent'>
+            <span>Hourly Rate</span>
+            <span>${rate}</span>
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -7,8 +7,12 @@ export const authSlice = createSlice({
     fullName: '',
     email: '',
     profilePic: '',
+    aboutMe: '',
     id: '',
     isAdmin: false,
+    rate: '',
+    skills: '',
+    designation: '',
   },
   reducers: {
     setToken: (state, action) => {
@@ -37,6 +41,7 @@ export const authSlice = createSlice({
       state.country = action.payload.country;
       state.designation = action.payload.designation;
       state.skills = action.payload.skills;
+      state.aboutMe = action.payload.aboutMe;
     },
   },
 });

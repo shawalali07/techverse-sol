@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import './settings.css';
 import { updateProfile } from '../../redux-toolkit/actions/profile/profile';
-import { useNavigate } from 'react-router-dom';
 import { countryList } from '../../constants/countries';
 import {
   hourlyRate,
@@ -10,6 +9,7 @@ import {
   skillsList,
 } from '../../constants/hourlyRate';
 import { Autocomplete, Stack, TextField } from '@mui/material';
+import Sidebar from '../sidebar/Sidebar';
 const Settings = () => {
   const [country, setCountry] = useState('');
   const [skills, setSkills] = useState('');
@@ -70,6 +70,8 @@ const Settings = () => {
     setFormData({ ...formData, designation: designation });
   }, [designation]);
 
+  console.log(user);
+
   return (
     <div className='settings'>
       <div className='settingsWrapper'>
@@ -128,7 +130,7 @@ const Settings = () => {
             <textarea
               onChange={handleUpdateChange}
               name='aboutMe'
-              placeholder='Tell about you...'
+              placeholder={user?.aboutMe ? user?.aboutMe : 'Tell about you...'}
               className='aboutText'
               type='text'
             ></textarea>
@@ -143,7 +145,7 @@ const Settings = () => {
                 renderInput={(params) => (
                   <TextField {...params} label='Select Country' />
                 )}
-                value={user?.country ? user?.country : country}
+                // value={user?.country ? user?.country : country}
                 onChange={(event, newValue) => {
                   setIsUpdated(true);
                   setCountry(newValue);
@@ -157,7 +159,7 @@ const Settings = () => {
                 renderInput={(params) => (
                   <TextField {...params} label='Select Hourly Rate' />
                 )}
-                value={user?.rate ? user?.rate : rate}
+                // value={user?.rate ? user?.rate : rate}
                 onChange={(event, newValue) => {
                   setIsUpdated(true);
                   setRate(newValue);
@@ -173,7 +175,7 @@ const Settings = () => {
                 renderInput={(params) => (
                   <TextField {...params} label='Select Designation' />
                 )}
-                value={user?.designation ? user?.designation : designation}
+                // value={user?.designation ? user?.designation : designation}
                 onChange={(event, newValue) => {
                   setIsUpdated(true);
                   setDesignation(newValue);
@@ -187,7 +189,7 @@ const Settings = () => {
                 renderInput={(params) => (
                   <TextField {...params} label='Select Skills' />
                 )}
-                value={user?.skills ? user?.skills : skills}
+                // value={user?.skills ? user?.skills : skills}
                 onChange={(event, newValue) => {
                   setIsUpdated(true);
                   setSkills(newValue);
@@ -205,6 +207,7 @@ const Settings = () => {
           </button>
         </form>
       </div>
+      <Sidebar />
     </div>
   );
 };
