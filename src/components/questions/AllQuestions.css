@@ -60,7 +60,7 @@
   width: 55rem;
   height: 7.5rem;
   /* background-color: hsl(0, 0%, 96.5%); */
-  background-color: #CCC9C0;
+  background-color: #ccc9c0;
   box-shadow: 0 1px 8px rgba(7, 1, 1, 0.25);
 }
 
@@ -82,5 +82,6 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 993px) {
-  .topBar {}
+  .topBar {
+  }
 }

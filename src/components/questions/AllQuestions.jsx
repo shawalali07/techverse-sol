@@ -57,7 +57,7 @@ const AllQuestions = () => {
   return (
     <div
       style={{
-        backgroundColor: '#909090',
+        backgroundColor: '#fdfbfb',
       }}
       className='allQuestions'
     >

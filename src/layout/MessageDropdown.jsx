@@ -27,7 +27,7 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
         onClick={() => setMsgDropdown(!msgDropdown)}
         className='msgIcon'
         color='secondary'
-        badgeContent='2'
+        // badgeContent='2'
         showZero
       >
         <Mail />
