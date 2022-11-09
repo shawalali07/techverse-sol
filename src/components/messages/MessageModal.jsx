@@ -31,7 +31,7 @@ const MessageModal = ({ show, setShow, msg }) => {
         </Modal.Header>
         <Modal.Body>
           <p className='inboxText' placeholder='Send offer...' type='text'>
-            {msg?.desc}
+            {msg?.description}
           </p>
           <Button
             onClick={() => {

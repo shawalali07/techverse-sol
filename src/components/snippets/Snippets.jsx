@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { browserRoutes } from '../../routes/browserRoutes';
 import Snippet from './Snippet';
 import './snippets.css';
 
@@ -12,18 +14,27 @@ const Snippets = () => {
               Short solutions to discrete problems which can be copied and
               pasted.
             </p>
-            <div className='snipHeadings'>
-              <div className='headings'>
-                <span>Name</span>
-                <span>Description</span>
-              </div>
-              <div className='headings'>
-                <span>Category</span>
-                <span>Last Updated</span>
-              </div>
-            </div>
+            <table class='table tHeader'>
+              <thead>
+                <tr>
+                  <th scope='col'>Title</th>
+                  <th scope='col'>Description</th>
+                  <th scope='col'>Category</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className='linkCont'>
+                  <Link className='link' to={browserRoutes.SNIPPETS + '/1/1'}>
+                    <th className='contentHeadings specColor' scope='row'>
+                      useMousePosition
+                    </th>
+                  </Link>
+                  <td>Store the user's cursor position in React state</td>
+                  <td>React hook</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <Snippet />
         </div>
       </div>
     </div>

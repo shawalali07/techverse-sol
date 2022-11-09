@@ -21,8 +21,6 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
     }
   };
 
-  console.log(msgDropdown, 'sds');
-
   return (
     <div ref={refOutside} className='messageDropdown'>
       <Badge
@@ -41,9 +39,13 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
         }}
         className={msgDropdown ? `mDropdown1` : 'mDropdown'}
       >
-        {topDev?.messages?.map((msg) => (
-          <MessageCard setMsgDropdown={setMsgDropdown} msg={msg} />
-        ))}
+        {topDev?.messages?.length ? (
+          topDev?.messages?.map((msg) => (
+            <MessageCard setMsgDropdown={setMsgDropdown} msg={msg} />
+          ))
+        ) : (
+          <div>No Message Found</div>
+        )}
       </div>
     </div>
   );
