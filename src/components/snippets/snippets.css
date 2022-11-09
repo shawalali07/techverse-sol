@@ -1,6 +1,9 @@
 .snippets {
   padding-top: 90px;
 }
+.tHeader {
+  margin-top: 40px;
+}
 
 .snipContainer {
   margin: 30px;
@@ -9,7 +12,6 @@
 .snipHeader {
   line-height: 15px;
   padding: 10px;
-  border-bottom: 2px solid rgb(122, 119, 119);
 }
 
 .snipHeader > h1 {
@@ -48,6 +50,15 @@
 
 .contentHeadings {
   font-size: 18px;
+}
+
+.linkCont {
+}
+
+.linkCont:hover {
+  opacity: 0.7;
+  background-color: #ddeefa;
+  border-radius: 20px;
 }
 
 .contentDiv {

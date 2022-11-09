@@ -18,6 +18,7 @@ import { browserRoutes } from '../../routes/browserRoutes';
 import { postFollow } from '../../redux-toolkit/actions/follow/follow';
 import { postQuote } from '../../redux-toolkit/actions/quote/quote';
 export default function Developer() {
+  const id = useSelector((state) => state.authSlice?.id);
   const [quoteDesc, setQuoteDesc] = useState('');
   let topDev = useSelector((state) => state.developer.topDevelopers);
   const dispatch = useDispatch();
@@ -56,6 +57,8 @@ export default function Developer() {
     setQuoteDesc(value);
   };
 
+  console.log(data);
+
   return (
     <div className='user'>
       <div className='userContainer'>
@@ -91,35 +94,47 @@ export default function Developer() {
               <MailOutline className='userShowIcon' />
               <span className='userShowInfoTitle'>{data?.id}</span>
             </div>
-            <div className='userShowInfo'>
-              <LocationSearching className='userShowIcon' />
-              <span className='userShowInfoTitle'>{data?.country}</span>
-            </div>
-            <div className='userShowInfo'>
-              <LocalLibraryOutlined className='userShowIcon' />
-              <span className='userShowInfoTitle'>{data?.skills}</span>
-            </div>
-            <div className='userShowInfo'>
-              <AttachMoney className='userShowIcon' />
-              <span className='userShowInfoTitle'>Hourly / ${data?.rate}</span>
-            </div>
-            <div className='userShowInfo'>
-              <Button
-                onClick={() => setShow(true)}
-                variant='contained'
-                className='userShowInfoTitle'
-              >
-                Send Quote
-              </Button>
-              <Button
-                style={{ backgroundColor: 'lightcoral', color: 'white' }}
-                onClick={handleFollow}
-                variant='outlined'
-                className='userShowInfoTitle followBtn'
-              >
-                Follow
-              </Button>
-            </div>
+            {data?.country ? (
+              <div className='userShowInfo'>
+                <LocationSearching className='userShowIcon' />
+                <span className='userShowInfoTitle'>{data?.country}</span>
+              </div>
+            ) : null}
+            {data?.skills?.length
+              ? data?.skills?.map((skill) => (
+                  <div className='userShowInfo'>
+                    <LocalLibraryOutlined className='userShowIcon' />
+                    <span className='userShowInfoTitle'>{skill}</span>
+                  </div>
+                ))
+              : null}
+            {data?.rate ? (
+              <div className='userShowInfo'>
+                <AttachMoney className='userShowIcon' />
+                <span className='userShowInfoTitle'>
+                  Hourly / ${data?.rate}
+                </span>
+              </div>
+            ) : null}
+            {id !== data?._id ? (
+              <div className='userShowInfo'>
+                <Button
+                  onClick={() => setShow(true)}
+                  variant='contained'
+                  className='userShowInfoTitle'
+                >
+                  Send Quote
+                </Button>
+                <Button
+                  style={{ backgroundColor: 'lightcoral', color: 'white' }}
+                  onClick={handleFollow}
+                  variant='outlined'
+                  className='userShowInfoTitle followBtn'
+                >
+                  Follow
+                </Button>
+              </div>
+            ) : null}
 
             <QuoteModal
               handleQuote={handleQuote}
@@ -164,7 +179,7 @@ export default function Developer() {
                 showZero
               ></Badge>
             </span>
-            {
+            {data?.knowledge?.length ? (
               <span className='achievementInfo '>
                 <Link
                   style={{ fontStyle: 'italic', color: 'blue' }}
@@ -180,7 +195,7 @@ export default function Developer() {
                   ></Badge>
                 </Link>
               </span>
-            }
+            ) : null}
           </div>
         </div>
       </div>
