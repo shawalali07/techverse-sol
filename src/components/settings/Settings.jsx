@@ -70,8 +70,6 @@ const Settings = () => {
     setFormData({ ...formData, designation: designation });
   }, [designation]);
 
-  console.log(user);
-
   return (
     <div className='settings'>
       <div className='settingsWrapper'>

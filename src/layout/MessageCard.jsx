@@ -1,13 +1,17 @@
 import moment from 'moment';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import MessageModal from '../components/messages/MessageModal';
+import { triggerNotification } from '../redux-toolkit/actions/notifications/notofications';
 
 const MessageCard = ({ msg, setMsgDropdown }) => {
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
   return (
     <>
       <div
         onClick={() => {
+          dispatch(triggerNotification());
           setMsgDropdown(false);
           setShow(true);
         }}

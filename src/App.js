@@ -27,7 +27,6 @@ import KnowledgeUser from './components/knowledge/KnowledgeUser';
 import { useSelector } from 'react-redux';
 
 function App() {
-  const user = useSelector((state) => console.log(state));
   return (
     <>
       <Toaster position='bottom-center' />
