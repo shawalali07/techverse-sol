@@ -6,6 +6,7 @@ import { useRef, useEffect, useState } from 'react';
 import MessageModal from '../components/messages/MessageModal';
 import moment from 'moment';
 import MessageCard from './MessageCard';
+import { ClipLoader } from 'react-spinners';
 const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
   const [show, setShow] = useState(false);
   const refOutside = useRef(null);
@@ -27,7 +28,15 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
         onClick={() => setMsgDropdown(!msgDropdown)}
         className='msgIcon'
         color='secondary'
-        badgeContent={topDev?.notifications}
+        badgeContent={
+          topDev?.notifications ? (
+            topDev?.notifications
+          ) : topDev?.notifications < 1 ? (
+            0
+          ) : (
+            <ClipLoader size={10} />
+          )
+        }
         showZero
       >
         <Mail />

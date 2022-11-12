@@ -11,6 +11,7 @@ import ReactPaginate from 'react-paginate';
 import NotFound from '../error/NotFound';
 import { Badge } from '@mui/material';
 import { getTopDevs } from '../../redux-toolkit/actions/developers/developers';
+import SkeletonAllQ from '../../skeletons/SkeletonAllQ';
 
 const AllQuestions = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -64,7 +65,7 @@ const AllQuestions = () => {
       <div className='allQuestionsContainer'>
         {loading ? (
           <div className='d-flex justify-content-center align-items-center mt-5'>
-            <BeatLoader size={40} />
+            <SkeletonAllQ />
           </div>
         ) : !loading && searchedQuestions?.length > 0 ? (
           <>

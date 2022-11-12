@@ -6,20 +6,18 @@ import { Link } from 'react-router-dom';
 import './sidebar.css';
 
 const Sidebar = () => {
-  const { designation, country, skills, rate } = useSelector(
+  const { designation, country, skills, rate, profilePic } = useSelector(
     (state) => state?.authSlice
   );
-  const { user } = useSelector((state) => state?.authSlice);
 
   useEffect(() => {}, []);
-  console.log(user);
   return (
     <div className='sidebar'>
       <div className='sidebarItem'>
         <span className='sidebarTitle'>
           {designation ? designation : 'No Desgination Provided'}
         </span>
-        <img className='sidebarImg' src={user?.image} alt='' />
+        <img className='sidebarImg' src={profilePic} alt='' />
         {country ? (
           <div className='sidebarItemContent'>
             <span>Country</span>

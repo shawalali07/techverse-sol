@@ -92,7 +92,9 @@ export default function Developer() {
 
             <div className='userShowInfo'>
               <MailOutline className='userShowIcon' />
-              <span className='userShowInfoTitle'>{data?.id}</span>
+              <span className='userShowInfoTitle'>
+                {data?.id || data?.email}
+              </span>
             </div>
             {data?.country ? (
               <div className='userShowInfo'>
