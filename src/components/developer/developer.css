@@ -32,6 +32,10 @@
   margin-left: 100px;
 }
 
+.followBtn:disabled {
+  cursor: not-allowed;
+  background-color: darkgray;
+}
 .userShow {
   background-color: white;
 

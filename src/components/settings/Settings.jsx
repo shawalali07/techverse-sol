@@ -12,7 +12,7 @@ import { Autocomplete, Stack, TextField } from '@mui/material';
 import Sidebar from '../sidebar/Sidebar';
 const Settings = () => {
   const [country, setCountry] = useState('');
-  const [skills, setSkills] = useState('');
+  const [skills, setSkills] = useState([]);
   const [designation, setDesignation] = useState('');
   const [rate, setRate] = useState(null);
   const [isUpdated, setIsUpdated] = useState(false);
@@ -180,6 +180,7 @@ const Settings = () => {
                 }}
               />
               <Autocomplete
+                multiple
                 className='mt-3'
                 sx={{ width: 300 }}
                 disablePortal

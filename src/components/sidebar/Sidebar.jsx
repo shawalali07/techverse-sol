@@ -1,8 +1,5 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import { baseURL } from '../config/congif';
-import { Link } from 'react-router-dom';
 import './sidebar.css';
 
 const Sidebar = () => {
@@ -11,13 +8,14 @@ const Sidebar = () => {
   );
 
   useEffect(() => {}, []);
+
   return (
     <div className='sidebar'>
       <div className='sidebarItem'>
         <span className='sidebarTitle'>
           {designation ? designation : 'No Desgination Provided'}
         </span>
-        <img className='sidebarImg' src={profilePic} alt='' />
+        {profilePic && <img className='sidebarImg' src={profilePic} alt='' />}
         {country ? (
           <div className='sidebarItemContent'>
             <span>Country</span>
@@ -27,7 +25,9 @@ const Sidebar = () => {
         {skills?.length ? (
           <div className='sidebarItemContent'>
             <span>Skills</span>
-            <span>{skills}</span>
+            {skills?.map((skill) => (
+              <span>{skill}</span>
+            ))}
           </div>
         ) : null}
         {rate ? (

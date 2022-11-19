@@ -1,12 +1,20 @@
 import { DataGrid } from '@material-ui/data-grid';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getMyFollowing } from '../../redux-toolkit/actions/follow/follow';
 import { browserRoutes } from '../../routes/browserRoutes';
 import './following.css';
 
 const Following = () => {
-  let topDev = useSelector((state) => state.developer.topDevelopers);
-  topDev = topDev?.map(({ email: id, ...rest }) => ({ id, ...rest }));
+  let following = useSelector((state) => state.following.myFollowing);
+  let loading = useSelector((state) => state.following.loading);
+
+  following = following?.map(({ email: id, ...rest }) => ({ id, ...rest }));
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMyFollowing());
+  }, []);
 
   const columns = [
     {
@@ -81,9 +89,10 @@ const Following = () => {
           <DataGrid
             autoHeight
             density='comfortable'
-            rows={topDev}
+            rows={following}
             columns={columns}
             pageSize={8}
+            loading={loading}
           />
         </div>
       </div>
