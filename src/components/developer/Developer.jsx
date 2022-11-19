@@ -8,19 +8,27 @@ import {
   PhoneAndroid,
 } from '@material-ui/icons';
 import { Badge, Button } from '@mui/material';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import './developer.css';
 import { useState, useEffect } from 'react';
 import QuoteModal from './QuoteModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTopDevs } from '../../redux-toolkit/actions/developers/developers';
 import { browserRoutes } from '../../routes/browserRoutes';
-import { postFollow } from '../../redux-toolkit/actions/follow/follow';
+import {
+  isFollows,
+  postFollow,
+} from '../../redux-toolkit/actions/follow/follow';
 import { postQuote } from '../../redux-toolkit/actions/quote/quote';
+import { BeatLoader, ClipLoader } from 'react-spinners';
 export default function Developer() {
+  const { userId } = useParams();
+  const [loading, setLoading] = useState(false);
   const id = useSelector((state) => state.authSlice?.id);
   const [quoteDesc, setQuoteDesc] = useState('');
   let topDev = useSelector((state) => state.developer.topDevelopers);
+  let isFollow = useSelector((state) => state.following.isFollow);
+  let loadingFollow = useSelector((state) => state.following.loading);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -45,162 +53,175 @@ export default function Developer() {
   }
 
   const handleFollow = () => {
-    dispatch(postFollow(data?._id));
+    dispatch(postFollow(data?._id, setLoading, isFollows));
   };
 
   const handleQuote = () => {
     setShow(true);
-    dispatch(postQuote(quoteDesc, data?._id));
+    dispatch(postQuote(quoteDesc, data?._id, handleClose));
   };
 
   const handleQuoteChange = ({ target: { value } }) => {
     setQuoteDesc(value);
   };
 
-  console.log(data);
+  useEffect(() => {
+    dispatch(isFollows(userId));
+  }, []);
 
   return (
     <div className='user'>
-      <div className='userContainer'>
-        <div className='userShow'>
-          <div className='userShowTop'>
-            {data?.image ? (
-              <img src={data?.image} alt='' className='userShowImg' />
-            ) : (
-              <div
-                style={{ backgroundColor: 'lightgray' }}
-                className='topDevImg'
-              >
-                {data?.name?.slice(0, 2)}
+      {loadingFollow ? (
+        <div
+          style={{ paddingTop: '120px' }}
+          className='d-flex justify-content-center'
+        >
+          <BeatLoader size={40} />
+        </div>
+      ) : (
+        <div className='userContainer'>
+          <div className='userShow'>
+            <div className='userShowTop'>
+              {data?.image ? (
+                <img src={data?.image} alt='' className='userShowImg' />
+              ) : (
+                <div
+                  style={{ backgroundColor: 'lightgray' }}
+                  className='topDevImg'
+                >
+                  {data?.name?.slice(0, 2)}
+                </div>
+              )}
+              <div className='userShowTopTitle'>
+                <span className='userShowUsername'>{data?.name}</span>
+                <span className='userShowUserTitle'>{data?.designation}</span>
               </div>
-            )}
-            <div className='userShowTopTitle'>
-              <span className='userShowUsername'>{data?.name}</span>
-              <span className='userShowUserTitle'>{data?.designation}</span>
             </div>
-          </div>
-          <div className='userShowBottom'>
-            <span className='userShowTitle'>Account Details</span>
-            <div className='userShowInfo'>
-              <PermIdentity className='userShowIcon' />
-              <span className='userShowInfoTitle'>
-                {data?.name?.split(' ')?.slice(0, 2)}
-              </span>
-            </div>
-
-            <span className='userShowTitle'>Contact Details</span>
-
-            <div className='userShowInfo'>
-              <MailOutline className='userShowIcon' />
-              <span className='userShowInfoTitle'>
-                {data?.id || data?.email}
-              </span>
-            </div>
-            {data?.country ? (
+            <div className='userShowBottom'>
+              <span className='userShowTitle'>Account Details</span>
               <div className='userShowInfo'>
-                <LocationSearching className='userShowIcon' />
-                <span className='userShowInfoTitle'>{data?.country}</span>
-              </div>
-            ) : null}
-            {data?.skills?.length
-              ? data?.skills?.map((skill) => (
-                  <div className='userShowInfo'>
-                    <LocalLibraryOutlined className='userShowIcon' />
-                    <span className='userShowInfoTitle'>{skill}</span>
-                  </div>
-                ))
-              : null}
-            {data?.rate ? (
-              <div className='userShowInfo'>
-                <AttachMoney className='userShowIcon' />
+                <PermIdentity className='userShowIcon' />
                 <span className='userShowInfoTitle'>
-                  Hourly / ${data?.rate}
+                  {data?.name?.split(' ')?.slice(0, 2)}
                 </span>
               </div>
-            ) : null}
-            {id !== data?._id ? (
-              <div className='userShowInfo'>
-                <Button
-                  onClick={() => setShow(true)}
-                  variant='contained'
-                  className='userShowInfoTitle'
-                >
-                  Send Quote
-                </Button>
-                <Button
-                  style={{ backgroundColor: 'lightcoral', color: 'white' }}
-                  onClick={handleFollow}
-                  variant='outlined'
-                  className='userShowInfoTitle followBtn'
-                >
-                  Follow
-                </Button>
-              </div>
-            ) : null}
 
-            <QuoteModal
-              handleQuote={handleQuote}
-              handleQuoteChange={handleQuoteChange}
-              show={show}
-              handleClose={handleClose}
-              handleShow={() => setShow(true)}
-            />
+              <span className='userShowTitle'>Contact Details</span>
+
+              <div className='userShowInfo'>
+                <MailOutline className='userShowIcon' />
+                <span className='userShowInfoTitle'>
+                  {data?.id || data?.email}
+                </span>
+              </div>
+              {data?.country ? (
+                <div className='userShowInfo'>
+                  <LocationSearching className='userShowIcon' />
+                  <span className='userShowInfoTitle'>{data?.country}</span>
+                </div>
+              ) : null}
+              {data?.skills?.length
+                ? data?.skills?.map((skill) => (
+                    <div className='userShowInfo'>
+                      <LocalLibraryOutlined className='userShowIcon' />
+                      <span className='userShowInfoTitle'>{skill}</span>
+                    </div>
+                  ))
+                : null}
+              {data?.rate ? (
+                <div className='userShowInfo'>
+                  <AttachMoney className='userShowIcon' />
+                  <span className='userShowInfoTitle'>
+                    Hourly / ${data?.rate}
+                  </span>
+                </div>
+              ) : null}
+              {id !== data?._id ? (
+                <div className='userShowInfo'>
+                  <Button
+                    onClick={() => setShow(true)}
+                    variant='contained'
+                    className='userShowInfoTitle'
+                  >
+                    Send Quote
+                  </Button>
+                  <Button
+                    color={!isFollow ? 'secondary' : 'error'}
+                    disabled={loading}
+                    // style={{ backgroundColor: 'lightcoral', color: 'white' }}
+                    onClick={handleFollow}
+                    variant={'contained'}
+                    className='userShowInfoTitle followBtn'
+                  >
+                    {isFollow ? 'Unfollow' : 'Follow'}
+                  </Button>
+                </div>
+              ) : null}
+
+              <QuoteModal
+                handleQuote={handleQuote}
+                handleQuoteChange={handleQuoteChange}
+                show={show}
+                handleClose={handleClose}
+                handleShow={() => setShow(true)}
+              />
+            </div>
           </div>
-        </div>
-        <div className='userUpdate'>
-          <span className='userUpdateTitle'>About Me</span>
-          <p className='devAboutText'>{data?.aboutMe}</p>
-        </div>
-        <div className='userPoints'>
-          <div className='userUpdateTitle'>My Achievements</div>
-          <div className='achievements'>
-            <span className='achievementInfo'>
-              Rank{' '}
-              <Badge
-                className='rankBadge'
-                color='success'
-                badgeContent={data?.rate}
-                showZero
-              ></Badge>
-            </span>
-            <span className='achievementInfo'>
-              Points
-              <Badge
-                className='pointBadge'
-                color='primary'
-                badgeContent={data?.points}
-                showZero
-              ></Badge>
-            </span>
-            <span className='achievementInfo'>
-              Answers{' '}
-              <Badge
-                className='ansBadge'
-                color='error'
-                badgeContent={data?.answers || 0}
-                showZero
-              ></Badge>
-            </span>
-            {data?.knowledge?.length ? (
-              <span className='achievementInfo '>
-                <Link
-                  style={{ fontStyle: 'italic', color: 'blue' }}
-                  className='link'
-                  to={browserRoutes.KNOWLEDGE + '/' + data?._id}
-                >
-                  Shared Knowledge{' '}
-                  <Badge
-                    className='ansBadge'
-                    color='error'
-                    badgeContent={data?.knowledge || 0}
-                    showZero
-                  ></Badge>
-                </Link>
+          <div className='userUpdate'>
+            <span className='userUpdateTitle'>About Me</span>
+            <p className='devAboutText'>{data?.aboutMe}</p>
+          </div>
+          <div className='userPoints'>
+            <div className='userUpdateTitle'>My Achievements</div>
+            <div className='achievements'>
+              <span className='achievementInfo'>
+                Rank{' '}
+                <Badge
+                  className='rankBadge'
+                  color='success'
+                  badgeContent={data?.rate}
+                  showZero
+                ></Badge>
               </span>
-            ) : null}
+              <span className='achievementInfo'>
+                Points
+                <Badge
+                  className='pointBadge'
+                  color='primary'
+                  badgeContent={data?.points}
+                  showZero
+                ></Badge>
+              </span>
+              <span className='achievementInfo'>
+                Answers{' '}
+                <Badge
+                  className='ansBadge'
+                  color='error'
+                  badgeContent={data?.answers || 0}
+                  showZero
+                ></Badge>
+              </span>
+              {!data?.knowledge?.length ? (
+                <span className='achievementInfo '>
+                  <Link
+                    style={{ fontStyle: 'italic', color: 'blue' }}
+                    className='link'
+                    to={browserRoutes.KNOWLEDGE + '/' + data?._id}
+                  >
+                    Shared Knowledge{' '}
+                    <Badge
+                      className='ansBadge'
+                      color='error'
+                      badgeContent={data?.knowledge || 0}
+                      showZero
+                    ></Badge>
+                  </Link>
+                </span>
+              ) : null}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

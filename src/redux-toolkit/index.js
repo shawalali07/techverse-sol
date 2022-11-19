@@ -7,6 +7,7 @@ import loading from './slices/loadingSlice';
 import { persistReducer, persistStore } from 'redux-persist';
 import knowledge from './slices/knowledgeSlice';
 import developer from './slices/developerSlice';
+import following from './slices/followSlice';
 import modal from './slices/modalSlice';
 const persistConfig = {
   key: 'root',
@@ -24,6 +25,7 @@ export const store = configureStore({
     knowledge,
     developer,
     modal,
+    following,
   },
   middleware: [
     ...getDefaultMiddleware({

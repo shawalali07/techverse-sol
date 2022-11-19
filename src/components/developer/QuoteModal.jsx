@@ -8,6 +8,7 @@ export default function QuoteModal({
   handleClose,
   handleQuoteChange,
   handleQuote,
+  loading,
 }) {
   return (
     <>
@@ -28,7 +29,7 @@ export default function QuoteModal({
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
+          <Button disabled={loading} variant='secondary' onClick={handleClose}>
             Close
           </Button>
           <Button variant='primary' onClick={handleQuote}>
