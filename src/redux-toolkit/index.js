@@ -9,6 +9,8 @@ import knowledge from './slices/knowledgeSlice';
 import developer from './slices/developerSlice';
 import following from './slices/followSlice';
 import modal from './slices/modalSlice';
+import snippetSlice from './slices/snippetSlice';
+import languageSlice from './slices/languageSlice';
 const persistConfig = {
   key: 'root',
   storage,
@@ -26,6 +28,8 @@ export const store = configureStore({
     developer,
     modal,
     following,
+    snippetSlice,
+    languageSlice,
   },
   middleware: [
     ...getDefaultMiddleware({

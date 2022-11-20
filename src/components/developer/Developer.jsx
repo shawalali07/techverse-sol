@@ -21,12 +21,18 @@ import {
 } from '../../redux-toolkit/actions/follow/follow';
 import { postQuote } from '../../redux-toolkit/actions/quote/quote';
 import { BeatLoader, ClipLoader } from 'react-spinners';
+import {
+  getKnowledgeByCount,
+  getKnowledgeById,
+} from '../../redux-toolkit/actions/knowledge/knowledge';
 export default function Developer() {
   const { userId } = useParams();
   const [loading, setLoading] = useState(false);
   const id = useSelector((state) => state.authSlice?.id);
   const [quoteDesc, setQuoteDesc] = useState('');
   let topDev = useSelector((state) => state.developer.topDevelopers);
+  let knowledge = useSelector((state) => state.knowledge.knowledgeCount);
+  console.log(knowledge);
   let isFollow = useSelector((state) => state.following.isFollow);
   let loadingFollow = useSelector((state) => state.following.loading);
   const dispatch = useDispatch();
@@ -67,6 +73,7 @@ export default function Developer() {
 
   useEffect(() => {
     dispatch(isFollows(userId));
+    dispatch(getKnowledgeByCount(userId));
   }, []);
 
   return (
@@ -201,7 +208,7 @@ export default function Developer() {
                   showZero
                 ></Badge>
               </span>
-              {!data?.knowledge?.length ? (
+              {knowledge ? (
                 <span className='achievementInfo '>
                   <Link
                     style={{ fontStyle: 'italic', color: 'blue' }}
@@ -212,7 +219,7 @@ export default function Developer() {
                     <Badge
                       className='ansBadge'
                       color='error'
-                      badgeContent={data?.knowledge || 0}
+                      badgeContent={knowledge || 0}
                       showZero
                     ></Badge>
                   </Link>

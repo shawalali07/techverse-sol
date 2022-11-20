@@ -1,7 +1,15 @@
-import React from 'react'
-import TextEditorHeader from './TextEditorHeader'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { getLanguages } from '../../redux-toolkit/actions/language/language';
+import TextEditorHeader from './TextEditorHeader';
+import { useEffect } from 'react';
 
 const AskQuestion = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getLanguages());
+  }, []);
+
   return (
     <div
       style={{
@@ -12,7 +20,7 @@ const AskQuestion = () => {
     >
       <TextEditorHeader />
     </div>
-  )
-}
+  );
+};
 
-export default AskQuestion
+export default AskQuestion;

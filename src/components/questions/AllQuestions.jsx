@@ -65,7 +65,7 @@ const AllQuestions = () => {
       <div className='allQuestionsContainer'>
         {loading ? (
           <div className='d-flex justify-content-center align-items-center mt-5'>
-            <SkeletonAllQ />
+            <BeatLoader size={40} />
           </div>
         ) : !loading && searchedQuestions?.length > 0 ? (
           <>
