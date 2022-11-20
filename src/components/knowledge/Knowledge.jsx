@@ -13,6 +13,8 @@ import { BeatLoader } from 'react-spinners';
 import NotFound from '../error/NotFound';
 import NotFoundResult from '../error/NotFoundResult';
 const Knowledge = () => {
+  let allTags = useSelector((state) => state?.languageSlice?.tags?.data);
+  let arrTag = allTags?.map((tag) => tag?.tag);
   const [query, setQuery] = useState('');
   const token = useToken();
   const navigate = useNavigate();
@@ -24,15 +26,6 @@ const Knowledge = () => {
   const usersPerPage = 6;
   const pagesVisited = pageNumber * usersPerPage;
   const [tag, setTag] = useState('');
-  const allTags = [
-    'Javascript',
-    'Python',
-    '.NET',
-    'C#',
-    'C++',
-    'Solidity',
-    'PHP',
-  ];
 
   const keys = ['title'];
   useEffect(() => {
@@ -71,7 +64,7 @@ const Knowledge = () => {
           <div className='selectLang w-100'>
             <Stack spacing={2} width='20vw'>
               <Autocomplete
-                options={allTags}
+                options={arrTag}
                 renderInput={(params) => (
                   <TextField {...params} label='Select Language' />
                 )}

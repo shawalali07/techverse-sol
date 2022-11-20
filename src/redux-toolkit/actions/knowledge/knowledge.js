@@ -9,6 +9,7 @@ import {
   failKnowledgeUser,
   failMyKnowledge,
   setKnowledge,
+  setKnowledgeCount,
   setKnowledgeId,
   setKnowledgeUser,
   setmyKnowledge,
@@ -53,6 +54,13 @@ export const getKnowledgeById = (id) => async (dispatch) => {
   } catch (error) {
     dispatch(failKnowledgeDataId());
   }
+};
+
+export const getKnowledgeByCount = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.get(`${authRoutes.KNOWLEDGE_COUNT}/${id}`);
+    dispatch(setKnowledgeCount(data));
+  } catch (error) {}
 };
 
 export const getKnowledgeByUser = (id, tag) => async (dispatch) => {

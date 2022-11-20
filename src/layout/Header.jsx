@@ -11,6 +11,7 @@ import { Button } from '@mui/material';
 import MessageDropdown from './MessageDropdown';
 import ReplyModal from '../components/messages/ReplyModal';
 import { getTopDevs } from '../redux-toolkit/actions/developers/developers';
+import { getLanguages } from '../redux-toolkit/actions/language/language';
 const Header = () => {
   const id = useSelector((state) => state.authSlice.id);
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const Header = () => {
 
   useEffect(() => {
     dispatch(getTopDevs());
+    dispatch(getLanguages());
   }, []);
 
   return (

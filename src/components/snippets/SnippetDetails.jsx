@@ -1,57 +1,38 @@
+import { useLocation } from 'react-router-dom';
 import './snippetDetails.css';
-
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import copy from 'copy-to-clipboard';
+import toast from 'react-hot-toast';
 const SnippetDetails = () => {
+  const {
+    state: { data },
+  } = useLocation();
+  let stripedHtml = data?.description.replace(/<[^>]+>/g, '');
   return (
     <div className='snippetDetails'>
       <div className='snipDetContainer'>
         <div className='snipDetTop'>
           <span>Snippet</span>
-          <h1>useMouseHook</h1>
+          <h1>{data?.title}</h1>
         </div>
         <div className='snipDetCenter'>
-          <span className='snipTag'>JS</span>
+          <div className='snipCopy'>
+            <span className='snipTag'>{data?.tag}</span>
+            <span
+              onClick={() => {
+                copy(stripedHtml);
+                toast.success('Copied to clipboard');
+              }}
+              className='snipCopyIcon'
+            >
+              <ContentCopyIcon />
+            </span>
+          </div>
           <div className='snipDetCode'>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              quo, aliquam praesentium voluptatibus at placeat temporibus
-              aperiam ipsum, sequi libero repellendus nisi velit voluptate
-              mollitia? Repellendus omnis culpa consequuntur deleniti asperiores
-              numquam facilis veritatis nemo dolorem nulla eum cupiditate
-              obcaecati perspiciatis eveniet eius, nobis vel sapiente esse
-              distinctio doloribus! Perspiciatis molestias ex blanditiis id
-              nesciunt provident nihil exercitationem similique quos. Sit
-              expedita perferendis, placeat perspiciatis porro reiciendis rerum
-              iusto, eius eligendi laboriosam accusantium. Quasi magnam animi
-              possimus suscipit voluptate neque, delectus nesciunt et odio porro
-              quis, laborum eligendi vitae tempore nemo reprehenderit? Labore
-              aliquid aliquam veritatis sunt, ex omnis rem minus voluptatem
-              placeat aut a, laborum nostrum saepe impedit, dolores enim
-              provident! Inventore, odit. Nisi ipsa dignissimos delectus a alias
-              nobis illum ullam ea. Quo veniam id maiores earum nam modi quis
-              nulla ipsam doloribus culpa odit, fugit eveniet inventore magni
-              velit voluptatibus ad cumque tempora quas consequatur, placeat non
-              excepturi. Quis similique iste minima optio, doloremque dolore eos
-              excepturi, itaque esse error sapiente, id repellendus. Odit ipsum
-              consectetur qui commodi voluptates at nam fugiat officiis
-              voluptatem fugit adipisci facilis aut quia maiores quod, placeat
-              ex quae non doloremque inventore amet voluptas? Optio, sed
-              repellendus earum mollitia eaque, amet eveniet illo voluptates est
-              ex assumenda ipsam aliquid voluptate quasi quas animi magnam
-              iusto, accusantium eum repudiandae rerum tenetur corporis cumque.
-              Ad praesentium eveniet voluptatibus, laboriosam quis porro facere
-              nostrum nobis illo? Recusandae commodi officia in temporibus vitae
-              blanditiis nostrum autem quidem sed iste beatae soluta iure rerum
-              a debitis quia laboriosam omnis aut perspiciatis, illo neque sint
-              perferendis qui! Necessitatibus, officiis? Ducimus, officiis cum.
-              Ipsam impedit, eaque non saepe doloremque fugiat eius suscipit,
-              quibusdam ad maiores eos provident aliquam. Totam, officia!
-              Eveniet quas, fugiat aspernatur iste iure recusandae molestiae a
-              ad optio esse soluta? Natus, quae. Laboriosam inventore odit
-              dolorem?
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: data?.description }}></p>
           </div>
         </div>
-        <div className='snipDetBottom'>
+        {/* <div className='snipDetBottom'>
           <h1>Example Explained</h1>
           <div className='snipExampleExplained'>
             <p>
@@ -82,7 +63,7 @@ const SnippetDetails = () => {
               accusamus veniam!
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
