@@ -18,7 +18,7 @@ const SearchTagsCopy = (props) => {
       >
         <Autocomplete
           multiple
-          options={arrTag}
+          options={arrTag ? arrTag : []}
           renderInput={(params) => <TextField {...params} label='Tags' />}
           value={tags}
           onChange={(event, newValue) =>

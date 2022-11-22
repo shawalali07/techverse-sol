@@ -22,23 +22,18 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
     }
   };
 
+  console.log({ topDev });
+
   return (
     <div ref={refOutside} className='messageDropdown'>
       <Badge
         onClick={() => setMsgDropdown(!msgDropdown)}
         className='msgIcon'
         color='secondary'
-        badgeContent={
-          topDev?.notifications ? (
-            topDev?.notifications
-          ) : topDev?.notifications < 1 ? (
-            0
-          ) : (
-            <ClipLoader size={10} />
-          )
-        }
+        badgeContent={topDev?.notifications || 0}
         showZero
       >
+        {/* <ClipLoader size={10} /> */}
         <Mail />
       </Badge>
       <div
