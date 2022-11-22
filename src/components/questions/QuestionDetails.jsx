@@ -42,7 +42,7 @@ const QuestionDetails = () => {
   }, []);
 
   return (
-    <div style={{ backgroundColor: '#fff', height: '2000px' }}>
+    <div style={{ backgroundColor: loading || loading2 ? '#D8D8D8' : '#fff' }}>
       <div className='questionDet'>
         {loading || loading2 ? (
           <div className='justify-content-center align-items-center mt-5'>
