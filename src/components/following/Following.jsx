@@ -58,7 +58,7 @@ const Following = () => {
       renderCell: (params) => {
         return (
           <div className='followersCell'>
-            <div>{params.row.followers}</div>
+            <div>{params.row.followerCount}</div>
           </div>
         );
       },
