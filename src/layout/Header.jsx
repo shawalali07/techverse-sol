@@ -65,6 +65,11 @@ const Header = () => {
                     About Us
                   </NavLink>
                 </li>
+                <li className='nav-item topListItem'>
+                  <NavLink className='link' to='/allquestions'>
+                    All Questions
+                  </NavLink>
+                </li>
                 {token && (
                   <li className='nav-item topListItem'>
                     <NavLink className='link' to='/askquestion'>
@@ -91,7 +96,7 @@ const Header = () => {
               </ul>
             </div>
             <div className='d-flex align-items-center'>
-              {pathname === '/' && (
+              {pathname === '/allquestions' && (
                 <form className='d-flex searchInput' role='search'>
                   <SearchQuestions />
                 </form>

@@ -19,4 +19,5 @@ export const browserRoutes = {
   MESSAGE: '/message',
   SNIPPETS: '/snippets',
   MYKNOWLEDGE: 'myknowledge',
+  ALLQUESTIONS: '/allquestions',
 };

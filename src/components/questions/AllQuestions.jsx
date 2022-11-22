@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './AllQuestions.css';
 import Questions from './Questions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +14,8 @@ import { getTopDevs } from '../../redux-toolkit/actions/developers/developers';
 import SkeletonAllQ from '../../skeletons/SkeletonAllQ';
 
 const AllQuestions = () => {
+  const location = useLocation();
+  console.log(location);
   const [pageNumber, setPageNumber] = useState(0);
 
   const usersPerPage = 4;
@@ -94,7 +96,12 @@ const AllQuestions = () => {
               questions
             </span>
             <div className='questionsComponent'>
-              <Questions questions={searchedQuestions} loading={loading} />
+              <Questions
+                questions={
+                  location?.state ? location?.state : searchedQuestions
+                }
+                loading={loading}
+              />
               <div
                 className='questionContainerbg'
                 style={{ marginTop: '40px' }}
