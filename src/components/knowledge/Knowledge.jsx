@@ -64,7 +64,7 @@ const Knowledge = () => {
           <div className='selectLang w-100'>
             <Stack spacing={2} width='20vw'>
               <Autocomplete
-                options={arrTag}
+                options={arrTag || []}
                 renderInput={(params) => (
                   <TextField {...params} label='Select Language' />
                 )}
