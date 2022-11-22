@@ -1,9 +1,14 @@
 import './search.css';
 import searchIcon from '../../assets/images/search.png';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getQuestions } from '../../redux-toolkit/actions/questions/question';
 const SearchQuestionsPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getQuestions());
+  }, []);
   const keys = ['title', 'description'];
   let questions = useSelector((state) => state.question?.questionsData);
   const navigate = useNavigate();
