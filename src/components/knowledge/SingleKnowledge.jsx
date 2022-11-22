@@ -21,7 +21,7 @@ const SingleKnowledge = ({ k, setTag }) => {
         </Link>
         <div className='knowContent'>
           {k?.tags?.map((tag) => (
-            <span onClick={() => setTag([tag])} className='tag'>
+            <span onClick={() => setTag([tag])} className='singleKnowTag'>
               {tag}
             </span>
           ))}
