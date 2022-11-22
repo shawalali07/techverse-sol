@@ -25,6 +25,7 @@ import Snippets from './components/snippets/Snippets';
 import SnippetDetails from './components/snippets/SnippetDetails';
 import KnowledgeUser from './components/knowledge/KnowledgeUser';
 import { useSelector } from 'react-redux';
+import About from './about/About';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         {
           <Routes>
             <Route exact path={browserRoutes.HOME} element={<AllQuestions />} />
+            <Route exact path={browserRoutes.ABOUT} element={<About />} />
             <Route
               path={browserRoutes.ASK_QUESTIONS}
               element={

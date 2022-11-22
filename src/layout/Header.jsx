@@ -60,6 +60,11 @@ const Header = () => {
                     Home
                   </NavLink>
                 </li>
+                <li className='nav-item topListItem'>
+                  <NavLink className='link' to='/about'>
+                    About Us
+                  </NavLink>
+                </li>
                 {token && (
                   <li className='nav-item topListItem'>
                     <NavLink className='link' to='/askquestion'>

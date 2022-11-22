@@ -1,5 +1,6 @@
 export const browserRoutes = {
   HOME: '/',
+  ABOUT: '/about',
   PROFILE: '/profile',
   SUMMARY: '/summary',
   MYQUESTIONS: '/myquestions',
