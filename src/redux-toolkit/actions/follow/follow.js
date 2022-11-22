@@ -14,7 +14,7 @@ export const postFollow = (id, setLoading, isFollow) => async (dispatch) => {
   setLoading(true);
   try {
     const { data } = await api.put(authRoutes.FOLLOW + '/' + id);
-    toast.success('Followed');
+    toast.success(data?.message);
     dispatch(isFollow(id));
     setLoading(false);
   } catch (error) {
