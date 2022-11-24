@@ -29,6 +29,7 @@ const SearchQuestionsPage = () => {
 
   return (
     <div className='searchQuestionsPage'>
+      <div className='searchTextLogo'>🆃🅴🅲🅷🆅🅴🆁🆂🅴</div>
       <form className='searchPageBar'>
         <input
           onChange={(e) => setQuery(e.target.value)}

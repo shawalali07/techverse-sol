@@ -1,37 +1,37 @@
-import React, { useState } from 'react'
-import TextEditor from '../textEditor/TextEditor'
-import './AskQuestion.css'
-import SearchTagsCopy from './Tags'
-import { useDispatch } from 'react-redux'
-import { askQuestion } from '../../redux-toolkit/actions/questions/question'
-import { BtnLoading } from '../loader/BtnLoading'
-import { Button } from '@mui/material'
-import { postKnowledge } from '../../redux-toolkit/actions/knowledge/knowledge'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import TextEditor from '../textEditor/TextEditor';
+import './AskQuestion.css';
+import SearchTagsCopy from './Tags';
+import { useDispatch } from 'react-redux';
+import { askQuestion } from '../../redux-toolkit/actions/questions/question';
+import { BtnLoading } from '../loader/BtnLoading';
+import { Button } from '@mui/material';
+import { postKnowledge } from '../../redux-toolkit/actions/knowledge/knowledge';
+import { useNavigate } from 'react-router-dom';
 const TextEditorHeader = (props) => {
-  const navigate = useNavigate()
-  const { tutorial } = props
-  const [loading, setLoading] = useState(false)
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const { tutorial } = props;
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const [formValues, setFormValues] = useState({
     title: '',
     description: '',
     tags: [],
-  })
+  });
 
-  const { title, description, tags } = formValues
+  const { title, description, tags } = formValues;
 
   const onFormChange = ({ target: { name, value } }) => {
-    setFormValues({ ...formValues, [name]: value })
-  }
+    setFormValues({ ...formValues, [name]: value });
+  };
 
   const onHandleQuestion = () => {
-    dispatch(askQuestion(formValues, setLoading, navigate))
-  }
+    dispatch(askQuestion(formValues, setLoading, navigate));
+  };
 
   const onHandleKnowledge = () => {
-    dispatch(postKnowledge(formValues, setLoading, navigate))
-  }
+    dispatch(postKnowledge(formValues, setLoading, navigate));
+  };
 
   return (
     <div className='textEditorHeader'>
@@ -56,7 +56,9 @@ const TextEditorHeader = (props) => {
               class='form-control askTitle'
             />
             {title.length > 80 && (
-              <span style={{ color: 'red', paddingTop: '8px', marginLeft: '10px' }}>
+              <span
+                style={{ color: 'red', paddingTop: '8px', marginLeft: '10px' }}
+              >
                 Max 80 characters allowed
               </span>
             )}
@@ -103,13 +105,10 @@ const TextEditorHeader = (props) => {
               Submit
             </Button>
           </div>
-
-
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TextEditorHeader
+export default TextEditorHeader;
