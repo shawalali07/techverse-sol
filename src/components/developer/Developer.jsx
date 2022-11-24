@@ -204,7 +204,7 @@ export default function Developer() {
                 <Badge
                   className='ansBadge'
                   color='error'
-                  badgeContent={data?.answers || 0}
+                  badgeContent={data?.answerCount || 0}
                   showZero
                 ></Badge>
               </span>

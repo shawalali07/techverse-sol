@@ -7,8 +7,15 @@
   background-position: center;
   background-size: cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.searchTextLogo {
+  font-size: 48px;
+  color: white;
+  padding-bottom: 20px;
 }
 
 .searchPageBar {

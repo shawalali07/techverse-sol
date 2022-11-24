@@ -9,7 +9,6 @@ const Question = (props) => {
   const getNumOfAnswers = (id) => {
     return allAnswers?.filter((a) => a.questionId === id).length;
   };
-
   return (
     <div
       key={question?._id}
@@ -21,18 +20,12 @@ const Question = (props) => {
           style={{ backgroundColor: '#2E5266FF' }}
           className='text-center questionStatus'
         >
-          0 votes
+          {question?.voted ? 'Voted' : 'not answered'}
         </div>
         <div
           className='text-center questionStatus'
           style={{ backgroundColor: '#6E8898FF', whiteSpace: 'nowrap' }}
         >{`${getNumOfAnswers(question?._id)} ${' '} answers`}</div>
-        <div
-          style={{ backgroundColor: '#2E5266FF' }}
-          className='text-center questionStatus'
-        >
-          0 views
-        </div>
       </div>
       <div>
         <Link
