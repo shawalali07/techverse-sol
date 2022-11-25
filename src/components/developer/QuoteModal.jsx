@@ -9,6 +9,7 @@ export default function QuoteModal({
   handleQuoteChange,
   handleQuote,
   loading,
+  msg,
 }) {
   return (
     <>
@@ -29,10 +30,14 @@ export default function QuoteModal({
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button disabled={loading} variant='secondary' onClick={handleClose}>
+          <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
-          <Button variant='primary' onClick={handleQuote}>
+          <Button
+            disabled={loading || !msg}
+            variant='primary'
+            onClick={handleQuote}
+          >
             Submit
           </Button>
         </Modal.Footer>
