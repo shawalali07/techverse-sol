@@ -2,61 +2,45 @@ import './about.css'
 import shali from '../assets/images/shali.jpg'
 import sheeza from '../assets/images/sheeza.jpeg'
 import maham from '../assets/images/maham.jpeg'
-import ansa from '../assets/images/ansa1.png'
+import ansa from '../assets/images/ansa1.jpg'
 const About = () => {
   return (
     <div className='aboutUs'>
       <div class='about-section'>
         <h1>TECHVERSE TEAM</h1>
-        {/* <p>Some text about who we are and what we do.</p>
-        <p>
-          Resize the browser window to see that this page is responsive by the
-          way.
-        </p> */}
       </div>
 
-      {/* <h2 style={{ textAlign: 'center' }}>TECHVERSE TEAM</h2> */}
       <div className='d-flex-center'>
         <div class='aboutRow'>
           <div class='aboutColumn'>
             <div class='aboutUsCard'>
               <img
                 className='cardAboutImg'
-                src={maham}
-                alt='Jane'
+                src={sheeza}
+                alt='Sheeza Shahid'
                 style={{ width: '100%' }}
               />
               <div class='aboutContainer'>
-                <h2>MAHAM HAFEEZ</h2>
-                <p class='aboutTitle'>DIRECTOR | SOFTWARE ENGINEER</p>
-                {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
-                <p>maham@gmail.com</p>
-                <p>
-                  <strong>CEO & Founder</strong>
-                </p>
+
+                <h2>SHEEZA SHAHID</h2>
+                <p class='aboutTitle'><strong>MANAGER | BUSINESS DEVELOPER</strong></p>
               </div>
+
             </div>
           </div>
           <div class='aboutColumn'>
             <div class='aboutUsCard'>
               <img
                 className='cardAboutImg'
-                src={sheeza}
-                alt='Jane'
+                src={maham}
+                alt='Maham Hafeez'
                 style={{ width: '100%' }}
               />
               <div class='aboutContainer'>
-
-                <h2>SHEEZA SHAHID</h2>
-                <p class='aboutTitle'>MANAGER | BUSINESS DEVELOPER</p>
-                {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
-                <p>sheeza@gmail.com</p>
-                <p>
-                  <p>
-                    <strong>CEO & Founder</strong>
-                  </p>
-                </p>
+                <h2>MAHAM HAFEEZ</h2>
+                <p class='aboutTitle'><strong>DIRECTOR | SOFTWARE ENGINEER</strong></p>
               </div>
+
             </div>
           </div>
           <div class='aboutColumn'>
@@ -64,20 +48,13 @@ const About = () => {
               <img
                 className='cardAboutImg'
                 src={ansa}
-                alt='Mike'
+                alt='Ansa Mumtaz'
                 style={{ width: '100%' }}
               />
               <div class='aboutContainer'>
 
                 <h2>ANSA MUMTAZ</h2>
-                <p class='aboutTitle'>CEO | QA ENGINEER</p>
-                {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
-                <p>ansa@gmail.com</p>
-                <p>
-                  <p class='aboutTitle'>
-                    <strong>Solution Architect</strong>
-                  </p>
-                </p>
+                <p class='aboutTitle'><strong>CEO | QA ENGINEER</strong></p>
               </div>
             </div>
           </div>
@@ -87,19 +64,12 @@ const About = () => {
               <img
                 className='cardAboutImg'
                 src={shali}
-                alt='John'
+                alt='Shawal Ali'
                 style={{ width: '100%' }}
               />
               <div class='aboutContainer'>
-                <h2>Shawal Ali</h2>
-                <p class='aboutTitle'>CTO | SOFTWARE DESIGNER</p>
-                {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
-                <p>shawal@gmail.com</p>
-                <p>
-                  <p class='aboutTitle'>
-                    <strong>CTO</strong>
-                  </p>
-                </p>
+                <h2>SHAWAL ALI</h2>
+                <p class='aboutTitle'><strong>CTO | FRONTEND DEVELOPER</strong></p>
               </div>
             </div>
           </div>
