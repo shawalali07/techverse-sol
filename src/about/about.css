@@ -7,16 +7,17 @@
   width: 25%;
   margin-bottom: 16px;
   padding: 0 8px;
+  text-align: center;
 }
 
 .aboutUsCard {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 30px 0 rgba(8, 116, 232, 0.2);
   margin: 8px;
 }
 
 .cardAboutImg {
   width: 200px;
-  height: 350px;
+  height: 500px;
   object-fit: cover;
 }
 
