@@ -8,14 +8,8 @@ const About = () => {
     <div className='aboutUs'>
       <div class='about-section'>
         <h1>TECHVERSE TEAM</h1>
-        {/* <p>Some text about who we are and what we do.</p>
-        <p>
-          Resize the browser window to see that this page is responsive by the
-          way.
-        </p> */}
       </div>
 
-      {/* <h2 style={{ textAlign: 'center' }}>TECHVERSE TEAM</h2> */}
       <div className='d-flex-center'>
         <div class='aboutRow'>
           <div class='aboutColumn'>
