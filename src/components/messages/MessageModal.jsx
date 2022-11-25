@@ -6,9 +6,11 @@ import { useDispatch } from 'react-redux';
 import { setReplyModal } from '../../redux-toolkit/slices/modalSlice';
 import { browserRoutes } from '../../routes/browserRoutes';
 import { Link } from 'react-router-dom';
+import { getTopDevs } from '../../redux-toolkit/actions/developers/developers';
 const MessageModal = ({ show, setShow, msg }) => {
   const dispatch = useDispatch();
   const handleClose = () => {
+    dispatch(getTopDevs());
     setShow(false);
   };
 
