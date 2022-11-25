@@ -82,7 +82,7 @@ export default function TopDevelopers() {
   const keys = ['name', 'email'];
 
   topDev = topDev?.filter((item) =>
-    keys.some((key) => item[key].toLowerCase().includes(query.toLowerCase()))
+    keys.some((key) => item[key]?.toLowerCase().includes(query?.toLowerCase()))
   );
 
   useEffect(() => {

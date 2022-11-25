@@ -26,17 +26,18 @@ import {
   getKnowledgeById,
 } from '../../redux-toolkit/actions/knowledge/knowledge';
 export default function Developer() {
+  const [quoteLoading, setQuoteLoading] = useState(false);
   const { userId } = useParams();
   const [loading, setLoading] = useState(false);
   const id = useSelector((state) => state.authSlice?.id);
   const [quoteDesc, setQuoteDesc] = useState('');
   let topDev = useSelector((state) => state.developer.topDevelopers);
   let knowledge = useSelector((state) => state.knowledge.knowledgeCount);
-  console.log(knowledge);
   let isFollow = useSelector((state) => state.following.isFollow);
   let loadingFollow = useSelector((state) => state.following.loading);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
   const handleClose = () => setShow(false);
 
   let {
@@ -64,7 +65,7 @@ export default function Developer() {
 
   const handleQuote = () => {
     setShow(true);
-    dispatch(postQuote(quoteDesc, data?._id, handleClose));
+    dispatch(postQuote(quoteDesc, data?._id, handleClose, setQuoteLoading));
   };
 
   const handleQuoteChange = ({ target: { value } }) => {
@@ -152,6 +153,7 @@ export default function Developer() {
                   >
                     Send Quote
                   </Button>
+
                   <Button
                     color={!isFollow ? 'secondary' : 'error'}
                     disabled={loading}
@@ -166,6 +168,8 @@ export default function Developer() {
               ) : null}
 
               <QuoteModal
+                msg={quoteDesc}
+                loading={quoteLoading}
                 handleQuote={handleQuote}
                 handleQuoteChange={handleQuoteChange}
                 show={show}

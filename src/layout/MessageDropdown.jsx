@@ -30,8 +30,7 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
         onClick={() => setMsgDropdown(!msgDropdown)}
         className='msgIcon'
         color='secondary'
-        badgeContent={topDev?.notifications || 0}
-        showZero
+        badgeContent={topDev?.notifications && topDev?.notifications}
       >
         {/* <ClipLoader size={10} /> */}
         <Mail />

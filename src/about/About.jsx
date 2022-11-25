@@ -32,7 +32,7 @@ const About = () => {
                 {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
                 <p>maham@gmail.com</p>
                 <p>
-                  <button class='aboutButton'>Contact</button>
+                  <strong>CEO & Founder</strong>
                 </p>
               </div>
             </div>
@@ -46,12 +46,15 @@ const About = () => {
                 style={{ width: '100%' }}
               />
               <div class='aboutContainer'>
+
                 <h2>SHEEZA SHAHID</h2>
                 <p class='aboutTitle'>MANAGER | BUSINESS DEVELOPER</p>
                 {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
                 <p>sheeza@gmail.com</p>
                 <p>
-                  <button class='aboutButton'>Contact</button>
+                  <p>
+                    <strong>CEO & Founder</strong>
+                  </p>
                 </p>
               </div>
             </div>
@@ -65,12 +68,15 @@ const About = () => {
                 style={{ width: '100%' }}
               />
               <div class='aboutContainer'>
+
                 <h2>ANSA MUMTAZ</h2>
                 <p class='aboutTitle'>CEO | QA ENGINEER</p>
                 {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
                 <p>ansa@gmail.com</p>
                 <p>
-                  <button class='aboutButton'>Contact</button>
+                  <p class='aboutTitle'>
+                    <strong>Solution Architect</strong>
+                  </p>
                 </p>
               </div>
             </div>
@@ -90,7 +96,9 @@ const About = () => {
                 {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
                 <p>shawal@gmail.com</p>
                 <p>
-                  <button class='aboutButton'>Contact</button>
+                  <p class='aboutTitle'>
+                    <strong>CTO</strong>
+                  </p>
                 </p>
               </div>
             </div>

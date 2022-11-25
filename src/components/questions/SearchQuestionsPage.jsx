@@ -37,6 +37,7 @@ const SearchQuestionsPage = () => {
           placeholder='Search Questions...'
         />
         <button
+          disabled={!query}
           onClick={() => navigate('/allquestions', { state: queryQuestions })}
           type='submit'
         >
