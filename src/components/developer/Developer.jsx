@@ -37,6 +37,7 @@ export default function Developer() {
   let loadingFollow = useSelector((state) => state.following.loading);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
   const handleClose = () => setShow(false);
 
   let {
@@ -152,6 +153,7 @@ export default function Developer() {
                   >
                     Send Quote
                   </Button>
+
                   <Button
                     color={!isFollow ? 'secondary' : 'error'}
                     disabled={loading}

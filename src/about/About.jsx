@@ -28,11 +28,10 @@ const About = () => {
               />
               <div class='aboutContainer'>
                 <h2>Maham Hafeez</h2>
-                <p class='aboutTitle'>CEO & Founder</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>maham@gmail.com</p>
                 <p>
-                  <button class='aboutButton'>Contact</button>
+                  <strong>CEO & Founder</strong>
                 </p>
               </div>
             </div>
@@ -47,11 +46,12 @@ const About = () => {
               />
               <div class='aboutContainer'>
                 <h2>Sheeza Shahid</h2>
-                <p class='aboutTitle'>CEO & Founder</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>sheeza@gmail.com</p>
                 <p>
-                  <button class='aboutButton'>Contact</button>
+                  <p>
+                    <strong>CEO & Founder</strong>
+                  </p>
                 </p>
               </div>
             </div>
@@ -66,11 +66,12 @@ const About = () => {
               />
               <div class='aboutContainer'>
                 <h2>Ansa Mumtaz</h2>
-                <p class='aboutTitle'>Solution Architect</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>ansa@gmail.com</p>
                 <p>
-                  <button class='aboutButton'>Contact</button>
+                  <p class='aboutTitle'>
+                    <strong>Solution Architect</strong>
+                  </p>
                 </p>
               </div>
             </div>
@@ -86,11 +87,12 @@ const About = () => {
               />
               <div class='aboutContainer'>
                 <h2>Shawal Ali</h2>
-                <p class='aboutTitle'>CTO</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>john@example.com</p>
                 <p>
-                  <button class='aboutButton'>Contact</button>
+                  <p class='aboutTitle'>
+                    <strong>CTO</strong>
+                  </p>
                 </p>
               </div>
             </div>
