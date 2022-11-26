@@ -50,9 +50,6 @@ const MessageModal = ({ show, setShow, msg }) => {
             <Button variant='contained' onClick={handleClose}>
               Close
             </Button>
-            <Button variant='contained' color='secondary' onClick={handleClose}>
-              Submit
-            </Button>
           </div>
         </Modal.Footer>
       </Modal>

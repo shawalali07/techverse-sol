@@ -11,7 +11,6 @@ const MessageCard = ({ msg, setMsgDropdown }) => {
     <>
       <div
         onClick={() => {
-          dispatch(triggerNotification());
           setMsgDropdown(false);
           setShow(true);
         }}

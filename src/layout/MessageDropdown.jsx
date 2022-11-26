@@ -7,10 +7,13 @@ import MessageModal from '../components/messages/MessageModal';
 import moment from 'moment';
 import MessageCard from './MessageCard';
 import { ClipLoader } from 'react-spinners';
+import { triggerNotification } from '../redux-toolkit/actions/notifications/notofications';
+import { useDispatch } from 'react-redux';
 const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
+  const [checkNotification, setCheckNotification] = useState(false);
   const [show, setShow] = useState(false);
   const refOutside = useRef(null);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
   }, []);
@@ -27,10 +30,16 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
   return (
     <div ref={refOutside} className='messageDropdown'>
       <Badge
-        onClick={() => setMsgDropdown(!msgDropdown)}
+        onClick={() => {
+          dispatch(triggerNotification());
+          setCheckNotification(true);
+          setMsgDropdown(!msgDropdown);
+        }}
         className='msgIcon'
         color='secondary'
-        badgeContent={topDev?.notifications && topDev?.notifications}
+        badgeContent={
+          checkNotification ? 0 : topDev?.notifications && topDev?.notifications
+        }
       >
         {/* <ClipLoader size={10} /> */}
         <Mail />
