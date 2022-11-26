@@ -6,6 +6,7 @@ export const developer = createSlice({
     topDevelopers: [],
     loading: false,
     error: false,
+    resume: [],
   },
   reducers: {
     startTopDev: (state, action) => {
@@ -23,9 +24,13 @@ export const developer = createSlice({
       state.loading = false;
       state.error = true;
     },
+    setResume: (state, action) => {
+      state.resume = action.payload;
+    },
   },
 });
 
-export const { setTopDev, startTopDev, failTopDev } = developer.actions;
+export const { setTopDev, startTopDev, failTopDev, setResume } =
+  developer.actions;
 
 export default developer.reducer;

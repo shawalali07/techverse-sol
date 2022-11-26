@@ -21,7 +21,9 @@ export const authRoutes = {
   ISFOLLOW: '/users/isFollow',
   NOTIFICATION: '/users/notification',
   QUOTE: '/users/message',
+  PROJECT: '/users/project',
   SNIPPET: '/snippets',
   LANGUAGE: '/admin/tag',
+  USERS: '/users',
   KNOWLEDGE_COUNT: '/knowledge/count/user',
 };

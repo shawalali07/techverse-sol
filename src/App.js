@@ -27,6 +27,8 @@ import KnowledgeUser from './components/knowledge/KnowledgeUser';
 import { useSelector } from 'react-redux';
 import About from './about/About';
 import SearchQuestionsPage from './components/questions/SearchQuestionsPage';
+import ProfileDownload from './components/developer/ProfileDownload';
+import ProjectDetails from './components/projects/ProjectDetails';
 
 function App() {
   return (
@@ -40,6 +42,12 @@ function App() {
               exact
               path={browserRoutes.ALLQUESTIONS}
               element={<AllQuestions />}
+            />
+            <Route exact path='/download' element={<ProfileDownload />} />
+            <Route
+              exact
+              path={browserRoutes.PROJECTS}
+              element={<ProjectDetails />}
             />
             <Route
               exact

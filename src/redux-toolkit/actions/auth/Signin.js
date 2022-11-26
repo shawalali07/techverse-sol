@@ -16,15 +16,16 @@ const signin = (formValue, navigate, setLoading) => async (dispatch) => {
     dispatch(
       setToken({
         token: data?.token,
-        isAdmin: data?.isAdmin,
-        email: data?.email,
-        fullName: data?.name,
-        profilePic: data?.image,
-        id: data?._id,
-        rate: data?.rate,
-        designation: data?.designation,
-        country: data?.country,
-        skills: data?.skills,
+        isAdmin: data?.data?.isAdmin,
+        email: data?.data?.email,
+        fullName: data?.data?.name,
+        profilePic: data?.data?.image,
+        id: data?.data?._id,
+        rate: data?.data?.rate,
+        designation: data?.data?.designation,
+        country: data?.data?.country,
+        skills: data?.data?.skills,
+        projects: data?.data?.project,
       })
     );
     setLoading(false);
