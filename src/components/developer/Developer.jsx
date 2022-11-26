@@ -25,6 +25,8 @@ import {
   getKnowledgeByCount,
   getKnowledgeById,
 } from '../../redux-toolkit/actions/knowledge/knowledge';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 export default function Developer() {
   const [quoteLoading, setQuoteLoading] = useState(false);
   const { userId } = useParams();
@@ -57,6 +59,7 @@ export default function Developer() {
     data.answers = topDev.answers;
     data.points = topDev.points;
     data.skills = topDev.skills;
+    data.project = topDev.project;
   }
 
   const handleFollow = () => {
@@ -77,8 +80,18 @@ export default function Developer() {
     dispatch(getKnowledgeByCount(userId));
   }, []);
 
+  const download = () => {
+    const input = document.getElementById('user');
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, 'JPEG', 0, 0);
+      pdf.save('download.pdf');
+    });
+  };
+
   return (
-    <div className='user'>
+    <div id='user' className='user'>
       {loadingFollow ? (
         <div
           style={{ paddingTop: '120px' }}
@@ -164,6 +177,19 @@ export default function Developer() {
                   >
                     {isFollow ? 'Unfollow' : 'Follow'}
                   </Button>
+                  <Link
+                    state={{ data: data?._id }}
+                    className='link'
+                    to='/download'
+                  >
+                    <Button
+                      color='success'
+                      variant={'contained'}
+                      className='userShowInfoTitle followBtn'
+                    >
+                      Download
+                    </Button>
+                  </Link>
                 </div>
               ) : null}
 
@@ -203,7 +229,7 @@ export default function Developer() {
                   showZero
                 ></Badge>
               </span>
-              <span className='achievementInfo'>
+              {/* <span className='achievementInfo'>
                 Answers{' '}
                 <Badge
                   className='ansBadge'
@@ -211,11 +237,26 @@ export default function Developer() {
                   badgeContent={data?.answerCount || 0}
                   showZero
                 ></Badge>
+              </span> */}
+              <span className='achievementInfo'>
+                <Link
+                  style={{ color: 'blue' }}
+                  className='link'
+                  to={browserRoutes.PROJECTS}
+                >
+                  Projects{' '}
+                  <Badge
+                    className='ansBadge'
+                    color='error'
+                    badgeContent={data?.project?.length || 0}
+                    showZero
+                  ></Badge>
+                </Link>
               </span>
               {knowledge ? (
                 <span className='achievementInfo '>
                   <Link
-                    style={{ fontStyle: 'italic', color: 'blue' }}
+                    style={{ color: 'blue' }}
                     className='link'
                     to={browserRoutes.KNOWLEDGE + '/' + data?._id}
                   >

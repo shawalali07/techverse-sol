@@ -19,5 +19,6 @@ export const browserRoutes = {
   MESSAGE: '/message',
   SNIPPETS: '/snippets',
   MYKNOWLEDGE: 'myknowledge',
+  PROJECTS: '/projects',
   ALLQUESTIONS: '/allquestions',
 };

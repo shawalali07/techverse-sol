@@ -25,6 +25,8 @@
     "draftjs-to-html": "^0.9.1",
     "draftjs-to-markdown": "^0.6.0",
     "emailjs": "^4.0.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "moment": "^2.29.4",
     "netlify-cli": "^11.5.0",
     "react": "^18.2.0",
