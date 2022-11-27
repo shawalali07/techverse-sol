@@ -19,6 +19,7 @@ const Settings = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.authSlice);
+  console.log('user', user);
   const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
