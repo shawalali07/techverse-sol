@@ -22,7 +22,7 @@ const askQuestion = async (formData, setLoading, navigate) => {
     const { data } = await api.post(authRoutes.ASK_QUESTION, formData);
     success('Your question is submitted');
     setLoading(false);
-    navigate(browserRoutes.HOME);
+    navigate(browserRoutes.ALLQUESTIONS);
   } catch (error) {
     setLoading(false);
     fail(error?.response?.data?.message || 'Something went wrong....');
