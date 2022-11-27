@@ -53,8 +53,8 @@ const Sidebar = () => {
           </Button>
         </div>
         <div className='pt-3'>
-          {projects?.map((project) => (
-            <MyProjects project={project} />
+          {projects?.map((project, index) => (
+            <MyProjects project={project} index={index} />
           ))}
         </div>
         <MyProjectModal setShow={setShow} show={show} />
