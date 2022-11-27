@@ -9,7 +9,6 @@ import { getUser } from '../../redux-toolkit/actions/profile/profile';
 
 const ProfileDownload = () => {
   const resume = useSelector((state) => state?.developer?.resume);
-  console.log(resume);
   const dispatch = useDispatch();
   const {
     state: { data },
@@ -31,16 +30,8 @@ const ProfileDownload = () => {
   };
 
   useEffect(() => {
-    if (data) {
-      dispatch(getUser(data));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (resume?.name) {
-      download();
-    }
-  }, []);
+    download();
+  }, [resume]);
 
   return (
     <div

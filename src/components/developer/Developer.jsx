@@ -27,6 +27,7 @@ import {
 } from '../../redux-toolkit/actions/knowledge/knowledge';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { getUser } from '../../redux-toolkit/actions/profile/profile';
 export default function Developer() {
   const [quoteLoading, setQuoteLoading] = useState(false);
   const { userId } = useParams();
@@ -78,6 +79,10 @@ export default function Developer() {
   useEffect(() => {
     dispatch(isFollows(userId));
     dispatch(getKnowledgeByCount(userId));
+  }, []);
+
+  useEffect(() => {
+    dispatch(getUser(data?._id));
   }, []);
 
   const download = () => {
@@ -187,7 +192,7 @@ export default function Developer() {
                       variant={'contained'}
                       className='userShowInfoTitle followBtn'
                     >
-                      Download
+                      Download CV
                     </Button>
                   </Link>
                 </div>
