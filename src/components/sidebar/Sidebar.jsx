@@ -65,7 +65,7 @@ const Sidebar = () => {
           variant={'contained'}
           className='userShowInfoTitle followBtn'
         >
-          Download CV
+          View Resume
         </Button>
       </Link>
     </div>
