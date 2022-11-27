@@ -192,7 +192,7 @@ export default function Developer() {
                       variant={'contained'}
                       className='userShowInfoTitle followBtn'
                     >
-                      Download CV
+                      View Resume
                     </Button>
                   </Link>
                 </div>
