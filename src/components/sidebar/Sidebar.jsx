@@ -1,25 +1,23 @@
 import { Button } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getUser } from '../../redux-toolkit/actions/profile/profile';
 import MyProjectModal from './MyProjectModal';
 import MyProjects from './MyProjects';
 import './sidebar.css';
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const {
-    designation,
-    country,
-    skills,
-    rate,
-    profilePic,
-    projectTitle,
-    projectDescription,
-    projectLink,
-    projects,
-  } = useSelector((state) => state?.authSlice);
+  const { designation, country, skills, rate, profilePic, id, projects } =
+    useSelector((state) => state?.authSlice);
 
   useEffect(() => {}, []);
+
+  useEffect(() => {
+    dispatch(getUser(id));
+  }, []);
 
   return (
     <div className='sidebar'>
@@ -61,6 +59,15 @@ const Sidebar = () => {
         </div>
         <MyProjectModal setShow={setShow} show={show} />
       </div>
+      <Link state={{ data: id }} className='link' to='/download'>
+        <Button
+          color='success'
+          variant={'contained'}
+          className='userShowInfoTitle followBtn'
+        >
+          Download CV
+        </Button>
+      </Link>
     </div>
   );
 };

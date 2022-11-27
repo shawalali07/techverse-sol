@@ -1,10 +1,12 @@
+import { Button } from '@mui/material';
 import { useRef, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { signout } from '../redux-toolkit/actions/auth/Signin';
 import { browserRoutes } from '../routes/browserRoutes';
-
+import { getUser } from '../redux-toolkit/actions/profile/profile';
 const ProfileDropdown = ({ profilePic, setDropdown, dropdown, name }) => {
+  const data = useSelector((state) => state?.authSlice);
   const refOutside = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,6 +24,7 @@ const ProfileDropdown = ({ profilePic, setDropdown, dropdown, name }) => {
     } else {
     }
   };
+
   return (
     <div ref={refOutside} className='profileDropdown'>
       {profilePic ? (
@@ -80,6 +83,7 @@ const ProfileDropdown = ({ profilePic, setDropdown, dropdown, name }) => {
           >
             <li>Write</li>
           </Link>
+
           <li
             onClick={() => {
               setDropdown(!dropdown);
