@@ -13,7 +13,7 @@ const ProfileDownload = () => {
   const {
     state: { data },
   } = useLocation();
-  console.log(data);
+  console.log(resume);
 
   const download = () => {
     const input = document.getElementById('resume');
@@ -30,7 +30,9 @@ const ProfileDownload = () => {
   };
 
   useEffect(() => {
-    download();
+    setTimeout(() => {
+      download();
+    }, 3000);
   }, [resume]);
 
   return (
@@ -47,35 +49,22 @@ const ProfileDownload = () => {
       <div class='side-bar'>
         <div class='mugshot'>
           <div class='logo'>
-            <svg viewbox='0 0 80 80' class='rela-block logo-svg'>
-              <path
-                d='M 10 10 L 52 10 L 72 30 L 72 70 L 30 70 L 10 50 Z'
-                stroke-width='2.5'
-                fill='none'
-              />
-            </svg>
-            <p style={{ textTransform: 'uppercase' }} class='logo-text'>
+            {/* <p style={{ textTransform: 'uppercase' }} class='logo-text'>
               {resume?.name?.split(' ')[0]?.slice(0, 2)}
-            </p>
+            </p> */}
           </div>
         </div>
+        <p class='rela-block caps side-header'>Personal Details</p>
+
         {/* <p>123 My Place Drive</p> */}
         <p>{resume?.country}</p>
         {/* <p>1-800-CALLPLZ</p> */}
         <p>{resume?.email}</p>
         <br />
-        {/* <p class='rela-block social twitter'>Twitter stuff</p>
-        <p class='rela-block social pinterest'>Pinterest things</p>
-        <p class='rela-block social linked-in'>Linked-in man</p> */}
         <p class='rela-block caps side-header'>Expertise</p>
         {resume?.skills?.map((skill) => (
           <p class='rela-block list-thing'>{skill}</p>
         ))}
-        {/* <p class='rela-block caps side-header'>Education</p>
-        <p class='rela-block list-thing'>Advanced potion making</p>
-        <p class='rela-block list-thing'>Degree in popping and locking</p>
-        <p class='rela-block list-thing'>Knitting game on point</p>
-        <p class='rela-block list-thing'>Culinary af</p> */}
       </div>
       <div class='rela-block content-container'>
         <h2 class='rela-block caps title'>{resume?.designation}</h2>

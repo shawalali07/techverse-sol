@@ -86,3 +86,9 @@ nav a.active {
   flex-direction: column;
   gap: 20px;
 }
+
+.resumeImg {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
