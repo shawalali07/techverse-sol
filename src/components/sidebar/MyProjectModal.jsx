@@ -1,9 +1,11 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProject } from '../../redux-toolkit/actions/profile/profile';
 const MyProjectModal = ({ show, setShow }) => {
+  const id = useSelector((state) => state.authSlice?.id);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     projectTitle: '',
@@ -55,7 +57,10 @@ const MyProjectModal = ({ show, setShow }) => {
             Close
           </Button>
           <Button
-            onClick={() => dispatch(addProject(formData))}
+            disabled={loading}
+            onClick={() =>
+              dispatch(addProject(formData, setShow, setLoading, id))
+            }
             color='secondary'
             variant='contained'
           >

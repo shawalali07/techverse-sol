@@ -13,7 +13,6 @@ const ProfileDownload = () => {
   const {
     state: { data },
   } = useLocation();
-  console.log(resume);
 
   const download = () => {
     const input = document.getElementById('resume');
