@@ -25,8 +25,6 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
     }
   };
 
-  console.log({ topDev });
-
   return (
     <div ref={refOutside} className='messageDropdown'>
       <Badge

@@ -15,7 +15,6 @@ import SkeletonAllQ from '../../skeletons/SkeletonAllQ';
 
 const AllQuestions = () => {
   const location = useLocation();
-  console.log(location);
   const [pageNumber, setPageNumber] = useState(0);
 
   const usersPerPage = 4;
@@ -73,7 +72,7 @@ const AllQuestions = () => {
           <>
             <div className='d-flex flex-row align-items-center justify-content-between'>
               <h1 className='display-6 all-questions-heading fw-bold'>
-                All Questions
+                {location?.state ? `Search Questions` : 'All Questions'}
               </h1>
               <button
                 onClick={() => navigate('/askquestion')}
@@ -90,6 +89,8 @@ const AllQuestions = () => {
                 <span style={{ marginRight: '5px', marginTop: '2px' }}>
                   <ClipLoader size={15} />
                 </span>
+              ) : location?.state ? (
+                location?.state?.length
               ) : (
                 questions?.length
               )}{' '}

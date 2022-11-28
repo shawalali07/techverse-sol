@@ -9,6 +9,7 @@ const Question = (props) => {
   const getNumOfAnswers = (id) => {
     return allAnswers?.filter((a) => a.questionId === id).length;
   };
+
   return (
     <div
       key={question?._id}

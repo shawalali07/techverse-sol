@@ -24,12 +24,19 @@ export const uploadFile = (formData) => async (dispatch) => {
   } catch (error) {}
 };
 
-export const addProject = (formData) => async (dispatch) => {
-  try {
-    const { data } = await api.put(authRoutes.PROJECT, formData);
-    dispatch(setUpdatedProfile(data?.data));
-  } catch (error) {}
-};
+export const addProject =
+  (formData, setShow, setLoading, id) => async (dispatch) => {
+    setLoading(true);
+    try {
+      const { data } = await api.put(authRoutes.PROJECT, formData);
+      dispatch(setUpdatedProfile(data?.data));
+      setShow(false);
+      setLoading(false);
+      dispatch(getUser(id));
+    } catch (error) {
+      setLoading(false);
+    }
+  };
 
 export const getUser = (id) => async (dispatch) => {
   try {

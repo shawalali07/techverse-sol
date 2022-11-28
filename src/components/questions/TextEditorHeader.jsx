@@ -16,7 +16,7 @@ const TextEditorHeader = (props) => {
   const [formValues, setFormValues] = useState({
     title: '',
     description: '',
-    tags: [],
+    tags: ['javascript'],
   });
 
   const { title, description, tags } = formValues;

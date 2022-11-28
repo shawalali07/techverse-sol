@@ -25,8 +25,6 @@ const SearchQuestionsPage = () => {
     );
   }, [query]);
 
-  console.log('queryQuestions', queryQuestions);
-
   return (
     <div className='searchQuestionsPage'>
       <div className='searchTextLogo'>🆃🅴🅲🅷🆅🅴🆁🆂🅴</div>
