@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { useToken } from '../hooks/register/useToken';
+import { useToken } from '../hooks/useToken';
 import './Header.css';
 import SearchQuestions from '../components/questions/SearchQuestions';
 import { browserRoutes } from '../routes/browserRoutes';

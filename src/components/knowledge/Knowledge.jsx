@@ -6,7 +6,7 @@ import {
 } from '../../redux-toolkit/actions/knowledge/knowledge';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useToken } from '../../hooks/register/useToken';
+import { useToken } from '../../hooks/useToken';
 import { useDispatch, useSelector } from 'react-redux';
 import { Autocomplete, Button, Stack, TextField } from '@mui/material';
 import { BeatLoader } from 'react-spinners';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useToken } from '../hooks/register/useToken';
+import { useToken } from '../hooks/useToken';
 import { browserRoutes } from '../routes/browserRoutes';
 import isEmpty from '../utils/isEmpty';
 

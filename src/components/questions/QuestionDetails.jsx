@@ -17,7 +17,7 @@ import { browserRoutes } from '../../routes/browserRoutes';
 import { BeatLoader } from 'react-spinners';
 import NotFound from '../error/NotFound';
 import AnswerCard from './AnswerCard';
-import { useToken } from '../../hooks/register/useToken';
+import { useToken } from '../../hooks/useToken';
 import { getQuestionsById } from '../../redux-toolkit/actions/questions/question';
 const QuestionDetails = () => {
   const token = useToken();
