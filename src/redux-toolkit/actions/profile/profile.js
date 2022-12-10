@@ -32,6 +32,7 @@ export const addProject =
       dispatch(setUpdatedProfile(data?.data));
       setShow(false);
       setLoading(false);
+      success('Project added successfully');
       dispatch(getUser(id));
     } catch (error) {
       setLoading(false);

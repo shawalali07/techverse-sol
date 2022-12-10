@@ -16,7 +16,6 @@ const MyAnswers = () => {
   }, []);
   return (
     <div style={{ paddingTop: '150px' }}>
-      <p className='text-center display-5 fw-bold'>Your Answers</p>
       <div className='myAnswers'>
         {loading ? (
           <div className='d-flex justify-content-center w-100 pt-5'>

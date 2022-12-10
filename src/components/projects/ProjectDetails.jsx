@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 const ProjectDetails = () => {
   const projects = useSelector((state) => state?.authSlice?.projects);
+  console.log(projects);
   return (
     <div style={{ paddingTop: '120px' }} className='user projectCont'>
       {projects?.map((project) => (

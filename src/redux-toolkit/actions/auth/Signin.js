@@ -26,7 +26,7 @@ const signin = (formValue, navigate, setLoading) => async (dispatch) => {
         country: data?.data?.country,
         skills: data?.data?.skills,
         aboutMe: data?.data?.aboutMe,
-        projects: data?.data?.project,
+        project: data?.data?.project,
       })
     );
     setLoading(false);

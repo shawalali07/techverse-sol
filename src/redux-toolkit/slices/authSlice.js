@@ -27,7 +27,7 @@ export const authSlice = createSlice({
       state.designation = action.payload.designation;
       state.skills = action.payload.skills;
       state.aboutMe = action.payload.aboutMe;
-      state.projects = action.payload.projects;
+      state.projects = action.payload.project;
       state.isAdmin = action.payload.isAdmin;
     },
     destroyToken: (state) => {

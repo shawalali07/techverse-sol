@@ -57,7 +57,11 @@ const MyProjectModal = ({ show, setShow }) => {
             Close
           </Button>
           <Button
-            disabled={loading}
+            disabled={
+              !formData?.projectDescription ||
+              !formData?.projectTitle ||
+              loading
+            }
             onClick={() =>
               dispatch(addProject(formData, setShow, setLoading, id))
             }

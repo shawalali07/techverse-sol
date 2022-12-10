@@ -28,12 +28,8 @@ const ProfileDownload = () => {
     });
   };
 
-  // useEffect(() => {
-  //   download();
-  // }, [resume]);
-
   return (
-    <div style={{ paddingTop: '120px' }}>
+    <div style={{ paddingTop: '120px', marginLeft: '5px' }}>
       <Button
         onClick={download}
         color='success'
