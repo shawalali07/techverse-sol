@@ -3,9 +3,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw } from 'draft-js';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { convertToHTML } from 'draft-convert';
-import draftToHtml from 'draftjs-to-html';
-import draftToMarkdown from 'draftjs-to-markdown';
-import { red } from '@mui/material/colors';
+
 const TextEditor = (props) => {
   const { setFormValues, formValues } = props;
   const [convertedContent, setConvertedContent] = useState(null);

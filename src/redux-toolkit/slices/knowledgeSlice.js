@@ -72,6 +72,7 @@ export const knowledge = createSlice({
       state.loading = false;
       state.error = true;
     },
+    // eslint-disable-next-line
     failKnowledgeData: (state, action) => {
       state.knowledgeId = [];
       state.loading = false;
