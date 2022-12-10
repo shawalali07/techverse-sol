@@ -9,9 +9,6 @@ import { getQuestions } from '../../redux-toolkit/actions/questions/question';
 import { BeatLoader, ClipLoader } from 'react-spinners';
 import ReactPaginate from 'react-paginate';
 import NotFound from '../error/NotFound';
-import { Badge } from '@mui/material';
-import { getTopDevs } from '../../redux-toolkit/actions/developers/developers';
-import SkeletonAllQ from '../../skeletons/SkeletonAllQ';
 
 const AllQuestions = () => {
   const location = useLocation();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useToken } from '../hooks/register/useToken';
+import { useToken } from '../hooks/useToken';
 import isEmpty from '../utils/isEmpty';
 
 const AuthRoutes = ({ children, redirectLink }) => {

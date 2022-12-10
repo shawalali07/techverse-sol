@@ -11,7 +11,7 @@ import {
   canVote,
 } from '../../redux-toolkit/actions/answers/answers';
 import { useDispatch, useSelector } from 'react-redux';
-import { useToken } from '../../hooks/register/useToken';
+import { useToken } from '../../hooks/useToken';
 import toast from 'react-hot-toast';
 import { Spinner } from 'react-bootstrap';
 import { ClipLoader } from 'react-spinners';
