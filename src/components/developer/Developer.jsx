@@ -95,6 +95,8 @@ export default function Developer() {
     });
   };
 
+  console.log(data?.project);
+
   return (
     <div id='user' className='user'>
       {loadingFollow ? (
@@ -234,30 +236,24 @@ export default function Developer() {
                   showZero
                 ></Badge>
               </span>
-              {/* <span className='achievementInfo'>
-                Answers{' '}
-                <Badge
-                  className='ansBadge'
-                  color='error'
-                  badgeContent={data?.answerCount || 0}
-                  showZero
-                ></Badge>
-              </span> */}
-              <span className='achievementInfo'>
-                <Link
-                  style={{ color: 'blue' }}
-                  className='link'
-                  to={browserRoutes.PROJECTS}
-                >
-                  Projects{' '}
-                  <Badge
-                    className='ansBadge'
-                    color='error'
-                    badgeContent={data?.project?.length || 0}
-                    showZero
-                  ></Badge>
-                </Link>
-              </span>
+              {data?.project?.length ? (
+                <span className='achievementInfo'>
+                  <Link
+                    state={{ data: data?.project }}
+                    style={{ color: 'blue' }}
+                    className='link'
+                    to={browserRoutes.PROJECTS}
+                  >
+                    Projects{' '}
+                    <Badge
+                      className='ansBadge'
+                      color='error'
+                      badgeContent={data?.project?.length || 0}
+                      showZero
+                    ></Badge>
+                  </Link>
+                </span>
+              ) : null}
               {knowledge ? (
                 <span className='achievementInfo '>
                   <Link
