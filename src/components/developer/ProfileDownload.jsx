@@ -2,10 +2,8 @@ import { Button } from '@mui/material';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import './download.css';
-import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../redux-toolkit/actions/profile/profile';
 
 const ProfileDownload = () => {
   const resume = useSelector((state) => state?.developer?.resume);

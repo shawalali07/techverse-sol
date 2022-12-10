@@ -15,6 +15,7 @@ import QuoteModal from './QuoteModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTopDevs } from '../../redux-toolkit/actions/developers/developers';
 import { browserRoutes } from '../../routes/browserRoutes';
+import { useToken } from '../../hooks/useToken';
 import {
   isFollows,
   postFollow,
@@ -29,6 +30,7 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { getUser } from '../../redux-toolkit/actions/profile/profile';
 export default function Developer() {
+  const token = useToken();
   const [quoteLoading, setQuoteLoading] = useState(false);
   const { userId } = useParams();
   const [loading, setLoading] = useState(false);
@@ -164,7 +166,7 @@ export default function Developer() {
                   </span>
                 </div>
               ) : null}
-              {id !== data?._id ? (
+              {token && id !== data?._id ? (
                 <div className='userShowInfo'>
                   <Button
                     onClick={() => setShow(true)}
