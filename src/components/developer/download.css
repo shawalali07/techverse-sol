@@ -2,28 +2,28 @@
   display: block;
   position: relative;
   margin: auto;
-  top: ;
+  /* top: ;
   left: ;
   right: ;
-  bottom: ;
+  bottom: ; */
 }
 .rela-inline {
   display: inline-block;
   position: relative;
   margin: auto;
-  top: ;
+  /* top: ;
   left: ;
   right: ;
-  bottom: ;
+  bottom: ; */
 }
 .floated {
   display: inline-block;
   position: relative;
   margin: false;
-  top: ;
+  /* top: ;
   left: ;
   right: ;
-  bottom: ;
+  bottom: ; */
   float: left;
 }
 .abs-center {
@@ -134,9 +134,9 @@ h3 {
   position: absolute;
   margin: false;
   top: 58%;
-  left: ;
+  /* left: ; */
   right: 16%;
-  bottom: ;
+  /* bottom: ; */
   cursor: pointer;
   font-family: 'Montserrat';
   font-size: 55px;

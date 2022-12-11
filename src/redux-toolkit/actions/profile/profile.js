@@ -5,13 +5,14 @@ import success from '../../../utils/success';
 import { setUpdatedProfile } from '../../slices/authSlice';
 import { setResume } from '../../slices/developerSlice';
 
-export const updateProfile = (formData, setLoading) => async (dispatch) => {
+export const updateProfile = (formData, setLoading, id) => async (dispatch) => {
   setLoading(true);
   try {
     const { data } = await api.put(authRoutes.UPDATE_PROFILE, formData);
     dispatch(setUpdatedProfile(data?.data));
     success('Profile has been updated...');
     setLoading(false);
+    dispatch(getUser(id));
   } catch (err) {
     fail(err.response.data.message || 'Something went wrong...');
     setLoading(false);

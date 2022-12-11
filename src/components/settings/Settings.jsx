@@ -19,6 +19,8 @@ const Settings = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.authSlice);
+  const id = useSelector((state) => state.authSlice?.id);
+
   const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -51,7 +53,7 @@ const Settings = () => {
     formData.rate && data.append('rate', formData.rate);
     formData.skills && data.append('skills', formData.skills);
     formData.designation && data.append('designation', formData.designation);
-    dispatch(updateProfile(data, setLoading));
+    dispatch(updateProfile(data, setLoading, id));
   };
 
   useEffect(() => {
