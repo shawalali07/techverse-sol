@@ -1,16 +1,21 @@
 import { Button } from '@mui/material';
+import { useEffect } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import './download.css';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../redux-toolkit/actions/profile/profile';
 
 const ProfileDownload = () => {
+  const id = useSelector((state) => state.authSlice?.id);
+
   const resume = useSelector((state) => state?.developer?.resume);
   const dispatch = useDispatch();
-  const {
-    state: { data },
-  } = useLocation();
+
+  useEffect(() => {
+    dispatch(getUser(id));
+  }, []);
 
   const download = () => {
     const input = document.getElementById('resume');
