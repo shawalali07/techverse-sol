@@ -1,12 +1,8 @@
 import { Mail } from '@mui/icons-material';
 import { Badge } from '@mui/material';
 import './messageDropdown.css';
-import shali from '../assets/images/shali.jpg';
 import { useRef, useEffect, useState } from 'react';
-import MessageModal from '../components/messages/MessageModal';
-import moment from 'moment';
 import MessageCard from './MessageCard';
-import { ClipLoader } from 'react-spinners';
 import { triggerNotification } from '../redux-toolkit/actions/notifications/notofications';
 import { useDispatch } from 'react-redux';
 const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
@@ -39,7 +35,6 @@ const MessageDropdown = ({ setMsgDropdown, msgDropdown, topDev }) => {
           checkNotification ? 0 : topDev?.notifications && topDev?.notifications
         }
       >
-        {/* <ClipLoader size={10} /> */}
         <Mail />
       </Badge>
       <div

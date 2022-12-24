@@ -9,12 +9,14 @@ import { getUser } from '../../redux-toolkit/actions/profile/profile';
 
 const ProfileDownload = () => {
   const id = useSelector((state) => state.authSlice?.id);
-
+  const {
+    state: { data },
+  } = useLocation();
   const resume = useSelector((state) => state?.developer?.resume);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUser(id));
+    dispatch(getUser(data ? data : id));
   }, []);
 
   const download = () => {
@@ -43,7 +45,11 @@ const ProfileDownload = () => {
       </Button>
       <div
         id='resume'
-        style={{ paddingTop: '100px', backgroundColor: '#fff' }}
+        style={{
+          paddingTop: '40px',
+          backgroundColor: '#fff',
+          minHeight: '100vh',
+        }}
         class='rela-block container'
       >
         <div class='rela-block top-bar'>

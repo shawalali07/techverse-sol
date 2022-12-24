@@ -97,8 +97,6 @@ export default function Developer() {
     });
   };
 
-  console.log(data?.project);
-
   return (
     <div id='user' className='user'>
       {loadingFollow ? (

@@ -24,7 +24,10 @@ const MyAnswer = (props) => {
       </div>
       <div className='descContainer'>
         <b>Your Answer</b>
-        <p dangerouslySetInnerHTML={{ __html: myAnswers?.description }}></p>
+        <div
+          className='ansDivCont'
+          dangerouslySetInnerHTML={{ __html: myAnswers?.description }}
+        ></div>
       </div>
     </div>
   );
