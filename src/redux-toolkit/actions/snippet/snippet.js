@@ -13,6 +13,5 @@ export const getSnippets = () => async (dispatch) => {
     dispatch(setSnippets(data?.data));
   } catch (error) {
     dispatch(failSnippets());
-    console.log(error);
   }
 };

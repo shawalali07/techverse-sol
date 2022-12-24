@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useToken } from '../hooks/useToken';
 import './Header.css';
 import SearchQuestions from '../components/questions/SearchQuestions';
@@ -17,7 +17,9 @@ const Header = () => {
   const dispatch = useDispatch();
   const replyModal = useSelector((state) => state.modal.replyModal);
   let topDev = useSelector((state) => state.developer.topDevelopers);
-  topDev = topDev.filter((msg) => msg?._id === id);
+  topDev = topDev
+    .filter((msg) => msg?._id === id)
+    ?.sort((a, b) => new Date(a?.updatedAt) - new Date(b?.updatedAt));
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [dropdown, setDropdown] = useState(false);

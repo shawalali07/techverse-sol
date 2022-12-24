@@ -2,11 +2,12 @@
   padding-top: 150px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin: auto;
   max-width: 1500px;
-  height: max-content;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .detTop {

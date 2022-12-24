@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { browserRoutes } from '../../routes/browserRoutes';
 import './snippets.css';
 import { getSnippets } from '../../redux-toolkit/actions/snippet/snippet';
 import Snippet from './Snippet';
