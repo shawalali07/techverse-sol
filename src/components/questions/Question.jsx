@@ -10,6 +10,8 @@ const Question = (props) => {
     return allAnswers?.filter((a) => a.questionId === id).length;
   };
 
+  console.log(question, 'question');
+
   return (
     <div
       key={question?._id}
@@ -21,7 +23,7 @@ const Question = (props) => {
           style={{ backgroundColor: '#2E5266FF' }}
           className='text-center questionStatus'
         >
-          {question?.voted ? 'Voted' : 'not answered'}
+          {question?.voted ? 'voted' : 'no vote'}
         </div>
         <div
           className='text-center questionStatus'

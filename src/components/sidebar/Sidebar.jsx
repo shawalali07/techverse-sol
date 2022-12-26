@@ -28,13 +28,13 @@ const Sidebar = () => {
         {profilePic && <img className='sidebarImg' src={profilePic} alt='' />}
         {country ? (
           <div className='sidebarItemContent'>
-            <span>Country</span>
+            <span>Country:</span>
             <span>{country}</span>
           </div>
         ) : null}
         {skills?.length ? (
           <div className='sidebarItemContent'>
-            <span>Skills</span>
+            <span>Skills:</span>
             {skills?.map((skill) => (
               <span>{skill}</span>
             ))}
@@ -42,7 +42,7 @@ const Sidebar = () => {
         ) : null}
         {rate ? (
           <div className='sidebarItemContent'>
-            <span>Hourly Rate</span>
+            <span>Hourly Rate:</span>
             <span>${rate}</span>
           </div>
         ) : null}
