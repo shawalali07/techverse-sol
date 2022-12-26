@@ -87,6 +87,11 @@ nav a.active {
   gap: 20px;
 }
 
+.modal-body .input::placeholder,
+.modal-body textarea::placeholder {
+  color: gray !important;
+}
+
 .resumeImg {
   width: 140px;
   height: 140px;

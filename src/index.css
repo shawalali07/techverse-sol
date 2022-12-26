@@ -267,43 +267,48 @@ code {
   cursor: text;
   min-height: 37vh;
   max-height: 37vh;
-  border: 2px solid rgb(144, 144, 144);
+  border: 1px solid rgb(144, 144, 144);
+  border-radius: 4px;
 }
 
 .rdw-editor-main:hover {
-  border: 2px solid black;
+  border: 1px solid black;
   /* border-color: #86b7fe; */
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  box-shadow: none !important;
+}
+
+.form-control {
+  border-color: #909090 !important;
 }
 
 .form-control:focus {
-  border: 2px solid black !important;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  border: 1px solid black !important;
+  box-shadow: none !important;
 }
 
 .form-control:hover {
-  border: 2px solid black !important;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  border: 1px solid black !important;
+  box-shadow: none !important;
 }
 
 /* for tags box in editor */
-.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
-  border: 2px solid rgb(144, 144, 144) !important;
+/* .css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+  border: 1px solid rgb(144, 144, 144) !important;
   border-radius: 2px;
-}
+} */
 
-.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root:hover {
-  border: 2px solid black !important;
+/* .css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root:hover {
+  border: 1px solid black !important;
   border-radius: 2px;
   box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
-}
+} */
 
 .rdw-editor-toolbar {
   /* cursor: text;
   min-height: 37vh;
   max-height: 37vh;
-  border: 2px solid rgb(144, 144, 144); */
+  border: 1px solid rgb(144, 144, 144); */
   background-color: #fdfbfb !important;
 }
 
@@ -354,4 +359,23 @@ code {
 }
 
 .followersCell {
+}
+
+.MuiFormControl-root div:focus:focus-visible:focus-within {
+  border: none !important;
+}
+
+.MuiDataGrid-root .MuiDataGrid-main {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 8px rgba(90, 90, 90, 0.25);
+}
+
+.MuiDataGrid-footerContainer,
+.MuiDataGrid-root {
+  border: none !important;
+}
+
+.MuiDataGrid-root .MuiDataGrid-columnHeaderTitle {
+  font-weight: 600 !important;
 }

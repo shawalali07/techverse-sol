@@ -5,17 +5,17 @@ import { browserRoutes } from '../../routes/browserRoutes';
 const Snippet = ({ snippet }) => {
   return (
     <tr className='linkCont'>
-      <Link
-        state={{ data: snippet }}
-        className='link'
-        to={`${browserRoutes.SNIPPETS}/${snippet?.tag}/${snippet?._id}`}
-      >
-        <th className='contentHeadings specColor' scope='row'>
+      <th className='contentHeadings specColor' scope='row'>
+        <Link
+          state={{ data: snippet }}
+          className='link'
+          to={`${browserRoutes.SNIPPETS}/${snippet?.tag}/${snippet?._id}`}
+        >
           {snippet?.title}
-        </th>
-      </Link>
-      <td>{snippet?.code}</td>
-      <td>{snippet?.tag}</td>
+        </Link>
+      </th>
+      <td className='contentHeadings'>{snippet?.code}</td>
+      <td className='contentHeadings'>{snippet?.tag}</td>
     </tr>
   );
 };

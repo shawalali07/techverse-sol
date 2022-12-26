@@ -52,7 +52,8 @@
   font-size: 18px;
 }
 
-.linkCont {
+.contentHeadings {
+  padding: 16px 8px !important;
 }
 
 .linkCont:hover {
