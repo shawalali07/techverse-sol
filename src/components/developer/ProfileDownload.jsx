@@ -78,7 +78,7 @@ const ProfileDownload = () => {
           ))}
         </div>
         <div class='rela-block content-container'>
-          <h2 class='rela-block caps title'>{resume?.designation}</h2>
+          <h2 class='rela-block caps titleCV'>{resume?.designation}</h2>
           <div class='rela-block separator'></div>
           <div class='rela-block caps greyed'>Profile</div>
           <p class='long-margin'>{resume?.aboutMe}</p>
@@ -89,6 +89,9 @@ const ProfileDownload = () => {
               <h3>Project #{index + 1}</h3>
               <p class='light'>{project?.projectTitle}</p>
               <p class='justified'>{project?.projectDescription}</p>
+              <a href={project?.projectLink} class='justified'>
+                {project?.projectLink}
+              </a>
             </>
           ))}
         </div>
