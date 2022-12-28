@@ -145,6 +145,11 @@ const Header = () => {
                 ) : (
                   <div className='noAuthLoginBtn'>
                     <Button
+                      style={{
+                        backgroundColor: '#1976d2',
+                        padding: '5px',
+                        borderRadius: '5px',
+                      }}
                       onClick={() => navigate('/signin')}
                       variant='contained'
                     >

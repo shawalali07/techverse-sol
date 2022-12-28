@@ -219,15 +219,6 @@ export default function Developer() {
             <div className='userUpdateTitle'>My Achievements</div>
             <div className='achievements'>
               <span className='achievementInfo'>
-                Rank{' '}
-                <Badge
-                  className='rankBadge'
-                  color='success'
-                  badgeContent={data?.rate}
-                  showZero
-                ></Badge>
-              </span>
-              <span className='achievementInfo'>
                 Points
                 <Badge
                   className='pointBadge'

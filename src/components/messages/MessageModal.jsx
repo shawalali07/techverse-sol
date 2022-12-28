@@ -47,7 +47,16 @@ const MessageModal = ({ show, setShow, msg }) => {
         </Modal.Body>
         <Modal.Footer>
           <div className='replyBtnContainer'>
-            <Button variant='contained' onClick={handleClose}>
+            <Button
+              style={{
+                backgroundColor: '#1976d2',
+                padding: '5px',
+                borderRadius: '5px',
+                color: 'white',
+              }}
+              variant='contained'
+              onClick={handleClose}
+            >
               Close
             </Button>
           </div>
