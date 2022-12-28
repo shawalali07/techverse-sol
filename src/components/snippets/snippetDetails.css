@@ -60,6 +60,13 @@
   background-color: aliceblue;
 }
 
+.snipC {
+  border-radius: 20px;
+  padding: 20px;
+
+  background-color: aliceblue;
+}
+
 .snipDetBottom {
   margin-top: 50px;
 }
