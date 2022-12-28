@@ -73,11 +73,11 @@
   margin-right: 0px !important;
 }
 
-@media screen and (min-width: 320px) and (max-width: 576px) {
+@media screen and (min-width: 320px) and (max-width: 1580px) {
   .allQuestionsContainer {
     min-width: 100%;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 

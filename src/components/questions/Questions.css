@@ -7,6 +7,14 @@
   margin: 0 auto;
 }
 
+@media screen and (min-width: 320px) and (max-width: 1580px) {
+  .qMainContainer {
+    min-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
 .questions {
   box-shadow: 10px 10px 50px -7px rgba(0, 0, 0, 0.75);
 }

@@ -16,7 +16,7 @@ const Questions = (props) => {
     dispatch(getAnswers());
   }, []);
   return (
-    <div>
+    <div className='qMainContainer'>
       {questions?.length > 0 ? (
         <div className='qContainer questions d-flex flex-column justify-content-center align-items-center mt-4 px-0'>
           {questions?.map((question) => (
