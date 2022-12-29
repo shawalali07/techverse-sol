@@ -41,40 +41,87 @@ const Header = () => {
             <button
               class='btn btn-primary '
               type='button'
-              data-bs-toggle='offcanvas'
-              data-bs-target='#offcanvasWithBothOptions'
-              aria-controls='offcanvasWithBothOptions'
               onClick={() => setShow(!show)}
             >
               <span className='navbar-toggler-icon'></span>
             </button>
             {show && (
-              <div
-                class='offcanvas offcanvas-start'
-                data-bs-scroll='true'
-                tabindex='-1'
-                id='offcanvasWithBothOptions'
-                aria-labelledby='offcanvasWithBothOptionsLabel'
-              >
-                <div class='offcanvas-header'>
-                  <h5
-                    class='offcanvas-title'
-                    id='offcanvasWithBothOptionsLabel'
+              <div class='mobile-sidebar'>
+                <div className='d-flex justify-content-end pt-3 pe-3'>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='16'
+                    height='16'
+                    fill='currentColor'
+                    class='bi bi-x-lg'
+                    viewBox='0 0 16 16'
+                    onClick={() => setShow(!show)}
                   >
-                    Backdrop with scrolling
-                  </h5>
-                  <button
-                    type='button'
-                    class='btn-close'
-                    data-bs-dismiss='offcanvas'
-                    aria-label='Close'
-                  ></button>
+                    <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' />
+                  </svg>
                 </div>
-                <div class='offcanvas-body'>
-                  <p>
-                    Try scrolling the rest of the page to see this option in
-                    action.
-                  </p>
+                <div>
+                  <ul className='navbar-nav gap-3 pt-5'>
+                    <li
+                      className='nav-item topListItem ps-4'
+                      onClick={() => setShow(false)}
+                    >
+                      <NavLink className='link' to='/'>
+                        Home
+                      </NavLink>
+                    </li>
+                    <li
+                      className='nav-item topListItem ps-4'
+                      onClick={() => setShow(false)}
+                    >
+                      <NavLink className='link' to='/about'>
+                        About Us
+                      </NavLink>
+                    </li>
+                    <li
+                      className='nav-item topListItem ps-4'
+                      onClick={() => setShow(false)}
+                    >
+                      <NavLink className='link' to='/allquestions'>
+                        All Questions
+                      </NavLink>
+                    </li>
+                    {token && (
+                      <li
+                        className='nav-item topListItem ps-4'
+                        onClick={() => setShow(false)}
+                      >
+                        <NavLink className='link' to='/askquestion'>
+                          Ask Question
+                        </NavLink>
+                      </li>
+                    )}
+                    <li
+                      className='nav-item topListItem ps-4'
+                      onClick={() => setShow(false)}
+                    >
+                      <NavLink className='link' to={browserRoutes.KNOWLEDGE}>
+                        Knowledge
+                      </NavLink>
+                    </li>
+                    <li
+                      className='nav-item topListItem ps-4'
+                      onClick={() => setShow(false)}
+                    >
+                      <NavLink className='link' to={browserRoutes.DEVELOPERS}>
+                        Top Devs
+                      </NavLink>
+                    </li>
+                    <li
+                      className='nav-item topListItem ps-4'
+                      onClick={() => setShow(false)}
+                    >
+                      <NavLink className='link' to={browserRoutes.SNIPPETS}>
+                        Snippets
+                      </NavLink>
+                    </li>
+                    <li className='nav-item'></li>
+                  </ul>
                 </div>
               </div>
             )}
